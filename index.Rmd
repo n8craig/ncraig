@@ -1,0 +1,5 @@
+---
+title: "Nathan Craig Test Blog"
+site: distill::distill_website
+listing: posts
+---
