@@ -26,11 +26,11 @@
         "url": "https://ncraig.netlify.app/"
       }
     ],
-    "date": "2019-04-25",
+    "date": "2021-04-25",
     "categories": [],
     "contents": "\r\nThis is a second post. Below is a bivariate scatterplot of the cars dataset showing the relationship between weight (wt) and miles per gallon (mpg). A modest start, but something to consider.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-04-25-second-blog-post/second-blog-post_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2021-04-25T16:28:26-06:00",
+    "last_modified": "2021-04-25T16:29:45-06:00",
     "input_file": "second-blog-post.utf8.md"
   }
 ]
