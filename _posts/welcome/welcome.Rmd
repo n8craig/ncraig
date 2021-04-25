@@ -8,7 +8,7 @@ author:
     url: https://ncraig.netlify.app/
     affiliation: NMSU Anthropology
     affiliation_url: https://anthropology.nmsu.edu/
-date: 04-25-2021
+date: 04-25-2019
 output:
   distill::distill_article:
     self_contained: false
