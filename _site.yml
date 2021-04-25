@@ -1,7 +1,7 @@
 name: "ncraig"
-title: "Nathan Craig Test Blog"
+title: "Nathan Craig's Personal Site"
 description: |
-  Nathan Craig Test Blog
+  Nathan Craig's Personal Site
 output_dir: "_site"
 navbar:
   right:

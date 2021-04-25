@@ -3,8 +3,10 @@ title: "Second Blog Post"
 description: |
   A short description of the post.
 author:
-  - name: Nora Jones
-    url: https://example.com/norajones
+  - name: Nathan Craig 
+    url: https://ncraig.netlify.app/
+    affiliation: NMSU Anthropology
+    affiliation_url: https://anthropology.nmsu.edu/
 date: 04-25-2021
 output:
   distill::distill_article:

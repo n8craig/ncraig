@@ -1,5 +1,5 @@
 ---
-title: "Nathan Craig Test Blog"
+title: "Nathan Craig's Personal Site"
 site: distill::distill_website
 listing: posts
 ---

@@ -22,15 +22,15 @@
     "description": "A short description of the post.",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Nathan Craig",
+        "url": "https://ncraig.netlify.app/"
       }
     ],
     "date": "2021-04-25",
     "categories": [],
     "contents": "\r\nThis is a second post.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-04-25-second-blog-post/second-blog-post_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2021-04-25T12:50:08-06:00",
+    "last_modified": "2021-04-25T13:00:59-06:00",
     "input_file": "second-blog-post.utf8.md"
   }
 ]
