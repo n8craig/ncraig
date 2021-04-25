@@ -1,7 +1,9 @@
 ---
 title: "Second Blog Post"
 description: |
-  A short description of the post.
+  This second post contains a single plot of the cars dataset.
+  It shows the relationship between the variables wt and mpg.
+  Not very exciting, but a start.
 author:
   - name: Nathan Craig 
     url: https://ncraig.netlify.app/
@@ -12,7 +14,7 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-This is a second post.
+This is a second post. Below is a bivariate scatterplot of the cars dataset showing the relationship between weight (wt) and miles per gallon (mpg). A modest start, but something to consider.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
