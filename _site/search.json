@@ -6,14 +6,14 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-25T12:25:47-06:00"
+      "last_modified": "2021-04-25T13:12:05-06:00"
     },
     {
       "path": "index.html",
-      "title": "Nathan Craig Test Blog",
+      "title": "Nathan Craig's Personal Site",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-25T12:25:47-06:00"
+      "last_modified": "2021-04-25T13:11:56-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
