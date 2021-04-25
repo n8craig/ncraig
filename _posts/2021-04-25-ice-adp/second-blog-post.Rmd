@@ -1,0 +1,93 @@
+---
+title: "ICE ADP"
+description: |
+  This post contains a plot of ICE ADP over time.
+author:
+  - name: Nathan Craig 
+    url: https://ncraig.netlify.app/
+    affiliation: NMSU Anthropology
+    affiliation_url: https://anthropology.nmsu.edu/
+date: 04-25-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+This is a second post. Below is a bivariate scatterplot of the cars dataset showing the relationship between weight (wt) and miles per gallon (mpg). A modest start, but something to consider.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(rmarkdown)
+```
+
+
+```{r include=FALSE}
+df <- tibble::tribble(
+    ~FY,   ~ADP,
+  1979L,  2347L,
+  1980L,  1595L,
+  1981L,  2707L,
+  1982L,  2899L,
+  1983L,  2922L,
+  1984L,  3428L,
+  1985L,  4056L,
+  1986L,  4006L,
+  1987L,  3375L,
+  1988L,  3931L,
+  1989L,  6519L,
+  1990L,  6663L,
+  1991L,  6128L,
+  1992L,  6006L,
+  1993L,     NA,
+  1994L,  6785L,
+  1995L,  7475L,
+  1996L,  9011L,
+  1997L, 11871L,
+  1998L, 15447L,
+  1999L, 17772L,
+  2000L, 19458L,
+  2001L, 20429L,
+  2002L, 20282L,
+  2003L, 21133L,
+  2004L, 21298L,
+  2005L, 19619L,
+  2006L, 19409L,
+  2007L, 27883L,
+  2008L, 31771L,
+  2009L, 32098L,
+  2010L, 30885L,
+  2011L, 33330L,
+  2012L, 34260L,
+  2013L, 33788L,
+  2014L, 33227L,
+  2015L, 28449L,
+  2016L, 34376L,
+  2017L, 38106L,
+  2018L, 42188L,
+  2019L, 50165L,
+  2020L, 33724L,
+  2021L, 15821L
+  )
+
+```
+
+Average daily population (ADP) in US immigration detention FY1979-FY2021 (to date)
+
+```{r}
+df %>% 
+  paged_table()
+```
+
+Plot of ADP FY1979-2021
+
+```{r}
+df %>% 
+  ggplot(aes(x= FY, y=ADP))+
+  geom_line()
+```
+
