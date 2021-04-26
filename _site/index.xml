@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Nathan Craig</title>
+    <link>https://ncraig.netlify.app</link>
+    <atom:link href="https://ncraig.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Nathan Craig's Personal Site
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>ICE ADP</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-04-25-ice-adp</link>
+      <description>An Exploration of immigration detention average daily population over time.
+Particular attention is given to the period represented by the COVID-19 pandemic.</description>
+      <guid>https://ncraig.netlify.app/posts/2021-04-25-ice-adp</guid>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-04-25-ice-adp/ICE-ADP_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Welcome to Nathan Craig's Personal Site</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/welcome</link>
+      <description>Welcome my new personal site. I hope you enjoy 
+reading the content.</description>
+      <guid>https://ncraig.netlify.app/posts/welcome</guid>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

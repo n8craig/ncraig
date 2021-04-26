@@ -3,10 +3,14 @@ title: "Nathan Craig"
 description: |
   Nathan Craig's Personal Site
 output_dir: "_site"
+base_url: https://ncraig.netlify.app
+repository_url: https://github.com/n8craig/ncraig
 navbar:
   right:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    toc: true
