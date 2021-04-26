@@ -92,7 +92,7 @@ df %>%
   geom_line()+
   geom_smooth()+
     labs(
-    title = "Annual ICE Detention Population 1979-2021 to April",
+    title = "Annual ICE Detention Population 1979-April 2021",
     subtitle = "Smoothed trend line added",
     caption = "Data source: https://www.ice.gov/detain/detention-management"
   )
