@@ -11,13 +11,14 @@ date: 04-25-2021
 output:
   distill::distill_article:
     self_contained: false
+bibliography: references.bib
 ---
+
 This is a second post showing immigration detention average daily poulation (ADP) over time. A modest start, but something to consider.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
 
 ```{r}
 library(tidyverse)
@@ -25,7 +26,6 @@ library(ggplot2)
 library(rmarkdown)
 library(readr)
 ```
-
 
 ```{r include=FALSE}
 df <- tibble::tribble(
@@ -84,14 +84,19 @@ df %>%
   paged_table()
 ```
 
-Plot of ADP FY1979-2021
+Plot of ADP FY1979-2021 Sources of information for this plot include [@takei2016, Figure 1; @siskin2012, 13; @dhs2018]
 
 ```{r}
 df %>% 
   ggplot(aes(x= FY, y=ADP))+
-  geom_line()
+  geom_line()+
+  geom_smooth()+
+    labs(
+    title = "Annual ICE Detention Population 1979-2021 to April",
+    subtitle = "Smoothed trend line added",
+    caption = "Data source: https://www.ice.gov/detain/detention-management"
+  )
 ```
-
 
 ```{r}
 URL <- "https://raw.githubusercontent.com/n8craig/IDE-Detention-Year-End-Reports/main/data/ADP_monthly_Oct18_Apr21.csv"
@@ -118,8 +123,6 @@ ggplot(df_ADP_monthly, aes(x=Date, y=ADP))+
   )
 ```
 
-
-
 ```{r}
 URL <- "https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data/covid_summaries.csv"
 df_covid <- read_csv(URL, 
@@ -131,7 +134,6 @@ df_covid <- read_csv(URL,
 df_covid %>% 
   paged_table()
 ```
-
 
 ```{r}
 # ICE Detention Population Over Time
@@ -145,4 +147,3 @@ ggplot(df_covid, aes(x=Date, y=`Total Detained`))+
     caption = "Data source: https://www.ice.gov/coronavirus"
   )
 ```
-
