@@ -10,5 +10,3 @@ Nathan Craig, Ph.D.\
 College Assistant Professor\
 Department of Anthropology\
 New Mexico State University
-
-[![](images/NM_State_Mark.png){width="35" height="40"}![](images/zotero_32x32x32.png){width="38"}![](images/AVIDlogo_small.jpg){width="28" height="42"}](https://anthropology.nmsu.edu/)

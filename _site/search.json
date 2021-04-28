@@ -5,15 +5,15 @@
       "title": "About",
       "description": "Not much, but a bit about this site...",
       "author": [],
-      "contents": "\r\nI am presently learning R, Rstudio, and Rmarkdown as tools for exploring, documenting, and communicating data. While I’ve written a couple of quantitative papers in the past, I generally relied on GUI based statistical interfaces like Excel, JMP, or the very nice PAST application. Recently, after a brief sojourn with python, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. I’m already shifting my writing from Microsoft Word to Markdown, using Zettlr or Obsidian and combining these with Zotero. Given a writing workflow that entails Markdown and Zotero coupled with a quantitative interest R and Rmarkdown seemed like logical tools to explore. I looked at several of the tools like Rpubs as well as packages like bookdown and blogdown. After examining the field, the distill package seemed like a full fledged technical writing tool without some of the hassles that people have reported using blogdown/go. So I figured I’d give distill a try.\r\nNathan Craig, Ph.D.\r\nCollege Assistant Professor\r\nDepartment of Anthropology\r\nNew Mexico State University\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-27T18:59:57-06:00"
+      "contents": "\r\nI am presently learning R, Rstudio, and Rmarkdown as tools for exploring, documenting, and communicating data. While I’ve written a couple of quantitative papers in the past, I generally relied on GUI based statistical interfaces like Excel, JMP, or the very nice PAST application. Recently, after a brief sojourn with python, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. I’m already shifting my writing from Microsoft Word to Markdown, using Zettlr or Obsidian and combining these with Zotero. Given a writing workflow that entails Markdown and Zotero coupled with a quantitative interest R and Rmarkdown seemed like logical tools to explore. I looked at several of the tools like Rpubs as well as packages like bookdown and blogdown. After examining the field, the distill package seemed like a full fledged technical writing tool without some of the hassles that people have reported using blogdown/go. So I figured I’d give distill a try.\r\nNathan Craig, Ph.D.\r\nCollege Assistant Professor\r\nDepartment of Anthropology\r\nNew Mexico State University\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-04-27T21:34:51-06:00"
     },
     {
       "path": "index.html",
       "title": "Nathan Craig",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-27T18:59:30-06:00"
+      "last_modified": "2021-04-27T21:33:19-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
