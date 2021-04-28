@@ -15,8 +15,29 @@ output:
 
 # Introduction
 
-An emerging sprout, just starting to grow (see Figure \@ref(fig:popalo))...
+An emerging sprout, just starting to grow (see Figure \@ref(fig:popalo)), hopefully treatments will produce positive results (Figure \@ref(fig:plant-growth)).
 
 ```{r popalo, echo=FALSE, fig.cap="Popaloquelite (*Porophyllum ruderale*) sprout."}
 knitr::include_graphics("images/popalo-sprout.jpg")
 ```
+
+```{r include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggstatsplot)
+```
+
+```{r include=FALSE}
+PlantGrowth
+```
+
+```{r plant-growth, echo=FALSE, fig.cap="Plant growth dataset, comparing yields (measured by dry weights) obtained under a control and two different treatment conditions. Data source Dobson (1983)"}
+PlantGrowth %>% 
+
+  ggbetweenstats(.,x=group, y = weight)
+```
+
+# Reference
+
+Dobson, A. J. (1983) *An Introduction to Statistical Modelling*. London: Chapman and Hall.
+

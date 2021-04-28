@@ -30,9 +30,11 @@
     ],
     "date": "2021-04-25",
     "categories": [],
-    "contents": "\r\nIntroduction\r\nAn emerging sprout, just starting to grow (see Figure 1)…\r\n\r\n\r\n\r\nFigure 1: Popaloquelite (Porophyllum ruderale) sprout.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2021-04-27T18:59:30-06:00",
-    "input_file": {}
+    "contents": "\r\nIntroduction\r\nAn emerging sprout, just starting to grow (see Figure 1), hopefully treatments will produce positive results (Figure 2).\r\n\r\n\r\n\r\nFigure 1: Popaloquelite (Porophyllum ruderale) sprout.\r\n\r\n\r\n\r\n\r\n\r\n\r\nFigure 2: Plant growth dataset, comparing yields (measured by dry weights) obtained under a control and two different treatment conditions. Data source Dobson (1983)\r\n\r\n\r\n\r\nReference\r\nDobson, A. J. (1983) An Introduction to Statistical Modelling. London: Chapman and Hall.\r\n\r\n\r\n\r\n",
+    "preview": "posts/welcome/welcome_files/figure-html5/plant-growth-1.png",
+    "last_modified": "2021-04-27T21:31:42-06:00",
+    "input_file": "welcome.utf8.md",
+    "preview_width": 1248,
+    "preview_height": 768
   }
 ]
