@@ -2,18 +2,18 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "title": "About",
+      "description": "Not much, but a bit about me...",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-25T13:12:05-06:00"
+      "contents": "\r\nNathan Craig, Ph.D.\r\nCollege Assistant Professor\r\nDepartment of Anthropology\r\nNew Mexico State University\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-04-27T18:40:32-06:00"
     },
     {
       "path": "index.html",
       "title": "Nathan Craig",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-25T17:40:07-06:00"
+      "last_modified": "2021-04-27T18:13:37-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
