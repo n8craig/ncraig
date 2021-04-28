@@ -1,8 +1,7 @@
 ---
 title: "Welcome to Nathan Craig's Personal Site"
 description: |
-  Welcome my new personal site. I hope you enjoy 
-  reading the content.
+  Welcome my new personal site.
 author:
   - name: Nathan Craig 
     url: https://ncraig.netlify.app/
@@ -14,6 +13,8 @@ output:
     self_contained: false
 ---
 
+I am presently learning R, Rstudio, and Rmarkdown as tools for exploring, documenting, and communicating data. While I've written a couple of [quantitative papers](https://www.zotero.org/ncraig/) in the past, I generally relied on GUI based statistical interfaces like Excel, JMP, or the very nice [PAST](https://www.nhm.uio.no/english/research/infrastructure/past/) application. Recently, after a brief sojourn with python, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. I'm already shifting my writing from Microsoft Word to Markdown, using Zettlr or Obsidian and combining these with Zotero. Given a writing workflow that entails Markdown and Zotero coupled with a quantitative interest R and Rmarkdown seemed like logical tools to explore. I looked at several of the tools like Rpubs as well as packages like bookdown and blogdown. After examining the field, the distill package seemed like a full fledged technical writing tool without some of the hassles that people have reported using blogdown/go. So I figured I'd give distill a try. Here we go...
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -21,6 +22,3 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/blog.html
 
 ```
-
-
-
