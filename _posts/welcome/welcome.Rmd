@@ -15,7 +15,7 @@ output:
 
 # Introduction
 
-An emerging sprout, just starting to grow (see Figure \@ref(fig:popalo)), hopefully treatments will produce positive results (Figure \@ref(fig:plant-growth)).
+An emerging sprout, just starting to grow (see Figure \@ref(fig:popalo)). Hopefully treatments will produce positive results (Figure \@ref(fig:plant-growth)).
 
 ```{r popalo, echo=FALSE, fig.cap="Popaloquelite (*Porophyllum ruderale*) sprout."}
 knitr::include_graphics("images/popalo-sprout.jpg")
