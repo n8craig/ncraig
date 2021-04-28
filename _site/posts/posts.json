@@ -20,8 +20,8 @@
   },
   {
     "path": "posts/welcome/",
-    "title": "Welcome to Nathan Craig's Personal Site",
-    "description": "Welcome my new personal site.",
+    "title": "First post",
+    "description": "Welcome to my new site.",
     "author": [
       {
         "name": "Nathan Craig",
@@ -30,9 +30,9 @@
     ],
     "date": "2021-04-25",
     "categories": [],
-    "contents": "\r\nI am presently learning R, Rstudio, and Rmarkdown as tools for exploring, documenting, and communicating data. While I’ve written a couple of quantitative papers in the past, I generally relied on GUI based statistical interfaces like Excel, JMP, or the very nice PAST application. Recently, after a brief sojourn with python, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. I’m already shifting my writing from Microsoft Word to Markdown, using Zettlr or Obsidian and combining these with Zotero. Given a writing workflow that entails Markdown and Zotero coupled with a quantitative interest R and Rmarkdown seemed like logical tools to explore. I looked at several of the tools like Rpubs as well as packages like bookdown and blogdown. After examining the field, the distill package seemed like a full fledged technical writing tool without some of the hassles that people have reported using blogdown/go. So I figured I’d give distill a try. Here we go…\r\n\r\n\r\n\r\n",
+    "contents": "\r\nIntroduction\r\nAn emerging sprout, just starting to grow (see Figure 1)…\r\n\r\n\r\n\r\nFigure 1: Popaloquelite (Porophyllum ruderale) sprout.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-04-27T18:13:37-06:00",
+    "last_modified": "2021-04-27T18:59:30-06:00",
     "input_file": {}
   }
 ]
