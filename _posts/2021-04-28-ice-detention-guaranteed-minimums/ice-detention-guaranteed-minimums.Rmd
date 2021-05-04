@@ -37,16 +37,29 @@ Section 4 looks at Ghost Beds generally, by Type Detailed and explores Guarantee
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+# Reading files
+library(sf)
+library(readr)
+library(readxl)
+library(rio)
+
+# Data wrangling
 library(tidyverse)
+library(janitor)
+
+# Graphing
 library(ggplot2)
 library(ggstatsplot)
 library(ggforce)
 library(ggthemes)
+
+# Stats
 library(easystats)
-library(sf)
 library(summarytools)
+
+# Output
 library(rmarkdown)
-library(readr)
 library(kableExtra)
 library(knitr)
 # knitr option that forces rounding
@@ -66,31 +79,63 @@ options(digits=5, scipen=15)
 ```
 
 ```{r load-data, include=FALSE}
-facilities <- read_csv("https://raw.githubusercontent.com/n8craig/IDE-Detention-Year-End-Reports/main/data/facilities%20geocoded.csv")
-states <- st_read("C:/Users/nmc/Nextcloud/AVID_Restricted/ICE_data/IDE-Detention-Year-End-Reports/map_data/cb_2018_us_state_500k.shp")
+states <- st_read("C:/Users/nmc/Nextcloud/AVID_Restricted/ICE_data/ICE-Detention-Year-End-Reports/map_data/cb_2018_us_state_500k.shp")
 
+df_attributes <-rio::import('https://github.com/n8craig/ICE-Detention-Year-End-Reports/raw/main/data/FY21_detention-stats_0414.xlsx', 
+    sheet = "Facilities FY21 YTD", col_types = c("text", 
+        "text", "text", "text", "numeric", 
+        "text", "text", "text", "text", "text", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "text", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "text", "text", "text", 
+        "date", "text", "text", "text", "date"), 
+    skip = 6)
 
-facilities$`Type Detailed` <- as.factor(facilities$`Type Detailed`)
-# Adding new columns
-facilities <- facilities %>% 
-  mutate(`Total Detained`=
-           `Female Crim` +
-           `Female Non-Crim` +
-           `Male Crim` +
-           `Male Non-Crim`) %>% 
-  mutate(`Total Males Detained` =
-           `Male Crim` +
-           `Male Non-Crim`) %>% 
-  mutate(`Total Females Detained` =
-           `Female Crim` +
-           `Female Non-Crim`) %>% 
-  mutate(`Percent No Threat` =
-            (`No ICE Threat Level` /
-           `Total Detained`)*100) %>% 
-  relocate(c(`Total Females Detained`,
-             `Total Males Detained`,
-             `Total Detained`,
-             `Percent No Threat`), .after = `Guaranteed Minimum`)
+df_geocoded <- read_csv("https://raw.githubusercontent.com/n8craig/ICE-Detention-Year-End-Reports/main/data/facilities%20geocoded.csv")
+
+df_geocoded <- df_geocoded %>% 
+  select(1, 6:10)
+
+df <- left_join(df_attributes, df_geocoded) %>% 
+  relocate(32:36, .after=Zip) %>% 
+  janitor::clean_names()
+
+remove(df_attributes, df_geocoded)
+
+# Set numeric fields
+df$fy21_alos <- as.numeric(df$fy21_alos)
+df$level_a <- as.numeric(df$level_a)
+df$female_non_crim <- as.numeric(df$female_non_crim)
+
+# Set factor fields
+df$aor <- as.factor(df$aor)
+df$type_detailed <- as.factor(df$type_detailed)
+df$male_female <- as.factor(df$male_female)
+
+# Create new columns
+df <- df %>% 
+  mutate_at(vars(14:27), funs(round(.,0))) %>% 
+  mutate(total_detained=
+           female_crim +
+           female_non_crim +
+           male_crim +
+           male_non_crim) %>% 
+  mutate(total_males_detained =
+           male_crim +
+           male_non_crim) %>% 
+  mutate(total_females_detained =
+           female_crim +
+           female_non_crim) %>% 
+  mutate(percent_no_threat =
+            (no_ice_threat_level /
+           total_detained)*100) %>% 
+  mutate_at(vars(percent_no_threat), funs(round(.,0))) %>%  
+  relocate(c(total_females_detained,
+             total_males_detained,
+             total_detained,
+             percent_no_threat), .after = guaranteed_minimum)
 ```
 
 # Facility Types {#sec:facility-types}
@@ -124,8 +169,8 @@ Table \@ref(tab:facility-types) and Figure \@ref(fig:facility-types-bar-plot) sh
 # Map of all facilities
 ggplot()+
   geom_sf(data=states)+
-  geom_point(data=facilities,
-             aes(x=Longitude, y=Latitude), color = "Red", size = 1)+
+  geom_point(data=df,
+             aes(x=longitude, y=latitude), color = "Red", size = 1)+
     coord_sf(xlim = c(-165,150), ylim = c(10,72), expand = FALSE)+
   labs(
     title = "ICE Detention Facilities",
@@ -135,19 +180,22 @@ ggplot()+
 
 ```{r facility-types}
 # Facility count and percent total by facility type.
-facility_types <- facilities %>% 
-  count(`Type Detailed`) %>%
-  mutate(`Percent Total Facilities` = prop.table(n)*100) %>% 
-  mutate(`Percent Total Facilities` = round(`Percent Total Facilities`,2))
+df_types <- df %>% 
+  count(type_detailed) %>%
+  mutate(percent_total_facilities = prop.table(n)*100) %>% 
+  mutate(percent_total_facilities = round(percent_total_facilities,2))
 # Sort by percent total
-facility_types %>% 
-  arrange(`Percent Total Facilities`)%>%
-  kable(caption="Count and Percent Total Facilities by Type.")
+df_types %>% 
+  arrange(percent_total_facilities)%>%
+  kable(
+    col.names = c("Type Detailed", "n",  "% Total Facilities"),
+    caption="Count and Percent Total Facilities by Type."
+    )
 ```
 
 ```{r facility-types-bar-plot, fig.cap="Bar chart of ICE detention facilities by facility type."}
 # Bar Chart of Facility Count by Type
-ggplot(facilities, aes(y = fct_infreq(`Type Detailed`)))+
+ggplot(df, aes(y = fct_infreq(type_detailed)))+
   geom_bar(stat = 'count')+
   ylab("Facility Type Detailed")+
   xlab("Count")+
@@ -163,9 +211,9 @@ Figure \@ref(fig:facility-map-facet-by-type) shows were ICE detention facilities
 # Facet map of Facilities by Type
 ggplot()+
   geom_sf(data=states)+
-  geom_point(data=facilities,
-             aes(x=Longitude, y=Latitude,
-                 color = `Type Detailed`), size = 2)+
+  geom_point(data=df,
+             aes(x=longitude, y=latitude,
+                 color = type_detailed), size = 2)+
   scale_shape_discrete(solid = FALSE)+
   coord_sf(xlim = c(-125,-64), ylim = c(16.5, 49.5), expand = TRUE)+
   scale_x_continuous(breaks = c(-120, -100, -80))+
@@ -173,47 +221,50 @@ ggplot()+
     title = "ICE Detention Facility Type",
     caption = "Data source: https://www.ice.gov/detain/detention-management/"
     )+
-  facet_wrap(~`Type Detailed`, ncol =3)
+  facet_wrap(~type_detailed, ncol =3)
 ```
 
 ## ADP by Facility Type {#adp-by-facility-type}
 
 ```{r}
-sum_adp <- sum(facilities$`Total Detained`)
+sum_adp <- sum(df$total_detained)
 ```
 
 Based on ICE's FY2021 year to date data table, the total ADP is presently `r sum_adp`, which is generally consistent with the detained population reported on the ICE [Guidance on COVID-19](https://www.ice.gov/coronavirus) page for this time period. Examining total ADP by facility type shows that IGSA's (n=8999) and CDF's (n=3567), which are both private kinds of facilities, make up 81% (n=12566) of the total ADP (see Table \@ref(tab:adp-by-facility-type-table). However, IGSA's (n=73) and CDF's (n=17) make up 63% of the total number of facilities. They hold a larger portion of the total ADP because these kinds of facilities are generally larger, though at present SPC's appear to have a higher mean ADP though there are few of this kind of facility (n=5).
 
 ```{r adp-by-facility-type-table}
-adp_summaries <- facilities %>%
-group_by(`Type Detailed`) %>% 
-  summarize(`Total ADP` = sum(`Total Detained`),
-            `Mean ADP` = mean(`Total Detained`),
-            `SD ADP` = sd(`Total Detained`)) %>% 
-  mutate(`Percent Total ADP` = (`Total ADP`/sum_adp)*100) %>%
-  mutate(`Percent Total ADP` = round(`Percent Total ADP`, digits=2)) %>% 
-  mutate( `Mean ADP` = round(`Mean ADP`, digits = 2)) %>% 
-  mutate( `SD ADP` = round(`SD ADP`, digits = 2)) %>%
-  arrange(`Total ADP`)
+df_adp_summaries <- df %>%
+group_by(type_detailed) %>% 
+  summarize(total_adp = sum(total_detained),
+            mean_adp = mean(total_detained),
+            sd_adp = sd(total_detained)) %>% 
+  mutate(percent_total_adp = (total_adp/sum_adp)*100) %>%
+  mutate(percent_total_adp = round(percent_total_adp, digits=2)) %>% 
+  mutate(mean_adp = round(mean_adp, digits = 2)) %>% 
+  mutate(sd_adp = round(sd_adp, digits = 2)) %>%
+  arrange(total_adp)
 
-left_join(facility_types, adp_summaries) %>% 
-  kable(caption = "Summary statistics of ADP by ICE detention facility type.")
+left_join(df_types, df_adp_summaries) %>% 
+  kable(
+    col.names = c("Type Detailed", "n", "% Total Facilities", "Total ADP", "Mean ADP", "SD ADP", "% Total ADP"),
+    caption = "Summary statistics of ADP by ICE detention facility type."
+    )
 ```
 
 Looking at the distribution of ADP by ICE detention facility type, one can see that SPC's have the highest mean ADP (M=269.80, SD=121.26), while CDF's (M=209.82, SD=188.57) and IGSA's (M=123.27, SD=139.88) have the next highest mean ADP (see Table \@ref(tab:adp-by-facility-type-table)). A combined violin-sina plot (Figure \@ref(fig:adp-by-facility-type-figure)) illustrates the distribution of ADP by ICE detention facility type [@hintze1998; @sidiropoulos2018]. So while SPC's presently have larger detained populations on average, IGSA's and CDF's are far more numerous. While USMS IGA's (n= 39) are the second most numerous kind of facility they have a comparatively lower total ADP (n=1423) or by facility average ADP (M=36.49, SD=45.43).
 
 ```{r adp-by-facility-type-figure, fig.cap="Violin and Sina plot of ADPs by ICE detention facility type."}
-df_mean <- facilities %>% 
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Total Detained`)) %>% 
+df_mean <- df %>% 
+  group_by(type_detailed) %>% 
+  summarize(average = mean(total_detained)) %>% 
   ungroup()
 
-facilities %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Total Detained`, fill=`Type Detailed`))+
+df %>% 
+  ggplot(data = ., aes(x= type_detailed, y = total_detained, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("ADP")+
@@ -227,16 +278,16 @@ facilities %>%
 
 ```{r guaranteed-min-var, include=FALSE}
 # Variable of sum of guaranteed minimum beds, for use in text.
-guaranteed_min_sum <- sum(facilities$`Guaranteed Minimum`, na.rm = TRUE)
+guaranteed_min_sum <- sum(df$guaranteed_minimum, na.rm = TRUE)
 ```
 
 ```{r include=FALSE}
-cor.test(facilities$`Guaranteed Minimum`, facilities$`Total Detained`, method = "pearson") %>% 
+cor.test(df$guaranteed_minimum, df$total_detained, method = "pearson") %>% 
   report()
 ```
 
 ```{r include=FALSE}
-lm(`Guaranteed Minimum`~`Total Detained`, facilities) %>% 
+lm(guaranteed_minimum~total_detained, df) %>% 
   report()
 ```
 
@@ -246,27 +297,30 @@ Of the 142 facilities reported by ICE in the FY21 year to date dataset, 35% (n=5
 
 Facilities with guaranteed minimums are of three types: IGSA's, CDF's, and SPC's (Figure \@ref(fig:histogram-guaranteed-min-by-type) and Table \@ref(tab:guaranteed-min-by-facility-type)).
 
-```{r guaranteed-min-by-facility}
+```{r guaranteed-min-by-facility, layout = "l-body-outset"}
 # Guaranteed Minimums by Facility
-facilities_guaranteed_min <- 
-facilities %>% 
+df_guaranteed_min <- 
+df %>% 
   as_tibble() %>% 
-  select(c(Name, `Type Detailed`, `Guaranteed Minimum`,
-           `Total Detained`)) %>% 
-  filter(`Guaranteed Minimum` >0) %>% 
-  arrange(desc(`Guaranteed Minimum`))
-facilities_guaranteed_min %>% 
+  select(c(name, type_detailed, guaranteed_minimum,
+           total_detained)) %>% 
+  filter(guaranteed_minimum >0) %>% 
+  arrange(desc(guaranteed_minimum))
 
-  kable(caption = "Guaranteed minimum and total detained by facility.") %>% 
+df_guaranteed_min %>% 
+  kable(
+    col.names = c("Facility", "Type Detailed", "Guaranteed\nMinimum", "Total Detained"),
+    caption = "Guaranteed minimum and total detained by facility."
+    ) %>% 
   scroll_box(height = "300px")
 ```
 
 ```{r histogram-guaranteed-min-by-type, fig.cap="Histogram of guaranteed minimums by ICE detention facility type."}
 
 # Plot of Guaranteed Minimums
-facilities_guaranteed_min %>% 
+df_guaranteed_min %>% 
   ggplot()+
-  geom_histogram(aes(x=`Guaranteed Minimum`, color=`Type Detailed`, fill = `Type Detailed`),alpha=.6)+
+  geom_histogram(aes(x=guaranteed_minimum, color=type_detailed, fill = type_detailed),alpha=.6)+
   labs(title="Histogram of guaranteed minimum contracts showing the count \nof ICE detention facilities by type per number of guaranteed beds.")+
   ylab("Number of ICE detention facilities")
 ```
@@ -282,47 +336,57 @@ Together, CDF's and IGSA's constitute 90% of the facilities with guaranteed mini
 ```{r guaranteed-min-by-facility-type, layout = "l-body-outset"}
 
 # Filter facility types to just those with guaranteed mins.
-facility_types_guaranteed_min <- 
-facility_types %>% 
-  filter(`Type Detailed` == "CDF" | `Type Detailed` == "SPC" | `Type Detailed` == "IGSA")
+df_types_guaranteed_min <- 
+df_types %>% 
+  filter(type_detailed == "CDF" | type_detailed == "SPC" | type_detailed == "IGSA")
 
 # Get counts and percent totals of facilities with guaranteed mins.
-facility_guaranteed_min_count <- facilities %>% 
-  filter(`Guaranteed Minimum` > 0) %>% 
-  count(`Type Detailed`) %>% 
-  rename(`n Facilities w. Guaranteed Min.` = n) %>% 
-  mutate(`% Facilities by Type w. Guaranteed Min.` = (`n Facilities w. Guaranteed Min.`/facility_types_guaranteed_min$n)*100) %>% 
-  mutate(`% Facilities by Type w. Guaranteed Min.` = round(`% Facilities by Type w. Guaranteed Min.`, digits = 0)) %>% 
-  mutate(`% Facilities w. Guaranteed Min.` = (`n Facilities w. Guaranteed Min.`/50)*100)
+df_guaranteed_min_count <- df %>% 
+  filter(guaranteed_minimum > 0) %>% 
+  count(type_detailed) %>% 
+  rename(n_facilities_w_guaranteed_min = n) %>% 
+  mutate(percent_facilities_by_type_w_guaranteed_min = (n_facilities_w_guaranteed_min/df_types_guaranteed_min$n)*100) %>% 
+  mutate(percent_facilities_by_type_w_guaranteed_min = round(percent_facilities_by_type_w_guaranteed_min, digits = 0)) %>% 
+  mutate(percent_facilities_w_guaranteed_min = (n_facilities_w_guaranteed_min/50)*100)
 
 
 # Get summary stats of guaranteed mins by facility type.
-facility_guaranteed_min_summaries <- facilities %>% 
-  filter(`Guaranteed Minimum` > 0) %>% 
-  group_by(`Type Detailed`) %>% 
-summarize(`Total Guaranteed Min.` = sum(`Guaranteed Minimum`),
-            `Mean Guaranteed Min.` = mean(`Guaranteed Minimum`),
-            `SD Guaranteed Min.`= sd(`Guaranteed Minimum`)) %>% 
-   mutate(`% Total Guaranteed Min.` = (`Total Guaranteed Min.`/guaranteed_min_sum)*100, .after = `Total Guaranteed Min.`) %>% 
-  mutate(`% Total Guaranteed Min.` = round(`% Total Guaranteed Min.`, digits = 2))
+df_guaranteed_min_summaries <- df %>% 
+  filter(guaranteed_minimum > 0) %>% 
+  group_by(type_detailed) %>% 
+  summarize(total_guaranteed_min = sum(guaranteed_minimum),
+            mean_guaranteed_min = mean(guaranteed_minimum),
+            sd_guaranteed_min= sd(guaranteed_minimum)) %>% 
+   mutate(percent_total_guaranteed_min = (total_guaranteed_min/guaranteed_min_sum)*100, .after = total_guaranteed_min) %>% 
+  mutate(percent_total_guaranteed_min = round(percent_total_guaranteed_min, digits = 2))
 
 # Join the three tables
-left_join(facility_guaranteed_min_count, facility_guaranteed_min_summaries) %>% 
-  kable(caption = "Guaranteed minimums by facility type.")
+left_join(df_guaranteed_min_count, df_guaranteed_min_summaries) %>% 
+  kable(
+    col.names = c("Type Detailed",
+                  "n\nFacilities w. Guaranteed\nMinimum",
+                  "% Facilities by Type w. Guaranteed Minimum",
+                  "% Facilities w. Guaranteed Minimum",
+                  "Total Guaranteed Minimum",
+                  "% Total Guaranteed Minimum",
+                  "Mean Guaranteed Minimum",
+                  "SD Guaranteed Minimum"),
+    caption = "Guaranteed minimums by facility type."
+    )
 ```
 
 ```{r guaranteed-min-by-facility-type-figure, fig.cap="Violin and Sina plot of guaranteed minimum by ICE detention facility type."}
-df_mean <- facilities_guaranteed_min %>% 
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Guaranteed Minimum`)) %>% 
+df_mean <- df_guaranteed_min %>% 
+  group_by(type_detailed) %>% 
+  summarize(average = mean(guaranteed_minimum)) %>% 
   ungroup()
 
-facilities_guaranteed_min %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Guaranteed Minimum`, fill=`Type Detailed`))+
+df_guaranteed_min %>% 
+  ggplot(data = ., aes(x= type_detailed, y = guaranteed_minimum, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("Guaranteed Minimum")+
@@ -336,37 +400,45 @@ facilities_guaranteed_min %>%
 
 Of the 50 facilities that have guaranteed minimums, all but one report a facility Total ADP that is lower than the facility guaranteed minimum (Table \@ref(tab:ghost-bed-by-facility)). Only the Calhoun County Correctional Center has a total ADP that is higher than the facility guaranteed minimum number of beds. Unoccupied guaranteed minimum beds are termed "ghost beds." There are a total of 22960 ghost beds that are located in CDF's, IGSA's, and SPC's. Given this, during FY21 up to April, 67% of Guaranteed Minimum beds are Ghost Beds that are being paid for and are empty.
 
-```{r ghost-bed-by-facility}
+```{r ghost-bed-by-facility, layout = "l-body-outset"}
 # Estimating Ghost Beds
-ghost_beds <- facilities %>%
-  filter(`Guaranteed Minimum` >0) %>%
-  mutate(`Estimated Ghost Beds` = `Guaranteed Minimum` - `Total Detained`) %>%
-  arrange(desc(`Estimated Ghost Beds`))
+df_ghost_beds <- df %>%
+  filter(guaranteed_minimum >0) %>%
+  mutate(estimated_ghost_beds = guaranteed_minimum - total_detained) %>%
+  arrange(desc(estimated_ghost_beds))
 
 # Ghost Beds by Facility
-ghost_beds %>% 
-    select(c(Name,`Type Detailed`, `Estimated Ghost Beds`, `Guaranteed Minimum`, `Total Detained`, `Percent No Threat`))%>%
-  kable(caption="Estimated number of ghost beds by ICE detention facility.")%>% 
+df_ghost_beds %>% 
+    select(c(name,type_detailed, estimated_ghost_beds, guaranteed_minimum, total_detained))%>%
+  kable(
+    col.names = c("Facility",
+                  "Type Detailed",
+                  "Estimated Ghost Beds",
+                  "Guaranteed Minimums",
+                  "Total Detained"
+                  ),
+    caption="Estimated number of ghost beds by ICE detention facility."
+    )%>% 
   scroll_box(height = "300px")
 ```
 
 Does Total Detained explain the presence and amount of Ghost Beds? The Pearson's product-moment correlation between Ghost Beds and Total Detained is positive, statistically significant, and very large ($r = 0.43, t(48) = 3.30, p < .01$). Using a linear model to predict Ghost Beds by Total Detained (Figure \@ref(fig:scatterplot-ghost-bed-by-total-detained)) explains a statistically significant and moderate proportion of variance ($R^2 = 0.18, F(1, 48) = 10.88, p = 0.002, adj. R^2 = 0.17$). The effect of Total Detained on Ghost Beds is statistically significant and positive ($b = 1.07,t(48) = 3.30, p < .01$). Total Detained explains about 18% of Ghost Beds. This is probably related to the fact that Total Detained predicts the amount of Guaranteed Minimum (Section 3).
 
 ```{r cor-gb-td, include=FALSE}
-cor.test(ghost_beds$`Estimated Ghost Beds`, ghost_beds$`Total Detained`, method = "pearson") %>%
+cor.test(df_ghost_beds$estimated_ghost_beds, df_ghost_beds$total_detained, method = "pearson") %>%
   report()
 
 ```
 
 ```{r lm-gp-td, include=FALSE}
-lm(`Estimated Ghost Beds`~`Total Detained`, ghost_beds) %>%
+lm(estimated_ghost_beds~total_detained, df_ghost_beds) %>%
   report()
 ```
 
 ```{r scatterplot-ghost-bed-by-total-detained, fig.cap="Scatterplot of Ghost Beds by Total Detained."}
-ghost_beds %>% 
-  ggplot(aes(x=`Total Detained`, y = `Estimated Ghost Beds`)) + 
-  geom_point(aes(color = `Type Detailed` )) + 
+df_ghost_beds %>% 
+  ggplot(aes(x=total_detained, y = estimated_ghost_beds)) + 
+  geom_point(aes(color = type_detailed )) + 
   geom_smooth(method="lm")+
     labs(title="Scatterplot of Ghost Beds by Total Detained with regression line and 95% \nconfidence interval.",
          caption = "Data source: https://www.ice.gov/detain/detention-management/")
@@ -375,19 +447,19 @@ ghost_beds %>%
 Does the amount of Guaranteed Minimum explain the presence and amount of Ghost Beds? The Pearson's product-moment correlation between Ghost Beds and Guaranteed Minimum is positive, statistically significant, and very large ($r = 0.96, t(48) = 22.31, p < .001$). Using a linear model to predict Ghost Beds by Guaranteed Minimum (Figure \@ref(fig:scatterplot-ghost-beds-by-guaranteed-min)) explains a statistically significant and very large proportion of the variance ($R^2 = 0.91, F(1, 48) = 497.86, p < .001, adj. R^2 = 0.91$). The effect of Guaranteed Minimum on Ghost Beds is statistically significant and positive ($b = 0.78, t(48) = 22.31, p < .001$). The presence of Guaranteed Minimums explains 91% of Ghost Beds.
 
 ```{r cor-gb-gm, include=FALSE}
-cor.test(ghost_beds$`Estimated Ghost Beds`, ghost_beds$`Guaranteed Minimum`, method = "pearson") %>% 
+cor.test(df_ghost_beds$estimated_ghost_beds, df_ghost_beds$guaranteed_minimum, method = "pearson") %>% 
   report()
 ```
 
 ```{r lm-gb-gm, include=FALSE}
-lm(`Estimated Ghost Beds`~`Guaranteed Minimum`, ghost_beds) %>% 
+lm(estimated_ghost_beds~guaranteed_minimum, df_ghost_beds) %>% 
   report()
 ```
 
 ```{r scatterplot-ghost-beds-by-guaranteed-min, fig.cap="Scatterplot of Ghost Beds by Guaranteed Minimum"}
-ghost_beds %>% 
-  ggplot(aes(x=`Guaranteed Minimum`, y = `Estimated Ghost Beds`)) + 
-  geom_point(aes(color = `Type Detailed` )) + 
+df_ghost_beds %>% 
+  ggplot(aes(x=guaranteed_minimum, y = estimated_ghost_beds)) + 
+  geom_point(aes(color = type_detailed )) + 
   geom_smooth(method="lm")+
       labs(title="Scatterplot of Ghost Beds by Guaranteed Minimum with regression \nline and 95% nconfidence interval.",
          caption = "Data source: https://www.ice.gov/detain/detention-management/")
@@ -397,7 +469,7 @@ ghost_beds %>%
 
 ```{r ghost-bed-sum}
 # Sum of Ghost Beds
-ghost_bed_sum <- sum(ghost_beds$`Estimated Ghost Beds`)
+ghost_bed_sum <- sum(df_ghost_beds$estimated_ghost_beds)
 ```
 
 Table \@ref(tab:ghost-bed-by-facility-type) provides some summary figures for ghost beds by facility type. Just as all SPC's have guaranteed minimums, all SPC's also have ghost beds, and they make up 10% of the facilities with ghost beds. There are a total of 1293 ghost beds in SPC's representing 5.63% of the total number of ghost beds. SPC's average 258.6 ghost beds per facility which is the lowest among the three types of facilities that have ghost beds.
@@ -408,51 +480,63 @@ There are 15 CDF's that have Ghost Beds representing 30% of the facilities that 
 
 ```{r ghost-bed-by-facility-type, layout = "l-body-outset"}
 # Filter facility types to just those with guaranteed mins.
-facility_types_ghost <- 
-facility_types %>% 
-  filter(`Type Detailed` == "CDF" | `Type Detailed` == "SPC" | `Type Detailed` == "IGSA") %>% 
-  select(c(`Type Detailed`, n))
+df_types_ghost <- 
+df_types %>% 
+  filter(type_detailed == "CDF" | type_detailed == "SPC" | type_detailed == "IGSA") %>% 
+  select(c(type_detailed, n))
 
 
 # Get counts and percent totals of facilities with guaranteed mins.
-facility_ghost <- ghost_beds %>% 
-  filter(`Estimated Ghost Beds` > 0) %>% 
-  count(`Type Detailed`) %>%
-  rename(`n Facilities w. Ghost Beds` = n) %>% 
- mutate(`% Facilities by Type w. Ghost Beds` = (`n Facilities w. Ghost Beds`/facility_types_ghost$n)*100)%>% 
-  mutate(`% Facilities by Type w. Ghost Beds` = round(`% Facilities by Type w. Ghost Beds`, digits = 0)) %>% 
-  mutate(`% Facilities w. Ghost Beds` = (`n Facilities w. Ghost Beds`/50)*100)
+df_ghost <- df_ghost_beds %>% 
+  filter(estimated_ghost_beds > 0) %>% 
+  count(type_detailed) %>%
+  rename(n_facilities_w_ghost_beds = n) %>% 
+ mutate(percent_facilities_by_type_w_ghost_beds = (n_facilities_w_ghost_beds/df_types_ghost$n)*100)%>% 
+  mutate(percent_facilities_by_type_w_ghost_beds = round(percent_facilities_by_type_w_ghost_beds, digits = 0)) %>% 
+  mutate(percent_facilities_w_ghost_beds = (n_facilities_w_ghost_beds/50)*100)
 
 # Get summary stats of guaranteed mins by facility type.
-facility_ghost_summaries <- ghost_beds %>% 
-  filter(`Estimated Ghost Beds` > 0) %>% 
-  group_by(`Type Detailed`) %>% 
-summarize(`Total Ghost Beds` = sum(`Estimated Ghost Beds`),
-            `Mean Ghost Beds` = mean(`Estimated Ghost Beds`),
-            `SD Ghost Beds`= sd(`Estimated Ghost Beds`)) %>% 
-   mutate(`% Total Ghost Beds` = (`Total Ghost Beds`/ghost_bed_sum)*100, .after = `Total Ghost Beds`) %>% 
-  mutate(`% Total Ghost Beds` = round(`% Total Ghost Beds`, digits = 2))
+df_ghost_summaries <- df_ghost_beds %>% 
+  filter(estimated_ghost_beds > 0) %>% 
+  group_by(type_detailed) %>% 
+summarize(total_ghost_beds = sum(estimated_ghost_beds),
+            mean_ghost_beds = mean(estimated_ghost_beds),
+            sd_ghost_beds= sd(estimated_ghost_beds)) %>% 
+   mutate(percent_total_ghost_beds = (total_ghost_beds/ghost_bed_sum)*100, .after = total_ghost_beds) %>% 
+  mutate(percent_total_ghost_beds = round(percent_total_ghost_beds, digits = 2))
 
 # Join the three tables
-left_join(facility_ghost, facility_ghost_summaries) %>% 
-  kable(caption = "Ghost beds by facility type.")
+left_join(df_ghost, df_ghost_summaries) %>% 
+  kable(
+    col.names = c(
+      "Type Detailed",
+      "n Facilities w. Ghost Beds",
+      "% Facilities by Type w. Ghost Beds",
+      "% Faciliites w. Ghost Beds",
+      "Total Ghost Beds",
+      "% Total Ghost Beds",
+      "Mean Ghost Beds",
+      "SD Ghost Beds"
+    ),
+    caption = "Ghost beds by facility type."
+    )
 
 ```
 
 Figure \@ref(fig:ghost-bed-by-facility-type-figure) provides a violin-sina plot of Ghost Beds by facility type and shows that IGSA's have the highest mean number of Ghost Beds and several IGSA facilities have a very large number of Ghost Beds. Figure \@ref(fig:map-ghost-beds) provides a map of Ghost Beds in the continental US. The map shows that Ghost Beds are concentrated on the southern border.
 
 ```{r ghost-bed-by-facility-type-figure, fig.cap="Violin-Sina plot of ghost beds by ICE detention facility type."}
-df_mean <- ghost_beds %>% 
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Estimated Ghost Beds`)) %>% 
+df_mean <- df_ghost_beds %>% 
+  group_by(type_detailed) %>% 
+  summarize(average = mean(estimated_ghost_beds)) %>% 
   ungroup()
 
-ghost_beds %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Estimated Ghost Beds`, fill=`Type Detailed`))+
+df_ghost_beds %>% 
+  ggplot(data = ., aes(x= type_detailed, y = estimated_ghost_beds, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("Estimated Ghost Beds")+
@@ -466,7 +550,7 @@ ghost_beds %>%
 # Map of Ghost Beds
 ggplot()+
   geom_sf(data=states)+
-  geom_point(data=ghost_beds, aes(x=Longitude, y=Latitude, size=`Estimated Ghost Beds`, color = `Type Detailed`))+
+  geom_point(data=df_ghost_beds, aes(x=longitude, y=latitude, size=estimated_ghost_beds, color = type_detailed))+
   coord_sf(xlim = c(-125,-64), ylim = c(16.5, 49.5), expand = FALSE)+
     labs(
     title = "ICE Detention Facilities",
@@ -480,33 +564,36 @@ ggplot()+
 As of April, the ICE's FY21 year to date data table lists 51 facilities with Guaranteed Minimums but unfortunately does not supply the per diem rate for any of those contracts. The DHS budget request for FY21 provides information on 27 facilities with guaranteed minimums [@dhs2020, ICE-O&S-137], and among those facilities (n=27) the mean per diem is \$123.04 (SD=43.02). Presumably, the Guaranteed Minimums at the remaining 23 facilities were established after the FY21 budget request. For the purpose of estimating the total cost of Guaranteed Minimums and unused Ghost Beds, for the 23 facilities for which Guaranteed Minimums are unlisted the average of the Guaranteed Minimums per diem rate for the 27 facilities listed in the FY21 budget request are used [@dhs2020, ICE-O&S-137].
 
 ```{r}
-guaranteed_min_per_diem <- read_csv("https://raw.githubusercontent.com/n8craig/IDE-Detention-Year-End-Reports/main/data/ICE_FY21_budget_guaranteed_minimums.csv")
+guaranteed_min_per_diem <- read_csv("https://raw.githubusercontent.com/n8craig/ICE-Detention-Year-End-Reports/main/data/ICE_FY21_budget_guaranteed_minimums.csv")
 ```
 
 ```{r}
-ghost_beds_join1 <- ghost_beds %>% 
-  select(c(Name, `Total Detained`,
-           `Type Detailed`,
-           `Guaranteed Minimum`,
-           `Estimated Ghost Beds`))
+ghost_beds_join1 <- df_ghost_beds %>% 
+  select(c(name, total_detained,
+           type_detailed,
+           guaranteed_minimum,
+           estimated_ghost_beds))
 
-ghost_beds_join2 <- guaranteed_min_per_diem %>% 
-  select(c(Name, `Guaranteed Minimum Per Diem`))
 
-ghost_bed_joined <- left_join(ghost_beds_join1, ghost_beds_join2)
+
+ghost_beds_join2 <- guaranteed_min_per_diem %>%
+  janitor::clean_names() %>% 
+  select(c(name, guaranteed_minimum_per_diem))
+
+df_ghost_bed_joined <- left_join(ghost_beds_join1, ghost_beds_join2)
 ```
 
 ```{r}
-ghost_bed_joined <- ghost_bed_joined %>% 
-  mutate(`Guaranteed Min Cost` = `Guaranteed Minimum` * `Guaranteed Minimum Per Diem`) %>% 
-  mutate(`Ghost Bed Cost` = `Estimated Ghost Beds`* `Guaranteed Minimum Per Diem`)
+df_ghost_bed_joined <- df_ghost_bed_joined %>% 
+  mutate(guaranteed_min_cost = guaranteed_minimum * guaranteed_minimum_per_diem) %>% 
+  mutate(ghost_bed_cost = estimated_ghost_beds* guaranteed_minimum_per_diem)
 ```
 
 ```{r}
  
-  guaranteed_min_cost <- sum(ghost_bed_joined$`Guaranteed Min Cost`)
+  guaranteed_min_cost <- sum(df_ghost_bed_joined$guaranteed_min_cost)
   
-  ghost_bed_cost <- sum(ghost_bed_joined$`Ghost Bed Cost`)
+  ghost_bed_cost <- sum(df_ghost_bed_joined$ghost_bed_cost)
 ```
 
 Based on reported Guaranteed Minimum per diem rates, and average rates where not reported, the total daily cost of Guaranteed Minimum ICE detention beds is \$`r guaranteed_min_cost` and the total estimated cost of Ghost Beds is \$`r ghost_bed_cost`.
@@ -514,18 +601,18 @@ Based on reported Guaranteed Minimum per diem rates, and average rates where not
 Figure \@ref(fig:guaranteed-min-per-diem) shows the Guaranteed Minimum per diem rate by facility type. SPC's tend to have higher Guaranteed Minimum per diem costs than either CDF's or IGSA's. One reason that a large number of IGSA's guaranteed minimums hover around a per diem of 125 is that many of these facilities are not listed in the FY21 year to date figures and the values are based on averages. *It would be good to determine which kinds of facilities have new Guaranteed Minimums*. Figure \@ref(fig:guaranteed-minimum-average-cost-by-facility-type) shows the average Guaranteed Minimum cost by facility type. On average, most facilities have roughly similar costs even though IGSA's and CFS's are larger. The leveling of average cost may be related to the higher per diems for SPC's. Figure \@ref(fig:ghost-bed-cost-by-facility-type) shows the average Ghost Bed cost by facility type. SPC's have slightly lower costs than IGSA's and CDF's.
 
 ```{r guaranteed-min-per-diem, fig.cap="Violin-sina plot of Guaranteed Minimum per diem rate by ICE detention Type Detailed."}
-df_mean <- ghost_bed_joined %>% 
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Guaranteed Minimum Per Diem`)) %>% 
+df_mean <- df_ghost_bed_joined %>% 
+  group_by(type_detailed) %>% 
+  summarize(average = mean(guaranteed_minimum_per_diem)) %>% 
   ungroup()
 
 
-ghost_bed_joined %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Guaranteed Minimum Per Diem`, fill=`Type Detailed`))+
+df_ghost_bed_joined %>% 
+  ggplot(data = ., aes(x= type_detailed, y = guaranteed_minimum_per_diem, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("Guaranteed Minimum Per Diem Cost")+
@@ -536,17 +623,17 @@ ghost_bed_joined %>%
 ```
 
 ```{r guaranteed-minimum-average-cost-by-facility-type, fig.cap="Violin-sina plot of average Guaranteed Minimum Cost by ICE detention Type Detailed."}
-df_mean <- ghost_bed_joined %>%
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Guaranteed Min Cost`)) %>% 
+df_mean <- df_ghost_bed_joined %>%
+  group_by(type_detailed) %>% 
+  summarize(average = mean(guaranteed_min_cost)) %>% 
   ungroup()
 
-ghost_bed_joined %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Guaranteed Min Cost`, fill=`Type Detailed`))+
+df_ghost_bed_joined %>% 
+  ggplot(data = ., aes(x= type_detailed, y = guaranteed_min_cost, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("Guaranteed Minimum Cost")+
@@ -557,17 +644,17 @@ ghost_bed_joined %>%
 ```
 
 ```{r ghost-bed-cost-by-facility-type, fig.cap="Violin-sina plot of Ghost Bed Cost by ICE detention Type Detailed."}
-df_mean <- ghost_bed_joined %>%
-  group_by(`Type Detailed`) %>% 
-  summarize(average = mean(`Ghost Bed Cost`)) %>% 
+df_mean <- df_ghost_bed_joined %>%
+  group_by(type_detailed) %>% 
+  summarize(average = mean(ghost_bed_cost)) %>% 
   ungroup()
 
-ghost_bed_joined %>% 
-  ggplot(data = ., aes(x= `Type Detailed`, y = `Ghost Bed Cost`, fill=`Type Detailed`))+
+df_ghost_bed_joined %>% 
+  ggplot(data = ., aes(x= type_detailed, y = ghost_bed_cost, fill=type_detailed))+
   geom_violin()+
   stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "red", fill = "red")+
   geom_sina(alpha = 0.5)+
-  geom_line(data = df_mean, mapping = aes(x = `Type Detailed`, y = average, group = 1))+
+  geom_line(data = df_mean, mapping = aes(x = type_detailed, y = average, group = 1))+
   theme(legend.position = "none")+
   xlab("Type Detailed")+
   ylab("Ghost Bed Cost")+
