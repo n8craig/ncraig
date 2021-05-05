@@ -7,6 +7,8 @@ author:
     url: https://ncraig.netlify.app/
     affiliation: NMSU Anthropology, AVID
 date: 04-28-2021
+categories:
+  - immigration
 output:
   distill::distill_article:
     self_contained: false
@@ -14,7 +16,8 @@ output:
     df_print: paged
     toc: true
     number_sections: true
-bibliography: references.bib
+bibliography: 
+  - references.bib
 link-citations: yes
 ---
 
@@ -663,4 +666,20 @@ df_ghost_bed_joined %>%
     title = "Violin-Sina plot of Ghost Bed Cost by ICE Detention \nFacility Type",
     caption = "Data source: https://www.ice.gov/detain/detention-management/"
     )
+```
+
+# Supplementary
+
+## Session Information
+
+```{r}
+report_system()
+```
+
+## Packages
+
+The following R packages were used used in preparing this document.
+
+```{r}
+report_packages()
 ```

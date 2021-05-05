@@ -86,9 +86,6 @@ plot(aov.model.turkeyHSD, las=1)
 ```
 
 ```{r}
-report_system()
-```
-
-```{r}
-report(sessionInfo())
+report(sessionInfo()) %>% 
+  write("test.txt")
 ```
