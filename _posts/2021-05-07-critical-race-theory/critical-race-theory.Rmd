@@ -225,7 +225,7 @@ df_chyron %>%
            size =3)
 ```
 
-The most notable spike is in the early months of 2012 and the majority of the coverage occurred on CNN. This spike seems related Obama video mentioned above. On May 8, Breitbart Editor-In-Chief "Joel Pollak clashed with [CNN] host Soledad O'Brien about the significance of the video" and CRT [@crugnale2012]. Pollak claimed the video was a "bombshell" because Bell's CRT "holds that the civil rights movement was a sham" and that the theory was racist. That same day the conservative *National Review* published an [article](https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/) suggesting furor over the Obama-Bell video was not significant [@french2012]. Also on may 8, *The Atlantic* ran a [piece](https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/) by conservative writer Conor Friedersdorf [-@friedersdorf2012] who said "the controversy [over the video] is a big nothing-burger," and concluded the essay asserting that "[t]o label someone as a racist for honesty conveying his dark view of *human* nature is the sort of politically correct, reductive stifling of speech that conservatives are supposed to stand against." While some actors in conservative media (*Brietbart* and *Fox*) were promoting outrage over the video, other conservative venues (*National Review*) and writers (Friedersdorf ) characterized it as a tempest in a teapot.
+The most notable spike is in the early months of 2012 and the majority of the coverage occurred on CNN. This spike, which occurred on march 7, 2012 corresponds to Breitbart [releasing](https://www.breitbart.com/clips/2012/03/07/Obama%20Video%20Harvard/) the Obama video mentioned above. On May 8, Breitbart Editor-In-Chief "Joel Pollak clashed with [CNN] host Soledad O'Brien about the significance of the video" and CRT [@crugnale2012]. Pollak claimed the video was a "bombshell" because Bell's CRT "holds that the civil rights movement was a sham" and that the theory was racist. That same day the conservative *National Review* published an [article](https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/) suggesting furor over the Obama-Bell video was not significant [@french2012]. Also on may 8, *The Atlantic* ran a [piece](https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/) by conservative writer Conor Friedersdorf [-@friedersdorf2012] who said "the controversy [over the video] is a big nothing-burger," and concluded the essay asserting that "[t]o label someone as a racist for honesty conveying his dark view of *human* nature is the sort of politically correct, reductive stifling of speech that conservatives are supposed to stand against." While some actors in conservative media (*Brietbart* and *Fox*) were promoting outrage over the video, other conservative venues (*National Review*) and writers (Friedersdorf ) characterized it as a tempest in a teapot.
 
 ```{r GDELT-IA-Bell-passing, fig.cap="GDELT Internet Archive TV News Chyron dataset showing coverage of \"Critical Race Theory\" 2010-2013"}
 
@@ -246,6 +246,14 @@ df_chyron %>%
            x=as.Date("2011-06-01"),
            y = 0.01,
            label = "Derrick Bell\nPasses",
+           size =3)+
+  
+  geom_vline(xintercept=as.numeric(as.Date("2012-03-07")),
+             linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2012-06-01"),
+           y = 0.01,
+           label = "Breitbart\nPublishes\nObama/Bell\nVideo",
            size =3)
 ```
 
