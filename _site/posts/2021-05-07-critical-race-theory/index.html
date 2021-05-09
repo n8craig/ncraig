@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+<title>Nathan Craig: Critical Race Theory</title>
+
+<meta property="description" itemprop="description" content="An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula."/>
+
+<link rel="canonical" href="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"/>
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2021-05-08"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-05-08"/>
+<meta name="article:author" content="Nathan Craig"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content="Nathan Craig: Critical Race Theory"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula."/>
+<meta property="og:url" content="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"/>
+<meta property="og:image" content="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/critical-race-theory_files/figure-html5/GDELT-IA-2020-1.png"/>
+<meta property="og:image:width" content="1248"/>
+<meta property="og:image:height" content="768"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="Nathan Craig"/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:title" content="Nathan Craig: Critical Race Theory"/>
+<meta property="twitter:description" content="An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula."/>
+<meta property="twitter:url" content="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"/>
+<meta property="twitter:image" content="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/critical-race-theory_files/figure-html5/GDELT-IA-2020-1.png"/>
+<meta property="twitter:image:width" content="1248"/>
+<meta property="twitter:image:height" content="768"/>
+
+<!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+<meta name="citation_title" content="Nathan Craig: Critical Race Theory"/>
+<meta name="citation_fulltext_html_url" content="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"/>
+<meta name="citation_online_date" content="2021/05/08"/>
+<meta name="citation_publication_date" content="2021/05/08"/>
+<meta name="citation_author" content="Nathan Craig"/>
+<!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=The GOPâ€™s â€˜Critical Race Theoryâ€™ Obsession;citation_publication_date=2021;citation_author=Adam Harris"/>
+  <meta name="citation_reference" content="citation_title=Captivity beyond prisons: Criminalization experiences of latina (im)migrants;citation_publication_date=2016;citation_publisher=University of Texas Press;citation_author=Martha D. Escobar"/>
+  <meta name="citation_reference" content="citation_title=Racial realism;citation_publication_date=1991;citation_volume=24;citation_author=Derrick Bell"/>
+  <meta name="citation_reference" content="citation_title=Quantitative Analysis of Culture Using Millions of Digitized Books;citation_publication_date=2011;citation_volume=331;citation_doi=10.1126/science.1199644;citation_author=Jean-Baptiste Michel;citation_author=Yuan Kui Shen;citation_author=Aviva Presser Aiden;citation_author=Adrian Veres;citation_author=Matthew K. Gray;citation_author=The Google Books Team;citation_author=Joseph P. Pickett;citation_author=Dale Hoiberg;citation_author=Dan Clancy;citation_author=Peter Norvig;citation_author=Jon Orwant;citation_author=Steven Pinker;citation_author=Martin A. Nowak;citation_author=Erez Lieberman Aiden"/>
+  <meta name="citation_reference" content="citation_title=ggplot2: Create elegant data visualisations using the grammar of graphics;citation_publication_date=2020;citation_author=Hadley Wickham;citation_author=Winston Chang;citation_author=Lionel Henry;citation_author=Thomas Lin Pedersen;citation_author=Kohske Takahashi;citation_author=Claus Wilke;citation_author=Kara Woo;citation_author=Hiroaki Yutani;citation_author=Dewey Dunnington"/>
+  <meta name="citation_reference" content="citation_title=Ngramr: Retrieve and plot google n-gram data;citation_publication_date=2020;citation_author=Sean Carmody"/>
+  <meta name="citation_reference" content="citation_title=Tidyverse: Easily install and load the tidyverse;citation_publication_date=2019;citation_author=Hadley Wickham"/>
+  <meta name="citation_reference" content="citation_title=Why Weâ€™re Talking About Barack Obama and Derrick Bell Now;citation_publication_date=2012;citation_author=John Cook"/>
+  <meta name="citation_reference" content="citation_title=Derrick bell, law professor and rights advocate, dies at 80;citation_publication_date=2011;citation_author=Fred A. Bernstein"/>
+  <meta name="citation_reference" content="citation_title=Outline of a theory of practice;citation_publication_date=2019;citation_author=Pierre Bourdieu"/>
+  <meta name="citation_reference" content="citation_title=Franz boas and the culture concept in historical perspective;citation_publication_date=1966;citation_volume=68;citation_author=George W. Stocking"/>
+  <meta name="citation_reference" content="citation_title=Imagined communities: Reflections on the origin and spread of nationalism;citation_publication_date=2006;citation_publisher=Verso;citation_author=Benedict R. Oâ€™G Anderson"/>
+  <meta name="citation_reference" content="citation_title=Dialectic of Enlightenment: Philosophical Fragments;citation_publication_date=2002;citation_publisher=Stanford University Press;citation_author=Max Horkheimer;citation_author=Theodor W. Adorno"/>
+  <meta name="citation_reference" content="citation_title=Critical race theory: An introduction;citation_publication_date=2017;citation_publisher=New York University Press;citation_author=Richard Delgado;citation_author=Jean Stefancic"/>
+  <meta name="citation_reference" content="citation_title=Race, racism, and american law;citation_publication_date=2008;citation_publisher=Aspen Publishers;citation_author=Derrick Bell"/>
+  <meta name="citation_reference" content="citation_title=Phenomenology of Perception;citation_publication_date=1962;citation_author=Maurice Merleau-Ponty"/>
+  <meta name="citation_reference" content="citation_title=Soledad Oâ€™Brien And Breitbartâ€™s Joel Pollak Clash Over Critical Race Theory;citation_publication_date=2012;citation_author=James Crugnale"/>
+  <meta name="citation_reference" content="citation_title=Obama, critical race theory, and harvard law school;citation_publication_date=2012;citation_author=David French"/>
+  <meta name="citation_reference" content="citation_title=The Sci-Fi Story That Offends Oversensitive White Conservatives;citation_publication_date=2012;citation_author=Conor Friedersdorf"/>
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","bibliography","link-citations","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Critical Race Theory"]},{"type":"character","attributes":{},"value":["An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Nathan Craig"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/"]}]}]},{"type":"character","attributes":{},"value":["05-08-2021"]},{"type":"character","attributes":{},"value":["race"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","pandoc_args","df_print","toc","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["--number-sections"]},{"type":"character","attributes":{},"value":["paged"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["references.bib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/"]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["20-1012 UAC Overview of Executive Order on Race and Sex Stereotyping.pdf","20210508.export.CSV","bell_obama.jpg","critical-race-theory_files/anchor-4.2.2/anchor.min.js","critical-race-theory_files/bowser-1.9.3/bowser.min.js","critical-race-theory_files/distill-2.2.21/template.v2.js","critical-race-theory_files/figure-html5/CRT-Ngram-1970-1.png","critical-race-theory_files/figure-html5/CRT-Ngram-all-1.png","critical-race-theory_files/figure-html5/GDELT-average-tone-2019-1.png","critical-race-theory_files/figure-html5/GDELT-average-tone-all-1.png","critical-race-theory_files/figure-html5/GDELT-IA-2020-1.png","critical-race-theory_files/figure-html5/GDELT-IA-all-1.png","critical-race-theory_files/figure-html5/GDELT-IA-Bell-passing-1.png","critical-race-theory_files/figure-html5/GDELT-WN-2020-1.png","critical-race-theory_files/figure-html5/GDELT-WN-all-1.png","critical-race-theory_files/header-attrs-2.7/header-attrs.js","critical-race-theory_files/jquery-1.11.3/jquery.min.js","critical-race-theory_files/popper-2.6.0/popper.min.js","critical-race-theory_files/tippy-6.2.7/tippy-bundle.umd.min.js","critical-race-theory_files/tippy-6.2.7/tippy-light-border.css","critical-race-theory_files/tippy-6.2.7/tippy.css","critical-race-theory_files/tippy-6.2.7/tippy.umd.min.js","critical-race-theory_files/webcomponents-2.0.0/webcomponents.js","GDELT_CHYRON_critical_race_theory.csv","GDELT_CHYRON_critical_race_theory_IA_TV_database.csv","gollum.gif","packages.bib","references.bib"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.7/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Critical Race Theory","description":"An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula.","authors":[{"author":"Nathan Craig","authorURL":"https://ncraig.netlify.app/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-08T00:00:00.000-06:00","citationText":"Craig, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title">Nathan Craig</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../index.html">Home</a>
+<a href="../../about.html">About</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Critical Race Theory</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+  <a href="../../index.html#category:race" class="dt-tag">race</a>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula.</p></p>
+</div>
+
+<div class="d-byline">
+  Nathan Craig <a href="https://ncraig.netlify.app/" class="uri">https://ncraig.netlify.app/</a> 
+  
+<br/>05-08-2021
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#background"><span class="toc-section-number">2</span> Background</a>
+<ul>
+<li><a href="#select-moments-in-derrick-bells-career-related-to-crt"><span class="toc-section-number">2.1</span> Select Moments in Derrick Bell’s Career Related to CRT</a></li>
+<li><a href="#crt-enters-public-discourse"><span class="toc-section-number">2.2</span> CRT Enters Public Discourse</a></li>
+<li><a href="#contemporary-crt"><span class="toc-section-number">2.3</span> Contemporary CRT</a></li>
+<li><a href="#crt-and-executive-order-13950"><span class="toc-section-number">2.4</span> CRT and Executive Order 13950</a></li>
+<li><a href="#summary-and-research-question"><span class="toc-section-number">2.5</span> Summary and Research Question</a></li>
+</ul></li>
+<li><a href="#method"><span class="toc-section-number">3</span> Method</a></li>
+<li><a href="#results"><span class="toc-section-number">4</span> Results</a>
+<ul>
+<li><a href="#google-ngram-data-set"><span class="toc-section-number">4.1</span> Google ngram Data Set</a></li>
+<li><a href="#gdelt-internet-archive-tv-news-chyron-data-set"><span class="toc-section-number">4.2</span> GDELT Internet Archive TV News Chyron Data Set</a></li>
+<li><a href="#gdelt-world-news-coverage-chyron-data-set"><span class="toc-section-number">4.3</span> GDELT Global Online News Coverage Chyron Data Set</a></li>
+</ul></li>
+<li><a href="#discussion"><span class="toc-section-number">5</span> Discussion</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">6</span> Conclusion</a></li>
+</ul>
+</nav>
+</div>
+<blockquote>
+<p>The spectator must need no thoughts of his own: the product prescribes each reaction, not through any actual coherence-which collapses once exposed to thought-but through signals. Any logical connection presupposing mental capacity is scrupulously avoided. Developments are to emerge from the directly preceding situation, not from the idea of the whole.</p>
+</blockquote>
+<p>– Theodore Adorno and Max Horkheimer <span class="citation" data-cites="horkheimer2002">(<a href="#ref-horkheimer2002" role="doc-biblioref">2002, 109</a>)</span>, “The Culture Industry: Enlightenment as Mass Deception” from <em>Dialectic of Enlightenment: Philosophical Fragments</em>.</p>
+<h1 data-number="1" id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>Did 2020 mark a watershed moment in public discourse regarding Critical Race Theory (CRT)? If yes, why and in what context? In a recent article, Adam Harris suggests 2020 was a watershed moment in public discourse regarding CRT, current coverage is largely in conservative media outlets, and overwhelmingly negative. Harris’s propositions are examined and evaluated by exploring large sources of mass media content using basic methods of distant reading and relating those trends to relevant events. Results confirm Harris’s assertions and build on his model. New findings include the fact that much of the uptick in negative coverage appears to have occurred after the inauguration of Biden and is focused on hyperbolic concerns regarding the teaching of CRT in schools. It is suggested that the coverage represents an effort on the part of conservative media to establish a moral panic to create backlash against forms of CRT that are being promoted in classrooms.</p>
+<h1 data-number="2" id="background"><span class="header-section-number">2</span> Background</h1>
+<p>On May 7, 2021 Adam Harris <span class="citation" data-cites="harris2021">(<a href="#ref-harris2021" role="doc-biblioref">2021</a>)</span> published an essay in <em>The Atlantic Monthly</em> entitled “The GOP’s ‘Critical Race Theory’ Obsession.” The article begins by looking at a series of controversial, and likely unconstitutional, new bills in states like New Hampshire, Arkansas, and Idaho that forbid the teaching of “divisive concepts” among which are the concept of critical race theory (CRT) a theory developed in the 1970’s by Harvard Law Professor Derrick Bell <span class="citation" data-cites="bell2008">(<a href="#ref-bell2008" role="doc-biblioref">2008</a>)</span>. CRT has continued to develop and is now applied in a diversity of fields including education <span class="citation" data-cites="delgado2017">(<a href="#ref-delgado2017" role="doc-biblioref">Delgado and Stefancic 2017</a>)</span>, which I suggest is a key point of contention in conservative media representations of CRT.</p>
+<h2 data-number="2.1" id="select-moments-in-derrick-bells-career-related-to-crt"><span class="header-section-number">2.1</span> Select Moments in Derrick Bell’s Career Related to CRT</h2>
+<p>Harris traces some of the contours of Bell’s career describing Bell as the only Black professor of law on the faculty at Harvard and his eventual resignation of a post due to what he felt were discriminatory hiring practices. Harris writes, “[i]n 1980, Bell resigned his position at Harvard because of what he viewed as the institution’s discriminatory hiring practices, especially its failure to hire an Asian American woman he’d recommended.” In an obituary for Bell, Bernstein <span class="citation" data-cites="bernstein2011">(<a href="#ref-bernstein2011" role="doc-biblioref">2011</a>)</span>, provides a slightly different scenario:</p>
+<blockquote>
+<p>In 1980 he [Bell] left Harvard to become dean of the University of Oregon School of Law, but he resigned in 1985 when the school did not offer a position to an Asian-American woman. After returning to Harvard in 1986, he staged a five-day sit-in in his office to protest the school’s failure to grant tenure to two professors whose work involved critical race theory.</p>
+</blockquote>
+<p>Much of CRT was laid out in Bell’s <span class="citation" data-cites="bell2008">(<a href="#ref-bell2008" role="doc-biblioref">2008</a>)</span> 1973 <em>Race, Racism, and American Law</em>. I first encountered Bell’s ideas reading Martha Escobar’s <span class="citation" data-cites="escobar2016">(<a href="#ref-escobar2016" role="doc-biblioref">2016</a>)</span> <em>Captivity Beyond Prisons.</em> I was drawn to her application of Bell’s <span class="citation" data-cites="bell1991">(<a href="#ref-bell1991" role="doc-biblioref">1991</a>)</span> essay on a related theme he titled “Racial Realism.” The essay impacted my thinking significantly. As an anthropologist, often myopically, fixated on culture I was struck by Bell’s use of the theory of legal realism, which his essay introduced to me. Painting with broad strokes one can say that, legal realism is generally the idea that law and its administration are embedded in and influenced by social contexts, mores, and biases. I was stunned to learn that this was not orthodox legal thinking. I found Bell’s thesis, as I understood it, compelling to the point of being axiomatic and that the orthodox antithesis of legal formalism–that law is objective and neutral, sitting outside of society, as an untenable proposition given my view of culture as all encompassing <span class="citation" data-cites="stocking1966">(<a href="#ref-stocking1966" role="doc-biblioref">Stocking 1966</a>, and many others)</span> and shaped by practice <span class="citation" data-cites="bourdieu2019">(<a href="#ref-bourdieu2019" role="doc-biblioref">Bourdieu 2019</a>)</span>.</p>
+<p>In his essay, Harris describes how Black students at Harvard began discussing Bell’s ideas after his departure from that institution. Bell clearly influenced a cadre of students and inspired many, including a future president (and it seems a second but negatively). Still, at the time of Bell’s life, despite the significant influence of his ideas within the academy, it seems that CRT was not widely discussed outside of academic circles. This is unsurprising given that few scholarly theories, even those that are wildly influential within the academy, make it into broader public conversation. Still, CRT is presently (as I show below) in the center of public discourse.</p>
+<h2 data-number="2.2" id="crt-enters-public-discourse"><span class="header-section-number">2.2</span> CRT Enters Public Discourse</h2>
+<p>Harris narrates a model of when and how CRT began to play a larger role in public conversations. Specifically, he suggests that CRT came to the forefront with Bill Clinton’s nomination of U. Penn Law School professor Lani Guinier to head up the Justice Department’s Civil Rights Division. Dubbed by the “Quota Queen” by political opponents, Republicans began to launch an offensive against her nomination basing it part on her support for CRT. As Harris states:</p>
+<blockquote>
+<p>The theory [of CRT] soon stood in for anything resembling an examination of America’s history with race. Conservatives would boil it down further: Critical race theory taught Americans to hate America. Today, across the country, school curricula and workplace trainings include materials that defenders and opponents alike insist are inspired by critical race theory but that academic critical race theorists do not characterize as such.</p>
+</blockquote>
+<p>Having read some, though certainly not all of Bell’s work, I find it a stretch that Bell preached hatred of the US. In fact, given that he worked for a time as a U.S. Attorney in the Department of Justice it seems a curious claim. Interestingly, he did not seem to have been treated well by the department. The DOJ at one point force Bell to choose between giving up his membership with the NAACP or leave the DOJ. Bell chose to leave the DOJ and retain his membership in the NCAA. Still, despite these and other unreasonable challenges Bell faced as a pioneering Black legal mind, it is hard to find hatred in his writing. It may seem pessimistic at times, “[r]acial equality is, in fact, not a realistic goal” he once wrote <span class="citation" data-cites="bell1991">(<a href="#ref-bell1991" role="doc-biblioref">Bell 1991, 363</a>)</span> his point being that “constantly aiming for a status that is unobtainable in a perilously racist America, black Americans face frustration and despair.” Yet, this is no reason to give up he argued because “[c]ontinued struggle can bring about unexpected benefits and gains that in themselves justify continued endeavor. The fight in itself has meaning and should give us hope for the future” <span class="citation" data-cites="bell1991">(<a href="#ref-bell1991" role="doc-biblioref">Bell 1991, 387</a>)</span>. This line of argument strikes me as blunt, but not hateful.</p>
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FOXNEWSW_20210507_130000_Americas_Newsroom_With_Bill_Hemmer__Dana_Perino?start=6421&end=6456" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+<h2 data-number="2.3" id="contemporary-crt"><span class="header-section-number">2.3</span> Contemporary CRT</h2>
+<p>As a popular and influential academic idea, CRT continued to grow even after Bell’s passing. Contemporary practicing proponents of CRT <span class="citation" data-cites="delgado2017">(<a href="#ref-delgado2017" role="doc-biblioref">Delgado and Stefancic 2017, 8–11</a>)</span> assert that: racism is an ordinary (though obviously undesirable) condition of society and not an aberration; that white-over-color ascendancy exists and serves multiple purposes for the dominant group; races are social constructs, the products of social though and relations; dominant society racalizes minority groups in different ways at different times, often in relation to changing labor demands; each socially constructed racial group has its own origins and unfolding history; and because of these diverse origins whites may not understand the experiences or struggles of racalized minorities. Boiled down to these essential kernels, at least to this anthropologist it seems that CRT isn’t radical white bashing or America thrashing, but a constellation of reasoned positions derived from established diverse social science perspectives. If racism is an issue to resolve in society, how is one to address it with out candidly acknowledging its existence and assiduously defining its contours?</p>
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FOXNEWSW_20210504_020000_The_Ingraham_Angle?start=80&end=115" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+<p>As with many academic theories (i.e. natural selection), in public discourse, nuance gets glossed to the point of abstraction beyond recognition. So it seems with characterizations of CRT as spiteful “America hating” racist propaganda which seems, at least from the clips above and another below, to be the perspective of <em>Fox</em>. Harris suggests that up until last year, <em>Fox</em> News gave only currsory attention to CRT with the first mention of it in 2012 when Bell passed. At the time, <em>Fox</em> apparently ran footage of Obama lauding Bell’s theories and embracing him physically (Figure <a href="#fig:bell-obama">1</a>). For outlets like <em>Fox</em>, and the budding Breitbart, this was evidence of Obama’s racial radicalism. As John Cook <span class="citation" data-cites="cook2012">(<a href="#ref-cook2012" role="doc-biblioref">2012</a>)</span> wrote at the time:</p>
+<aside>
+<p>The <em>New York Times</em> <a href="https://www.nytimes.com/2011/10/06/us/derrick-bell-pioneering-harvard-law-professor-dies-at-80.html">obituary</a> <span class="citation" data-cites="bernstein2011">(<a href="#ref-bernstein2011" role="doc-biblioref">Bernstein 2011</a>)</span>, indicates Bell passed in October 2011.</p>
+</aside>
+<blockquote>
+<p>Barack Obama, in 1990, gave a speech saying nice things about a bad man named Derrick Bell. He also hugged the bad man, Derrick Bell. <u><em>Ipso facto reduction ad absurdum habeas corpus hocus pocus</em></u>, Barack Obama is a bad man as well. Airtight.</p>
+</blockquote>
+<p><em>Fox</em> host Sean Hanity, Harris suggests, mentioned CRT in 2014 when discussing George Zimmerman’s trial for the murder of Trayvon Martin.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:bell-obama"></span>
+<img src="bell_obama.jpg" alt="Barrack Obama and Derrick Bell"  />
+<p class="caption">
+Figure 1: Barrack Obama and Derrick Bell
+</p>
+</div>
+</div>
+<h2 data-number="2.4" id="crt-and-executive-order-13950"><span class="header-section-number">2.4</span> CRT and Executive Order 13950</h2>
+<p>Harris suggests <em>Fox</em> hosts began discussing CRT more frequently in 2020, after footage surfaced of Derek Chauvin slowly murdering George Floyd, and anti-racist literature surged to the forefront of the national conversation. Harris identifies Christopher Rufo, who published a July 9, 2020 <a href="https://nypost.com/2020/07/09/when-diversity-training-is-all-about-feeding-racism/">essay</a> opposing anti-racist training in Seattle schools, as being largely responsible for conservative media’s current passion regarding CRT. In early September of 2020, Rufo went on <em>Fox</em>’s Tucker Carlson show to talk about how the government was being “weaponized” against Americans and Rufo called on then President Donald Trump to take action.</p>
+<p>Prior to 2020, the <em>Fox</em>-Trump feedback loop was already well documented <span class="citation" data-cites="gertz2018 maza2018 chang2017">(<a href="#ref-gertz2018" role="doc-biblioref">Gertz 2018</a>; <a href="#ref-maza2018" role="doc-biblioref">Maza 2018</a>; <a href="#ref-chang2017" role="doc-biblioref">Chang 2017</a>)</span>. This same feedback loop appears to have played a role in the making of public policy regarding CRT. On September 22, 2020, less than a month after Mr. Rufo made his plea to Trump on <em>Fox</em>, Trump signed an Executive Order (EO) 13950 entitled “<a href="https://www.federalregister.gov/documents/2020/09/28/2020-21534/combating-race-and-sex-stereotyping">Combating Race and Sex Stereotyping</a>.” The order explicitly included prohibitions on the teaching “divisive concepts” by federally funded agencies. Though not mentioned by name in the order, it is abundantly clear that CRT was among the order’s intended targets of “divisive concepts.”</p>
+<p>Fortunately, EO 13950 was promptly challenged in courts and rescinded by Biden upon taking office through the issuance of <a href="https://www.federalregister.gov/documents/2021/01/25/2021-01753/advancing-racial-equity-and-support-for-underserved-communities-through-the-federal-government">EO 13985</a> “Advancing Racial Equity and Support for Underserved Communities Through the Federal Government.” However, before that change, at my university (a Hispanic serving institution located on the US-Mexico border), on October 14, 2020 members of my department received an ominous pdf from the Dean of the College regarding EO 13950. The file indicated that the target of EO 13950 was “workforce/employee training” and applied to “federal contractors, and subcontractors, federal agencies, employers receiving federal grants, Armed Services/ROTC.”</p>
+<p>Office of Management and Budget indicated that divisive concepts could be discussed but only “in an objective manner and without endorsement,” which the university suggested “appears to carve out academic instruction.” Set aside the fact that this assertion relies on the flimsy premise that objectivity is even possible, which of coarse since we are all human beings with perspectives it is not <span class="citation" data-cites="merleau-ponty1962">(c.f. <a href="#ref-merleau-ponty1962" role="doc-biblioref">Merleau-Ponty 1962</a>)</span>. Still, apparently this carve out was only under the condition that discussion was done without endorsement–meaning one can’t say “given assembled evidence, this idea appears to have merits,” “this theory holds explanatory power,”or even “the idea is compelling personally, what do you think?” Among the divisive concepts, CRT topped the list. Clearly, CRT was an intellectual pariah not to be discussed except “in an objective manner” which phenomenology asserts is not possible. At least to my knowledge, within my department, and certainly within my classes, EO 13950 went unheded, and if anything prompted the <a href="https://en.wikipedia.org/wiki/Streisand_effect">Streisand effect</a> leading to discussions on the importance of intellectual freedoms.</p>
+<h2 data-number="2.5" id="summary-and-research-question"><span class="header-section-number">2.5</span> Summary and Research Question</h2>
+<p>My limited understanding of CRT revolves largely around two of Bell’s arguments. The first is the “interest convergence thesis,” that racial equality will only be accommodated when it converges with the interest of whites. Self interest is a common assumption among an incredibly diverse range of social science theories. The second is the “racial realist thesis” that law is impacted by society and social processes, which in the case of the United States entails prejudicial treatment of people of color. The assertion that law is part of and influenced by society is hardly radical. As someone who studies immigration detention and mass incarceration, which are wildly prejudicial against people of color, my understanding of at least two components of Bell’s project strike me as an entirely tenable arguments. Being interested in Harris’s assertions about negative discussions of CRT–specifically the timing and nature of coverage in public discourse I attempted to pursue the question further.</p>
+<p><em>Did 2020 represent a watershed moment ushering in significant negative coverage of CRT on Fox news?</em></p>
+<h1 data-number="3" id="method"><span class="header-section-number">3</span> Method</h1>
+<p>To address changing coverage of CRT in public discourse, I adopted aspects of the “culturomics” <span class="citation" data-cites="michel2011"><a href="#ref-michel2011" role="doc-biblioref">Michel et al.</a> (<a href="#ref-michel2011" role="doc-biblioref">2011</a>)</span> approach which involves distant reading <span class="citation" data-cites="schulz2011 moretti2013">(<a href="#ref-schulz2011" role="doc-biblioref">Schulz 2011</a>; <a href="#ref-moretti2013" role="doc-biblioref">Moretti 2013</a>)</span> of large quantities of text and can be extended in principle to other kinds of mass media big data–like TV news chyrons. I adhere to the position that print capital and other forms of mass media can be powerful tools for crafting an imagined community <span class="citation" data-cites="anderson2006">(<a href="#ref-anderson2006" role="doc-biblioref">Anderson 2006</a>)</span> and that systematic programming for a specific purpose can, like advertising, shape public opinion <span class="citation" data-cites="wolfe2018 ellul1973">(<a href="#ref-wolfe2018" role="doc-biblioref">Wolfe 2018</a>; <a href="#ref-ellul1973" role="doc-biblioref">Ellul 1973</a>)</span>. Thus, monitoring these broadcasts can reveal important insights regarding social movements, like CRT and reactions against it.</p>
+<p>The term “critical race theory” was searched in three data sets:</p>
+<ul>
+<li>Google Ngram Viewer</li>
+<li>Global Database of Events, Language, and Tone (GDELT) Internet Archive <a href="https://archive.org/details/tv">TV News</a> Chyrons from 2006 to the present. This data set parses coverage by news network.</li>
+<li>GDELT Global Online News Coverage data set from 2017 to the present. This data set includes information the tone of coverage.</li>
+</ul>
+<p>In Google’s Ngram Viewer, both the terms “critical race theory” and “culture wars” were searched. The latter was included because Harris’s article mentions “culture wars” along with the term CRT. The Google Ngram Viewer is an outgrowth of Michel et al.’s <span class="citation" data-cites="michel2011">(<a href="#ref-michel2011" role="doc-biblioref">2011</a>)</span> “cultoromics.” I used the <code>ngramr</code> <span class="citation" data-cites="R-ngramr">(<a href="#ref-R-ngramr" role="doc-biblioref">Carmody 2020</a>)</span> package to query the data set and graph the search results, then I annotated that graph with key dates identified by Harris. For the GDELT data sets, I exported a comma delimited file that was wrangled with the <code>tidyverse</code> package <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2019</a>)</span> which was plotted and annotated with <code>ggplot2</code> <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham et al. 2020</a>)</span>.</p>
+<p>Unfortunately, the Google Ngram corpus only extends up to 2019 and many of the events Harris discusses occur in 2020. Moreover, TV news and specifically <em>Fox</em> news is a key place where Harris argues CRT is discussed in negative terms. To follow up on this, I searched two different data sets in GDELT’s “Lower Third” project which is a database of news chyrons. The term “culture wars” was not searched in the two GDELT data sets. The GDELT Internet Archive TV News data set permits searching coverage of a term by specifc networks. The GDELT Global Online News Coverage archive does not parse by network but assigns a level of sentiment to the news coverage of a given topic.</p>
+<h1 data-number="4" id="results"><span class="header-section-number">4</span> Results</h1>
+<h2 data-number="4.1" id="google-ngram-data-set"><span class="header-section-number">4.1</span> Google ngram Data Set</h2>
+<p>An initial view of Google’s Ngram Viewer database shows no mention of CRT prior to the 1980’s (Figure <a href="#fig:CRT-Ngram-all">2</a>), a decade after the theory’s formulation in 1973. Narrowing down the span of coverage shows an increase in the use of the term in the late 1980’s, after leaving Harvard (to take a Deanship at University of Oregon) but before Clinton nominates Lani Guinier (Figure <a href="#fig:CRT-Ngram-1970">3</a>). Figure <a href="#fig:CRT-Ngram-1970">3</a> indicates the early 1990’s was a major inflection point of increasing use of the term in print media. Throughout the period from the late 1980’s up to Derrick Bell’s pasing in 2011, the term “Culture Wars” is used more frequently than CRT. However, within a few years of Bell’s passing CRT surpassed “Culture Wars” in print sources. This is in part because the term “Culture Wars” began to wane in frequency after about 2009 while at the same time the frequency of CRT continued to climb steadily.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:CRT-Ngram-all"></span>
+<img src="critical-race-theory_files/figure-html5/CRT-Ngram-all-1.png" alt="ngram showing frequency of the term &quot;Critical Race Theory&quot; as it appears in the 'English 2019' corpus." width="624" />
+<p class="caption">
+Figure 2: ngram showing frequency of the term “Critical Race Theory” as it appears in the ‘English 2019’ corpus.
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:CRT-Ngram-1970"></span>
+<img src="critical-race-theory_files/figure-html5/CRT-Ngram-1970-1.png" alt="ngram showing frequency of the term &quot;Critical Race Theory&quot; as it appears in the 'English 2019' corpus between 1970-2019" width="624" />
+<p class="caption">
+Figure 3: ngram showing frequency of the term “Critical Race Theory” as it appears in the ‘English 2019’ corpus between 1970-2019
+</p>
+</div>
+</div>
+<h2 data-number="4.2" id="gdelt-internet-archive-tv-news-chyron-data-set"><span class="header-section-number">4.2</span> GDELT Internet Archive TV News Chyron Data Set</h2>
+<p>The GDELT Internet Archive TV News data set allows tracking of the term CRT from 2006 to the present across six TV networks. Figure <a href="#fig:GDELT-IA-all">4</a> shows there is a slight increase in news coverage of the term not long after Bell’s passing. Looking more closely at the months before and after Bell’s passing (Figure <a href="#fig:GDELT-IA-Bell-passing">5</a>) reveals three instances of <em>Fox</em> coverage, two before Bell passes and once after. CSPAN is the network that covered CRT immediately following Bell’s passing.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-IA-all"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-IA-all-1.png" alt="GDELT Internet Archive TV News Chyron dataset showing coverage of &quot;Critical Race Theory&quot; 2006-Present" width="624" />
+<p class="caption">
+Figure 4: GDELT Internet Archive TV News Chyron dataset showing coverage of “Critical Race Theory” 2006-Present
+</p>
+</div>
+</div>
+<p>The most notable spike is in the early months of 2012 and the majority of the coverage occurred on CNN. This spike seems related Obama video mentioned above. On May 8, Breitbart Editor-In-Chief “Joel Pollak clashed with [CNN] host Soledad O’Brien about the significance of the video” and CRT <span class="citation" data-cites="crugnale2012">(<a href="#ref-crugnale2012" role="doc-biblioref">Crugnale 2012</a>)</span>. Pollak claimed the video was a “bombshell” because Bell’s CRT “holds that the civil rights movement was a sham” and that the theory was racist. That same day the conservative <em>National Review</em> published an <a href="https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/">article</a> suggesting furor over the Obama-Bell video was not significant <span class="citation" data-cites="french2012">(<a href="#ref-french2012" role="doc-biblioref">French 2012</a>)</span>. Also on may 8, <em>The Atlantic</em> ran a <a href="https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/">piece</a> by conservative writer Conor Friedersdorf <span class="citation" data-cites="friedersdorf2012">(<a href="#ref-friedersdorf2012" role="doc-biblioref">2012</a>)</span> who said “the controversy [over the video] is a big nothing-burger,” and concluded the essay asserting that “[t]o label someone as a racist for honesty conveying his dark view of <em>human</em> nature is the sort of politically correct, reductive stifling of speech that conservatives are supposed to stand against.” While some actors in conservative media (<em>Brietbart</em> and <em>Fox</em>) were promoting outrage over the video, other conservative venues (<em>National Review</em>) and writers (Friedersdorf ) characterized it as a tempest in a teapot.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-IA-Bell-passing"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-IA-Bell-passing-1.png" alt="GDELT Internet Archive TV News Chyron dataset showing coverage of &quot;Critical Race Theory&quot; 2010-2013" width="624" />
+<p class="caption">
+Figure 5: GDELT Internet Archive TV News Chyron dataset showing coverage of “Critical Race Theory” 2010-2013
+</p>
+</div>
+</div>
+<p>Looking at the period of time from 2020 to the present, after the murder of George Floyd, there is a slight increase in coverage of CRT on <em>Fox</em> (Figure <a href="#fig:GDELT-IA-2020">6</a>). However, this coverage increases sharply with the appearance of C. Rufo on the network and begins to decline. Interestingly, mentions of CRT continue to decline through the signing of Trump’s EO 13950 It is not until January 2021 that coverage of CRT begins to sharply spike with nearly all of that coverage being on <em>Fox</em>. By April 2021, other networks begin to pick up coverage of CRT by only following a massive spike on <em>Fox</em> that begins in January 2021. Notably, the period leading up to and following the swearing in of Biden is associated with a sharp increase in <em>Fox</em> coverage of CRT. <em>What is the tone of that coverage?</em> As the news clips in the Introduction show, <em>Fox</em>’s coverage often expresses concern with the teaching of CRT in schools. In fact, reviewing post 2020 coverage of CRT on Fox, this seems to be the overwhelming source of concern for the network.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-IA-2020"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-IA-2020-1.png" alt="GDELT Internet Archive TV News Chyron dataset showing coverage of &quot;Critical Race Theory&quot; 2020-Present" width="624" data-distill-preview=1 />
+<p class="caption">
+Figure 6: GDELT Internet Archive TV News Chyron dataset showing coverage of “Critical Race Theory” 2020-Present
+</p>
+</div>
+</div>
+<h2 data-number="4.3" id="gdelt-world-news-coverage-chyron-data-set"><span class="header-section-number">4.3</span> GDELT Global Online News Coverage Chyron Data Set</h2>
+<p>The GDELT Global Online News Coverage Chyron data set does not permit parsing of coverage by network or station. However, this data set does provide information on the volume of TV news coverage as well as a measure of that coverage’s tone. Figure <a href="#fig:GDELT-WN-all">7</a> shows generally low level coverage of CRT before the latter half of 2020 with two small spikes of coverage, the first occurring in the early part of 2017 and the other in the latter half of 2019. The majority of coverage Volume Intensity occurs after June 2020, which represents the period after Floyd’s murder and around the time of C. Rufo’s appearance on Fox. On average, with a slight rise in the middle of 2018 and another in early 2020, the coverage is of a generally negative tone (Figure <a href="#fig:GDELT-average-tone-all">8</a>).</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-WN-all"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-WN-all-1.png" alt="GDELT Global Online News Coverage dataset showing Volume Intensity and Average Tone of coverage of &quot;Critical Race Theory&quot; 2017-Present" width="624" />
+<p class="caption">
+Figure 7: GDELT Global Online News Coverage dataset showing Volume Intensity and Average Tone of coverage of “Critical Race Theory” 2017-Present
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-average-tone-all"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-average-tone-all-1.png" alt="GDELT Global Online News Coverage dataset showing Average Tone of coverage of &quot;Critical Race Theory&quot; 2017-Present" width="624" />
+<p class="caption">
+Figure 8: GDELT Global Online News Coverage dataset showing Average Tone of coverage of “Critical Race Theory” 2017-Present
+</p>
+</div>
+</div>
+<p>Looking more closely at the period from July 2019 to the present, it is clear that coverage starts to spike around August, 2021 and the coverage is almost entirely negative (Figure <a href="#fig:GDELT-WN-2020">9</a> and <a href="#fig:GDELT-average-tone-2019">10</a>). George Floyd murder does not seem to correspond with an uptick in Volume Intensity, but corresponds precisely with the greatest negative Average Tone in the entire series. C. Rufo’s appearance on <em>Fox</em> corresponds with a major peak in Volume Intensity but does not register a major anomaly in Average Tone, though Average Tone regarding CRT was already declining since the murder of George Floyd. There is no major spike in Volume Intensity corresponding with the signing of EO 13950, nor does the moment stand out in regards to Average Tone. There is a spike in Volume Intensity when Biden was sworn in, and there is a small negative Average Tone anomaly that precedes Biden’s inauguration. Referring back to the previous section and Figure <a href="#fig:GDELT-IA-2020">6</a> it is clear that nearly all of the coverage of CRT since September 2020 is on <em>Fox</em>. Samples of key clips from <em>Fox</em> covering the theme of CRT, it seems consistently linked with both the <em>1619</em> project and the teaching of CRT in schools.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-WN-2020"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-WN-2020-1.png" alt="GDELT Global Online News Coverage dataset showing coverage of &quot;Critical Race Theory&quot; 2020-Present" width="624" />
+<p class="caption">
+Figure 9: GDELT Global Online News Coverage dataset showing coverage of “Critical Race Theory” 2020-Present
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:GDELT-average-tone-2019"></span>
+<img src="critical-race-theory_files/figure-html5/GDELT-average-tone-2019-1.png" alt="GDELT Global Online News Coverage dataset showing Average Tone of coverage of &quot;Critical Race Theory&quot; 2019-Present" width="624" />
+<p class="caption">
+Figure 10: GDELT Global Online News Coverage dataset showing Average Tone of coverage of “Critical Race Theory” 2019-Present
+</p>
+</div>
+</div>
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FOXNEWSW_20210503_230000_FOX_News_Primetime?start=1380&end=1440" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+<h1 data-number="5" id="discussion"><span class="header-section-number">5</span> Discussion</h1>
+<p>Harris proposed that while <em>Fox</em> had given negative coverage to CRT in the past, its current fixation is a recent effort to rekindle the Culture Wars, began to increase after the murder of George Floyd, and was specifically prompted by C. Rufo’s appearance on <em>Fox</em> (who is on the left in the clip above). Google’s Ngram Viewer indicates that mentions of CRT didn’t begin until the early 1990’s (Figure <a href="#fig:CRT-Ngram-1970">3</a>), that mentions of CRT have grown steadily and eventually in 2010 surpassed “Culture Wars” in terms of frequency of use. GDELT’s Internet Archive TV News data set shows a staggering increase in coverage of CRT after the Murder of George Floyd (Figure <a href="#fig:GDELT-IA-all">4</a>) and it appears very tightly timed with C. Rufo’s September 2020 appearance on <em>Fox</em> (Figure <a href="#fig:GDELT-IA-2020">6</a>. It seems that coverage of C. Rufo prompted Trump to sign EO 13950 attempting to control the teaching of “divisive concepts” with federal funds. Materials I received at my institution named CRT at the top of the list of “divisive concepts.” While Rufo’s plea on <em>Fox</em> may have prompted Trump to take action, and serves as another example of the <em>Fox</em>-Trump feedback loop, coverage of CRT continued to wane through this period. It was not until the months leading up to Biden’s swearing in that <em>Fox</em> began covering CRT again and with more volume than ever recorded. The GDELT Global Online News Coverage data set shows that coverage overwhelmingly negative (Figures <a href="#fig:GDELT-WN-all">7</a> through <a href="#fig:GDELT-average-tone-2019">10</a>). Significantly, the moment of greatest negative Average Tone regarding CRT, occurred exactly when George Floyd was murdered, though Volume Intensity does not pick up until C. Rufo’s appearance on <em>Fox</em>. Sampling of individual clips, like those presented throughout this essay, show that <em>Fox</em>’s negative coverage emphasizes the teaching of CRT in schools. The most recent coverage appears to be simulated by proposals from within the Biden administration to address social inequality.</p>
+<p>While the data reviewed here may suggest slight variations on the scenario presented by Harris, his propositions are largely corroborated by a “culturomic” <span class="citation" data-cites="michel2011"><a href="#ref-michel2011" role="doc-biblioref">Michel et al.</a> (<a href="#ref-michel2011" role="doc-biblioref">2011</a>)</span> distant reading <span class="citation" data-cites="schulz2011 moretti2013">(<a href="#ref-schulz2011" role="doc-biblioref">Schulz 2011</a>; <a href="#ref-moretti2013" role="doc-biblioref">Moretti 2013</a>)</span> of large quantities of printed text and TV news chyrons. This approach allowed for a tighter temporal focus, a clear sense of the amplitude of change, and afforded some qualitative spot checking of the actual coverage. The question remains, why do some conservative media outlets seem to have this “obsession” with negative portrayals of CRT?</p>
+<p>Stanley Cohen’s <span class="citation" data-cites="cohen2011 cohen2011a">(<a href="#ref-cohen2011" role="doc-biblioref">2011b</a>, <a href="#ref-cohen2011a" role="doc-biblioref">2011a</a>)</span> “Moral Panic” theory (MPT) is another highly influential academic idea whose name made it into general public discourse. However, both MPT and CRT are frequently over simplified into unfaithfully unrecognizable abstractions. Cohen’s MPT is about collective over reactions to what are perceived as threatening “folk devils,” essentially scapegoats, that are believed to pose a far greater danger to society than they actuality do. Within MPT there are debates as to where in social panics originate. Are they spontaneous and come from the populous (bottom up); are they crafted by elites (top down); or do they come from moral entrepreneurs and coalitions somewhere in between (middle out)? There are compelling arguments for all three models of process, they aren’t mutually exclusive, and instead represent diverging fruitful extensions of Cohen’s initial ideas. Regardless of the source of the panic, media plays a key and critical role in propagating and sustaining the outrage and over reaction in each of the proposed sources of moral panics <span class="citation" data-cites="goode2009 moralpa2013">(<a href="#ref-goode2009" role="doc-biblioref">Goode and Ben-Yehuda 2009</a>; <a href="#ref-moralpa2013" role="doc-biblioref">Critcher et al. 2013</a>)</span>. Since print capital and mass media are central to forging the imagined community <span class="citation" data-cites="anderson2006">(<a href="#ref-anderson2006" role="doc-biblioref">Anderson 2006</a>)</span>, the notion that mass media plays a key role in the propagation of moral panics comes as little surprise.</p>
+<p>While there are many variations on MPT, few address moral panics that arise out of ideas alone–most are about classes of “dangerous” people–Cohen’s folk devils. <em>Fox</em>’s coverage seems to link CRT with Black Lives Matter, which can be construed as a potential folk devil in the sense of Cohen’s theory. However, the folk devils of moral panics are not generally intellectual theories–but I see no reason they couldn’t be.</p>
+<h1 data-number="6" id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
+<p>CRT, which from my admittedly incomplete reading, seems perfectly well reasoned based on both historical fact and widely accepted assertions about individual and group behavior– strikes me not as a dangerous idea but a penetrating intellectual analysis worth consideration. As human constructs, all theories are imperfect and thus they need to be challenged and defended on civil terms; this dialectic process strengthen theory. Yet, tilting at theoretical windmills won’t advance intellectual understanding, it just leads to confusion.</p>
+<p>Perhaps some school applications of CRT are misguided and in need of calibration, I can’t yet say. However, given the misrepresentation of other theories in educational settings that is not beyond the imaginable. While I have not reviewed individual school curricula in question, which may deviate from the core of CRT, <em>Fox</em>’s coverage and Mr. Rufo’s characterizations seem more like fictional straw-men than faithful renditions.</p>
+<p><em>Fox</em>’s presentation of CRT, which is a soundly argued legal theory, as espousing white self loathing and hatred of the nation, is at the most generous I can muster–misguided over reaction. Even conservative writers have expressed concern over exaggerated treatments of CRT by the likes of <em>Breitbart</em> and <em>Fox</em>. At worse, the high volume of hyperbolically negative treatment of CRT by <em>Fox</em> suggests a calculated effort to create a moral panic by casting those who embrace anti-racist theory as dangerous folk devils who threaten the very fabric of society. The general expense of media coverage, the recent explosion of that coverage, its generally narrow sources, coupled with the explicit effort to organize and exercise political power to oppose CRT, point towards efforts to conjure a media base middle out moral panic, essentially systematic propagandizing, designed to sway public opinion. Intriguingly the panic seems largely directed at a theory, but is likely painted on those who espouse the ideas of CRT. Rather than name the problem of racism, define it, and work on the issue, some–it would seem, are unsatisfied merely ignoring the problem’s existence–but seek to actively assert that addressing issue head on with clear eyes is itself a dangerous and divisive act. In many ways, <em>Fox</em>’s pearl clutching and moral panic over fabricated forms of CRT is actually well predicted by the theory itself.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-anderson2006" class="csl-entry" role="doc-biblioentry">
+Anderson, Benedict R. O’G. 2006. <em>Imagined Communities: Reflections on the Origin and Spread of Nationalism</em>. Rev. ed. London ; New York: Verso.
+</div>
+<div id="ref-bell1991" class="csl-entry" role="doc-biblioentry">
+Bell, Derrick. 1991. <span>“Racial Realism.”</span> <em>Connecticut Law Review</em> 24: 363–79. <a href="https://heinonline.org/HOL/Page?handle=hein.journals/conlr24&amp;id=383&amp;div=&amp;collection=">https://heinonline.org/HOL/Page?handle=hein.journals/conlr24&amp;id=383&amp;div=&amp;collection=</a>.
+</div>
+<div id="ref-bell2008" class="csl-entry" role="doc-biblioentry">
+———. 2008. <em>Race, Racism, and American Law</em>. 6th ed. New York: Aspen Publishers.
+</div>
+<div id="ref-bernstein2011" class="csl-entry" role="doc-biblioentry">
+Bernstein, Fred A. 2011. <span>“Derrick Bell, Law Professor and Rights Advocate, Dies at 80.”</span> <em>The New York Times</em>, October. <a href="https://www.nytimes.com/2011/10/06/us/derrick-bell-pioneering-harvard-law-professor-dies-at-80.html">https://www.nytimes.com/2011/10/06/us/derrick-bell-pioneering-harvard-law-professor-dies-at-80.html</a>.
+</div>
+<div id="ref-bourdieu2019" class="csl-entry" role="doc-biblioentry">
+Bourdieu, Pierre. 2019. <em>Outline of a Theory of Practice</em>. <a href="https://doi.org/10.1017/CBO9780511812507">https://doi.org/10.1017/CBO9780511812507</a>.
+</div>
+<div id="ref-R-ngramr" class="csl-entry" role="doc-biblioentry">
+Carmody, Sean. 2020. <em>Ngramr: Retrieve and Plot Google n-Gram Data</em>. <a href="https://github.com/seancarmody/ngramr">https://github.com/seancarmody/ngramr</a>.
+</div>
+<div id="ref-chang2017" class="csl-entry" role="doc-biblioentry">
+Chang, Alvin. 2017. <span>“We Analyzed 17 Months of Fox &amp; Friends Transcripts. It<span>’</span>s Far Weirder Than State-Run Media.”</span> <a href="https://www.vox.com/2017/8/7/16083122/breakfast-club-fox-and-friends">https://www.vox.com/2017/8/7/16083122/breakfast-club-fox-and-friends</a>.
+</div>
+<div id="ref-cohen2011a" class="csl-entry" role="doc-biblioentry">
+Cohen, Stanley. 2011a. <em>Folk Devils and Moral Panics: The Creation of the Mods and Rockers</em>. Routledge Classics. Abingdon, Oxon ; New York: Routledge.
+</div>
+<div id="ref-cohen2011" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“Moral Panics as Cultural Politics: Introduction to the Third Edition.”</span> In, 3rd ed., vi–xliv. Routledge Classics. Abingdon, Oxon ; New York: Routledge.
+</div>
+<div id="ref-cook2012" class="csl-entry" role="doc-biblioentry">
+Cook, John. 2012. <span>“Why We’re Talking About Barack Obama and Derrick Bell Now.”</span> <a href="http://gawker.com/5891738/why-were-talking-about-barack-obama-and-derrick-bell-now">http://gawker.com/5891738/why-were-talking-about-barack-obama-and-derrick-bell-now</a>.
+</div>
+<div id="ref-moralpa2013" class="csl-entry" role="doc-biblioentry">
+Critcher, C., Jason Hughes, Julian Petley, and Amanda Rohloff, eds. 2013. <em>Moral Panics in the Contemporary World</em>. New York: Bloomsbury.
+</div>
+<div id="ref-crugnale2012" class="csl-entry" role="doc-biblioentry">
+Crugnale, James. 2012. <span>“Soledad O<span>’</span>Brien And Breitbart<span>’</span>s Joel Pollak Clash Over Critical Race Theory.”</span> <a href="https://www.mediaite.com/tv/soledad-obrien-and-breitbarts-joel-pollak-clash-over-critical-race-theory/">https://www.mediaite.com/tv/soledad-obrien-and-breitbarts-joel-pollak-clash-over-critical-race-theory/</a>.
+</div>
+<div id="ref-delgado2017" class="csl-entry" role="doc-biblioentry">
+Delgado, Richard, and Jean Stefancic. 2017. <em>Critical Race Theory: An Introduction</em>. Third edition. New York: New York University Press.
+</div>
+<div id="ref-ellul1973" class="csl-entry" role="doc-biblioentry">
+Ellul, Jacques. 1973. <em>Propaganda: the formation of men’s attitudes</em>. New York: Vintage Books.
+</div>
+<div id="ref-escobar2016" class="csl-entry" role="doc-biblioentry">
+Escobar, Martha D. 2016. <em>Captivity Beyond Prisons: Criminalization Experiences of Latina (Im)migrants</em>. First edition. Austin: University of Texas Press.
+</div>
+<div id="ref-french2012" class="csl-entry" role="doc-biblioentry">
+French, David. 2012. <span>“Obama, Critical Race Theory, and Harvard Law School.”</span> <a href="https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/">https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/</a>.
+</div>
+<div id="ref-friedersdorf2012" class="csl-entry" role="doc-biblioentry">
+Friedersdorf, Conor. 2012. <span>“The Sci-Fi Story That Offends Oversensitive White Conservatives.”</span> <a href="https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/">https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/</a>.
+</div>
+<div id="ref-gertz2018" class="csl-entry" role="doc-biblioentry">
+Gertz, Matthew. 2018. <span>“I<span>’</span>ve Studied the Trump-Fox Feedback Loop for Months. It<span>’</span>s Crazier Than You Think.”</span> <a href="http://politi.co/2Av9v0f">http://politi.co/2Av9v0f</a>.
+</div>
+<div id="ref-goode2009" class="csl-entry" role="doc-biblioentry">
+Goode, Erich, and Nachman Ben-Yehuda. 2009. <em>Moral Panics: The Social Construction of Deviance</em>. 2nd ed. Chichester, U.K. ; Malden, MA: Wiley-Blackwell.
+</div>
+<div id="ref-harris2021" class="csl-entry" role="doc-biblioentry">
+Harris, Adam. 2021. <span>“The GOP<span>’</span>s <span>‘</span>Critical Race Theory<span>’</span> Obsession.”</span> <a href="https://www.theatlantic.com/politics/archive/2021/05/gops-critical-race-theory-fixation-explained/618828/">https://www.theatlantic.com/politics/archive/2021/05/gops-critical-race-theory-fixation-explained/618828/</a>.
+</div>
+<div id="ref-horkheimer2002" class="csl-entry" role="doc-biblioentry">
+Horkheimer, Max, and Theodor W. Adorno. 2002. <em>Dialectic of Enlightenment: Philosophical Fragments</em>. Cultural Memory in the Present. Stanford, Calif: Stanford University Press.
+</div>
+<div id="ref-maza2018" class="csl-entry" role="doc-biblioentry">
+Maza, Carlos. 2018. <span>“The Trump-Fox &amp; Friends Feedback Loop, Explained.”</span> <a href="https://www.vox.com/2018/2/9/16997022/strikethrough-trump-fox-friends-feedback-loop-explained-tweet">https://www.vox.com/2018/2/9/16997022/strikethrough-trump-fox-friends-feedback-loop-explained-tweet</a>.
+</div>
+<div id="ref-merleau-ponty1962" class="csl-entry" role="doc-biblioentry">
+Merleau-Ponty, Maurice. 1962. <em>Phenomenology of Perception</em>. <a href="http://archive.org/details/merleaupontyphenomenologyofperception_201909">http://archive.org/details/merleaupontyphenomenologyofperception_201909</a>.
+</div>
+<div id="ref-michel2011" class="csl-entry" role="doc-biblioentry">
+Michel, Jean-Baptiste, Yuan Kui Shen, Aviva Presser Aiden, Adrian Veres, Matthew K. Gray, The Google Books Team, Joseph P. Pickett, et al. 2011. <span>“Quantitative Analysis of Culture Using Millions of Digitized Books.”</span> <em>Science</em> 331 (6014): 176–82. <a href="https://doi.org/10.1126/science.1199644">https://doi.org/10.1126/science.1199644</a>.
+</div>
+<div id="ref-moretti2013" class="csl-entry" role="doc-biblioentry">
+Moretti, Franco. 2013. <em>Distant Reading</em>. London ; New York: Verso.
+</div>
+<div id="ref-schulz2011" class="csl-entry" role="doc-biblioentry">
+Schulz, Kathryn. 2011. <span>“What Is Distant Reading?”</span> <em>The New York Times</em>, June. <a href="https://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html">https://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html</a>.
+</div>
+<div id="ref-stocking1966" class="csl-entry" role="doc-biblioentry">
+Stocking, George W. 1966. <span>“Franz Boas and the Culture Concept in Historical Perspective.”</span> <em>American Anthropologist</em> 68 (4): 867–82. <a href="https://www.jstor.org/stable/670404">https://www.jstor.org/stable/670404</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+</div>
+<div id="ref-wolfe2018" class="csl-entry" role="doc-biblioentry">
+Wolfe, Audra. 2018. <span>“Project Troy: How Scientists Helped Refine Cold War Psychological Warfare.”</span> <a href="https://www.theatlantic.com/science/archive/2018/12/project-troy-science-cold-war-psychological-warfare/576847/">https://www.theatlantic.com/science/archive/2018/12/project-troy-science-cold-war-psychological-warfare/576847/</a>.
+</div>
+</div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+  <h3 id="references">References</h3>
+  <div id="references-listing"></div>
+  <h3 id="updates-and-corrections">Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/n8craig/ncraig/issues/new">create an issue</a> on the source repository.</p>
+  <h3 id="citation">Citation</h3>
+  <p>For attribution, please cite this work as</p>
+  <pre class="citation-appendix short">Craig (2021, May 8). Nathan Craig: Critical Race Theory. Retrieved from https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/</pre>
+  <p>BibTeX citation</p>
+  <pre class="citation-appendix long">@misc{craig2021critical,
+  author = {Craig, Nathan},
+  title = {Nathan Craig: Critical Race Theory},
+  url = {https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/},
+  year = {2021}
+}</pre>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

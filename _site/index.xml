@@ -7,7 +7,17 @@
     <description>Nathan Craig's Personal Site
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Critical Race Theory</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory</link>
+      <description>An exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests a concerted effort on the part of media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula.</description>
+      <category>race</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory</guid>
+      <pubDate>Sat, 08 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/critical-race-theory_files/figure-html5/GDELT-IA-2020-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>ICE Detention Guaranteed Minimums &amp; Ghost Beds as of April 2021</title>
       <dc:creator>Nathan Craig</dc:creator>
