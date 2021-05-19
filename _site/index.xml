@@ -7,7 +7,17 @@
     <description>Nathan Craig's Personal Site
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 08 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Canvas LMS and R</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</link>
+      <description>Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</guid>
+      <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Critical Race Theory in the Media</title>
       <dc:creator>Nathan Craig</dc:creator>
