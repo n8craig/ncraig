@@ -56,6 +56,7 @@ library(readr)
 library(tidyverse)
 library(ggplot2)
 library(ggstatsplot)
+library(ggrepel)
 ```
 
 ```{r teaser, layout="l-body-outset", fig.cap= "Sample plot showing scores of an exam created by the `exams` package, grades were retrieved by the `rcanvas` package."}
@@ -86,7 +87,9 @@ gb_list %>%
     data = .,
     x = course_name,
     y = score,
-    pairwise.comparisons = FALSE)+
+    pairwise.comparisons = FALSE,
+    centrality.plotting = FALSE
+    )+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))+
     labs(
     title = "Exam 1 Scores Across Eight Comparable Classes Over Two Years",
