@@ -31,7 +31,7 @@ Having just recently submitted grades this Monday, I took a few minutes to [writ
 -   retrieval of multiple Canvas class grade books
 -   basic analysis of multiple Canvas grade books
 
-To learn more about this work flow [please visit the repository website](https://n8craig.github.io/nmsu-grades/index.html).
+To learn more about this work flow [**please visit the repository website**](https://n8craig.github.io/nmsu-grades/index.html).
 
 # Creating Exams
 
