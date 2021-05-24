@@ -39,6 +39,7 @@ library(maps)
 library(ggplot2)
 library(gganimate)
 library(magick)
+library(patchwork)
 ```
 
 ```{r}
@@ -120,6 +121,39 @@ df_summary %>%
   ylab("Cumulative COVID-19 Cases in ICE Detention")
 
 animate(fig, fps=4, end_pause = 7)
+```
+
+## Total Detained and Active Cases Line Plot Over Time
+
+The following is a pair of line plots showing detained population and active COVID-19 cases in custody over time. Comparing the plots one can see that between July and January 2020 as the detained population decreased the number of active COVID-19 cases in custody declined. Likewise, one can see that in late March 2021 as the total detained population began to rise the number of active COVID-19 cases in custody also rose and that by April 2021 both the detained population and active COVID-19 cases in ICE detention are rising rapidly.
+
+```{r, layout = "l-page"}
+# ICE Detention Population Over Time
+total_detained <- ggplot(df_summary, aes(x=date, y=total_detained))+
+  geom_line()+
+  geom_point()+
+  geom_smooth()+
+  labs(
+    title = "ICE Detention Population \nOver Time",
+    subtitle = "Smoothed trend line added"
+  )+
+  xlab("Date")+
+  ylab("Total Detained Population")
+
+
+# Total Confirmed COVID-19 Over Time
+active_in_custody <- ggplot(df_summary, aes(x=date, y=total_covid_19_confirmed_in_custody))+
+  geom_line()+
+  geom_smooth()+
+   labs(
+    title = "Confirmed COVID-19 Cases \nin ICE Detention Over Time",
+    subtitle = "Smoothed trend line added",
+    caption = "Data source: https://www.ice.gov/coronavirus"
+  )+
+  xlab("Date")+
+  ylab("Total Active COVID-19 Cases in Custody")
+
+total_detained + active_in_custody
 ```
 
 ## Active COVID-19 Map
