@@ -18,7 +18,7 @@ output:
 bibliography: references.bib
 csl: chicago-author-date.csl
 link-citations: yes
-draft: true
+draft: TRUE
 ---
 
 ```{r setup, include=FALSE}
