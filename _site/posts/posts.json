@@ -15,8 +15,8 @@
     ],
     "contents": "\r\n\r\nContents\r\n1 COVID-19 Cases in ICE Detention Over Time\r\n1.1 Cumulative COVID-19 Map\r\n1.2 Cumulative COVID-19 Line Plot\r\n1.3 Active COVID-19 Map\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n1 COVID-19 Cases in ICE Detention Over Time\r\nThe following maps and graph are generated with data scraped from the ICE Guidance on COVID-19 website. The scraped data are maintained in a GitHub repository. COVID-19 data reported by ICE are linked with geocoded facility locations. COVID-19 data are assembled in “long” format, plotted with ggplot (Wickham et al. 2020), and animated with the gganimate (Pedersen and Robinson 2020) library.\r\n1.1 Cumulative COVID-19 Map\r\nA map of cumulative COVID-19 cases by ICE detention facility over time.\r\n\r\n\r\n\r\n1.2 Cumulative COVID-19 Line Plot\r\n\r\n\r\n\r\n1.3 Active COVID-19 Map\r\nA map of active COVID-19 cases by ICE detention facility over time.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nPedersen, Thomas Lin, and David Robinson. 2020. Gganimate: A Grammar of Animated Graphics. https://CRAN.R-project.org/package=gganimate.\r\n\r\n\r\nWickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. https://CRAN.R-project.org/package=ggplot2.\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-05-23T18:51:29-06:00",
-    "input_file": {}
+    "last_modified": "2021-05-24T13:07:07-06:00",
+    "input_file": "ice-detention-covid-19-maps.knit.md"
   },
   {
     "path": "posts/2021-05-19-canvas-and-r/",
