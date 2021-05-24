@@ -1,0 +1,532 @@
+---
+title: "ICE Solitary Voices EDA"
+description: |
+  This post explores the main dataset from the "Solitary Voices" series published by the International Consortium of Investigative Journalists. It is a look at the use of solitary confinement in ICE detention.
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 05-19-2021
+categories:
+  - immigration
+output:
+  distill::distill_article:
+    self_contained: false
+    pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: true
+bibliography: references.bib
+csl: chicago-author-date.csl
+link-citations: yes
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+In May of 2019, Spencer Woodman and colleagues published a series of articles on the use of solitary confinement in ICE detention called "Solitary Voices" [@woodman2019; @woodman2019a; @saleh2019]. I corresponded with Woodman helping to connect him with individuals I knew personally who survived prolonged periods of solitary confinement in ICE detention [@calzadilla2019; @calzadilla2019a]. A centerpiece of the series, Woodman and colleagues [released](https://www.icij.org/investigations/solitary-voices/about-the-solitary-voices-data/) a large data set obtained from ICE through FOIA. The "Solitary Voices" data are the only public data set on ICE solitary that I am aware of at present, and I believe it is the largest data set on ICE's use of solitary assembled thus far. This post is an exploration of the "Solitary Voices" data set.
+
+<aside>
+
+Interestingly, as of May 2021, in the ICE FOIA library the responsive documents for the "Solitary Voices" data set is not included. This despite a specific section entitled "High Profile/Media Request."
+
+</aside>
+
+Questions that drive this exploration include: How long are people put in ICE solitary, why are people put in, and where are those people from? Also explored are those individuals that constitute "outliers" who experienced exceptionally long periods of solitary confinement.
+
+It is important to note that ICE detention is explicitly non-punitive, immigration is a civil matter, and no one incarcerated by ICE is being punished for or even charged with a crime [@ice2016, i]. Regardless of the purportedly non-punitive nature of ICE incarceration, ICE detention policy includes extremely harsh provisions regarding prolonged solitary. ICE's Performance Based National Detention Standards of 2011, revised 2016, Appendix 3.1.A.I.B details "Sanctions" for the "'Greatest' Offense Category" of "Prohibited Acts" and lists "Disciplinary seggregation (up to 60 days)" as a permitted punishment [@ice2016, 224]. Though immigration detention is non-punitive by definition, solitary is used frequently in ICE detention both as punishment and for "administrative" purposes.
+
+<aside>
+
+"ICE detains people for no purpose other than to secure their presence both for immigration proceedings and their removal, with a special focus on those who represent a risk to public safety, or for whom detention is mandatory by law" [@ice2016, i].
+
+</aside>
+
+There is relatively little study of the use of solitary confinement in ICE detention facilities. Despite the exceptional in-depth reporting by Woodman and colleagues, there are two very fine peer reviewed academic journal articles that examine solitary in immigration detention. The earliest is Patler and colleagues [-@patler2018] examination of solitary from 2013-2016 in the Los Angeles and San Francisco field offices (n=1,193). They found significant differences in the use of solitary by gender, mental illness status, whether the individual was represented by an attorney, the Field Office of jurisdiction, and the individual detention facility. They also examined the widespread use of "protective custody" and show that it is potentially punitive. This kind of "protective" use of solitary is a form of "administrative segregation" alluded to in the prior paragraph.
+
+The most recent academic study of solitary in ICE detention is Franco and colleagues [-@franco2020] which examines "all documented cases of solitary confinement lasting 14 days or longer between September 2013 and march 2017 (n=5,327)". They found that individuals with mental illness were over represented and were more likely to occur without infraction and last longer than individuals without mental illness. The found that solitary confinement of individuals from African and Caribbean countries were vastly over represented in comparison to the share of all groups in the detained population. They found that African migrants were more likely to be placed in solitary for disciplinary reasons compared to the average. They also found that use of solitary varied significantly by facility, and that compared to public facilities private facilities were more likely to use solitary with out an infraction.
+
+```{r load-libraries, include = FALSE, echo=FALSE}
+# Read Data
+library(readr)
+
+# Wrangle data
+library(tidyverse)
+library(magrittr)
+library(kableExtra)
+
+# Statistics
+
+library(summarytools)
+library(pivottabler)
+library(rstatix)
+
+# Plotting
+library(ggplot2)
+library(ggstatsplot)
+library(plotly)
+library(qqplotr)
+library(ggforce)
+library(patchwork)
+```
+
+```{r load-data, echo=FALSE}
+df <- read_csv("https://media.icij.org/uploads/2019/05/icij-solitary-voices-final-dataset-for-publication.csv",
+               col_types = cols(placement_date = col_date(format = "%b %d, %Y"), 
+               year = col_integer(), release_date = col_date(format = "%b %d, %Y")))
+
+df <- df %>% 
+  mutate(citizenship = as_factor(citizenship)) %>% 
+  mutate(citizenship_id = as_factor(citizenship_id)) %>% 
+  mutate(facility_aor = as_factor(facility_aor)) %>% 
+  mutate(state = as_factor(state)) %>% 
+  mutate(facility = as_factor(facility)) %>% 
+  mutate(facility_id = as_factor(facility_id)) %>% 
+  mutate(placement_reason = as_factor(placement_reason)) %>% 
+  mutate(placement_reason_raw = as_factor(placement_reason_raw)) %>% 
+  mutate(mental_illness = as_factor(mental_illness)) %>% 
+  mutate(no_suicide_watch = as_factor(no_suicide_watch))
+```
+
+# The Solitary Voices Data
+
+The "Solitary Voices" data set consists of 8488 observations regarding solitary incidents that occurred in 111 facilities across 24 ICE Field Offices in 32 states between April 30, 2012 and December 3, 2017. Within this data set there are 8481 reports of individuals who come from 164 different countries and 7 reports of individuals who are listed as stateless. The data set details 24 "placement reasons" as well as whether the incident involved mental illness and whether there was no suicide watch.
+
+```{r bar-plot-count-by-country, echo=FALSE, fig.cap="Bar plot showing the number of solitary incidents in the dataset by country. Hover over the bar for the country name or use the zoom tool for a closer view."}
+df_count_by_country <-  df %>%
+  count(., citizenship)
+
+df_count_by_country$citizenship <- as.character(df_count_by_country$citizenship)
+
+p <- df_count_by_country %>%
+  mutate(citizenship = fct_reorder(citizenship, desc(n))) %>% 
+  ggplot(., aes(x=n, y = citizenship, text = citizenship))+
+  geom_bar(stat='identity')+
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())+
+  labs(title = "Count of Solitary Reports by Country")
+
+ggplotly(p, tooltip = c("text", "n"))
+```
+
+# How long does ICE hold people in solitary?
+
+```{r create-df-outliers, include=FALSE}
+df_outliers <- df %>% 
+  identify_outliers(days_solitary)
+
+df <- left_join(df, df_outliers)
+df <- df %>% 
+  mutate(is.outlier = replace_na(is.outlier, FALSE)) %>% 
+  mutate(is.extreme = replace_na(is.extreme, FALSE))
+```
+
+The duration of solitary is a key issue because prolonged periods of solitary confinement are shown to have adverse mental health consequences. A major literature survey of solitary confinement concluded that "though reactions vary between individuals, negative (sometimes severe) health effects can occur after only a few days of solitary confinement" [@smith2006, 495]. The rates of severe mental health consequences for solitary confinement ranged from 30-90% depending on the facility and study population. Despite this variation, "the overall conclusion must be that solitary confinement--regardless of specific conditions and regardless of time and place--causes serious health problems for a significant number of inmates" [@smith2006, 503] and "the health risk appears to rise for each additional day" in solitary confinement [@smith2006, 504].
+
+Juan E. Méndez, the former United Nations Special Rapporteur on Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment defined prolonged solitary as any period in excess of 15 days because, this is the point at which the psychological effects of isolation become irreversible [@méndez2011, 9, 17, 22]. The Special Rapporteur concluded solitary should be banned in most cases, prolonged solitary "can amount to torture or cruel, inhuman or degrading treatment or punishment" [@solitary2011], and that use of solitary beyond 15 days "should be subject to an absolute prohibition" [@méndez2011, 23].
+
+Within the Solitary Voices data set, there is no data on Days in Solitary for 195 records. For those records that do contain Days in Solitary values (n=8293), 38% (n=3178) were held for 15 days or more. In fact, the average duration of solitary confinement was more than a month or more than twice the period for which psychological harms appear irreversible (M = `r mean(df$days_solitary, na.rm = T) %>% round(.,digit = 0)`, SD = `r sd(df$days_solitary, na.rm = T) %>% round(.,digit = 0)`, MD=`r median(df$days_solitary, na.rm = T)`. It bears noting that the mean is higher than the median, the standard deviation is large in relation to the mean, the distribution exhibits a large positive skew (Table \@ref(tab:summary-table-days-solitary).A), the histogram of Days in Solitary shows a long right tail (Figure \@ref(fig:hist-days-solitary).A), and a violin-sina plot shows a long tail (Figure \@ref(fig:violin-sina-days).A). Together, these suggest that Days in Solitary are not normally distributed but leveraged by a number of outlying cases of individuals who experienced exceptionally long periods of solitary confinement.
+
+Standard tests of normality like Shapiro-Wilk, Anderson Darling, and Jarque-Bera, are not appropriate for large samples (when n \> 5000) because even minor deviations from the normal distribution can produce very small $p$ values. Given the large size of the Solitary Voices sample that contain values for Days in Solitary (n=8293), these methods of evaluating normality are not appropriate. With large samples, a quantile-quantile plot (also known as a normal probability plot, normal scores plot, or probit plot) help evaluate if a distribution is different from normal. The QQ-plot of Days in Solitary (Figure \@ref(fig:qq-days)) along with the indicators described above show that the number of days in solitary is not normally distributed. Given the distribution is positive or right skewed, how many instances represent outliers in terms of Days in Solitary?
+
+Individual outliers can be identified using the 1.5 x Interquartile Range (1.5xIQR) method, and extreme outliers are values that are outside the 3xIQR range. The 1.5xIQR method identified 838 outliers comprising 10% of the sample that had values in Days in Solitary. In all cases, outliers represent individuals who were held in solitary for exceptionally long periods of time. Specifically, outliers represent instances where an individual was held in solitary for 67 days or more. Based on the distribution of the Solitary Voices data set, extreme outliers represent cases where individuals were held in solitary for more 102 or more days. There are 474 extreme outliers which makes up 6% of the Solitary Voices data set.
+
+<aside>
+
+The 1.5xIQR method is also known as the box plot or whisker plot method. Here a combined violin-sina plot is shown as it depicts greater structure of the data set than a standard box or whisker plot.
+
+</aside>
+
+Trimming outliers from the sample reduced the average by over two weeks (M = `r mean(df_outliers$days_solitary, na.rm = T) %>% round(.,digit = 0)`, SD = `r sd(df_outliers$days_solitary, na.rm = T) %>% round(.,digit = 0)`) and lowered the skew, though it remained positive (Table \@ref(tab:summary-table-days-solitary).B). A QQ Plot indicates that even after removing outliers, Days in Solitary still deviates from the normal distribution (Figure \@ref(fig:hist-days-solitary).B). Both a histogram (Figure \@ref(fig:hist-days-solitary).B) and violin-sina plot suggest some degree of bimodality in the trimmed distribution (Figure \@ref(fig:violin-sina-days).B).
+
+```{r summary-table-days-solitary, echo=FALSE}
+
+# Untrimmed
+untrimmed <- df %>% 
+  descr(days_solitary)  
+
+
+# Trimmed Data Set
+trimmed <- df %>% 
+  filter(is.outlier == FALSE) %>% 
+  descr(days_solitary)
+  
+knitr::kables(
+  list(
+    kable(untrimmed, digits = 0, 
+          col.names = c("Days in Solitary Untrimmed"),
+          valign = "t"),
+    kable(trimmed,
+          digits = 0,
+          col.names = c("Days in Solitary Trimmed"),
+          valign = "t")
+    ),
+  caption = "Untrimmed and Trimmed Summary Statistics of Days in Solitary"
+  ) %>% 
+   kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r hist-days-solitary, echo=FALSE, warning = FALSE, layout = "l-page", fig.cap="Histograms compairing untrimmed (A) and trimmed (B) datasets."}
+untrimmed <- df %>% 
+  gghistostats(., x=days_solitary,
+               results.subtitle = FALSE)+
+  xlab("Days in Solitary")+
+  ylab("Count")
+
+
+trimmed <- df %>% 
+  filter(is.outlier == FALSE) %>% 
+    gghistostats(., x=days_solitary,
+                 results.subtitle = FALSE)+
+    xlab("Days in Solitary")+
+  ylab("Count")
+untrimmed + trimmed +
+  plot_annotation(title = "Untrimmed (A) and Trimmed (B) Days in Solitary",
+                  tag_levels = "A")
+```
+
+```{r qq-days, echo=FALSE, fig.cap="QQ-Plot of untrimmed (A) and trimmed (B) days in solitary with a 95% confidence interval shown in gray."}
+untrimmed <- df %>%
+  ggplot(.,aes(sample= days_solitary))+
+  stat_qq_band() +
+  stat_qq_line() +
+  stat_qq_point() +
+  labs(x = "Theoretical Quantiles", y = "Sample Quantiles")
+
+trimmed <- df %>% 
+  filter(is.outlier == FALSE) %>% 
+  ggplot(.,aes(sample= days_solitary))+
+  stat_qq_band() +
+  stat_qq_line() +
+  stat_qq_point() +
+  labs(x = "Theoretical Quantiles", y = "Sample Quantiles")
+
+untrimmed + trimmed +
+  plot_annotation(title = "Untrimmed (A) and Trimmed (B) Days in Solitary",
+                  tag_levels = "A")
+
+```
+
+```{r violin-sina-days, echo=FALSE, fig.cap= "Violin/Sina plot of untrimmed (A) and trimmed (B) days in solitary. The respective untrimmed and trimmed meands are shown as dashed blue lines. Outliers showin in red."}
+
+untrimmed <- df %>%
+  mutate(.,group = "A") %>% 
+  ggplot(aes(x = group, y = days_solitary))+
+  geom_violin()+
+  geom_sina(alpha=0.1, size = .01, aes(group = "A", color = is.outlier))+
+  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "black"))+
+  geom_hline(yintercept = 32.72, linetype = "dashed", size = 1, color = "blue")+
+  labs(title="Days in Solitary Untrimmed")+
+  ylab("Days in Solitary")+
+  xlab("")+
+  theme(legend.position = "none",
+        axis.text.x = element_blank())
+
+trimmed <- df %>% 
+  filter(is.outlier == FALSE) %>% 
+  mutate(.,group = "A") %>% 
+  ggplot(aes(x = group, y = days_solitary))+
+  geom_violin()+
+  geom_sina(alpha=0.1, size = .01, aes(group = "A", color = is.outlier))+
+  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "black"))+
+  geom_hline(yintercept = 22.11, linetype = "dashed", size = 1, color = "blue")+
+  labs(title="Days in Solitary Trimmed")+
+  ylab("Days in Solitary")+
+  xlab("")+
+  theme(legend.position = "none",
+        axis.text.x = element_blank())
+
+untrimmed + trimmed +
+  plot_annotation(title = "Untrimmed (A) and Trimmed (B) Days in Solitary",
+                  tag_levels = "A")
+```
+
+# Why were people put in solitary?
+
+```{r summary-table-days-solitary-placement-reason, echo=FALSE}
+df %>% 
+  group_by(placement_reason) %>% 
+  descr(days_solitary,
+        stats= c("mean", "sd", "min", "med", "max", "n.valid"),
+        transpose = TRUE,
+        headings = FALSE) %>%
+  tb() %>% 
+  select(-variable) %>% 
+  relocate(n.valid, .before = mean) %>% 
+  mutate(percent_incidents = (n.valid/8293)*100, .after=n.valid) %>% 
+  arrange(., desc(n.valid)) %>% 
+  kable(digits = c(0,0,2,0,0,0,0,0),
+        caption = "Summary of Days in Solitary by Placement Reason",
+        col.names = c("Placement Reason",
+                      "n Instances",
+                      "% Total Instances",
+                      "Mean",
+                      "S.D.",
+                      "Min",
+                      "Med",
+                      "Max"
+)) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+# Where are people from
+
+```{r count-by-country, echo=FALSE}
+df %>% 
+  count(., citizenship) %>% 
+  arrange(., desc(n)) %>% 
+  kable(col.names = c("Country of Citizenship", "n Reports"),
+        caption = "Count of Solitary Reports by Country") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  scroll_box(height = "300px")
+```
+
+```{r summary-table-days-solitary-by-country, echo=FALSE}
+df %>% 
+  group_by(citizenship) %>% 
+  descr(days_solitary,
+        stats= c("mean", "sd", "min", "med", "max", "n.valid"),
+        transpose = TRUE,
+        headings = FALSE) %>% 
+  tb()%>% 
+  select(-variable) %>% 
+  arrange(desc(mean)) %>% 
+  kable(digits = 0,
+        caption = "Summary of Days in Solitary by Country",
+        col.names = c("Country",
+                      "Mean",
+                      "S.D.",
+                      "Min",
+                      "Med",
+                      "Max",
+                      "n Persons")) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  scroll_box(height = "300px")
+```
+
+```{r table-count-by-country, echo=FALSE}
+df %>% 
+  count(., citizenship) %>% 
+  arrange(., desc(n)) %>% 
+  kable(col.names = c("Country of Citizenship", "n Reports"),
+        caption = "Count of Solitary Reports by Country.") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  scroll_box(height = "300px")
+```
+
+# What are the characteristics of the outliers
+
+```{r outliers-days, echo=FALSE}
+df_outliers %>% 
+  arrange(., desc(days_solitary)) %>% 
+  select(c("citizenship", "facility_aor", "facility", "placement_reason", "days_solitary", "mental_illness", "is.extreme")) %>% 
+  kable(caption = "Outliers based on number of Days in Solitary") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  scroll_box(height = "300px")
+
+```
+
+```{r}
+df_outliers %>% 
+  descr(days_solitary) %>% 
+  kable(digits = 0,
+        caption = "Summary statistics of outliers based on Days in Solitary") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r}
+# Get the count, mean, sd by a group
+df_outliers %>% 
+  filter(days_solitary > 183) %>% 
+  group_by(placement_reason) %>% 
+  summarise(n = n(), mean = mean(days_solitary), sd = sd(days_solitary)) %>% 
+  arrange(desc(mean))
+```
+
+```{r}
+df %>% 
+  filter(days_solitary > 365) %>% 
+  group_by(placement_reason, citizenship) %>% 
+  summarise(n= n()) %>% 
+  pivot_wider(., names_from = placement_reason, values_from = n)
+```
+
+```{r}
+df_outliers %>% 
+  mutate(placement_reason = fct_reorder(placement_reason, days_solitary)) %>% 
+  ggplot(aes(x = placement_reason, y = days_solitary))+
+  geom_violin()+
+  geom_sina(alpha=0.5, size = .05)+
+  coord_flip()
+
+```
+
+```{r, fig.height=10}
+df_outliers %>% 
+  mutate(facility = fct_reorder(facility, days_solitary)) %>% 
+  ggplot(aes(x = facility, y = days_solitary))+
+  geom_violin()+
+  geom_sina(alpha=0.5, size = .05)+
+  coord_flip()
+```
+
+```{r}
+# Get a count by group
+df_outliers %>% 
+  filter(days_solitary > 183) %>% 
+  count(facility)
+
+# Get the count, mean, sd by a group
+df_outliers %>% 
+  filter(days_solitary > 183) %>% 
+  group_by(facility) %>% 
+  summarise(n = n(), mean = mean(days_solitary), sd = sd(days_solitary)) %>% 
+  arrange(desc(mean))
+```
+
+# Solitary by Facility AOR
+
+```{r}
+df %>% 
+  group_by(facility_aor) %>%
+  descr(days_solitary,
+        stats= c("mean", "sd", "min", "med", "max", "n.valid"),
+        transpose = TRUE,
+        headings = FALSE) %>% 
+  tb() %>% 
+  select(-variable) %>% 
+  arrange(., desc(mean)) %>% 
+  kable(digits = 0,
+        caption = "Summary of Days in Solitary by Facility AOR",
+        col.names = c("Facility AOR",
+                      "Mean",
+                      "S.D.",
+                      "Min",
+                      "Med",
+                      "Max",
+                      "n Instances")) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+  
+```
+
+```{r, results='asis'}
+options(knitr.kable.NA = '')
+
+df %>% 
+  filter(.,facility_aor == "ELP (El Paso)") %>% 
+  group_by(facility, placement_reason) %>% 
+  summarize(count_by_facility_placement = n()) %>% 
+  pivot_wider(., names_from = placement_reason, values_from = count_by_facility_placement) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r}
+options(knitr.kable.NA = '')
+
+df %>% 
+  group_by(citizenship, placement_reason) %>% 
+  summarize(count_by_facility_reason = n()) %>%
+  pivot_wider(., names_from = placement_reason, values_from = count_by_facility_reason) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  scroll_box(height = "500px")
+  
+```
+
+```{r}
+df %>% 
+  filter(.,facility_aor == "ELP (El Paso)") %>% 
+  qhpvt(., "facility", "placement_reason", "n()")
+
+  
+```
+
+# Normalizing Days Solitary
+
+```{r}
+df %>% 
+ 
+  ggplot()+
+  geom_density(aes(x=log(days_solitary)))
+
+```
+
+```{r}
+df %>%
+  ggplot(.,aes(sample= log(days_solitary)))+
+  stat_qq_band() +
+  stat_qq_line() +
+  stat_qq_point() +
+  labs(x = "Theoretical Quantiles", y = "Sample Quantiles")
+```
+
+The data are not normal, and even log transforming still does not produce a normal distribution. ANOVA is relatively robust to the assumption of normality. However, I'm still considering avoiding it.
+
+When the data are non-normal one can run the Kruskal-Wallis H text. [Kruskal-Wallis Test in R: The Ultimate Guide](%5Bhttps://www.datanovia.com/en/lessons/kruskal-wallis-test-in-r/)](<https://www.datanovia.com/en/lessons/kruskal-wallis-test-in-r/>)) and [Kruskal-Wallis Test in R \| Statistical Methods](%5Bhttps://stat-methods.com/home/kruskal-wallis-r/)](<https://stat-methods.com/home/kruskal-wallis-r/>)) provide some discussion of the method.
+
+```{r}
+df %>% 
+  kruskal_test(days_solitary~citizenship)
+```
+
+```{r}
+df %>% 
+  filter(is.outlier == F) %>% 
+  kruskal_test(days_solitary~citizenship)
+```
+
+The eta squared, based on the H-statistic, can serve as a measure of the Kruskal-Wallis effect size. In this case, the effect size is small.
+
+```{r}
+df %>% 
+  kruskal_effsize(days_solitary~citizenship)
+```
+
+```{r}
+df %>% 
+  filter(is.outlier == F) %>% 
+   kruskal_effsize(days_solitary~citizenship)
+```
+
+The Kruskal-Wallis test indicates there is a significant difference between groups, but which pairs are different remains unknown. The Dunn test is generally applied to determine which groups are different. The Dunn test takes into account rankings used by Kruskal-Wallis and does ties adjustments.
+
+```{r}
+df %>% 
+  dunn_test(days_solitary~citizenship, p.adjust.method = "holm") %>% 
+  filter(p.adj.signif != "ns")
+```
+
+```{r}
+df %>% 
+  filter(is.outlier == F) %>%
+    dunn_test(days_solitary~citizenship, p.adjust.method = "holm") %>% 
+  filter(p.adj.signif != "ns")
+```
+
+There was a statistically significant difference between countries as assessed using the Kruskal-Wallis test (p\<0.001), and the effect size is small. Pairwise Dunn test between groups showed that the only differences were between Mexico and Honduras, Haiti, and Somalia as well as between Philippines and Bangladesh. Here one would show a box plot of those pairings. Not sure how to do that with so many groups, perhaps a filter. NOTE: would be interesting to do this with the data trimmed and then run comparisons.
+
+Using the trimmed distribution, there are still significant differences and the effect size is small. There are only two pairings that appear different: Liberia and Somalia and Liberia and Bangladesh.
+
+```{r}
+library(DT)
+```
+
+```{r table-countries-above-mean-days-solitary}
+df %>% 
+  group_by(citizenship) %>% 
+  descr(days_solitary,
+        stats= c("mean", "sd", "min", "med", "max", "n.valid"),
+        transpose = TRUE,
+        headings = FALSE) %>% 
+  tb()%>% 
+  select(-variable) %>% 
+  arrange(desc(mean)) %>% 
+  mutate(sd=round(sd,2)) %>% 
+  mutate(mean=round(mean,2)) %>% 
+  filter(mean>33) %>% 
+  datatable()
+```
