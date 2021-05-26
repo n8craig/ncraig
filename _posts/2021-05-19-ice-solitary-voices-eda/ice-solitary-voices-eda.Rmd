@@ -57,9 +57,9 @@ library(readr)
 library(tidyverse)
 library(magrittr)
 library(kableExtra)
+library(DT)
 
 # Statistics
-
 library(summarytools)
 library(pivottabler)
 library(rstatix)
@@ -274,16 +274,6 @@ df %>%
 
 # Where are people from
 
-```{r count-by-country, echo=FALSE}
-df %>% 
-  count(., citizenship) %>% 
-  arrange(., desc(n)) %>% 
-  kable(col.names = c("Country of Citizenship", "n Reports"),
-        caption = "Count of Solitary Reports by Country") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  scroll_box(height = "300px")
-```
-
 ```{r summary-table-days-solitary-by-country, echo=FALSE}
 df %>% 
   group_by(citizenship) %>% 
@@ -294,27 +284,17 @@ df %>%
   tb()%>% 
   select(-variable) %>% 
   arrange(desc(mean)) %>% 
-  kable(digits = 0,
-        caption = "Summary of Days in Solitary by Country",
-        col.names = c("Country",
+   datatable(.,
+             caption = "Summary of Days in Solitary by Country",
+             colnames = c("Country",
                       "Mean",
                       "S.D.",
                       "Min",
                       "Med",
                       "Max",
-                      "n Persons")) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  scroll_box(height = "300px")
-```
-
-```{r table-count-by-country, echo=FALSE}
-df %>% 
-  count(., citizenship) %>% 
-  arrange(., desc(n)) %>% 
-  kable(col.names = c("Country of Citizenship", "n Reports"),
-        caption = "Count of Solitary Reports by Country.") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  scroll_box(height = "300px")
+                      "n Instances") 
+   ) %>% 
+  formatRound(c("mean","sd"),2)
 ```
 
 # What are the characteristics of the outliers
@@ -322,18 +302,25 @@ df %>%
 ```{r outliers-days, echo=FALSE}
 df_outliers %>% 
   arrange(., desc(days_solitary)) %>% 
-  select(c("citizenship", "facility_aor", "facility", "placement_reason", "days_solitary", "mental_illness", "is.extreme")) %>% 
-  kable(caption = "Outliers based on number of Days in Solitary") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  scroll_box(height = "300px")
-
+  select(c("citizenship", "facility", "placement_reason", "days_solitary", "mental_illness", "is.extreme")) %>% 
+  datatable(.,
+            caption = "Outliers based on number of Days in Solitary",
+            colnames = c(
+              "Citizenship",
+              "Facility",
+              "Placement Reason",
+              "Days in Solitary",
+              "Mental Illness",
+              "Is Extreme")
+            )
 ```
 
 ```{r}
 df_outliers %>% 
   descr(days_solitary) %>% 
   kable(digits = 0,
-        caption = "Summary statistics of outliers based on Days in Solitary") %>% 
+        caption = "Summary statistics of individual outliers based on Days in Solitary",
+        col.names = "Days in Solitary") %>% 
   kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
@@ -343,28 +330,42 @@ df_outliers %>%
   filter(days_solitary > 183) %>% 
   group_by(placement_reason) %>% 
   summarise(n = n(), mean = mean(days_solitary), sd = sd(days_solitary)) %>% 
-  arrange(desc(mean))
+  arrange(desc(mean)) %>% 
+  datatable(.,
+            caption = "Summary of solitary instances lasting more than six months by Placement Reason",
+            colnames = c("Placement Reason",
+                         "n Instances",
+                         "Mean",
+                         "S.D.")
+            ) %>% 
+  formatRound(c("mean","sd"),0)
 ```
 
-```{r}
+```{r, layout = "l-page"}
 df %>% 
   filter(days_solitary > 365) %>% 
   group_by(placement_reason, citizenship) %>% 
   summarise(n= n()) %>% 
-  pivot_wider(., names_from = placement_reason, values_from = n)
+  pivot_wider(., names_from = placement_reason, values_from = n) %>% 
+  kable() %>% 
+  kable_styling()
 ```
 
-```{r}
+```{r, layout = "l-page"}
 df_outliers %>% 
   mutate(placement_reason = fct_reorder(placement_reason, days_solitary)) %>% 
   ggplot(aes(x = placement_reason, y = days_solitary))+
   geom_violin()+
   geom_sina(alpha=0.5, size = .05)+
-  coord_flip()
+  coord_flip()+
+  labs(title = "Days in Solitary by Placement Reason")+
+  xlab("Days in Solitary")+
+  ylab("Placement Reason")+
+  theme(axis.text.y = element_text(size = 8))
 
 ```
 
-```{r, fig.height=10}
+```{r, layout = "l-page"}
 df_outliers %>% 
   mutate(facility = fct_reorder(facility, days_solitary)) %>% 
   ggplot(aes(x = facility, y = days_solitary))+
@@ -511,10 +512,6 @@ There was a statistically significant difference between countries as assessed u
 
 Using the trimmed distribution, there are still significant differences and the effect size is small. There are only two pairings that appear different: Liberia and Somalia and Liberia and Bangladesh.
 
-```{r}
-library(DT)
-```
-
 ```{r table-countries-above-mean-days-solitary}
 df %>% 
   group_by(citizenship) %>% 
@@ -529,4 +526,48 @@ df %>%
   mutate(mean=round(mean,2)) %>% 
   filter(mean>33) %>% 
   datatable()
+```
+
+# Scratch Space
+
+## Contingency Table
+
+```{r}
+library(janitor)
+library(FactoMineR)
+library(factoextra)
+library(Factoshiny)
+```
+
+```{r}
+df_contingency <- df %>% 
+  tabyl(citizenship, placement_reason) %>% 
+  column_to_rownames(.,var = "citizenship")
+
+res.ca <- CA(df_contingency, graph = F)
+```
+
+```{r}
+fviz_screeplot(res.ca, addlabels = TRUE)
+```
+
+```{r}
+fviz_ca_biplot(res.ca, repel = TRUE)
+```
+
+```{r}
+CAshiny(X = res.ca)
+```
+
+```{r}
+# Using tidyverse functions
+df %>% 
+  group_by(citizenship, mental_illness) %>% 
+  tally() %>% 
+  spread(key = mental_illness, value = n)
+```
+
+```{r}
+# Using base R functions
+table(df$citizenship, df$mental_illness) 
 ```

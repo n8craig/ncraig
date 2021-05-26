@@ -7,7 +7,17 @@
     <description>Nathan Craig's Personal Site
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>OCPC Monthly Detained Population Dec 2016-Aug 2020</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020</link>
+      <description>Monthly ICE detention numbers at OCPC gleaned from revenue bond disclosure reports, a lesson in following the money.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020</guid>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/ocpc-monthly-detained-population-dec-2016-aug-2020_files/figure-html5/OCPC-Monthly-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>ICE Detention COVID-19 Maps</title>
       <dc:creator>Nathan Craig</dc:creator>
