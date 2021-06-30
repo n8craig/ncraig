@@ -34,7 +34,11 @@ Getting accurate information on ICE detention numbers is challenging. During the
 
 Recently, going through documents in the Electronic Municipal Market Access ([EMMA](https://emma.msrb.org)), which reports bond related information, I discovered that for facilities established through revenue bonds, the financial disclosure statements may contain more fine grained data on detention populations.
 
-<aside>State level inspection of public records laws may be another method to obtain finer grained data worth pursuing.</aside>
+<aside>
+
+State level inspection of public records laws may be another method to obtain finer grained data worth pursuing.
+
+</aside>
 
 The graph below is the first public image depicting monthly level detention numbers for the Otero County Processing Center (OCPC). The monthly detained population was gathered from the aforementioned revenue disclosure reports on EMMA and assembled into a table, which is hosted in a GitHub [repository](https://github.com/n8craig/ICE-Detention-Year-End-Reports). Hopefully others may find review of EMMA filings useful for reconstructing more fine grained ICE detention information.
 

@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2021-06-30-testpost/",
+    "title": "test_post",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Nathan Craig",
+        "url": "https://ncraig.netlify.app/"
+      }
+    ],
+    "date": "2021-06-30",
+    "categories": [],
+    "contents": "\r\n2021-06-30 17:02:25\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\nR Markdown\r\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\r\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\r\n\r\n     speed           dist       \r\n Min.   : 4.0   Min.   :  2.00  \r\n 1st Qu.:12.0   1st Qu.: 26.00  \r\n Median :15.0   Median : 36.00  \r\n Mean   :15.4   Mean   : 42.98  \r\n 3rd Qu.:19.0   3rd Qu.: 56.00  \r\n Max.   :25.0   Max.   :120.00  \r\n\r\nIncluding Plots\r\nYou can also embed plots, for example:\r\n\r\n\r\n\r\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-06-30-testpost/testpost_files/figure-html5/pressure-1.png",
+    "last_modified": "2021-06-30T17:02:27-06:00",
+    "input_file": "testpost.knit.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/",
     "title": "OCPC Monthly Detained Population Dec 2016-Aug 2020",
     "description": "Monthly ICE detention numbers at OCPC gleaned from revenue bond disclosure reports, a lesson in following the money.",
