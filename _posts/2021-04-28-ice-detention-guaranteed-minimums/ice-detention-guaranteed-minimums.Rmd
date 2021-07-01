@@ -19,6 +19,8 @@ output:
 bibliography: 
   - references.bib
 link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
 ---
 
 # Introduction {#introduction}

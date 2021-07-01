@@ -17,6 +17,8 @@ output:
     number_sections: false
 bibliography: packages.bib
 link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
 ---
 
 ```{r setup, include=FALSE}

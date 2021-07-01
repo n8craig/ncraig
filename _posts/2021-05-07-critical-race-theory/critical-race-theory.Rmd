@@ -17,6 +17,8 @@ output:
     number_sections: true
 bibliography: references.bib
 link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
 ---
 
 > The spectator must need no thoughts of his own: the product prescribes each reaction, not through any actual coherence-which collapses once exposed to thought-but through signals. Any logical connection presupposing mental capacity is scrupulously avoided. Developments are to emerge from the directly preceding situation, not from the idea of the whole.

@@ -18,6 +18,8 @@ output:
 bibliography: references.bib
 csl: chicago-author-date.csl
 link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
 draft: TRUE
 ---
 

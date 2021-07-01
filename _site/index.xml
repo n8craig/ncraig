@@ -19,6 +19,16 @@
       <media:content url="https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population/current-ice-detention-population_files/figure-html5/Cumulative-COVID-19-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
+      <title>Canvas LMS and R</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</link>
+      <description>Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</guid>
+      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
       <title>OCPC Monthly Detained Population Dec 2016-Aug 2020</title>
       <dc:creator>Nathan Craig</dc:creator>
       <link>https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020</link>
@@ -37,16 +47,6 @@
       <guid>https://ncraig.netlify.app/posts/2021-05-23-ice-detention-covid-19-maps</guid>
       <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
       <media:content url="https://ncraig.netlify.app/posts/2021-05-23-ice-detention-covid-19-maps/ice-detention-covid-19-maps_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Canvas LMS and R</title>
-      <dc:creator>Nathan Craig</dc:creator>
-      <link>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</link>
-      <description>Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.</description>
-      <category>how-to</category>
-      <guid>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</guid>
-      <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Critical Race Theory in the Media</title>
