@@ -85,7 +85,7 @@ When President Biden took office, the detained population was `r b_inaug`. The l
 
 <aside>
 
-```{r ICE-Detention-Population-Static, fig.cap="ICE detention population plotted over time. Data source: https://www.ice.gov/coronavirus"}
+```{r ICE-Detention-Population-Static}
 
 # ICE Detention Population Over Time
 ggplot(df_summary, aes(x=date, y=total_detained))+
