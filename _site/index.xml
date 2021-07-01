@@ -9,13 +9,14 @@
     <generator>Distill</generator>
     <lastBuildDate>Wed, 30 Jun 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>test_post</title>
+      <title>Current ICE Detention Population</title>
       <dc:creator>Nathan Craig</dc:creator>
-      <link>https://ncraig.netlify.app/posts/2021-06-30-testpost</link>
-      <description>A short description of the post.</description>
-      <guid>https://ncraig.netlify.app/posts/2021-06-30-testpost</guid>
+      <link>https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population</link>
+      <description>Current and regularly updated information on ICE detention population and COVID-19 levels.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population</guid>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://ncraig.netlify.app/posts/2021-06-30-testpost/testpost_files/figure-html5/pressure-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population/current-ice-detention-population_files/figure-html5/Cumulative-COVID-19-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>OCPC Monthly Detained Population Dec 2016-Aug 2020</title>
