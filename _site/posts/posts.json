@@ -1,26 +1,5 @@
 [
   {
-    "path": "posts/2021-05-19-canvas-and-r/",
-    "title": "Canvas LMS and R",
-    "description": "Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.",
-    "author": [
-      {
-        "name": "Nathan Craig",
-        "url": "https://ncraig.netlify.app/"
-      }
-    ],
-    "date": "2021-06-30",
-    "categories": [
-      "how-to"
-    ],
-    "contents": "\r\n\r\nContents\r\n1 Creating Exams\r\n2 Retrieving Grades\r\n3 Analysis of Grades\r\n\r\nHaving just recently submitted grades this Monday, I took a few minutes to write up some of the ways that I’m using R language resources with Canvas Learning Management System (LMS). I’ve documented the work flow that I use to:\r\ncreate exams using R\r\nimport those exams to Canvas\r\nretrieval of individual Canvas class grade books using R\r\nbasic exploratory data analysis of a single course Canvas grade book\r\nretrieval of multiple Canvas class grade books\r\nbasic analysis of multiple Canvas grade books\r\nTo learn more about this work flow please visit the repository website.\r\n1 Creating Exams\r\nI began using R with Canvas during the pandemic. As classes were moved online I needed to port physical paper exams taken in person on Scantron to the university’s online LMS which happens to be Canvas. I generally write questions in plain text and find Canvas’s quiz question creation tool incredibly cumbersome. There are paid for tools to convert text or word documents to a Canvas quiz, and I tried one of the demos but I didn’t care for it. Fortunately, there is the wonderful R/Exams or simply exams package which, among its many functions, allows one to convert a series of R Markdown files into an exam which can be imported into Canvas.\r\n2 Retrieving Grades\r\nI generally keep a spreadsheet in each class that contains grade information. However, I find that from class to class or semester to semester, I usually end up manipulating each grade book in slightly different ways. While looking at grades isn’t exactly “research” there is some investigation going on. Therefore, I seemed like the reproducible research philosophy of R would lend itself well to consistency in the treatment of grades.\r\nFortunately, there is the rcanvas library that allows one to make a secure connection to Canvas. From there, it is possible to retrieve a class list and individual course grade books. There are several other functions that I have not explored.\r\nIn addition to retrieving the grade books, I go through a few of the wrangling methods for getting the data into shape for a bit of EDA.\r\n3 Analysis of Grades\r\nI’ve taught some of the same classes on different semesters and different years. For some time, I’ve been keen to look at grade trends over time. The use of rcanvas and tidyverse functions along with plotting libraries like ggplot2 and ggstatsplot made this possible and reproducible.\r\nI hope dear reader that you will find my documentation of how I use R with Canvas useful.\r\n\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Sample plot showing scores of an exam created by the exams package, grades were retrieved by the rcanvas package.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png",
-    "last_modified": "2021-06-30T22:10:05-06:00",
-    "input_file": {},
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
     "path": "posts/2021-06-30-current-ice-detention-population/",
     "title": "Current ICE Detention Population",
     "description": "Daily updated information on ICE detention population and COVID-19 levels.",
@@ -80,6 +59,27 @@
     "preview": "posts/2021-05-23-ice-detention-covid-19-maps/ice-detention-covid-19-maps_files/figure-html5/unnamed-chunk-3-1.png",
     "last_modified": "2021-07-01T18:05:54-06:00",
     "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2021-05-19-canvas-and-r/",
+    "title": "Canvas LMS and R",
+    "description": "Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.",
+    "author": [
+      {
+        "name": "Nathan Craig",
+        "url": "https://ncraig.netlify.app/"
+      }
+    ],
+    "date": "2021-05-18",
+    "categories": [
+      "how-to"
+    ],
+    "contents": "\r\n\r\nContents\r\n1 Creating Exams\r\n2 Retrieving Grades\r\n3 Analysis of Grades\r\n\r\nHaving just recently submitted grades this Monday, I took a few minutes to write up some of the ways that I’m using R language resources with Canvas Learning Management System (LMS). I’ve documented the work flow that I use to:\r\ncreate exams using R\r\nimport those exams to Canvas\r\nretrieval of individual Canvas class grade books using R\r\nbasic exploratory data analysis of a single course Canvas grade book\r\nretrieval of multiple Canvas class grade books\r\nbasic analysis of multiple Canvas grade books\r\nTo learn more about this work flow please visit the repository website.\r\n1 Creating Exams\r\nI began using R with Canvas during the pandemic. As classes were moved online I needed to port physical paper exams taken in person on Scantron to the university’s online LMS which happens to be Canvas. I generally write questions in plain text and find Canvas’s quiz question creation tool incredibly cumbersome. There are paid for tools to convert text or word documents to a Canvas quiz, and I tried one of the demos but I didn’t care for it. Fortunately, there is the wonderful R/Exams or simply exams package which, among its many functions, allows one to convert a series of R Markdown files into an exam which can be imported into Canvas.\r\n2 Retrieving Grades\r\nI generally keep a spreadsheet in each class that contains grade information. However, I find that from class to class or semester to semester, I usually end up manipulating each grade book in slightly different ways. While looking at grades isn’t exactly “research” there is some investigation going on. Therefore, I seemed like the reproducible research philosophy of R would lend itself well to consistency in the treatment of grades.\r\nFortunately, there is the rcanvas library that allows one to make a secure connection to Canvas. From there, it is possible to retrieve a class list and individual course grade books. There are several other functions that I have not explored.\r\nIn addition to retrieving the grade books, I go through a few of the wrangling methods for getting the data into shape for a bit of EDA.\r\n3 Analysis of Grades\r\nI’ve taught some of the same classes on different semesters and different years. For some time, I’ve been keen to look at grade trends over time. The use of rcanvas and tidyverse functions along with plotting libraries like ggplot2 and ggstatsplot made this possible and reproducible.\r\nI hope dear reader that you will find my documentation of how I use R with Canvas useful.\r\n\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Sample plot showing scores of an exam created by the exams package, grades were retrieved by the rcanvas package.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png",
+    "last_modified": "2021-07-01T21:27:58-06:00",
+    "input_file": "canvas-and-r.knit.md",
     "preview_width": 1248,
     "preview_height": 768
   },

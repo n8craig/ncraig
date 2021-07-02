@@ -5,7 +5,7 @@ description: |
 author:
   - name: Nathan Craig 
     url: https://ncraig.netlify.app/
-date: "`r Sys.Date()`"
+date: 05-18-2021
 categories:
   - how-to
 output: 
