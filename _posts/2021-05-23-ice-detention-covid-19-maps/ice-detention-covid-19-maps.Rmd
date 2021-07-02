@@ -75,6 +75,36 @@ The following maps and graph are generated with data scraped from the [ICE Guida
 
 A map of cumulative COVID-19 cases by ICE detention facility over time.
 
+<aside>
+
+```{r}
+df <- df %>% 
+  filter(type !="Hotel")
+
+fig <- 
+  df %>% 
+  drop_na(type) %>% # Long term should resolve these records that don't match.!
+  ggplot(aes(x=longitude, y=latitude))+
+  borders("state")+
+  geom_point(alpha = 0.2,
+             aes(color = type,
+                 size = total_confirmed_covid_19_cases,
+                 frame = date,
+                 group = 1L
+                 ))+
+  guides(color = guide_legend(override.aes = list(alpha= 1)))+
+  coord_sf(xlim = c(-124,-68), ylim = c(24, 49.5), expand = TRUE)+
+  theme(legend.position = "right")+
+  labs(
+    title = "Cumulative COVID-19 Cases: {frame_time}",
+    caption = "Data source: https://www.ice.gov/coronavirus"
+    )+
+  guides(size = FALSE, alpha = FALSE)
+fig
+```
+
+</aside>
+
 ```{r}
 
 df <- df %>% 
