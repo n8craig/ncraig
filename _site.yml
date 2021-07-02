@@ -1,7 +1,7 @@
 name: "ncraig"
 title: "Nathan Craig"
 description: |
-  Nathan Craig's Personal Site
+  Nathan Craig's personal site.
 output_dir: "_site"
 base_url: https://ncraig.netlify.app
 repository_url: https://github.com/n8craig/ncraig
@@ -11,6 +11,8 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - icon: fa fa-rss
+      href: index.xml
 output: 
   distill::distill_article:
     toc: true
