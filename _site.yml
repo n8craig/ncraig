@@ -16,3 +16,6 @@ navbar:
 output: 
   distill::distill_article:
     toc: true
+collections:
+  posts:
+    share: [twitter, facebook, linkedin]
