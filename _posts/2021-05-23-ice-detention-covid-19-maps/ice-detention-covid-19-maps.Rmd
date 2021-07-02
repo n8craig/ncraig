@@ -96,7 +96,7 @@ fig <-
   coord_sf(xlim = c(-124,-68), ylim = c(24, 49.5), expand = TRUE)+
   theme(legend.position = "right")+
   labs(
-    title = "Cumulative COVID-19 Cases: {frame_time}",
+    title = "Cumulative COVID-19 Cases",
     caption = "Data source: https://www.ice.gov/coronavirus"
     )+
   guides(size = FALSE, alpha = FALSE)
