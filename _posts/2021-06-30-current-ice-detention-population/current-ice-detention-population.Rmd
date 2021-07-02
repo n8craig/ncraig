@@ -1,7 +1,7 @@
 ---
 title: "Current ICE Detention Population"
 description: |
-  Current and regularly updated information on ICE detention population and COVID-19 levels.
+  Daily updated information on ICE detention population and COVID-19 levels.
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
