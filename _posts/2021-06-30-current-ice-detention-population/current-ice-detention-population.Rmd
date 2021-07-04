@@ -58,7 +58,7 @@ df_summary <- read_csv("https://raw.githubusercontent.com/n8craig/ICE-COVID-19/m
   clean_names()
 ```
 
-# Total Detained Population
+# Current Total Detained Population
 
 ```{r}
 b_inaug <- df_summary %>% 
@@ -83,24 +83,6 @@ percent_change <- round((difference/lowest)*100,0)
 
 When President Biden took office, the detained population was `r b_inaug`. The lowest detention population was `r lowest` which was reported by ICE between March 9-15, 2021. This was just under three months into the Biden administration. However, by March 16 the detained population began rising again. As of `r format(Sys.Date(), "%B %e, %Y")`, the detained population is `r yesterday` which represents an increase of `r detention_change` detained individuals from the lowest point and a `r percent_change`% change from that value.
 
-<aside>
-
-```{r ICE-Detention-Population-Static}
-
-# ICE Detention Population Over Time
-ggplot(df_summary, aes(x=date, y=total_detained))+
-  geom_line()+
-  geom_point()+
-  geom_smooth()+
-  labs(
-    title = paste("ICE Detention Population as of", Sys.Date()),
-    x = "Date",
-    y = "Total Detained"
-  )
-```
-
-</aside>
-
 ```{r ICE-Detention-Population, layout="l-body-outset", fig.cap="ICE detention population plotted over time. Data source: https://www.ice.gov/coronavirus"}
 
 # ICE Detention Population Over Time
@@ -116,6 +98,8 @@ p <- ggplot(df_summary, aes(x=date, y=total_detained))+
   ggplotly(p)
 
 ```
+
+Note if a static file is desired, see Appendix A.
 
 # Active COVID-19 Cases in ICE Detention
 
@@ -167,4 +151,21 @@ ggplot(df_summary, aes(x=date, y=total_tested))+
     y = "Total Tested"
   )
 
+```
+
+# Appendix A: Static plot of total detained population {#appendix-a}
+
+```{r ICE-Detention-Population-Static, preview = TRUE}
+
+# ICE Detention Population Over Time
+ggplot(df_summary, aes(x=date, y=total_detained))+
+  geom_line()+
+  geom_point()+
+  geom_smooth()+
+  labs(
+    title = paste("ICE Detention Population as of", Sys.Date()),
+    caption = "Source: https://www.ice.gov/coronavirus",
+    x = "Date",
+    y = "Total Detained"
+  )
 ```
