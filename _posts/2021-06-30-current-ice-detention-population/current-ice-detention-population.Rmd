@@ -5,7 +5,7 @@ description: |
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
-date: 06-30-2021
+date: "`r Sys.Date()`"
 categories:
   - immigration
 output:
