@@ -24,7 +24,7 @@ creative_commons: CC BY-NC
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Last update: `r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`
+Page last updated: `r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`
 
 # Introduction
 

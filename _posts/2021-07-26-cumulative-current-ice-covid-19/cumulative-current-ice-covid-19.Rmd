@@ -1,0 +1,166 @@
+---
+title: "cumulative-current-ice-covid-19"
+description: |
+  Facet plot showing cumulative and current COVID-19 infections in ICE Detention.
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 2021-06-30
+categories:
+  - immigration
+output:
+  distill::distill_article:
+    self_contained: false
+    pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: true
+link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
+draft: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Page last updated: `r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`
+
+```{r}
+library(tidyverse)
+library(readr)
+library(janitor)
+library(stringi)
+library(lubridate)
+library(kableExtra)
+library(ggplot2)
+library(gghighlight)
+library(patchwork)
+```
+
+```{r read-data}
+df <- read.csv("https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data/covid_by_facility.csv") %>% 
+  clean_names()
+
+```
+
+```{r}
+df <- df %>% 
+  mutate(date = mdy(date),
+         total_confirmed_covid_19_cases = 
+           str_replace_all(total_confirmed_covid_19_cases, 
+                           "[^0-9]", ""),
+         total_confirmed_covid_19_cases =
+           as.numeric(total_confirmed_covid_19_cases),
+         
+         confirmed_cases_currently_under_isolation_or_monitoring = 
+           str_replace_all(confirmed_cases_currently_under_isolation_or_monitoring,
+                           "[^0-9]", ""),
+         confirmed_cases_currently_under_isolation_or_monitoring = as.numeric(confirmed_cases_currently_under_isolation_or_monitoring),
+         
+         detainee_deaths = as.numeric(detainee_deaths)
+         
+         ) %>% 
+  # Converting the date to as.Date was necessary as the cells were
+  # blank and thus not NA.
+  drop_na(date)
+```
+
+```{r clean-facility-names}
+df <- df %>% 
+  mutate(
+    custody_aor_facility = stri_enc_toutf8(custody_aor_facility),
+    
+    # need to remove wierd characters before string trim
+    # this is also helping get rid of some characters in 
+    # the Folkston entries
+    custody_aor_facility =  str_replace_all(
+      custody_aor_facility,
+      pattern = "[^A-Za-z0-9 (),;._-]",
+      replacement = " "),
+    
+    # some entries have whitespace
+    # needed to remove wierd characters before this worked
+    custody_aor_facility = str_trim(custody_aor_facility),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Folkston ICE Processing Center",
+              "Folkston ICE Processing Center (Main)"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Glades County Detentio8n Center",
+              "Glades County Detention Center"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Karnes County Residential Center",
+              "Karnes County Family Residential Center"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Monroe County Detention",
+              "Monroe County Detention - Dorm"),
+
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "South CEntral Regional Jail",
+              "South Central Regional Jail"),
+    
+      custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Sure Stay - Phoeniz (House of Joy)",
+              "Sure Stay - Phoenix (House of Joy)")
+    )
+```
+
+```{r}
+df %>% 
+  filter(custody_aor_facility == "La Palma Correctional Facility") %>% 
+  ggplot(aes(x=date, y = total_confirmed_covid_19_cases))+
+  geom_line()+
+  gghighlight()
+```
+
+```{r cumulative-facet}
+cumulative_facet <- df %>% 
+  filter(custody_aor_facility != "at local hospital") %>% 
+  ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
+  geom_line()+
+  gghighlight()+
+   theme(
+    strip.text = element_text(size = 5),
+    axis.text= element_text(size = 5)
+    )+
+  labs(title = "Cumulative COVID-19")+
+  xlab("Date")+
+  ylab("Cumulative COVID 19")+
+  facet_wrap(~ custody_aor_facility, ncol = 2)
+
+```
+
+```{r current-facet}
+current_facet <- df %>% 
+  filter(custody_aor_facility != "at local hospital") %>%
+  ggplot(aes(x=date, y = confirmed_cases_currently_under_isolation_or_monitoring, color = custody_aor_facility))+
+  geom_line()+
+  gghighlight()+
+   theme(
+    strip.text = element_text(size = 5),
+    axis.text= element_text(size = 5)
+    )+
+  labs(title = "Current COVID-19")+
+  xlab("Date")+
+  ylab("Current Active COVID-19")+
+  facet_wrap(~ custody_aor_facility, ncol = 2)
+```
+
+# Facet plot of cumulative and current COVID-19 in ICE detention over time
+
+Figure \@ref(fig:combined-facet-plot) shows both cumulative and current COVID-19 rates in ICE detention over time. Facilities are listed in alphabetical order.
+
+```{r combined-facet-plot, layout="l-screen", fig.height=100}
+cumulative_facet + current_facet
+```
