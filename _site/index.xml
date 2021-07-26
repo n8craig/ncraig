@@ -7,7 +7,17 @@
     <description>Nathan Craig's personal site.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 30 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Cumulative and Current COVID-19 in ICE Detention Over Time</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19</link>
+      <description>Facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19</guid>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/cumulative-current-ice-covid-19_files/figure-html5/combined-facet-plot-1.png" medium="image" type="image/png" width="1248" height="19200"/>
+    </item>
     <item>
       <title>Current ICE Detention Population</title>
       <dc:creator>Nathan Craig</dc:creator>

@@ -1,11 +1,11 @@
 ---
-title: "cumulative-current-ice-covid-19"
+title: "Cumulative and Current COVID-19 in ICE Detention Over Time"
 description: |
-  Facet plot showing cumulative and current COVID-19 infections in ICE Detention.
+  Facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
-date: 2021-06-30
+date: 2021-07-26
 categories:
   - immigration
 output:
@@ -14,18 +14,19 @@ output:
     pandoc_args: ["--number-sections"]
     df_print: paged
     toc: true
-    number_sections: true
+    number_sections: false
 link-citations: yes
 repository_url: https://github.com/n8craig/ncraig
 creative_commons: CC BY-NC
-draft: TRUE
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Page last updated: `r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`
+Page last updated: *`r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`*
+
+Facilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.
 
 ```{r}
 library(tidyverse)
@@ -116,15 +117,7 @@ df <- df %>%
     )
 ```
 
-```{r}
-df %>% 
-  filter(custody_aor_facility == "La Palma Correctional Facility") %>% 
-  ggplot(aes(x=date, y = total_confirmed_covid_19_cases))+
-  geom_line()+
-  gghighlight()
-```
-
-```{r cumulative-facet}
+```{r cumulative-facet, cache=TRUE}
 cumulative_facet <- df %>% 
   filter(custody_aor_facility != "at local hospital") %>% 
   ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
@@ -141,7 +134,7 @@ cumulative_facet <- df %>%
 
 ```
 
-```{r current-facet}
+```{r current-facet, cache=TRUE}
 current_facet <- df %>% 
   filter(custody_aor_facility != "at local hospital") %>%
   ggplot(aes(x=date, y = confirmed_cases_currently_under_isolation_or_monitoring, color = custody_aor_facility))+
@@ -157,10 +150,6 @@ current_facet <- df %>%
   facet_wrap(~ custody_aor_facility, ncol = 2)
 ```
 
-# Facet plot of cumulative and current COVID-19 in ICE detention over time
-
-Figure \@ref(fig:combined-facet-plot) shows both cumulative and current COVID-19 rates in ICE detention over time. Facilities are listed in alphabetical order.
-
-```{r combined-facet-plot, layout="l-screen", fig.height=100}
+```{r combined-facet-plot, cache=TRUE, layout="l-screen", fig.height=100, fig.cap="Combined cumulative and current COVID-19 in ICE detention over time."}
 cumulative_facet + current_facet
 ```
