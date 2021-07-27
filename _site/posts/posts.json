@@ -2,7 +2,7 @@
   {
     "path": "posts/2021-07-26-cumulative-current-ice-covid-19/",
     "title": "Cumulative and Current COVID-19 in ICE Detention Over Time",
-    "description": "Facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.",
+    "description": "Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.",
     "author": [
       {
         "name": "Nathan Craig",
@@ -13,9 +13,9 @@
     "categories": [
       "immigration"
     ],
-    "contents": "\r\n\r\nContents\r\nTop Plot\r\nFacet Plot\r\n\r\nPage last updated: Monday July 26, 2021 at 10:30:23 PM\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nTop Plot\r\n\r\n\r\n\r\nFacet Plot\r\nFacilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Combined cumulative and current COVID-19 in ICE detention over time.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\r\n\r\nContents\r\nTop Plot\r\nFacet Plot\r\n\r\nPage last updated: Tuesday July 27, 2021 at 09:14:33 AM\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nTop Plot\r\n\r\n\r\n\r\nFacet Plot\r\nFacilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Combined cumulative and current COVID-19 in ICE detention over time.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-07-26-cumulative-current-ice-covid-19/cumulative-current-ice-covid-19_files/figure-html5/unnamed-chunk-3-1.png",
-    "last_modified": "2021-07-26T22:30:34-06:00",
+    "last_modified": "2021-07-27T09:15:10-06:00",
     "input_file": "cumulative-current-ice-covid-19.knit.md",
     "preview_width": 1248,
     "preview_height": 1152

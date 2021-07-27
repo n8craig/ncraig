@@ -1,7 +1,7 @@
 ---
 title: "Cumulative and Current COVID-19 in ICE Detention Over Time"
 description: |
-  Facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.
+  Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
@@ -118,14 +118,14 @@ df <- df %>%
 
 # Top Plot {.unnumbered}
 
-```{r, fig.height=6}
+```{r, layout="l-body-outset", fig.height=6}
 cumulative_top <-  df %>% 
   filter(custody_aor_facility != "at local hospital") %>% 
   ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
    geom_line()+
    gghighlight(max(total_confirmed_covid_19_cases)> 850,
-               label_params = list(size = 2.5),
-               # hjust = 1
+               label_params = list(size = 2,
+                                   hjust = .7),
                )+
    
    
@@ -141,7 +141,8 @@ active_top <-  df %>%
    geom_line()+
    gghighlight(max(confirmed_cases_currently_under_isolation_or_monitoring, 
                    na.rm=TRUE)>200,
-               label_params = list(size = 2.5),
+               label_params = list(size = 2,
+                                   hjust = .7),
                # hjust = 1
                )+
    
