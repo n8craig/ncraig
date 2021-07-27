@@ -118,7 +118,7 @@ df <- df %>%
 
 # Top Plot {.unnumbered}
 
-```{r, fig.height=6.5}
+```{r, fig.height=6}
 cumulative_top <-  df %>% 
   filter(custody_aor_facility != "at local hospital") %>% 
   ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
