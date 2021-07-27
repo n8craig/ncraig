@@ -118,6 +118,8 @@ df <- df %>%
 
 # Top Plot {.unnumbered}
 
+The top plot highlights those facilities with \> 850 cumulative cases and facilities that experienced \>200 active COVID-19 cases in one day. While La Palma has the highest number of active cases, it did not have the largest maximum active cases. Adams which experienced a significant spike in active cases is not among those with more than 850 cumulative cases, meaning it is out of the top five, though is remains among the facilities with the highest number of cumulative cases. Similarly, Alexandria Staging Facility experienced a very large spike in active cases early on, it is not among the facilities with the highest number of cumulative cases.
+
 ```{r, layout="l-body-outset", fig.height=6}
 cumulative_top <-  df %>% 
   filter(custody_aor_facility != "at local hospital") %>% 
