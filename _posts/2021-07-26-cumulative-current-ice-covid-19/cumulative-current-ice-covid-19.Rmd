@@ -18,7 +18,7 @@ output:
 link-citations: yes
 repository_url: https://github.com/n8craig/ncraig
 creative_commons: CC BY-NC
-draft: TRUE
+draft: FALSE
 ---
 
 ```{r setup, include=FALSE}
@@ -26,8 +26,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 Page last updated: *`r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`*
-
-Facilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.
 
 ```{r}
 library(tidyverse)
@@ -117,6 +115,47 @@ df <- df %>%
               "Sure Stay - Phoenix (House of Joy)")
     )
 ```
+
+# Top Plot {.unnumbered}
+
+```{r, fig.height=6.5}
+cumulative_top <-  df %>% 
+  filter(custody_aor_facility != "at local hospital") %>% 
+  ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
+   geom_line()+
+   gghighlight(max(total_confirmed_covid_19_cases)> 850,
+               label_params = list(size = 2.5),
+               # hjust = 1
+               )+
+   
+   
+  labs(title = "Cumulative COVID-19",
+       subtitle = "Highlighting Facilities w >850\nCumulative COVID-19 cases")+
+  xlab("Date")+
+  ylab("Cumulative COVID 19")
+ 
+ 
+active_top <-  df %>% 
+  filter(custody_aor_facility != "at local hospital") %>% 
+  ggplot(aes(x=date, y = confirmed_cases_currently_under_isolation_or_monitoring, color = custody_aor_facility))+
+   geom_line()+
+   gghighlight(max(confirmed_cases_currently_under_isolation_or_monitoring, 
+                   na.rm=TRUE)>200,
+               label_params = list(size = 2.5),
+               # hjust = 1
+               )+
+   
+  labs(title = "Active COVID-19",
+       subtitle = "Highlighting Facilities w a max\nActive COVID-19 cases >200")+
+  xlab("Date")+
+  ylab("Active COVID 19")
+
+cumulative_top + active_top
+```
+
+# Facet Plot {.unnumbered}
+
+Facilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.
 
 ```{r cumulative-facet, cache=TRUE}
 cumulative_facet <- df %>% 
