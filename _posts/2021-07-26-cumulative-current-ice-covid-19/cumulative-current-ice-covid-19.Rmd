@@ -18,6 +18,7 @@ output:
 link-citations: yes
 repository_url: https://github.com/n8craig/ncraig
 creative_commons: CC BY-NC
+draft: TRUE
 ---
 
 ```{r setup, include=FALSE}
