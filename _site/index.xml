@@ -7,7 +7,16 @@
     <description>Nathan Craig's personal site.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>GDELT Summary Explorer API Calls in R</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r</link>
+      <description>This post looks at submitting API calls to GDELT within R. The focus is on the Summary Explorer and TV News dataset. After reviewing several methods, I conclude that the Explorer GUI is the best method to construct the request URL. From this an export URL can be constructed from the GUI and a little bit of manual editing to change the format of the request from JSON to CSV.</description>
+      <guid>https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r</guid>
+      <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/gdelt-summary-explorer-api-calls-in-r_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Cumulative and Current COVID-19 in ICE Detention Over Time</title>
       <dc:creator>Nathan Craig</dc:creator>
