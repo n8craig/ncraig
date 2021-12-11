@@ -15,6 +15,7 @@ output:
     df_print: paged
     toc: true
     number_sections: false
+    code_folding: true
 link-citations: yes
 repository_url: https://github.com/n8craig/ncraig
 creative_commons: CC BY-NC
@@ -26,7 +27,31 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r message = FALSE, warning = FALSE}
+# Introduction
+
+The Global Database of Events, Language, and Tone ([GDELT](https://www.gdeltproject.org/)) is a big data project created by Dr. Kalev Leetaru and others. Among the many [tools](https://analysis.gdeltproject.org/) offered by GDELT the Television Database Explorer and API is noteworthy. Figuring out how to use GDELT data can be a daunting experience and I am definately learning as I go. This page attempts to document some things I learned while digging into the Television Explorer. A key purpose to review methods for directly accessing the API within R for use in R Markdown. First, a word or two on why an anthropologist might be interested in a TV News database.
+
+In May of 2021, I used GDELT to [discuss](https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/) TV news coverage of Critical Race Theory (CRT) in response to an article in *The Atlantic Monthly*. Intriguingly, Dr. Leetaru [@leetaru2021; @leetaru2021a] included Critical Race Theory in brief news summaries from June 6 and another from November 10 of 2021. Apparently, he noticed a spike in coverage too. I cast my foray into GDELT data as an application of the "culturomics" [@michel2011; @leetaru2011] approach which involves the distant reading [@schulz2011; @moretti2013] of large quantities of media. Print media is central to the creation of shared experiences that form the basis of "imagined communities" undergirding the nation state [@anderson2006a]. If print media is key to creating a shared experience, then television (which is a richer and more immerse type of media than print) should also play a similar role in fostering shared experiences and views in contemporary society.
+
+In addition to creating imagined communities, media can also play an important role in the creation and spread of moral panics [@cohen2011; @cohen2011a; @moralpa2013]. In fact, media is a crucial ingredient in allowing moral panics to spread out of local contexts and can play a role in ranking the issue as among society's most pressing. One might think about the creation and spread of moral panics as miniature "imagined communities" of outraged believers that operate within larger national identities. GDELT is intriguing to me because it represents a way to examine large bodies of a type of complex media that permeates our lives. We can start to systematically track what are we as a society are being presented, when, for how long, and at what intensity? I think there is quite a bit more to consider in regards to media coverage of CRT. However here in this "how to", I want to discuss some things I learned about retrieval of GDELT TV data while trying to understand TV news coverage of CRT.
+
+<aside>
+
+Moral panic is manifest by: 1) collective action campaigns, 2) bills that criminalize the deviant behavior, 3) ranking of the issue high in the public's hierarchy, 4) public discussion of the issue in the media [@goode2009, 153].
+
+</aside>
+
+Application programming interfaces are a good way to access data in the spirit of reproducible research [@implemen2014], particularly when the data are regularly updated like GDELT. In the past, I used the [Television Explorer](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary) interface, downloaded a CSV file, and worked with it on my hard drive. While I was grateful for the data, this method involved doing analysis on a static file. I would rather access the API directly, pull in the comma delimited data, and make a data frame for further processing all programmatically within an R Markdown document. Moreover, I want that request and data frame output to be able to run at some point again in the future--perhaps even updated programmatically.
+
+I encountered three ways of communicating with the GDELT API inside R. Each has its own strengths and weaknesses. The three ways are:
+
+-   `reader::read_csv` permits finer control over parameters but takes some setting up. Though it involves manually editing long URLs, I find `read_csv` the preferred method.
+-   `newsflash::query_tv` is the simplest and fastest method. If monthly resolution data are suitable this may be a simple turnkey solution for some applications.
+-   `httr` and `jsonlite` will pull the data in JSON format with lots of ancillary information. I can also get back results from a CSV request. However, pulling out the desired product looks a bit daunting. Compared to `read_csv`, the `httr` and `jsonlite` method seem to involve several unnecessary steps.
+
+Below I illustrate each of these three methods discussing the strengths and weaknesses. I focus on `read_csv()` because I believe it the best method for my purposes. Let's call our libraries and get into it.
+
+```{r load-libraries, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(newsflash)
 library(httr)
@@ -35,30 +60,9 @@ library(ggplot2)
 library(patchwork)
 ```
 
-# Introduction
-
-The Global Database of Events, Language, and Tone ([GDELT](https://www.gdeltproject.org/)) is a big data project created by Dr. Kalev Leetaru and others. As of this writing, the project has more than fourteen different [tools](https://analysis.gdeltproject.org/). Though not listed among those tools, GDELT also offers the Television Database Explorer and API.
-
-In May of 2021, I used GDELT to [discuss](https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/) news coverage of Critical Race Theory (CRT). I used GDELT to leverage "culturomics 2.0" [@michel2011; @leetaru2011] involving the distant reading [@schulz2011; @moretti2013] of large quantities of broadcast media.
-
-Dr. Leetaru also included Critical Race Theory in two of his brief news summaries:
-
--   [How Has Television News Covered Critical Race Theory](https://www.realclearpolitics.com/video/2021/06/10/how_has_television_news_covered_critical_race_theory.html)? From June 6, 2021 in *RealClearPolitics*
--   [How Is Critical Race Theory Being Covered On Television News](https://www.realclearpolitics.com/video/2021/11/10/how_is_critical_race_theory_being_covered_on_television_news.html)? From November 10, 2021 in *RealClearPolitics*. I think there is quite a bit more to consider in regards to CRT. However, here I want to discuss some things I learned about retrieval of GDELT data along the way.
-
-Application programming interfaces are a good way to access data, particularly when they are regularly updated like GDELT. In the past, I used the [Television Explorer](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary) interface, downloaded a CSV file, and worked with that on my hard drive. While I was grateful for the data, this method involved doing analysis on a static file. I would rather access the API directly, pull in the comma delimited data, and make a data frame for further processing all in R. Moreover, I want that request and data frame output to be able to run at some point again in the future--perhaps even updated programmatically.
-
-I encountered three ways of communicating with the GDELT API. Each has its own strengths and weaknesses. The three ways are:
-
--   `newsflash::query_tv` is the simplest and fastest method and good for a quick check but may produce unexpected results.
--   `reader::read_csv` permits finer control over parameters but takes a some setting up. I find this is the preferred method.
--   `httr` and `jsonlite` will pull the data in JSON format with lots of ancillary information. However, returning the desired product (a CSV table) looks a bit daunting and compared to `read_csv` involves unnecessary steps. Below I illustrate each of these three methods discussing the strengths and weaknesses I identified with these approaches.
-
-I discuss `read_csv()` first and at the greatest length because I believe it the best method for retrieving a CSV file for further processing in R.
-
 # CSV API request to `readr::read_csv()`
 
-One of the GDELT 2.0 TV News API's six output [formats](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) is CSV. When an API request is made with `format=csv` the browser returns a CSV file. Therefore, a properly constructed GDELT TV News API request URL can be passed directly to `read_csv()` and the function will create a data frame. However, before doing that I discuss how to construct a request URL using the Explorer GUI and show how to set the output format to CSV.
+One of the GDELT 2.0 TV News API's six output [formats](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) is CSV. When an API request is made with `format=csv` the browser returns a CSV file. Therefore, a properly constructed GDELT TV News API request URL can be passed directly to `read_csv()` and the function will create a data frame. It is super simple, really that's it. Let's look at how to construct a request URL using the Explorer GUI and show how to set the output format to CSV. Then we'll be ready to drop that URL into a `read_csv()` call.
 
 ## Determining the API request parameters
 
@@ -69,20 +73,28 @@ GDELT 2.0 TV News API has a fair number of options; some really must be understo
 The [Explorer](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary) GUI lets users choose among 5 different data sets:
 
 -   **Global Online News Coverage**: Online textual news sources along with some images.
--   **Television News (Internet Archive)**: Full text search of complete raw closed captioning stream. [Announcement](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/)
--   **Television News AI (Internet Archive)**: Searches on visual entities, caption entities, automated speech recognition (ASR), caption keywords, and OCR of onscreen text. [Announcement](https://blog.gdeltproject.org/television-2-0-ai-api-debuts/)
+-   **Television News (Internet Archive)**: Full text search of complete raw closed captioning stream. See more [here](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/).
+-   **Television News AI (Internet Archive)**: Searches on visual entities, caption entities, automated speech recognition (ASR), caption keywords, and OCR of onscreen text. See more [here](https://blog.gdeltproject.org/television-2-0-ai-api-debuts/).
 -   **Chyron Explorer (Internet Archive)**: Search the Internet Archive's "[Third Eye](https://archive.org/services/third-eye.php)" OCR stream.
 -   **Chyron Browser**: Visual summaries of chyron text overlays for a specified date.
 
 Once the desired data set is selected, the Explorer GUI refreshes and the search fields change. Though the API request structure is similar across the five data sets, each is slightly different because the data being queried are either from different news sources (written, TV closed captions, TV chyrons) or are the same data sources processed in different ways (TV closed captions vs. AI). Knowing which data set one is working with is a key step to successfully using the Explorer GUI and getting a properly structured request URL. Here I discuss parameters related to the TV News data set.
 
-To the far right, in the section where it says "Enter Search" there is an blue "i" info button. Clicking this reveals hidden text that explains more about the data structure and how to construct searches. Each parameter has its own info button. Reading these entries carefully and consulting them frequently is useful for grasping the details of the search process. Note that these "i" buttons may not work properly in Firefox. They do work well with Chrome.
+To the far right, in the section where it says "Enter Search" there is an blue "i" info button. Clicking this reveals hidden text that explains more about the data structure and how to construct searches. Each parameter has its own info button. Reading these entries carefully and consulting them frequently is useful for grasping the details of the search process.
 
-![](https://i.imgur.com/L7r3FwI.png)
+> **Note:** The "i" buttons may not work properly in Firefox. They work in Chrome.
+
+<aside>
+
+```{r search-box}
+knitr::include_graphics("https://i.imgur.com/L7r3FwI.png")
+```
+
+</aside>
 
 ### Step 2: Output Type
 
-One must choose to display results of a single query "Summery Overview Dashboard" or a comparison of multiple queries "Comparison Visualization." Both types of output are useful and work in similar ways. Here, I discuss single query "Summery Overview Dashboard" results.
+One must choose to display results of a single query as a "Summery Overview Dashboard" or a comparison of multiple queries as a "Comparison Visualization." Both types of output are useful and work in similar ways. Here, I discuss single query "Summery Overview Dashboard" results.
 
 ### Step 3: Enter Search
 
@@ -115,27 +127,47 @@ Many big decisions are made in this section including the search term and severa
 
 Since the aim here is to obtain a data frame, the display parameters might not seem that important. However, by turning these settings on one can get a quick check on the search and also have a fuller sense of what was returned. For example, it can be informative to watch a couple of clips or review some of the visualizations. I recommend including zoomable timelines and including all displays possible. Note that for me the Google Trends Timeline does not function so I often turn it off.
 
-### Getting the link
+### Getting the link {#getting-the-link}
 
 Once search parameters are determined it is time to generate an export URL. Below are the steps I use to get a request URL to pass to `read_csv`:
 
 -   Using the GDELT Summary [Explorer](https://api.gdeltproject.org/api/v2/summary/summary?) GUI set the search terms and execute a search. This returns a web page in a new browser tab. Eg. Here is the search [summary](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary&k=%22critical+race+theory%22&ts=full&fs=station%3ACNN&fs=station%3AFOXNEWS&fs=station%3AMSNBC&svt=zoom&svts=zoom&swvt=zoom&ssc=yes&sshc=yes&swc=yes&stcl=yes&c=1) for "critical race theory".
 -   Check the results page noting the "Data Source" and "Human Summary" fields to confirm that the desired search was submitted. If the search is not correct, modify and resubmit.
--   If the desired search was submitted, then copy the URL to a text document for future use. *This is the permanent URL for this particular search and should be used when communicating results.* I see that Dr. Leetaru uses links to the summary page as a reference. I follow that convention.
 
-![](https://i.imgur.com/7kglrgi.png)
+```{r search-details}
+knitr::include_graphics("https://i.imgur.com/7kglrgi.png")
+```
 
+-   If the desired search was submitted, then copy the URL to a text document for future use. *This is the permanent URL for this particular search and should be used when communicating results.* Dr. Leetaru uses links to the summary page as a reference when writing on the web. I follow that convention.
 -   In the search results that are returned in the new page, find the "Export" hamburger menu and select "Save data as JSON". This selection also returns a new web page in a new tab.
 
-![](https://i.imgur.com/rhgtoa1.png)
+```{r export-interface}
+knitr::include_graphics("https://i.imgur.com/rhgtoa1.png")
+```
 
--   In that new tab, copy the URL and paste it into a text document.
+-   In that new tab, copy the URL and paste it into a text document (like an R Markdown file).
 -   Change the format variable of the URL from `format=json` to `format=csv`.
 -   Once the format parameter is changed, paste the modified URL into a `read_csv()` call. This will return the desired CSV file, which is read with `read_csv()`, and can be assigned to a variable like `df`.
 
 The examples below use an export URL with read_csv to create a data frame which is then passed to ggplot.
 
-```{r message = FALSE, warning = FALSE}
+> **NOTE:** In the code chunks, please forgive the long API URLs that neither scroll nor wrap. This is a persistent [issue](https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd) for which I found no clear resolution shy of breaking up the URL which is obviously undesirable. The cleanest method I envisioned to make the URL available is to put it in a link. Request URL's are supplied in a link to the right of the data frame.
+
+> **NOTE:** In the code chunk below, please notice the use of double quotes in the `search_term` variable. In R, [strings](https://r4ds.had.co.nz/strings.html#string-basics) are created under either single or double quotes, there is no difference. If the string contains `"` then in R it is generally recommended to use `'` for the outer quotes. I follow this convention. In doing this while working with the Explorer GUI, it is possible to copy the search directly from the box and place that whole term in single quotes.
+
+<aside>
+
+```{r search-list}
+knitr::include_graphics("https://i.imgur.com/DhhDMpL.png")
+```
+
+```{r results-list}
+knitr::include_graphics("https://i.imgur.com/2JwtvdN.png")
+```
+
+</aside>
+
+```{r read-csv-simple-call, message = FALSE, warning = FALSE, code_folding=FALSE}
 # paste in the text from the GUI search box.
 # note that entire string should be contained in single quotes
 search_term <- '"critical race theory"'
@@ -148,7 +180,13 @@ df <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FU
 df
 ```
 
-```{r}
+<aside>
+
+Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes).
+
+</aside>
+
+```{r read-csv-simple-plot, fig.cap="Sample output timeline of a simple search retrieved using `read_csv`."}
 df %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
@@ -163,18 +201,26 @@ ylab("% Airtime (15sec Blocks)")
 
 ### Complex Searches
 
-Below is an example illustrating a complex multi-term search on Critical Race Theory. One can see that the overall structure is similar to the prior figure but the amplitude of the highest peak is lower once some education related terms are used to constrain the search. This change in amplitude illustrates that a portion of the conversation around CRT is related to education.
+Below is an example illustrating a complex multi-term search on Critical Race Theory looking only at contexts where "school", "education", "classroom", and "school board" were not mentioned. One can see that the overall structure is similar to the prior figure but the amplitude of the highest peak is lower once some education related terms are used to constrain the search. This change in amplitude illustrates that a portion of the conversation around CRT is related to education.
 
-```{r message = FALSE, warning=FALSE}
+```{r read-csv-complex-call, message = FALSE, warning=FALSE, code_folding=FALSE, echo=FALSE}
 # the /n is added for a carriage return in the figure.
-search_term <- '"critical race theory" -context:"school" -context:"education"\n-context:"classroom" -context:"school board"'
+search_term <- '"critical race theory" -context:"school"\n -context:"education"-context:"classroom" -context:"school board"'
 
 df <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20-context:%22school%22%20-context:%22education%22%20-context:%22classroom%22%20-context:%22school%20board%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
   rename(date = 1,
          network = 2,
          value = 3) %>% 
   mutate(search = search_term)
+```
 
+<aside>
+
+Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20-context:%22school%22%20-context:%22education%22%20-context:%22classroom%22%20-context:%22school%20board%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes).
+
+</aside>
+
+```{r read-csv-complex-plot, fig.cap="Sample output timeline of a complex search retrieved using `read_csv`."}
 df %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
@@ -186,6 +232,27 @@ xlab("Date")+
 ylab("% Airtime (15sec Blocks)")
 ```
 
+### XXXXXXXXX Search Comparisons
+
+If at Step 3 one selects "Comparison Visualization" it is possible to compare multiple search results. To serve as an example, it is possible to compare mentions of "Critical Race Theory" in comparison to a search regarding the combined mentions of "evolution", "evolutionary theory", or "natural selection". What one finds is that at the peak of CRT coverage it was mentioned more frequently than all other terms combined.
+
+```{r}
+# df <- read_csv()  %>% 
+#   rename(date = 1,
+#          network = 2,
+#          value = 3) %>% 
+#   mutate(search = search_term)
+# 
+# df
+```
+
+```{=html}
+<style>
+.respviz { height: 400px; }
+@media screen and (min-width : 0px) and (max-width : 767px){ .respviz { height: 250px; } }
+</style>
+<iframe src="https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=compare&format=csv&k1=%22critical+race+theory%22&fs1=station%3ABLOOMBERG&fs1=station%3ACNBC&fs1=station%3ACNN&fs1=station%3ACSPAN&fs1=station%3ACSPAN2&fs1=station%3ACSPAN3&fs1=station%3AFBC&fs1=station%3AFOXNEWS&fs1=station%3AMSNBC&k2=%28evolution+OR+evolutionary+OR+%22natural+selection%22+OR+genetic+OR+genetics+OR+genomics+OR+genome%29&fs2=station%3ABLOOMBERG&fs2=station%3ACNBC&fs2=station%3ACNN&fs2=station%3ACSPAN&fs2=station%3ACSPAN2&fs2=station%3ACSPAN3&fs2=station%3AFBC&fs2=station%3AFOXNEWS&fs2=station%3AMSNBC&fs3=station%3ACNN&fs3=station%3AFOXNEWS&fs3=station%3AMSNBC&fs4=station%3ACNN&fs4=station%3AFOXNEWS&fs4=station%3AMSNBC&fcs=comb&stm=yes&c=1&cvt=embed&ct=timelinemerge" scrolling="no" width=100% frameborder="0" class="respviz"></iframe>
+```
 # API Request with `newsflash::query_tv`
 
 The `query_tv` function of the `newsflash` library provides a quick and easy way to access the Television Archive data set. I would like to learn more about building wrappers of this kind. While I'm very impressed by `query_tv` there are some matters to be aware of.
@@ -194,11 +261,9 @@ The `query_tv` function returns monthly results for the full time range of the d
 
 The `query_tv` only permits searching on a single term. This is equivalent to data displayed in and exportable from the Summary Overview Dashboard. Within `query_tv` I don't see options for Comparison Visualization. If searches on a single query are all that is required `query_tv` may be appropriate, but it can't handle query comparisons.
 
-As far as I can tell, `query_tv` does not have arguments for using `AND` operators. The Explorer GUI accepts multi-word search terms in quotes and accepts multiple search terms defaulting to an `AND` operator. For example, `"critical race theory" school"` returns a search of `"critical race theory" AND school`. At present I don't see a way to accomplish that with `query_tv`. If the search doesn't involve an `AND` operator, `query_tv` is a very efficient and quick tool.
-
-```{r warning = FALSE}
+```{r query-tv-simple-call, warning = FALSE, code_folding=FALSE}
 # search_term <- params$search
-search_term <- "critical race theory"
+search_term <- '"critical race theory"'
 
 starting_date <- NULL
 
@@ -213,7 +278,7 @@ df <- query_tv(search_term,
 df
 ```
 
-```{r}
+```{r query-tv-simple-plot, fig.cap="Sample results generated from `query_tv`."}
 df %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
@@ -225,18 +290,33 @@ xlab("Date")+
 ylab("% Airtime (15sec Blocks)")
 ```
 
-The GDELT interface treats words in quotes as exact phrases. The `query_tv` [documentation](https://github.com/hrbrmstr/newsflash/blob/master/R/newsflash.r) (line 17) states that "Anything found inside of quote marks is treated as an exact phrase search." Therefore, consistent with the TV Explorer a search on "[critical race theory](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary&k=%22critical+race+theory%22&ts=full&fs=station%3ACNN&fs=station%3AFOXNEWS&fs=station%3AMSNBC&svt=zoom&svts=zoom&swvt=zoom&ssc=yes&sshc=yes&swc=yes&stcl=yes&c=1)" (as of Dec 12, 2021 n=454) should not produce the same results as "[theory race critical](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary&k=%22theory+race+critical%22&ts=full&fs=station%3ACNN&fs=station%3AFOXNEWS&fs=station%3AMSNBC&svt=zoom&svts=zoom&swvt=zoom&ssc=yes&sshc=yes&swc=yes&stcl=yes&c=1)" (as of Dec 12, 2021 n=0). Yet, with `query_tv` they produce identical results which can be confirmed by a quick check of `identical(df1, df2)` after running the code below. In this case it returns `TRUE`. While the `query_tv` wrapper is wonderful for quick single word searches of monthly data, unforeseen and easily overlooked issues like this lead me to recommend constructing queries via the GDELT Summary Explorer GUI. The Explorer GUI also has the advantage of reporting how it interpreted the query.
+In the GDELT interface, if one wants to submit a multi-word search using `AND` operators the user simply enters a space delimited list of words (see note above). This returns a search composed of a series of words joined by `AND` Boolean operators.
 
-```{r}
-search_term1 <- "critical race theory"
-search_term2 <- "theory race critical"
-df1 <- query_tv(search_term)
-df2 <- query_tv(search_term)
+In R, when defining strings that need to contain quotation marks (`""`), which is the case with exact phrase searches of GDELT, it is important to use double quotes (i.e. `'""'`). Doing so will achieve the results of single quotes in the Explorer Search GUI. When working with `query_tv`, this very basic fact of R initially confused me and led to some unexpected results. I figured out the issue by generating some comparison graphs. In R, string variables must always be placed in quotes. Therefore, to get a string that contains quotes, one must use double quotes.
+
+```{r query-tv-comparison-searches, code_folding=FALSE}
+# search terms used to make following graph
+# note how the term is constructed noting the result
+search_term1 <- 'critical race theory'
+search_term2 <- '"critical race theory"'
+search_term3 <- 'theory race critical'
+search_term4 <- '"theory race critical"'
+search_term5 <- '(critical OR race OR theory)'
+search_term6 <- '"(critical OR race OR theory)"'
+```
+
+```{r query-tv-comparison-plot, fig.height = 8, fig.cap="Plot comparing the output of different search terms."}
+df1 <- query_tv(search_term1)
+df2 <- query_tv(search_term2)
+df3 <- query_tv(search_term3)
+df4 <- query_tv(search_term4)
+df5 <- query_tv(search_term5)
+df6 <- query_tv(search_term6)
 
 p1 <- df1 %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
-  labs(title = paste("Search Term:", search_term1),
+  labs(title = search_term1,
      color = "Network")+
   xlab("Date")+
   ylab("% Airtime (15sec Blocks)")+
@@ -245,25 +325,61 @@ p1 <- df1 %>%
 p2 <- df2 %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
-  labs(title = paste("Search Term:", search_term2),
+  labs(title = search_term2,
      color = "Network")+
   xlab("Date")+
   ylab("% Airtime (15sec Blocks)")+
   theme(legend.position = "none")
 
-p1 + p2 & plot_layout(guides = "collect")
+p3 <- df3 %>% 
+  ggplot(aes(date, value, color=network))+
+  geom_line(alpha = 0.75)+
+  labs(title = search_term3,
+     color = "Network")+
+  xlab("Date")+
+  ylab("% Airtime (15sec Blocks)")+
+  theme(legend.position = "none")
+
+p4 <- df4 %>% 
+  ggplot(aes(date, value, color=network))+
+  geom_line(alpha = 0.75)+
+  labs(title = search_term4,
+     color = "Network")+
+  xlab("Date")+
+  ylab("% Airtime (15sec Blocks)")+
+  theme(legend.position = "none")
+
+p5 <- df5 %>% 
+  ggplot(aes(date, value, color=network))+
+  geom_line(alpha = 0.75)+
+  labs(title = search_term5,
+     color = "Network")+
+  xlab("Date")+
+  ylab("% Airtime (15sec Blocks)")+
+  theme(legend.position = "none")
+
+p6 <- df6 %>% 
+  ggplot(aes(date, value, color=network))+
+  geom_line(alpha = 0.75)+
+  labs(title = search_term6,
+     color = "Network")+
+  xlab("Date")+
+  ylab("% Airtime (15sec Blocks)")+
+  theme(legend.position = "none")
+
+(p1+p2)/(p3+p4)/(p5+p6) & plot_layout(guides = "collect")
 
 ```
 
 # API Requests with `httr`
 
-When launching out to try to understand how to access API's via R I quickly encountered pages that discussed `httr`. I believe it to be a very common way of accessing API's via R. Dataquest's [Tutorial](https://www.dataquest.io/blog/r-api-tutorial/) on "Getting Started with APIs in R" was a useful introduction that illustrated how to use the `httr` library to make API requests. There are two working examples below. Using these methods, the data were returned as JSON and then converted.
+When launching out to try to understand how to access API's via R I quickly encountered pages that discussed `httr`. I believe it to be a very common way of accessing API's via R, and thus worth some mention. Dataquest's [Tutorial](https://www.dataquest.io/blog/r-api-tutorial/) on "Getting Started with APIs in R" was a useful introduction that illustrated how to use the `httr` library to make API requests. This is how I started out before reasoning that I could simply use `read_csv`. There are two working `httr` examples below.
 
 ## Basic API Request
 
-The example below illustrates how to make a simple API call.
+The example below illustrates how to make a simple API call; this is not to GDELT.
 
-```{r}
+```{r code_folding=FALSE}
 res <-  GET("http://api.open-notify.org/astros.json")
 data <-  fromJSON(rawToChar(res$content))
 df <- data$people
@@ -273,7 +389,7 @@ df <- data$people
 
 It is also possible to use `httr` to make API calls and define parameters. This could hold some interesting promise for working with GDELT.
 
-```{r}
+```{r code_folding=FALSE}
 res <- GET("http://api.open-notify.org/iss-pass.json", 
            query = list(
              lat = 40.7, 
@@ -286,19 +402,31 @@ df <- data$response
 
 Using the `GET()` method it was possible to issue a request to GEDELT 2.0 TV and receive JSON data. If `format` is set to `csv` it will return CSV data but not in a format I am not familiar with. It appears to be CSV data but in the RStudio Environment it lists the object as "Large response". I'm not sure how to actually access the data.
 
-```{r}
+```{r code_folding=FALSE}
 res <- GET("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")
 res
 ```
 
+<aside>
+
+Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes).
+
+</aside>
+
 If the request URL is set to `format=json` the data are returned but in a nested structure. The data of interest are broken into components and buried in a nested list. Assembling the desired table from this result would probably require `pluck` and `bind_rows`. The first item in the list is a list of the station names. The second item in the list is another list consisting of individual data frames for each of the stations.
 
-```{r}
+```{r code_folding=FALSE}
 res <- GET("https://api.gdeltproject.org/api/v2/tv/tv?format=json&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")
 
 data = fromJSON(rawToChar(res$content))
 df_list <- data$timeline
 df_list %>% pluck(1)
 ```
+
+<aside>
+
+Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=json&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes).
+
+</aside>
 
 Given that when the API parameters are set to `format=csv` it will return a CSV file it makes more sense to pass the request directly to `read_csv`. It would be good in principle to know how to reassemble the desired table from the JSON data, but in this context it seems unnecessary.
