@@ -373,38 +373,18 @@ p6 <- df6 %>%
 
 # API Requests with `httr`
 
-When launching out to try to understand how to access API's via R I quickly encountered pages that discussed `httr`. I believe it to be a very common way of accessing API's via R, and thus worth some mention. Dataquest's [Tutorial](https://www.dataquest.io/blog/r-api-tutorial/) on "Getting Started with APIs in R" was a useful introduction that illustrated how to use the `httr` library to make API requests. This is how I started out before reasoning that I could simply use `read_csv`. There are two working `httr` examples below.
+When launching out to try to understand how to access API's via R I quickly encountered pages that discussed `httr`. It seems to be a very common way of accessing API's via R, and thus worth some mention. The library's "Getting started with `httr`" [page](https://httr.r-lib.org/articles/quickstart.html) is the best place to start understanding how to use it. An R-bloggers [post](https://www.r-bloggers.com/2015/02/using-the-httr-package-to-retrieve-data-from-apis-in-r/) on "using the httr package to retrieve data from apis in R" is also very helpful.
 
-## Basic API Request
-
-The example below illustrates how to make a simple API call; this is not to GDELT.
-
-```{r code_folding=FALSE}
-res <-  GET("http://api.open-notify.org/astros.json")
-data <-  fromJSON(rawToChar(res$content))
-df <- data$people
-```
-
-## API Request with additional parameters
-
-It is also possible to use `httr` to make API calls and define parameters. This could hold some interesting promise for working with GDELT.
-
-```{r code_folding=FALSE}
-res <- GET("http://api.open-notify.org/iss-pass.json", 
-           query = list(
-             lat = 40.7, 
-             lon = -74))
-data = fromJSON(rawToChar(res$content))
-df <- data$response
-```
+I started out using `httr` before reasoning that I could simply use `read_csv`. There are some working `httr` examples below.
 
 ## Request to GDELT using `httr`: table embedded in JSON
 
-Using the `GET()` method it was possible to issue a request to GEDELT 2.0 TV and receive JSON data. If `format` is set to `csv` it will return CSV data but not in a format I am not familiar with. It appears to be CSV data but in the RStudio Environment it lists the object as "Large response". I'm not sure how to actually access the data.
+Using the `GET()` method it was possible to issue a request to GEDELT 2.0 TV and receive JSON data. If `format` is set to `csv` it will return CSV that just goes back to `read_csv`. In this case, it is easier to just pass the request URL directly to `read_csv`.
 
 ```{r code_folding=FALSE}
 res <- GET("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")
-res
+data <- rawToChar(res$content)
+read_csv(data)
 ```
 
 <aside>
@@ -413,14 +393,19 @@ Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan
 
 </aside>
 
-If the request URL is set to `format=json` the data are returned but in a nested structure. The data of interest are broken into components and buried in a nested list. Assembling the desired table from this result would probably require `pluck` and `bind_rows`. The first item in the list is a list of the station names. The second item in the list is another list consisting of individual data frames for each of the stations.
+If the request URL is set to `format=json` the data are returned but in nested json. The data of interest are broken into components and buried in a nested list. Assembling the desired table from this result would probably require `lapply` or `sapply` and `bind_rows`. The entities can be inspected with `pluck`. The first item in the list is a list of the station names. The second item in the list is another list consisting of individual data frames for each of the stations. It would be good in principle to know how to reassemble the desired table from the JSON data, but in this context it seems unnecessary because there are simpler methods to obtain the data table.
 
 ```{r code_folding=FALSE}
 res <- GET("https://api.gdeltproject.org/api/v2/tv/tv?format=json&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")
 
 data = fromJSON(rawToChar(res$content))
-df_list <- data$timeline
-df_list %>% pluck(1)
+data
+# df_list <- data$timeline
+# df_list %>% pluck(1)
+```
+
+```{r}
+data %>% pluck(2) %>% pluck(1)
 ```
 
 <aside>
@@ -429,4 +414,65 @@ Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=json&timespa
 
 </aside>
 
-Given that when the API parameters are set to `format=csv` it will return a CSV file it makes more sense to pass the request directly to `read_csv`. It would be good in principle to know how to reassemble the desired table from the JSON data, but in this context it seems unnecessary.
+## Further Fiddeling
+
+It is possible to build a request URL based on a set of input parameters. That request can then be passed to `read_csv` or `GET`.
+
+GDELT has a nice interface that lets users know what data set they searched and the details of the search term. The summary URL is a really nice general reference to the search from which a request URL can be created. However, some API's may not have a similar interface.
+
+```{r}
+query <- '"Critical Race Theory" school'
+query <- URLencode(query)
+query
+```
+
+```{r warning=FALSE}
+# Set parameters
+url <- "https://api.gdeltproject.org/api/v2/tv/tv?"
+
+query <- c('"critical race theory"', "-school")
+market <- '"National"'
+mode <- "timelinevol"
+format <- "csv"
+datanorm <- "perc"
+dateres <- "day"
+timelinesmooth <- 0
+datacomb <- "sep"
+last24 <- "yes"
+timezoom <- "yes"
+
+# Build a query string from a vector
+
+query <- toString(query) %>%
+  URLencode() %>%
+  str_remove(., ",")
+query <- paste("query=", query, sep = "")
+
+market <- URLencode(market)
+market <- paste("%20market:", market, sep = "")
+mode <- paste("mode=", mode, sep = "")
+format <- paste("format=", format, sep = "")
+datanorm <- paste("datanorm=", datanorm, sep="")
+dateres <- paste("dateres=", dateres, sep = "")
+timelinesmooth <- paste("timelinesmooth=", timelinesmooth, sep = "")
+datacomb <- paste("datacomb=", datacomb, sep = "")
+last24 <- paste("last24=", last24, sep = "")
+timezoom <- paste("timezoom=", timezoom, sep = "")
+
+# Build request URL
+request <- paste(url, query, market, sep = "")
+request <- paste(request, mode, format, datanorm, dateres, timelinesmooth, datacomb, last24, timezoom, sep = "&")
+```
+
+```{r}
+# Make GET request
+res <- GET(request)
+data = rawToChar(res$content)
+read_csv(data)
+```
+
+That seems like a lot of work to get the data when the `request` variable can just be passed to `read_csv` and return a data frame.
+
+```{r}
+read_csv(request)
+```
