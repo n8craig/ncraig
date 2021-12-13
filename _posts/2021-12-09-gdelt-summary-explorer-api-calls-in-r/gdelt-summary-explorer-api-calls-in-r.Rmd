@@ -236,7 +236,7 @@ Copy [request URL](https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan
 
 </aside>
 
-```{r read-csv-complex-plot, fig.cap="Sample output timeline of a complex search retrieved using `read_csv`."}
+```{r read-csv-complex-plot, fig.cap="Sample output timeline of a complex search retrieved using `read_csv`.", preview=TRUE}
 df %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
