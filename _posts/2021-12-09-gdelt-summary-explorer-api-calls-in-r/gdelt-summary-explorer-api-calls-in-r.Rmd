@@ -252,7 +252,11 @@ ylab("% Airtime (15sec Blocks)")
 
 If at Step 3 one selects "Comparison Visualization" it is possible to compare multiple search results. To serve as an example, it is possible to plot mentions of "Critical Race Theory" in comparison to a search regarding the combined mentions of "evolution", "evolutionary theory", or "natural selection". What one finds is that at the peak of CRT coverage it was mentioned more frequently than all other terms combined. Unfortunately, at this time the Summary Explorer GUI does not have an option to export JSON and I'm not presently sure how to construct the request URL.
 
-<aside>It is worth noting that equivalent data comparing searches can be produced by output from two Summery Overview Dashboards with each set to Combine Stations for a Single Timeline.</aside>
+<aside>
+
+It is worth noting that equivalent data comparing searches can be produced by output from two Summery Overview Dashboards with each set to Combine Stations for a Single Timeline.
+
+</aside>
 
 ```{=html}
 <style>
@@ -261,6 +265,41 @@ If at Step 3 one selects "Comparison Visualization" it is possible to compare mu
 </style>
 <iframe src="https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=compare&format=csv&k1=%22critical+race+theory%22&fs1=station%3ABLOOMBERG&fs1=station%3ACNBC&fs1=station%3ACNN&fs1=station%3ACSPAN&fs1=station%3ACSPAN2&fs1=station%3ACSPAN3&fs1=station%3AFBC&fs1=station%3AFOXNEWS&fs1=station%3AMSNBC&k2=%28evolution+OR+evolutionary+OR+%22natural+selection%22+OR+genetic+OR+genetics+OR+genomics+OR+genome%29&fs2=station%3ABLOOMBERG&fs2=station%3ACNBC&fs2=station%3ACNN&fs2=station%3ACSPAN&fs2=station%3ACSPAN2&fs2=station%3ACSPAN3&fs2=station%3AFBC&fs2=station%3AFOXNEWS&fs2=station%3AMSNBC&fs3=station%3ACNN&fs3=station%3AFOXNEWS&fs3=station%3AMSNBC&fs4=station%3ACNN&fs4=station%3AFOXNEWS&fs4=station%3AMSNBC&fcs=comb&stm=yes&c=1&cvt=embed&ct=timelinemerge" scrolling="no" width=100% frameborder="0" class="respviz"></iframe>
 ```
+```{r}
+search_term <- '"critical race theory"'
+df_crt <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=%22critical%20race%20theory%22%20(station:CNN%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
+  rename(date = 1,
+         network = 2,
+         value = 3) %>% 
+  mutate(search = search_term)
+
+search_term <- '(education or school or schools or classroom)'
+df_edu <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=(education%20or%20school%20or%20schools%20or%20classroom)%20(station:CNN%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
+  rename(date = 1,
+         network = 2,
+         value = 3) %>% 
+  mutate(search = search_term)
+
+df <- df_crt %>% inner_join(df_edu, by = c("date", "network")) %>% 
+  rename(CRT = value.x) %>% 
+  rename(EDU = value.y) %>% 
+  select(c(-search.x, -search.y)) %>% 
+  pivot_longer(cols = c(CRT, EDU), names_to = "search", values_to="value")
+
+```
+
+```{r}
+df %>% 
+  ggplot(aes(date, value, color=network))+
+  geom_line(alpha = 0.75)+
+  labs(title = paste("TV Volume Timeline:", search_term),
+     subtitle = "Coverage Volume Normalized Daily Resolution",
+     caption = "Data Source: https://api.gdeltproject.org/api/v2/summary/summary",
+     color = "Network")+
+xlab("Date")+
+ylab("% Airtime (15sec Blocks)")
+```
+
 # API Request with `newsflash::query_tv`
 
 The `query_tv` function of the `newsflash` library provides a quick and easy way to access the Television Archive data set. I would like to learn more about building wrappers of this kind. While I'm very impressed by `query_tv` there are some matters to be aware of when using it.
