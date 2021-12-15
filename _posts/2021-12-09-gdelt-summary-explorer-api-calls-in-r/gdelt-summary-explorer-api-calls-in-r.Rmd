@@ -265,39 +265,55 @@ It is worth noting that equivalent data comparing searches can be produced by ou
 </style>
 <iframe src="https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=compare&format=csv&k1=%22critical+race+theory%22&fs1=station%3ABLOOMBERG&fs1=station%3ACNBC&fs1=station%3ACNN&fs1=station%3ACSPAN&fs1=station%3ACSPAN2&fs1=station%3ACSPAN3&fs1=station%3AFBC&fs1=station%3AFOXNEWS&fs1=station%3AMSNBC&k2=%28evolution+OR+evolutionary+OR+%22natural+selection%22+OR+genetic+OR+genetics+OR+genomics+OR+genome%29&fs2=station%3ABLOOMBERG&fs2=station%3ACNBC&fs2=station%3ACNN&fs2=station%3ACSPAN&fs2=station%3ACSPAN2&fs2=station%3ACSPAN3&fs2=station%3AFBC&fs2=station%3AFOXNEWS&fs2=station%3AMSNBC&fs3=station%3ACNN&fs3=station%3AFOXNEWS&fs3=station%3AMSNBC&fs4=station%3ACNN&fs4=station%3AFOXNEWS&fs4=station%3AMSNBC&fcs=comb&stm=yes&c=1&cvt=embed&ct=timelinemerge" scrolling="no" width=100% frameborder="0" class="respviz"></iframe>
 ```
-```{r}
+### Search Comparison Fiddling (NOT PUBLISHED)
+
+For any search, like "[critical race theory](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary&k=%22critical+race+theory%22&ts=full&fs=station%3ABLOOMBERG&fs=station%3ACNBC&fs=station%3ACNN&fs=station%3ACSPAN&fs=station%3ACSPAN2&fs=station%3ACSPAN3&fs=station%3AFBC&fs=station%3AFOXNEWS&fs=station%3AMSNBC&fdr=day&svt=zoom&svts=zoom&swvt=zoom&ssc=yes&sshc=yes&swc=yes&stcl=yes&c=1)" one can return a wordcloud and list of most common terms from the 200 most relevant matching clips. At the bottom right of the wordcloud, there is a direct link to a CSV of the common terms. One can see that after removing the search terms (i.e. "Race", "Theory", and "Critical") four of the top five words relate to an educational setting: "School", "Schools", "Taught", and "Parents". Reviewing the 100 most frequent words, I made a list of terms related to the educational situation. We can call this a *theme dictionary* because it is a dictionary of terms related to our theme, which in this case is education. The theme dictionary can be used to perform a NOT filter on the main search term thereby returning clips where none of the theme dictionary terms are mentioned. Comparing the two provides a way to track the portion of coverage of a given query as it relates to a specific theme.
+
+```{r top-words}
 search_term <- '"critical race theory"'
-df_crt <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=%22critical%20race%20theory%22%20(station:CNN%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
+df <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&dateres=DAY&query=%22critical%20race%20theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=wordcloud")
+df
+```
+
+Search with theme dictionary filtered out of the query "[Critical Race Theory](https://api.gdeltproject.org/api/v2/summary/summary?d=iatv&t=summary&k=%22Critical+Race+Theory%22+-School+-Schools+-Taught+-Parents+-Teach+-Teaching+-Teachers+-Children+-Education+-Kids+-Students+-Professor+-Curriculum&ts=full&fs=station%3ABLOOMBERG&fs=station%3ACNBC&fs=station%3ACNN&fs=station%3ACSPAN&fs=station%3ACSPAN2&fs=station%3ACSPAN3&fs=station%3AFBC&fs=station%3AFOXNEWS&fs=station%3AMSNBC&svt=zoom&svts=zoom&swvt=zoom&ssc=yes&sshc=yes&swc=yes&stcl=yes&c=1)".
+
+```{r}
+search_term1 <- '"critical race theory"'
+df_1 <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=%22Critical%20Race%20Theory%22%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
   rename(date = 1,
          network = 2,
          value = 3) %>% 
   mutate(search = search_term)
+df_1
 
-search_term <- '(education or school or schools or classroom)'
-df_edu <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=(education%20or%20school%20or%20schools%20or%20classroom)%20(station:CNN%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
+search_term2 <- '"Critical Race Theory" -School -Schools -Taught -Parents -Teach -Teaching -Teachers -Children -Education -Kids -Students -Professor -Curriculum'
+df_2 <- read_csv("https://api.gdeltproject.org/api/v2/tv/tv?format=csv&timespan=FULL&last24=yes&query=%22Critical%20Race%20Theory%22%20-School%20-Schools%20-Taught%20-Parents%20-Teach%20-Teaching%20-Teachers%20-Children%20-Education%20-Kids%20-Students%20-Professor%20-Curriculum%20(station:BLOOMBERG%20OR%20station:CNBC%20OR%20station:CNN%20OR%20station:CSPAN%20OR%20station:CSPAN2%20OR%20station:CSPAN3%20OR%20station:FBC%20OR%20station:FOXNEWS%20OR%20station:MSNBC%20)%20&mode=timelinevol&timezoom=yes")  %>% 
   rename(date = 1,
          network = 2,
          value = 3) %>% 
   mutate(search = search_term)
+df_2
 
-df <- df_crt %>% inner_join(df_edu, by = c("date", "network")) %>% 
-  rename(CRT = value.x) %>% 
-  rename(EDU = value.y) %>% 
-  select(c(-search.x, -search.y)) %>% 
-  pivot_longer(cols = c(CRT, EDU), names_to = "search", values_to="value")
+# df <- df_crt %>% inner_join(df_edu, by = c("date", "network")) %>% 
+#   rename(CRT = value.x) %>% 
+#   rename(EDU = value.y) %>% 
+#   select(c(-search.x, -search.y)) %>% 
+#   pivot_longer(cols = c(CRT, EDU), names_to = "search", values_to="value")
 
 ```
 
 ```{r}
-df %>% 
+df_1 %>% 
   ggplot(aes(date, value, color=network))+
   geom_line(alpha = 0.75)+
-  labs(title = paste("TV Volume Timeline:", search_term),
+  labs(title = paste("TV Volume Timeline:", search_term1),
      subtitle = "Coverage Volume Normalized Daily Resolution",
      caption = "Data Source: https://api.gdeltproject.org/api/v2/summary/summary",
      color = "Network")+
 xlab("Date")+
 ylab("% Airtime (15sec Blocks)")
+
+
 ```
 
 # API Request with `newsflash::query_tv`
