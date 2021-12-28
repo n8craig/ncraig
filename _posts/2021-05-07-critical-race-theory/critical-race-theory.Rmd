@@ -503,6 +503,6 @@ Perhaps some school applications of CRT are misguided and in need of calibration
 
 *Fox*'s presentation of CRT, which is a soundly argued legal theory, as espousing white self loathing and hatred of the nation, is at the most generous I can muster--misguided over reaction. Even conservative writers have expressed concern over exaggerated treatments of CRT by the likes of *Breitbart* and *Fox*. At worse, the high volume of hyperbolically negative treatment of CRT by *Fox* suggests a calculated effort to create a moral panic by casting those who embrace anti-racist theory as dangerous folk devils who threaten the very fabric of society. The general expense of media coverage, the recent explosion of that coverage, its generally narrow sources, coupled with the explicit effort to organize and exercise political power to oppose CRT, point towards efforts to conjure a media base middle out moral panic, essentially systematic propagandizing, designed to sway public opinion. Intriguingly the panic seems largely directed at a theory, but is likely painted on those who espouse the ideas of CRT. Rather than name the problem of racism, define it, and work on the issue, some--it would seem, are unsatisfied merely ignoring the problem's existence--but seek to actively assert that addressing issue head on with clear eyes is itself a dangerous and divisive act. In many ways, *Fox*'s pearl clutching and moral panic over fabricated forms of CRT is actually well predicted by the theory itself.
 
-```{r}
+```{r ref-packages}
 knitr::write_bib(file = "packages.bib")
 ```

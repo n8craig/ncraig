@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Page last updated: *`r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`*
 
-```{r}
+```{r load-libraries}
 library(tidyverse)
 library(readr)
 library(janitor)
@@ -45,7 +45,7 @@ df <- read.csv("https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data
 
 ```
 
-```{r}
+```{r wrangle-data}
 df <- df %>% 
   mutate(date = mdy(date),
          total_confirmed_covid_19_cases = 
@@ -79,7 +79,7 @@ df <- df %>%
       custody_aor_facility,
       pattern = "[^A-Za-z0-9 (),;._-]",
       replacement = " "),
-    
+# Test ------
     # some entries have whitespace
     # needed to remove wierd characters before this worked
     custody_aor_facility = str_trim(custody_aor_facility),
@@ -120,7 +120,7 @@ df <- df %>%
 
 The top plot highlights those facilities with \> 850 cumulative cases and facilities that experienced \>200 active COVID-19 cases in one day. While La Palma has the highest number of active cases, it did not have the largest maximum active cases. Adams which experienced a significant spike in active cases is not among those with more than 850 cumulative cases, meaning it is out of the top five, though is remains among the facilities with the highest number of cumulative cases. Similarly, Alexandria Staging Facility experienced a very large spike in active cases early on, it is not among the facilities with the highest number of cumulative cases.
 
-```{r, layout="l-body-outset", fig.height=6}
+```{r COVID-plot, layout="l-body-outset", fig.height=6}
 cumulative_top <-  df %>% 
   filter(custody_aor_facility != "at local hospital") %>% 
   ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
