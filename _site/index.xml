@@ -7,7 +7,17 @@
     <description>Nathan Craig's personal site.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 09 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>GUI roundup for editing, plotting, and annotating</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating</link>
+      <description>A brief review of some graphical user interfaces (GUI's) for working with data in RStudio.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating</guid>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggplotgui-output-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>GDELT Summary Explorer API Calls in R</title>
       <dc:creator>Nathan Craig</dc:creator>

@@ -1,0 +1,265 @@
+---
+title: "GUI roundup for editing, plotting, and annotating"
+description: |
+  A brief review of some graphical user interfaces (GUI's) for working with data in RStudio.
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 01-03-2022
+categories:
+  - how-to
+output:
+  distill::distill_article:
+    self_contained: false
+    pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: true
+bibliography: packages.bib
+link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
+---
+
+# Introduction
+
+This post is a short roundup of some GUI's for R. The primary focus is on libraries that offer a GUI to `ggplot2` [@R-ggplot2] but a few other libraries related to data loading as well as plot annotation are also included. Lets load our libraries and get started.
+
+One of the big advantages of using R is keeping a record of how data are processed and presented. The instructions are written out in lines of code that use functions (verbs) to manipulate objects (nouns). This is great, it exposes what takes place under a GUI and leaves a clear record of what was done.
+
+However, visualizations are visual and it is nice to interact with them visually. In that context, a GUI makes sense. I enjoy plotting things in R, writing it out line by line, but sometimes it takes me a minute to quickly construct a plot. Also, I really don't care for annotating figures at the command line, guessing at coordinates iteratively and rebuilding until I get the figure correct. It is slow; I'd much prefer to click on the figure and move things around graphically.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load-libraries, message=FALSE, warning=FALSE}
+# graphing library
+library(ggplot2)
+
+# GUI's for ggplot
+library(ggplotgui)
+library(esquisse)
+
+# GUI's for annotation
+library(ggannotate)
+library(easylabel)
+
+# EDA
+library(explore)
+```
+
+# Editing Data
+
+When starting out, it can be tricky to wrangle data in R and a GUI can help get over some initial hurdles.
+
+## `DataEditR`
+
+The [`DataEDitR`](https://github.com/DillonHammill/DataEditR) library is for viewing, entering, filtering, and editing data. Once the library is installed, the GUI can be invoked as an RStudio Addon. It is possible to either edit data frames in the environment or open an external file. To edit a dataframe in the environment, just type its name into the "Data to edit:" box.
+
+Note that DataEditR can output the code applied to create the data manipulations. I have not tried this, but it could be a good way to learn the underlying code.
+
+## `rhandsontable`
+
+The [`rhandsontable`](https://cran.r-project.org/web/packages/rhandsontable/index.html) library is an interface to the [Handsontable.js](https://handsontable.com/) Library. Once the `rhandsontable` library is installed, the GUI can be invoked from the RStudio Adins menu. This tool can operate on dataframes that are loaded into the environment.
+
+# Plotting
+
+There are several GUI's for ggplot2 that can quickly render figures and provide code that can be further customized. Both `ggplotgui` and `esquisse` are handy and quick. I think `esquisse` is more powerful and being more actively developed, when I want a ggplot2 GUI it is what I use.
+
+## `ggplotgui`
+
+The [`ggplotgui`](https://github.com/gertstulp/ggplotgui) library [@R-ggplotgui] was begun about five years ago and does not look to have been updated since 2020. Still, it installed without issue and still works very well.
+
+-   Install: `remotes::install_github("mattcowgill/ggannotate")`
+
+-   Call the GUI by sending the following to the R console `ggplot_shiny()`. This will open a shiny interface.
+
+    ![](https://i.imgur.com/Acicltr.png)
+
+-   With the GUI running either load sample data, upload a file, or paste data from the clipboard.
+
+-   With some data loaded, switch to the `ggplot` tab.
+
+    ![](https://i.imgur.com/N0GH0ei.png)
+
+-   Set the type of graph to `scatter`.
+
+-   Set the Y and X variables; here we use city and hwy respectively.
+
+-   Consider an optional grouping variable.
+
+    ![](https://i.imgur.com/ovCpwOi.png)
+
+-   Add a title by clicking the "Change aesthetics" section on the right; click the "Text" tab and then tick "Add title".
+
+    ![](https://i.imgur.com/JP0KsJY.png)
+
+-   Note other settings that can be changed to the left and right of the plot.
+
+-   Click the "R-code" tab and copy the necessary code; read the comments noting that there are four sections in the code.
+
+-   Copy the section that creates the graph and paste it into an R Markdown document.
+
+-   For the figure to work, the data for the graph need to be assigned to the variable the graph calls. In this case, `df`. We used the `mpg` dataset, so we call it and assign to `df`. See code chunk below; note that ggplotgui defaults to `theme_bw()`.
+
+```{r ggplotgui-output}
+# Call the data and assign to a df
+data(mpg)
+df <- mpg
+
+# Code from ggplotgui:
+graph <- ggplot(df, aes(x = hwy, y = cty, colour = cyl)) +
+  geom_point() +
+  labs(x = 'hwy', y = 'cty') +
+  ggtitle('My Awesome Title: cty by hwy colored by cyl') +
+  theme_bw()
+graph
+```
+
+## `esquisse`
+
+The [`esquisse`](https://dreamrs.github.io/esquisse/) library is part of the dreamR group [@R-esquisse], there are eight contributors, and the project is currently being updated regularly. The GUI offers access to a wide range of functions.
+
+-   The library can be installed from CRAN by `install.packages("esquisse")`. Once the library is installed, the `esquisse` interface can be called from RStudio's Addins "ggplot2 builder" . Alternatively one can enter `esquisser()` into the R console to invoke the GUI. The interface is meant to be run interactively so `esquisser()` calls should not be placed in R Markdown code chunks.
+
+    ![](https://i.imgur.com/a3oGBma.png)
+
+-   With the GUI running, in the "Import" tab select a data source; in this case we'll pull up `mpg` loaded into the environment during a prior step. This dataset is part of `ggplot2`.
+
+    ![](https://i.imgur.com/XI0pkcO.png)
+
+-   Once the data are loaded, they can reviewed with the "View" tab and the column types modified in the "Update" tab; if modifying the column types be sure to click apply.
+
+-   Import the data by clicking "Import".
+
+-   Once imported, place variables in the appropriate X and Y slots; in this case,`hwy`in X and`cty`in Y with`cyl` in color.
+
+    ![](https://i.imgur.com/moyIeP1.png)
+
+-   Under "Labels & Tile" add some title text; we'll use the same one as above.
+
+    ![](https://i.imgur.com/6fkiASL.png)
+
+    ![](https://i.imgur.com/OKojUH9.png)
+
+-   To match the `ggplotgui` default, we can set the theme; click "Appearance" and set the Theme to `bw`.
+
+    ![](https://i.imgur.com/q4dKjDk.png)
+
+-   Once the plot is set up as desired click the "Code" button and copy the code or insert it directly into the script.
+
+    ![](https://i.imgur.com/MHJ4juK.png)
+
+The code below is pasted directly from `esquisse`. We set the options so the graph would look identical to the one produced by `ggplotgui`. notice how the code generated by `esquisse` is slightly different.
+
+```{r esquisse-output}
+# Plot generated by esquisse
+ggplot(mpg) +
+  aes(x = hwy, y = cty, colour = cyl) +
+  geom_point(shape = "circle", size = 1.5) +
+  scale_color_gradient() +
+  labs(title = "My Awesome Title: cty by hwy colored by cyl") +
+  theme_bw()
+```
+
+There are many other parameters that `esquisse` can modify. Pulling up the options exposes the full range of possibilities. I have not fully explored these.
+
+-   ![](https://i.imgur.com/QTtHKAY.png)
+
+# Annotation
+
+## `ggannotate`
+
+The [`ggannotate`](https://github.com/MattCowgill/ggannotate) library began around 2000 [@R-ggannotate], there are two contributors, it appears relatively actively updated, and it is still experimental.
+
+The interface is meant to be run interactively so `ggannotate` calls should not be placed in R Markdown code chunks. There are two ways to initiate a `ggannotate` session:
+
+1.  Paste the gall in the console. An example call to the library's interactive loading the graph example from above would be as follows: `ggannotate(graph)`.
+
+2.  Evoke the GUI via the RStudio Adins menu.
+
+    ![](https://i.imgur.com/ZmL5M7B.png)
+
+-   Use the GUI to create annotations, by clicking on the graph. Annotations can be built on several different layers and one can switch from layer to layer.
+
+    ![](https://i.imgur.com/NjLBCqc.png)
+
+-   Once the annotations are as desired click on "Copy and Close" then paste the annotations below the ggplot object. If there are multiple annotations, they are strung together with `+`. However, note that the tool does not seem to write very "neat" code in that the indentations are off. There may be a way to clean this up automatically.
+
+```{r ggannotate-sample-output, eval=FALSE}
+# Raw text copied from ggannotate
+geom_curve(data = data.frame(x = 28.3606748882948, y = 12.5481425844177, xend = 28.9568379194368, yend = 17.745856135804),
+mapping = aes(x = x, y = y, xend = xend, yend = yend),
+curvature = 0.305, arrow = arrow(30L, unit(0.1, "inches"),
+"last", "closed"),
+inherit.aes = FALSE) + 
+geom_text(data = data.frame(x = c(24.9029293076709, 30.6260944066346 ),
+y = c(12.2792953317598, 29.5751352527522),
+label = c("My second annotation", "My first annotation")),
+mapping = aes(x = x, y = y, label = label),
+inherit.aes = FALSE
+```
+
+```{r ggannotate-plot}
+# Graph object produced earlier
+graph +
+  
+# Cleaned up code copied from ggannotate
+  geom_curve(
+    data = data.frame(x = 28.3606748882948, 
+                      y = 12.5481425844177, 
+                      xend = 28.9568379194368, 
+                      yend = 17.745856135804),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    curvature = 0.305, arrow = arrow(30L, unit(0.1, "inches"),
+                                     "last", "closed"),
+    inherit.aes = FALSE) + 
+  geom_text(data = data.frame(x = c(24.9029293076709, 30.6260944066346 ),
+                              y = c(12.2792953317598, 29.5751352527522),
+                              label = c("My second annotation", "My first annotation")),
+            mapping = aes(x = x, y = y, label = label),
+            inherit.aes = FALSE)
+```
+
+## `easylabel`
+
+The [`easylabel`](https://cran.r-project.org/web/packages/easylabel/index.html) library is for interactive labeling of plots [@R-easylabel]. It looks to have been published in 2021 and its isn't clear how frequently the library is updated, though there were three [updates](https://cran.r-project.org/web/packages/easylabel/news/news.html) in 2021.
+
+The `easylabel` GUI is interactive, so other than loading the library, calls to `easylabel` should not be placed in R Markdown documents. To evoke the `easylabel` interface, call if from the console. Calls to `easylabel` must be supplied with a dataframe, rather than a plot object.
+
+Data points are labeled by clicking on the point. The direction of the annotation can be set or individual labels can be dragged into position. At present, the library only permits output as pdf or a plotly graph. The export to plotly option does not provide the underlying code. This library looks potentially very useful, but right now for new R users does not appear to permit easy integration into R Markdown documents. `easylabel` is one I plan on watching.
+
+-   ![](https://i.imgur.com/7IMlUYL.png)
+
+```{r easylabel-example, eval=FALSE}
+# Sample code to evoke easylabel
+easylabel(df, x="hwy", y = "cty",
+          colScheme = "royalblue")
+```
+
+# Exploratory Data Analysis
+
+## `explore`
+
+The [`explore`](https://github.com/rolkra/explore)library has two contributors and was updated recently [@R-explore]. `explore` seeks to facilitate interactive exploratory data analysis. The library also offers four verbs to facilitate quick EDA: `explore`, `describe`, `explain`, `report`. I have not dug into these, but the GUI offers some very quick and useful feedback on data structure.
+
+The GUI runs interactively and should not be placed into an R Markdown code chunk. Evoke the GUI by calling it in the console, and direct the call to a dataframe.
+
+```{r explore-example, eval=FALSE}
+explore(mpg)
+```
+
+From the GUI, the `report all` button generates a new HTML page with a wide range of graphs. The `explore` library has four helpful [vignettes](https://cran.r-project.org/web/packages/explore/index.html) showing different data sets. I found the [first vignette](https://cran.r-project.org/web/packages/explore/vignettes/explore.html) the most thorough and useful.
+
+-   ![](https://i.imgur.com/6UcxiAr.png)
+
+I think this can be a really useful tool for getting a first quick look or doing some probing. That is what it is built to do. Customizing and finalizing figures would require separate plotting.
+
+## `modelStudio`
+
+The [`modelStudio`](https://modelstudio.drwhy.ai/articles/ms-perks-features.html) library is part of the [DrWhy.AI](https://github.com/ModelOriented/DrWhy) family of libraries. The focus of the larger project seems to be model prediction. I have not worked with these tools, but `modelStudio` offers a GUI for exploring models and provides a means to generate data dashboards. This is certainly something to look into.
+
+```{r references, include=FALSE}
+knitr::write_bib(file = 'packages.bib')
+```

@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -85,55 +86,60 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time</title>
+<title>Nathan Craig: GUI roundup for editing, plotting, and annotating</title>
 
-<meta property="description" itemprop="description" content="Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility."/>
+<meta property="description" itemprop="description" content="A brief review of some graphical user interfaces (GUI&#39;s) for working with data in RStudio."/>
 
-<link rel="canonical" href="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"/>
+<link rel="canonical" href="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"/>
 <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2021-07-26"/>
-<meta property="article:created" itemprop="dateCreated" content="2021-07-26"/>
+<meta property="article:published" itemprop="datePublished" content="2022-01-03"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-01-03"/>
 <meta name="article:author" content="Nathan Craig"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time"/>
+<meta property="og:title" content="Nathan Craig: GUI roundup for editing, plotting, and annotating"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility."/>
-<meta property="og:url" content="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"/>
-<meta property="og:image" content="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/cumulative-current-ice-covid-19_files/figure-html5/COVID-plot-1.png"/>
+<meta property="og:description" content="A brief review of some graphical user interfaces (GUI&#39;s) for working with data in RStudio."/>
+<meta property="og:url" content="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"/>
+<meta property="og:image" content="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggplotgui-output-1.png"/>
 <meta property="og:image:width" content="1248"/>
-<meta property="og:image:height" content="1152"/>
+<meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Nathan Craig"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:title" content="Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time"/>
-<meta property="twitter:description" content="Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility."/>
-<meta property="twitter:url" content="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"/>
-<meta property="twitter:image" content="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/cumulative-current-ice-covid-19_files/figure-html5/COVID-plot-1.png"/>
+<meta property="twitter:title" content="Nathan Craig: GUI roundup for editing, plotting, and annotating"/>
+<meta property="twitter:description" content="A brief review of some graphical user interfaces (GUI&#39;s) for working with data in RStudio."/>
+<meta property="twitter:url" content="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"/>
+<meta property="twitter:image" content="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggplotgui-output-1.png"/>
 <meta property="twitter:image:width" content="1248"/>
-<meta property="twitter:image:height" content="1152"/>
+<meta property="twitter:image:height" content="768"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-<meta name="citation_title" content="Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time"/>
-<meta name="citation_fulltext_html_url" content="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"/>
+<meta name="citation_title" content="Nathan Craig: GUI roundup for editing, plotting, and annotating"/>
+<meta name="citation_fulltext_html_url" content="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"/>
 <meta name="citation_fulltext_world_readable" content=""/>
-<meta name="citation_online_date" content="2021/07/26"/>
-<meta name="citation_publication_date" content="2021/07/26"/>
+<meta name="citation_online_date" content="2022/01/03"/>
+<meta name="citation_publication_date" content="2022/01/03"/>
 <meta name="citation_author" content="Nathan Craig"/>
 <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Esquisse: Explore and visualize your data interactively;citation_publication_date=2021;citation_author=Fanny Meyer;citation_author=Victor Perrier"/>
+  <meta name="citation_reference" content="citation_title=Explore: Simplifies exploratory data analysis;citation_publication_date=2021;citation_author=Roland Krasser"/>
+  <meta name="citation_reference" content="citation_title=Ggannotate: Interactively annotate ggplot2 plots;citation_publication_date=2020;citation_author=Matt Cowgill"/>
+  <meta name="citation_reference" content="citation_title=ggplot2: Create elegant data visualisations using the grammar of graphics;citation_publication_date=2021;citation_author=Hadley Wickham;citation_author=Winston Chang;citation_author=Lionel Henry;citation_author=Thomas Lin Pedersen;citation_author=Kohske Takahashi;citation_author=Claus Wilke;citation_author=Kara Woo;citation_author=Hiroaki Yutani;citation_author=Dewey Dunnington"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","link-citations","repository_url","creative_commons","draft","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Cumulative and Current COVID-19 in ICE Detention Over Time"]},{"type":"character","attributes":{},"value":["Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Nathan Craig"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/"]}]}]},{"type":"character","attributes":{},"value":["2021-07-26"]},{"type":"character","attributes":{},"value":["immigration"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","pandoc_args","df_print","toc","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["--number-sections"]},{"type":"character","attributes":{},"value":["paged"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["https://github.com/n8craig/ncraig"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","bibliography","link-citations","repository_url","creative_commons","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["GUI roundup for editing, plotting, and annotating"]},{"type":"character","attributes":{},"value":["A brief review of some graphical user interfaces (GUI's) for working with data in RStudio."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Nathan Craig"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/"]}]}]},{"type":"character","attributes":{},"value":["01-03-2022"]},{"type":"character","attributes":{},"value":["how-to"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","pandoc_args","df_print","toc","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["--number-sections"]},{"type":"character","attributes":{},"value":["paged"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["packages.bib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["https://github.com/n8craig/ncraig"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"]},{"type":"character","attributes":{},"value":["https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["cumulative-current-ice-covid-19_files/anchor-4.2.2/anchor.min.js","cumulative-current-ice-covid-19_files/bowser-1.9.3/bowser.min.js","cumulative-current-ice-covid-19_files/distill-2.2.21/template.v2.js","cumulative-current-ice-covid-19_files/figure-html5/combined-facet-plot-1.png","cumulative-current-ice-covid-19_files/figure-html5/combined_facet_plot-1.png","cumulative-current-ice-covid-19_files/figure-html5/COVID-plot-1.png","cumulative-current-ice-covid-19_files/figure-html5/unnamed-chunk-3-1.png","cumulative-current-ice-covid-19_files/header-attrs-2.11/header-attrs.js","cumulative-current-ice-covid-19_files/header-attrs-2.8/header-attrs.js","cumulative-current-ice-covid-19_files/jquery-1.11.3/jquery.min.js","cumulative-current-ice-covid-19_files/jquery-3.6.0/jquery-3.6.0.js","cumulative-current-ice-covid-19_files/jquery-3.6.0/jquery-3.6.0.min.js","cumulative-current-ice-covid-19_files/jquery-3.6.0/jquery-3.6.0.min.map","cumulative-current-ice-covid-19_files/popper-2.6.0/popper.min.js","cumulative-current-ice-covid-19_files/tippy-6.2.7/tippy-bundle.umd.min.js","cumulative-current-ice-covid-19_files/tippy-6.2.7/tippy-light-border.css","cumulative-current-ice-covid-19_files/tippy-6.2.7/tippy.css","cumulative-current-ice-covid-19_files/tippy-6.2.7/tippy.umd.min.js","cumulative-current-ice-covid-19_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["gui-roundup-for-editing-plotting-and-annotating_files/anchor-4.2.2/anchor.min.js","gui-roundup-for-editing-plotting-and-annotating_files/bowser-1.9.3/bowser.min.js","gui-roundup-for-editing-plotting-and-annotating_files/distill-2.2.21/template.v2.js","gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/esquisse-output-1.png","gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggannotate-plot-1.png","gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggplotgui-output-1.png","gui-roundup-for-editing-plotting-and-annotating_files/header-attrs-2.11/header-attrs.js","gui-roundup-for-editing-plotting-and-annotating_files/jquery-3.6.0/jquery-3.6.0.js","gui-roundup-for-editing-plotting-and-annotating_files/jquery-3.6.0/jquery-3.6.0.min.js","gui-roundup-for-editing-plotting-and-annotating_files/jquery-3.6.0/jquery-3.6.0.min.map","gui-roundup-for-editing-plotting-and-annotating_files/popper-2.6.0/popper.min.js","gui-roundup-for-editing-plotting-and-annotating_files/tippy-6.2.7/tippy-bundle.umd.min.js","gui-roundup-for-editing-plotting-and-annotating_files/tippy-6.2.7/tippy-light-border.css","gui-roundup-for-editing-plotting-and-annotating_files/tippy-6.2.7/tippy.css","gui-roundup-for-editing-plotting-and-annotating_files/tippy-6.2.7/tippy.umd.min.js","gui-roundup-for-editing-plotting-and-annotating_files/webcomponents-2.0.0/webcomponents.js","packages.bib"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2078,7 +2084,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Cumulative and Current COVID-19 in ICE Detention Over Time","description":"Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.","authors":[{"author":"Nathan Craig","authorURL":"https://ncraig.netlify.app/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-07-26T00:00:00.000-06:00","citationText":"Craig, 2021"}
+{"title":"GUI roundup for editing, plotting, and annotating","description":"A brief review of some graphical user interfaces (GUI's) for working with data in RStudio.","authors":[{"author":"Nathan Craig","authorURL":"https://ncraig.netlify.app/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-03T00:00:00.000-07:00","citationText":"Craig, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2104,19 +2110,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Cumulative and Current COVID-19 in ICE Detention Over Time</h1>
+<h1>GUI roundup for editing, plotting, and annotating</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-  <a href="../../index.html#category:immigration" class="dt-tag">immigration</a>
+  <a href="../../index.html#category:how-to" class="dt-tag">how-to</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.</p></p>
+<p><p>A brief review of some graphical user interfaces (GUI’s) for working with data in RStudio.</p></p>
 </div>
 
 <div class="d-byline">
   Nathan Craig <a href="https://ncraig.netlify.app/" class="uri">https://ncraig.netlify.app/</a> 
   
-<br/>2021-07-26
+<br/>01-03-2022
 </div>
 
 <div class="d-article">
@@ -2124,62 +2130,251 @@ document.addEventListener('DOMContentLoaded', function() {
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#top-plot">Top Plot</a></li>
-<li><a href="#facet-plot">Facet Plot</a></li>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#editing-data"><span class="toc-section-number">2</span> Editing Data</a>
+<ul>
+<li><a href="#dataeditr"><span class="toc-section-number">2.1</span> <code>DataEditR</code></a></li>
+<li><a href="#rhandsontable"><span class="toc-section-number">2.2</span> <code>rhandsontable</code></a></li>
+</ul></li>
+<li><a href="#plotting"><span class="toc-section-number">3</span> Plotting</a>
+<ul>
+<li><a href="#ggplotgui"><span class="toc-section-number">3.1</span> <code>ggplotgui</code></a></li>
+<li><a href="#esquisse"><span class="toc-section-number">3.2</span> <code>esquisse</code></a></li>
+</ul></li>
+<li><a href="#annotation"><span class="toc-section-number">4</span> Annotation</a>
+<ul>
+<li><a href="#ggannotate"><span class="toc-section-number">4.1</span> <code>ggannotate</code></a></li>
+<li><a href="#easylabel"><span class="toc-section-number">4.2</span> <code>easylabel</code></a></li>
+</ul></li>
+<li><a href="#exploratory-data-analysis"><span class="toc-section-number">5</span> Exploratory Data Analysis</a>
+<ul>
+<li><a href="#explore"><span class="toc-section-number">5.1</span> <code>explore</code></a></li>
+<li><a href="#modelstudio"><span class="toc-section-number">5.2</span> <code>modelStudio</code></a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<p>Page last updated: <em>Monday January 03, 2022 at 05:00:34 PM</em></p>
+<h1 data-number="1" id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>This post is a short roundup of some GUI’s for R. The primary focus is on libraries that offer a GUI to <code>ggplot2</code> <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham et al. 2021</a>)</span> but a few other libraries related to data loading as well as plot annotation are also included. Lets load our libraries and get started.</p>
+<p>One of the big advantages of using R is keeping a record of how data are processed and presented. The instructions are written out in lines of code that use functions (verbs) to manipulate objects (nouns). This is great, it exposes what takes place under a GUI and leaves a clear record of what was done.</p>
+<p>However, visualizations are visual and it is nice to interact with them visually. In that context, a GUI makes sense. I enjoy plotting things in R, writing it out line by line, but sometimes it takes me a minute to quickly construct a plot. Also, I really don’t care for annotating figures at the command line, guessing at coordinates iteratively and rebuilding until I get the figure correct. It is slow; I’d much prefer to click on the figure and move things around graphically.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># graphing library</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 
+<span class='co'># GUI's for ggplot</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/gertstulp/ggplotgui/'>ggplotgui</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/dreamRs/esquisse'>esquisse</a></span><span class='op'>)</span>
+
+<span class='co'># GUI's for annotation</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MattCowgill/ggannotate'>ggannotate</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>easylabel</span><span class='op'>)</span>
+
+<span class='co'># EDA</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rolkra/explore/'>explore</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 data-number="2" id="editing-data"><span class="header-section-number">2</span> Editing Data</h1>
+<p>When starting out, it can be tricky to wrangle data in R and a GUI can help get over some initial hurdles.</p>
+<h2 data-number="2.1" id="dataeditr"><span class="header-section-number">2.1</span> <code>DataEditR</code></h2>
+<p>The <a href="https://github.com/DillonHammill/DataEditR"><code>DataEDitR</code></a> library is for viewing, entering, filtering, and editing data. Once the library is installed, the GUI can be invoked as an RStudio Addon. It is possible to either edit data frames in the environment or open an external file. To edit a dataframe in the environment, just type its name into the “Data to edit:” box.</p>
+<p>Note that DataEditR can output the code applied to create the data manipulations. I have not tried this, but it could be a good way to learn the underlying code.</p>
+<h2 data-number="2.2" id="rhandsontable"><span class="header-section-number">2.2</span> <code>rhandsontable</code></h2>
+<p>The <a href="https://cran.r-project.org/web/packages/rhandsontable/index.html"><code>rhandsontable</code></a> library is an interface to the <a href="https://handsontable.com/">Handsontable.js</a> Library. Once the <code>rhandsontable</code> library is installed, the GUI can be invoked from the RStudio Adins menu. This tool can operate on dataframes that are loaded into the environment.</p>
+<h1 data-number="3" id="plotting"><span class="header-section-number">3</span> Plotting</h1>
+<p>There are several GUI’s for ggplot2 that can quickly render figures and provide code that can be further customized. Both <code>ggplotgui</code> and <code>esquisse</code> are handy and quick. I think <code>esquisse</code> is more powerful and being more actively developed, when I want a ggplot2 GUI it is what I use.</p>
+<h2 data-number="3.1" id="ggplotgui"><span class="header-section-number">3.1</span> <code>ggplotgui</code></h2>
+<p>The <a href="https://github.com/gertstulp/ggplotgui"><code>ggplotgui</code></a> library <span class="citation" data-cites="R-ggplotgui">(<a href="#ref-R-ggplotgui" role="doc-biblioref">Stulp 2017</a>)</span> was begun about five years ago and does not look to have been updated since 2020. Still, it installed without issue and still works very well.</p>
+<ul>
+<li><p>Install: <code>remotes::install_github("mattcowgill/ggannotate")</code></p></li>
+<li><p>Call the GUI by sending the following to the R console <code>ggplot_shiny()</code>. This will open a shiny interface.</p>
+<p><img src="https://i.imgur.com/Acicltr.png" /></p></li>
+<li><p>With the GUI running either load sample data, upload a file, or paste data from the clipboard.</p></li>
+<li><p>With some data loaded, switch to the <code>ggplot</code> tab.</p>
+<p><img src="https://i.imgur.com/N0GH0ei.png" /></p></li>
+<li><p>Set the type of graph to <code>scatter</code>.</p></li>
+<li><p>Set the Y and X variables; here we use city and hwy respectively.</p></li>
+<li><p>Consider an optional grouping variable.</p>
+<p><img src="https://i.imgur.com/ovCpwOi.png" /></p></li>
+<li><p>Add a title by clicking the “Change aesthetics” section on the right; click the “Text” tab and then tick “Add title.”</p>
+<p><img src="https://i.imgur.com/JP0KsJY.png" /></p></li>
+<li><p>Note other settings that can be changed to the left and right of the plot.</p></li>
+<li><p>Click the “R-code” tab and copy the necessary code; read the comments noting that there are four sections in the code.</p></li>
+<li><p>Copy the section that creates the graph and paste it into an R Markdown document.</p></li>
+<li><p>For the figure to work, the data for the graph need to be assigned to the variable the graph calls. In this case, <code>df</code>. We used the <code>mpg</code> dataset, so we call it and assign to <code>df</code>. See code chunk below; note that ggplotgui defaults to <code>theme_bw()</code>.</p></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Call the data and assign to a df</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>mpg</span>
+
+<span class='co'># Code from ggplotgui:</span>
+<span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hwy</span>, y <span class='op'>=</span> <span class='va'>cty</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>'hwy'</span>, y <span class='op'>=</span> <span class='st'>'cty'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>'My Awesome Title: cty by hwy colored by cyl'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>graph</span>
+</code></pre>
+</div>
+<p><img src="gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggplotgui-output-1.png" width="624" /></p>
+</div>
+<h2 data-number="3.2" id="esquisse"><span class="header-section-number">3.2</span> <code>esquisse</code></h2>
+<p>The <a href="https://dreamrs.github.io/esquisse/"><code>esquisse</code></a> library is part of the dreamR group <span class="citation" data-cites="R-esquisse">(<a href="#ref-R-esquisse" role="doc-biblioref">Meyer and Perrier 2021</a>)</span>, there are eight contributors, and the project is currently being updated regularly. The GUI offers access to a wide range of functions.</p>
+<ul>
+<li><p>The library can be installed from CRAN by <code>install.packages("esquisse")</code>. Once the library is installed, the <code>esquisse</code> interface can be called from RStudio’s Addins “ggplot2 builder” . Alternatively one can enter <code>esquisser()</code> into the R console to invoke the GUI. The interface is meant to be run interactively so <code>esquisser()</code> calls should not be placed in R Markdown code chunks.</p>
+<p><img src="https://i.imgur.com/a3oGBma.png" /></p></li>
+<li><p>With the GUI running, in the “Import” tab select a data source; in this case we’ll pull up <code>mpg</code> loaded into the environment during a prior step. This dataset is part of <code>ggplot2</code>.</p>
+<p><img src="https://i.imgur.com/XI0pkcO.png" /></p></li>
+<li><p>Once the data are loaded, they can reviewed with the “View” tab and the column types modified in the “Update” tab; if modifying the column types be sure to click apply.</p></li>
+<li><p>Import the data by clicking “Import.”</p></li>
+<li><p>Once imported, place variables in the appropriate X and Y slots; in this case,<code>hwy</code>in X and<code>cty</code>in Y with<code>cyl</code> in color.</p>
+<p><img src="https://i.imgur.com/moyIeP1.png" /></p></li>
+<li><p>Under “Labels &amp; Tile” add some title text; we’ll use the same one as above.</p>
+<p><img src="https://i.imgur.com/6fkiASL.png" /></p>
+<p><img src="https://i.imgur.com/OKojUH9.png" /></p></li>
+<li><p>To match the <code>ggplotgui</code> default, we can set the theme; click “Appearance” and set the Theme to <code>bw</code>.</p>
+<p><img src="https://i.imgur.com/q4dKjDk.png" /></p></li>
+<li><p>Once the plot is set up as desired click the “Code” button and copy the code or insert it directly into the script.</p>
+<p><img src="https://i.imgur.com/MHJ4juK.png" /></p></li>
+</ul>
+<p>The code below is pasted directly from <code>esquisse</code>. We set the options so the graph would look identical to the one produced by <code>ggplotgui</code>. notice how the code generated by <code>esquisse</code> is slightly different.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot generated by esquisse</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hwy</span>, y <span class='op'>=</span> <span class='va'>cty</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='st'>"circle"</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_color_gradient</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"My Awesome Title: cty by hwy colored by cyl"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/esquisse-output-1.png" width="624" /></p>
+</div>
+<p>There are many other parameters that <code>esquisse</code> can modify. Pulling up the options exposes the full range of possibilities. I have not fully explored these.</p>
+<ul>
+<li><img src="https://i.imgur.com/QTtHKAY.png" /></li>
+</ul>
+<h1 data-number="4" id="annotation"><span class="header-section-number">4</span> Annotation</h1>
+<h2 data-number="4.1" id="ggannotate"><span class="header-section-number">4.1</span> <code>ggannotate</code></h2>
+<p>The <a href="https://github.com/MattCowgill/ggannotate"><code>ggannotate</code></a> library began around 2000 <span class="citation" data-cites="R-ggannotate">(<a href="#ref-R-ggannotate" role="doc-biblioref">Cowgill 2020</a>)</span>, there are two contributors, it appears relatively actively updated, and it is still experimental.</p>
+<p>The interface is meant to be run interactively so <code>ggannotate</code> calls should not be placed in R Markdown code chunks. There are two ways to initiate a <code>ggannotate</code> session:</p>
+<ol type="1">
+<li><p>Paste the gall in the console. An example call to the library’s interactive loading the graph example from above would be as follows: <code>ggannotate(graph)</code>.</p></li>
+<li><p>Evoke the GUI via the RStudio Adins menu.</p>
+<p><img src="https://i.imgur.com/ZmL5M7B.png" /></p></li>
+</ol>
+<ul>
+<li><p>Use the GUI to create annotations, by clicking on the graph. Annotations can be built on several different layers and one can switch from layer to layer.</p>
+<p><img src="https://i.imgur.com/NjLBCqc.png" /></p></li>
+<li><p>Once the annotations are as desired click on “Copy and Close” then paste the annotations below the ggplot object. If there are multiple annotations, they are strung together with <code>+</code>. However, note that the tool does not seem to write very “neat” code in that the indentations are off. There may be a way to clean this up automatically.</p></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw text copied from ggannotate</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_curve</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">28.3606748882948</span>, <span class="at">y =</span> <span class="fl">12.5481425844177</span>, <span class="at">xend =</span> <span class="fl">28.9568379194368</span>, <span class="at">yend =</span> <span class="fl">17.745856135804</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">curvature =</span> <span class="fl">0.305</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(30L, <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;last&quot;</span>, <span class="st">&quot;closed&quot;</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">24.9029293076709</span>, <span class="fl">30.6260944066346</span> ),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="fu">c</span>(<span class="fl">12.2792953317598</span>, <span class="fl">29.5751352527522</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">label =</span> <span class="fu">c</span>(<span class="st">&quot;My second annotation&quot;</span>, <span class="st">&quot;My first annotation&quot;</span>)),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span></code></pre></div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Graph object produced earlier</span>
+<span class='va'>graph</span> <span class='op'>+</span>
+  
+<span class='co'># Cleaned up code copied from ggannotate</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_segment.html'>geom_curve</a></span><span class='op'>(</span>
+    data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>28.3606748882948</span>, 
+                      y <span class='op'>=</span> <span class='fl'>12.5481425844177</span>, 
+                      xend <span class='op'>=</span> <span class='fl'>28.9568379194368</span>, 
+                      yend <span class='op'>=</span> <span class='fl'>17.745856135804</span><span class='op'>)</span>,
+    mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span>,
+    curvature <span class='op'>=</span> <span class='fl'>0.305</span>, arrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/arrow.html'>arrow</a></span><span class='op'>(</span><span class='fl'>30L</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='st'>"inches"</span><span class='op'>)</span>,
+                                     <span class='st'>"last"</span>, <span class='st'>"closed"</span><span class='op'>)</span>,
+    inherit.aes <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>24.9029293076709</span>, <span class='fl'>30.6260944066346</span> <span class='op'>)</span>,
+                              y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>12.2792953317598</span>, <span class='fl'>29.5751352527522</span><span class='op'>)</span>,
+                              label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"My second annotation"</span>, <span class='st'>"My first annotation"</span><span class='op'>)</span><span class='op'>)</span>,
+            mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, label <span class='op'>=</span> <span class='va'>label</span><span class='op'>)</span>,
+            inherit.aes <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
 </div>
+<p><img src="gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/ggannotate-plot-1.png" width="624" /></p>
+</div>
+<h2 data-number="4.2" id="easylabel"><span class="header-section-number">4.2</span> <code>easylabel</code></h2>
+<p>The <a href="https://cran.r-project.org/web/packages/easylabel/index.html"><code>easylabel</code></a> library is for interactive labeling of plots <span class="citation" data-cites="R-easylabel">(<a href="#ref-R-easylabel" role="doc-biblioref">Lewis and Goldmann 2021</a>)</span>. It looks to have been published in 2021 and its isn’t clear how frequently the library is updated, though there were three <a href="https://cran.r-project.org/web/packages/easylabel/news/news.html">updates</a> in 2021.</p>
+<p>The <code>easylabel</code> GUI is interactive, so other than loading the library, calls to <code>easylabel</code> should not be placed in R Markdown documents. To evoke the <code>easylabel</code> interface, call if from the console. Calls to <code>easylabel</code> must be supplied with a dataframe, rather than a plot object.</p>
+<p>Data points are labeled by clicking on the point. The direction of the annotation can be set or individual labels can be dragged into position. At present, the library only permits output as pdf or a plotly graph. The export to plotly option does not provide the underlying code. This library looks potentially very useful, but right now for new R users does not appear to permit easy integration into R Markdown documents. <code>easylabel</code> is one I plan on watching.</p>
+<ul>
+<li><img src="https://i.imgur.com/7IMlUYL.png" /></li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Sample code to evoke easylabel</span>
+<span class='fu'><a href='https://rdrr.io/pkg/easylabel/man/easylabel.html'>easylabel</a></span><span class='op'>(</span><span class='va'>df</span>, x<span class='op'>=</span><span class='st'>"hwy"</span>, y <span class='op'>=</span> <span class='st'>"cty"</span>,
+          colScheme <span class='op'>=</span> <span class='st'>"royalblue"</span><span class='op'>)</span>
+</code></pre>
 </div>
+</div>
+<h1 data-number="5" id="exploratory-data-analysis"><span class="header-section-number">5</span> Exploratory Data Analysis</h1>
+<h2 data-number="5.1" id="explore"><span class="header-section-number">5.1</span> <code>explore</code></h2>
+<p>The <a href="https://github.com/rolkra/explore"><code>explore</code></a>library has two contributors and was updated recently <span class="citation" data-cites="R-explore">(<a href="#ref-R-explore" role="doc-biblioref">Krasser 2021</a>)</span>. <code>explore</code> seeks to facilitate interactive exploratory data analysis. The library also offers four verbs to facilitate quick EDA: <code>explore</code>, <code>describe</code>, <code>explain</code>, <code>report</code>. I have not dug into these, but the GUI offers some very quick and useful feedback on data structure.</p>
+<p>The GUI runs interactively and should not be placed into an R Markdown code chunk. Evoke the GUI by calling it in the console, and direct the call to a dataframe.</p>
 <div class="layout-chunk" data-layout="l-body">
-
-</div>
-<section id="top-plot" class="unnumbered" data-number="">
-<h1 class="unnumbered" data-number="">Top Plot</h1>
-<p>The top plot highlights those facilities with &gt; 850 cumulative cases and facilities that experienced &gt;200 active COVID-19 cases in one day. While La Palma has the highest number of active cases, it did not have the largest maximum active cases. Adams which experienced a significant spike in active cases is not among those with more than 850 cumulative cases, meaning it is out of the top five, though is remains among the facilities with the highest number of cumulative cases. Similarly, Alexandria Staging Facility experienced a very large spike in active cases early on, it is not among the facilities with the highest number of cumulative cases.</p>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="cumulative-current-ice-covid-19_files/figure-html5/COVID-plot-1.png" width="624" /></p>
-</div>
-</section>
-<section id="facet-plot" class="unnumbered" data-number="">
-<h1 class="unnumbered" data-number="">Facet Plot</h1>
-<p>Facilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time.</p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-screen">
-<div class="figure"><span style="display:block;" id="fig:combined-facet-plot"></span>
-<img src="cumulative-current-ice-covid-19_files/figure-html5/combined-facet-plot-1.png" alt="Combined cumulative and current COVID-19 in ICE detention over time." width="624" />
-<p class="caption">
-Figure 1: Combined cumulative and current COVID-19 in ICE detention over time.
-</p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/explore/man/explore.html'>explore</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span>
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-</section>
+<p>From the GUI, the <code>report all</code> button generates a new HTML page with a wide range of graphs. The <code>explore</code> library has four helpful <a href="https://cran.r-project.org/web/packages/explore/index.html">vignettes</a> showing different data sets. I found the <a href="https://cran.r-project.org/web/packages/explore/vignettes/explore.html">first vignette</a> the most thorough and useful.</p>
+<ul>
+<li><img src="https://i.imgur.com/6UcxiAr.png" /></li>
+</ul>
+<p>I think this can be a really useful tool for getting a first quick look or doing some probing. That is what it is built to do. Customizing and finalizing figures would require separate plotting.</p>
+<h2 data-number="5.2" id="modelstudio"><span class="header-section-number">5.2</span> <code>modelStudio</code></h2>
+<p>The <a href="https://modelstudio.drwhy.ai/articles/ms-perks-features.html"><code>modelStudio</code></a> library is part of the <a href="https://github.com/ModelOriented/DrWhy">DrWhy.AI</a> family of libraries. The focus of the larger project seems to be model prediction. I have not worked with these tools, but <code>modelStudio</code> offers a GUI for exploring models and provides a means to generate data dashboards. This is certainly something to look into.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-R-ggannotate" class="csl-entry" role="doc-biblioentry">
+Cowgill, Matt. 2020. <em>Ggannotate: Interactively Annotate Ggplot2 Plots</em>. <a href="https://github.com/MattCowgill/ggannotate">https://github.com/MattCowgill/ggannotate</a>.
+</div>
+<div id="ref-R-explore" class="csl-entry" role="doc-biblioentry">
+Krasser, Roland. 2021. <em>Explore: Simplifies Exploratory Data Analysis</em>. <a href="https://github.com/rolkra/explore/">https://github.com/rolkra/explore/</a>.
+</div>
+<div id="ref-R-easylabel" class="csl-entry" role="doc-biblioentry">
+Lewis, Myles, and Katriona Goldmann. 2021. <em>Easylabel: Interactive Scatter Plot and Volcano Plot Labels</em>. <a href="https://CRAN.R-project.org/package=easylabel">https://CRAN.R-project.org/package=easylabel</a>.
+</div>
+<div id="ref-R-esquisse" class="csl-entry" role="doc-biblioentry">
+Meyer, Fanny, and Victor Perrier. 2021. <em>Esquisse: Explore and Visualize Your Data Interactively</em>. <a href="https://github.com/dreamRs/esquisse">https://github.com/dreamRs/esquisse</a>.
+</div>
+<div id="ref-R-ggplotgui" class="csl-entry" role="doc-biblioentry">
+Stulp, Gert. 2017. <em>Ggplotgui: Create Ggplots via a Graphical User Interface</em>. <a href="https://github.com/gertstulp/ggplotgui/">https://github.com/gertstulp/ggplotgui/</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2021. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
     <span class="article-sharing">
       Share: &nbsp;
-      <a href="https://twitter.com/share?text=Cumulative%20and%20Current%20COVID-19%20in%20ICE%20Detention%20Over%20Time&amp;url=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2021-07-26-cumulative-current-ice-covid-19%2F">
+      <a href="https://twitter.com/share?text=GUI%20roundup%20for%20editing%2C%20plotting%2C%20and%20annotating&amp;url=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2022-01-03-gui-roundup-for-editing-plotting-and-annotating%2F">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2021-07-26-cumulative-current-ice-covid-19%2F">
+      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2022-01-03-gui-roundup-for-editing-plotting-and-annotating%2F">
         <i class="fab fa-facebook"></i>
       </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2021-07-26-cumulative-current-ice-covid-19%2F&amp;title=Cumulative%20and%20Current%20COVID-19%20in%20ICE%20Detention%20Over%20Time">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fncraig.netlify.app%2Fposts%2F2022-01-03-gui-roundup-for-editing-plotting-and-annotating%2F&amp;title=GUI%20roundup%20for%20editing%2C%20plotting%2C%20and%20annotating">
         <i class="fab fa-linkedin"></i>
       </a>
     </span>
@@ -2196,19 +2391,21 @@ Figure 1: Combined cumulative and current COVID-19 in ICE detention over time.
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
 <div class="appendix-bottom">
+  <h3 id="references">References</h3>
+  <div id="references-listing"></div>
   <h3 id="updates-and-corrections">Corrections</h3>
   <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/n8craig/ncraig/issues/new">create an issue</a> on the source repository.</p>
   <h3 id="reuse">Reuse</h3>
   <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Source code is available at <a href="https://github.com/n8craig/ncraig">https://github.com/n8craig/ncraig</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Craig (2021, July 26). Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time. Retrieved from https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/</pre>
+  <pre class="citation-appendix short">Craig (2022, Jan. 3). Nathan Craig: GUI roundup for editing, plotting, and annotating. Retrieved from https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/</pre>
   <p>BibTeX citation</p>
-  <pre class="citation-appendix long">@misc{craig2021cumulative,
+  <pre class="citation-appendix long">@misc{craig2022gui,
   author = {Craig, Nathan},
-  title = {Nathan Craig: Cumulative and Current COVID-19 in ICE Detention Over Time},
-  url = {https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/},
-  year = {2021}
+  title = {Nathan Craig: GUI roundup for editing, plotting, and annotating},
+  url = {https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/},
+  year = {2022}
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->
