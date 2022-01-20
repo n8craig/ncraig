@@ -9,10 +9,10 @@
     <generator>Distill</generator>
     <lastBuildDate>Wed, 19 Jan 2022 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Formatting Inline Code and Reporting $p$</title>
+      <title>Formatting Inline Code and Reporting p</title>
       <dc:creator>Nathan Craig</dc:creator>
       <link>https://ncraig.netlify.app/posts/2022-01-19-formatting-inline-code-and-reporting-p</link>
-      <description>This how-to explores some issues with formatting text called by R Markdown's ability to include inline code. Topics covered include conditional formatting of numbers by means of `knitr` hooks as well as strategies for reporting really small $p$ values</description>
+      <description>This how-to explores some issues with formatting text called by R Markdown's ability to include inline code. Topics covered include conditional formatting of numbers by means of `knitr` hooks as well as strategies for reporting really small p values</description>
       <category>R Markdown</category>
       <category>how-to</category>
       <guid>https://ncraig.netlify.app/posts/2022-01-19-formatting-inline-code-and-reporting-p</guid>
