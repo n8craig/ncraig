@@ -131,7 +131,8 @@ Access to statistical tests that can be performed using literate coding in a rep
 
 ```{r plots}
 #| fig.caption = "Toy data sets for evaluating inline reporting of $p$ values.",
-#| echo = FALSE
+#| echo = FALSE,
+#| preview = TRUE
 
 df %>% 
   pivot_longer(cols = 1:3, names_to = "type", values_to = "values") %>% 

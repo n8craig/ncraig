@@ -1591,7 +1591,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 data-number="4" id="reporting-statistical-tests-inline"><span class="header-section-number">4</span> Reporting statistical tests inline</h1>
 <p>Access to statistical tests that can be performed using literate coding in a reproducible environment is one of the strengths of R Markdown. Once the test is run, accessing and manipulating the results can be a little tricky. Let’s use the <a href="https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test">Shapiro-Wilk</a> test to see if the distributions in <code>df</code> are normal. We’ll start by looking at the normal distribution because the <span class="math inline">\(p\)</span> values are simpler to report.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="formatting-inline-code-and-reporting-p_files/figure-html5/plots-1.png" width="624" /></p>
+<p><img src="formatting-inline-code-and-reporting-p_files/figure-html5/plots-1.png" width="624" data-distill-preview=1 /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1609,7 +1609,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     Shapiro-Wilk normality test
 
 data:  df$normal
-W = 0.99659, p-value = 0.02914</code></pre>
+W = 0.99844, p-value = 0.5182</code></pre>
 </div>
 <p>Great, R output the results, the low <span class="math inline">\(p\)</span> value means we won’t reject the null hypothesis. However, raw R output isn’t very a “elegant” presentation or efficient use of space for a narrative. It would be much nicer to report the values inline as part of the prose. Doing this requires knowing how to access the various parts of the variable assigned to the test, which in this case is <code>sh_normal</code>. Let’s get a description of the variable that reveals where the test results are stored. This information is also shown in the “Environment” tab of RStudio, but we’ll call it here using <code>str()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1618,9 +1618,9 @@ W = 0.99659, p-value = 0.02914</code></pre>
 </code></pre>
 </div>
 <pre><code>List of 4
- $ statistic: Named num 0.997
+ $ statistic: Named num 0.998
   ..- attr(*, &quot;names&quot;)= chr &quot;W&quot;
- $ p.value  : num 0.0291
+ $ p.value  : num 0.518
  $ method   : chr &quot;Shapiro-Wilk normality test&quot;
  $ data.name: chr &quot;df$normal&quot;
  - attr(*, &quot;class&quot;)= chr &quot;htest&quot;</code></pre>
@@ -1637,16 +1637,16 @@ W = 0.99659, p-value = 0.02914</code></pre>
 </code></pre>
 </div>
 <pre><code>        W 
-0.9965938 </code></pre>
+0.9984434 </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sh_normal</span><span class='op'>$</span><span class='va'>p.value</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.02913949</code></pre>
+<pre><code>[1] 0.5182047</code></pre>
 </div>
 <p>This gives us everything we need to report our statistic:</p>
 <blockquote>
-<p>The Shapiro-Wilk normality test shows no significant difference from a random distribution (<span class="math inline">\(W\)</span>= <strong>0.997</strong> <span class="math inline">\(p\)</span>= <strong>0.029</strong>).</p>
+<p>The Shapiro-Wilk normality test shows no significant difference from a random distribution (<span class="math inline">\(W\)</span>= <strong>0.998</strong> <span class="math inline">\(p\)</span>= <strong>0.518</strong>).</p>
 </blockquote>
 <p>Provided the <code>knitr</code> library is loaded, this is written out as (minus the “**” Markdown characters which are turned on to make inline output bold):</p>
 <blockquote>
@@ -1658,8 +1658,8 @@ W = 0.99659, p-value = 0.02914</code></pre>
 <p>The <code>scales</code> library is about “converting from data values to perceptual properties.” It is built primarily for use with <code>ggplot2</code> but there are some general functions, including <code>pvalue()</code> which is specifically for reporting <span class="math inline">\(p\)</span> values. The related <code>label_pvalue()</code> performs a similar task but works on <code>ggplot2</code> legends.</p>
 <h2 data-number="5.1" id="right-skewed-distribution"><span class="header-section-number">5.1</span> Right skewed distribution</h2>
 <ul>
-<li><p>When the distribution is right skewed, reporting <span class="math inline">\(p\)</span> as a number does not work well (<span class="math inline">\(W\)</span>= <strong>0.931</strong> <span class="math inline">\(p\)</span>= <strong>0</strong>).</p></li>
-<li><p>With p reported using <code>scales</code> it works very well (<span class="math inline">\(W\)</span>= <strong>0.931</strong> <span class="math inline">\(p\)</span>= &lt;0.01).</p>
+<li><p>When the distribution is right skewed, reporting <span class="math inline">\(p\)</span> as a number does not work well (<span class="math inline">\(W\)</span>= <strong>0.947</strong> <span class="math inline">\(p\)</span>= <strong>0</strong>).</p></li>
+<li><p>With p reported using <code>scales</code> it works very well (<span class="math inline">\(W\)</span>= <strong>0.947</strong> <span class="math inline">\(p\)</span>= &lt;0.01).</p>
 <ul>
 <li><p>Inline code: <span class="math inline">\(W\)</span> = <code>`r sh_right$statistic`</code></p></li>
 <li><p>Inline code: <span class="math inline">\(p\)</span> = <code>`r pvalue(sh_right$p.value, accuracy = 0.01)`</code>. Note that here the expression is surrounded by <code>**</code> because inline code is set to format with bold in markdown.</p></li>
@@ -1667,12 +1667,12 @@ W = 0.99659, p-value = 0.02914</code></pre>
 </ul>
 <h2 data-number="5.2" id="a-normal-distribution"><span class="header-section-number">5.2</span> A normal distribution</h2>
 <ul>
-<li>When the distribution is normal, reporting <span class="math inline">\(p\)</span> as a number works fine because it is by definition a larger fraction (<span class="math inline">\(W\)</span>= <strong>0.997</strong> <span class="math inline">\(p\)</span>= <strong>0.029</strong>).</li>
+<li>When the distribution is normal, reporting <span class="math inline">\(p\)</span> as a number works fine because it is by definition a larger fraction (<span class="math inline">\(W\)</span>= <strong>0.998</strong> <span class="math inline">\(p\)</span>= <strong>0.518</strong>).</li>
 </ul>
 <h2 data-number="5.3" id="left-skewed-distribution"><span class="header-section-number">5.3</span> Left skewed distribution</h2>
 <ul>
-<li><p>When the distribution is left skewed, reporting <span class="math inline">\(p\)</span> as a number does not work well (<span class="math inline">\(W\)</span>= <strong>0.948</strong> <span class="math inline">\(p\)</span>= <strong>0</strong>).</p></li>
-<li><p>With p reported using <code>scales</code> it works very well (<span class="math inline">\(W\)</span>= <strong>0.948</strong> <span class="math inline">\(p\)</span>= &lt;0.01).</p>
+<li><p>When the distribution is left skewed, reporting <span class="math inline">\(p\)</span> as a number does not work well (<span class="math inline">\(W\)</span>= <strong>0.933</strong> <span class="math inline">\(p\)</span>= <strong>0</strong>).</p></li>
+<li><p>With p reported using <code>scales</code> it works very well (<span class="math inline">\(W\)</span>= <strong>0.933</strong> <span class="math inline">\(p\)</span>= &lt;0.01).</p>
 <ul>
 <li><p>Inline code: <span class="math inline">\(W\)</span> = <code>`r sh_right$statistic`</code></p></li>
 <li><p>Inline code: <span class="math inline">\(p\)</span> = <code>`r pvalue(sh_right$p.value, accuracy = 0.01)`</code>. Note that here the expression is surrounded by <code>**</code> because inline code is set to format with bold in markdown.</p></li>
