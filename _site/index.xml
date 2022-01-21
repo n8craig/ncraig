@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Nathan Craig</title>
+    <link>https://ncraig.netlify.app</link>
+    <atom:link href="https://ncraig.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Nathan Craig's personal site.
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>GUI roundup for editing, plotting, and annotating</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating</link>
+      <description>A brief review of some graphical user interfaces (GUI's) for working with data in RStudio.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating</guid>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/gui-roundup-for-editing-plotting-and-annotating_files/figure-html5/esquisse-output-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>GDELT Summary Explorer API Calls in R</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r</link>
+      <description>This post looks at submitting API calls to the Global Database of Events, Language, and Tone (GDELT) database within R. The focus is on the Summary Explorer and TV News dataset. After reviewing several methods, I conclude that the Explorer GUI is the best method to construct the request URL. From this an export URL can be constructed from the GUI and a little bit of manual editing to change the format of the request from JSON to CSV.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r</guid>
+      <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/gdelt-summary-explorer-api-calls-in-r_files/figure-html5/read-csv-complex-plot-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Cumulative and Current COVID-19 in ICE Detention Over Time</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19</link>
+      <description>Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19</guid>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-07-26-cumulative-current-ice-covid-19/cumulative-current-ice-covid-19_files/figure-html5/COVID-plot-1.png" medium="image" type="image/png" width="1248" height="1152"/>
+    </item>
+    <item>
+      <title>Current ICE Detention Population</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population</link>
+      <description>Daily updated information on ICE detention population and COVID-19 levels.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population</guid>
+      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-06-30-current-ice-detention-population/current-ice-detention-population_files/figure-html5/ICE-Detention-Population-Static-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>OCPC Monthly Detained Population Dec 2016-Aug 2020</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020</link>
+      <description>Monthly ICE detention numbers at OCPC gleaned from revenue bond disclosure reports, a lesson in following the money.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020</guid>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/ocpc-monthly-detained-population-dec-2016-aug-2020_files/figure-html5/OCPC-Monthly-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>ICE Detention COVID-19 Maps</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-23-ice-detention-covid-19-maps</link>
+      <description>Animated visualizations of COVID-19 infections in ICE detention over time.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-23-ice-detention-covid-19-maps</guid>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-23-ice-detention-covid-19-maps/ice-detention-covid-19-maps_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Canvas LMS and R</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</link>
+      <description>Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.</description>
+      <category>how-to</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r</guid>
+      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-19-canvas-and-r/canvas-and-r_files/figure-html5/teaser-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Critical Race Theory in the Media</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory</link>
+      <description>This article is an exploration of the coverage of critical race theory in texts and TV news over time. Evidence suggests there is a concerted effort on the part of select conservative media outlets to establish a moral panic regarding CRT, particularly as a component of educational curricula.</description>
+      <category>race</category>
+      <guid>https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory</guid>
+      <pubDate>Sat, 08 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-05-07-critical-race-theory/critical-race-theory_files/figure-html5/GDELT-TV-NEWS-2020-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>ICE Detention Guaranteed Minimums &amp; Ghost Beds as of April 2021</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-04-28-ice-detention-guaranteed-minimums</link>
+      <description>An exploration of detention facility contract guaranteed minimums, where are they and what is the expected cost.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-04-28-ice-detention-guaranteed-minimums</guid>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums_files/figure-html5/map-ghost-beds-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>ICE ADP</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2021-04-25-ice-adp</link>
+      <description>This post is an exploration of immigration detention average daily population over time. Particular attention is given to the period represented by the COVID-19 pandemic.</description>
+      <category>immigration</category>
+      <guid>https://ncraig.netlify.app/posts/2021-04-25-ice-adp</guid>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/2021-04-25-ice-adp/ICE-ADP_files/figure-html5/adp-monthly-graph-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>First post</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/welcome</link>
+      <description>Welcome to my new site.</description>
+      <guid>https://ncraig.netlify.app/posts/welcome</guid>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://ncraig.netlify.app/posts/welcome/welcome_files/figure-html5/plant-growth-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+  </channel>
+</rss>
