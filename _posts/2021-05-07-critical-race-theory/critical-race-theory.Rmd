@@ -325,7 +325,9 @@ df_online_news %>%
 
 Looking at the period of time from 2020 to the present, after the murder of George Floyd, there is a slight increase in coverage of CRT on *Fox* (Figure \@ref(fig:GDELT-TV-NEWS-2020)). However, it increases sharply with the appearance of C. Rufo on the network and then begins to decline. Interestingly, mentions of CRT continue to decline through the signing of Trump's EO 13950. It is not until January 2021 that coverage of CRT begins to sharply spike with nearly all of it being on *Fox*. By April 2021, other networks begin to pick up coverage of CRT but only following a massive spike on *Fox* that begins in January 2021. Notably, the period leading up to and following the swearing in of Biden is associated with a sharp increase in *Fox* coverage of CRT. *What is the tone of that coverage?* As the news clips in the Introduction show, *Fox*'s coverage often expresses concern with the teaching of CRT in schools. In fact, reviewing post 2020 coverage of CRT on Fox, this seems to be the overwhelming source of concern for the network.
 
-```{r GDELT-TV-NEWS-2020, fig.cap="GDELT Internet Archive TV News dataset showing coverage of \"Critical Race Theory\" 2020-Present", preview = TRUE}
+```{r GDELT-TV-NEWS-2020}
+#| fig.cap="GDELT Internet Archive TV News dataset showing coverage of \"Critical Race Theory\" 2019-Present", preview = TRUE
+
 df_online_news %>% 
   filter(date > "2020-01-01") %>% 
   ggplot(aes(x=date, y = Value))+
