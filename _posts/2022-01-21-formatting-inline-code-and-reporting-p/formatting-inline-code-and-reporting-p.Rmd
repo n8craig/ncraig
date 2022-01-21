@@ -1,7 +1,7 @@
 ---
-title: "Formatting Inline Code and Reporting p"
+title: "Formatting Inline Code and Reporting $p$"
 description: |
-  This how-to explores some issues with formatting text called by R Markdown's ability to include inline code. Topics covered include conditional formatting of numbers by means of `knitr` hooks as well as strategies for reporting really small p values
+  This how-to explores some issues with formatting text called by R Markdown's ability to include inline code. Topics covered include conditional formatting of numbers by means of `knitr` hooks as well as strategies for reporting really small $p$ values
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
