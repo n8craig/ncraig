@@ -1,0 +1,222 @@
+---
+title: "Formatting Inline Code and Reporting p"
+description: |
+  This how-to explores some issues with formatting text called by R Markdown's ability to include inline code. Topics covered include conditional formatting of numbers by means of `knitr` hooks as well as strategies for reporting really small p values
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 01-19-2022
+categories:
+  - R Markdown
+  - how-to
+output:
+  distill::distill_article:
+    self_contained: false
+    pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: true
+
+link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
+---
+
+# Introduction
+
+One of the advantages of writing in R Markdown is the ability to use inline code, particularly to call up and report a variable produced through analysis. This feature is especially useful when data need to be updated and values in the text change. Rather than re-copying the values in the text when analysis is refined, with inline code the results of the calculations update when the functions are altered or applied to the modified data set. While this is wonderful, it is often necessary to format numbers in particular ways. For example, APA [style](https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf) calls for "commas between groups of three digits" with some exceptions for things like "page numbers, binary digits, serial numbers, degrees of temperature, degrees of freedom, and acoustic frequencies above 1000."
+
+::: float-image
+```{r out.width='240px', out.extra='style="float:right; padding:10px"', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/XZ2xlrq.jpeg")
+```
+
+Formatting inline numbers in R markdown can seem tricky, perhaps leading one to fall back on repetitive or "hacky" solutions. However, R is an [opinionated](https://stackoverflow.com/questions/802050/what-is-opinionated-software) language; so while there is more than one way to format inline numbers, some approaches are better than others. In the past, I often formatted the number inline by wrapping the `round()` function around whatever value I'm calling. I did this individually on a variable by variable basis which is unnecessarily repetitive and prone to breaking. It also makes for longer inline code which has harder to "read through." Fortunately, there is a better way!
+
+Recently, from Pat Schloss's Code Club [Ep 63](https://youtu.be/a2MedFEQTeA), I learned about both the `format()` function and the use of `knitr::knit_hooks$set(inline=SOME_FUNCTION)`. Using `format()` with `kinter` hooks is far superior to my prior repetitive and hacky approach to formatting inline values. `format()` strikes me as the correct way to present inline numbers because it does not change the value of the variable--which `round()` does. Whether done inline or using hooks, it is a simple matter to call `format()` rather than `round()`. Unfortunately, this does not solve the matter of reporting small $p$ values.
+
+APA, like many other styles calls for special treatment of small $p$ values. APA style [instructs](https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf), authors to "report exact p values (e.g., p = .015), unless p is \< .001 (instead write as"\<.001")."
+:::
+
+With either method, reporting very small $p$ values is tricky. In my experience, `round()` and `format()` do no deal very well with small $p$ values. Both functions return `0` which isn't useful. That's unfortunate because often times we are really interested in tests that return low $p$ values. Whether the threshold is "\<0.05" or "\<0.001", converting the small $p$ value into the necessary text requires a custom conditional expression. Fortunately, there are some existing [solutions](https://scriptsandstatistics.wordpress.com/2019/09/22/formating-p-values-a-curated-list-of-r-functions/); below I illustrate my current favorite approach which relies on the `scales` package. *Let's get into it.*
+
+# Conditional formatting of inline code using `knitr::knit_hooks()`
+
+The `knitr` library supports something called "[hooks](https://yihui.org/knitr/hooks/)" which until recently I never really pierced my consciousness. Hooks are custom functions that run before or after a chunk and can be used for a range of purposes including formatting, altering chunk options, or adjusting output. In this case, a hook is used for creating a custom function to perform conditional formatting of numbers for inline reporting.
+
+I borrowed the `inline_hook()` function below from [Dr. Schloss](https://www.schlosslab.org/). This custom function evaluates numbers to see if they are integers. If they are, the number is reported with no decimals and commas are used in the thousands place via `format(x, digits=0, big.mark = ",")`. If the number is floating point, the number is formatted two significant figures and commas are used in the thousands. In this case, if the number is a very small fraction, R reports out to as many significant figures as are necessary to represent the fraction. This is important to consider when reporting $p$ values.
+
+```{r hook-video, }
+#| echo = FALSE
+vembedr::use_align(vembedr::embed_youtube("d3vRj0cLI88", height = 300), "center")
+```
+
+Three parts of the inline hook function can be set up to bold the inline output; this can be useful for temporarily identifying inline results in the output for the purpose of checking that the values are formatted correctly. Both the interger and floating point sections can be set to bold. There is also the option to bold all characters called from inline code. Here bold is turned on for numbers; turn it off by commenting out the lines that read `formatted <- paste0("**", formatted, "**")`. Generally, for a final product one would want it off. I've left bold on for numbers to help highlight text that is produced by inline code.
+
+```{r setup}
+#| include= TRUE
+
+# create custom hook for knitr
+inline_hook <- function(x){
+  if(is.numeric(x)){
+    if(abs(x - round(x)) < .Machine$double.eps){
+      # treat as integer
+      formatted <- format(x, digits=0, big.mark = ",")
+      # comment out to turn off bold
+      formatted <- paste0("**", formatted, "**")
+      } else {
+        # treat as floating point number
+        formatted <- format(x, digits=2, nsmall=3, big.mark = ",")
+        # comment out to turn off bold
+        formatted <- paste0("**", formatted, "**")
+        }
+    } else {
+      formatted <-x
+    }
+  # uncomment this line for bold
+  # paste0("**", formatted, "**")
+  
+  # uncomment this line for unbolded
+  formatted
+}
+
+# call custom formatting hook
+knitr::knit_hooks$set(inline=inline_hook)
+
+# set general options
+knitr::opts_chunk$set(echo = TRUE)
+
+# Turn off scientific notation
+options(scipen = 9999)
+```
+
+```{r libraries}
+#| echo = FALSE, 
+#| message = FALSE,
+#| warning = FALSE
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(scales))
+library(tidyverse)
+library(scales)
+library(knitr)
+```
+
+# Exploring inline formatting of numeric variables
+
+It is useful to explore how inline code gets reported based on the conditional hooks implemented above. Below are some test numbers and a toy data frame that can be used to examine difference scenarios.
+
+```{r define-variables}
+integer1 <- 100000000
+float1 <- 0.123456789
+float2 <- 0.000000021
+float3 <- 123456789.987654321
+float4 <- 123456789.000000021
+df <- tibble(right = rbeta(1000, 10, 2),
+             normal =rnorm(1000),
+             left = rbeta(1000, 2, 10))
+```
+
+-   Integer 1: `r integer1` This works just fine and is not likely to present any problems. The `big.mark` argument of `format()` is used to set the comma. Scientific notation is turned off with `options(scipen = 9999)`, otherwise large numbers are reported using scientific notation.
+-   Float 1: `r float1` This also works fine.
+-   Float 2: `r float2` Since the value is so small, R reports out to many decimal places even with `format()` in place.
+-   Float 2 rounded at two digits: `r round(float2, digits = 2)` If we round this very small fraction, it rounds to zero. If we have small $p$ values in a statistical test, this will not do.
+-   Float 2 using `scales` package: `r scales::pvalue(float2, accuracy = 0.01)` As [suggested](https://scriptsandstatistics.wordpress.com/2019/09/22/formating-p-values-a-curated-list-of-r-functions/) by Norbert Köhler, the [`scales`](https://scales.r-lib.org/) library offers a nice solution. This is written as `` `r inline_expr("scales::pvalue(float2, accuracy = 0.01)")` ``.
+-   Float 3: `r float3`
+-   Float 4: `r float4` For a regular number, rounding is fine, but it would be nice to drop the 0's. This could be done with `round()` on a case by case basis like: `r round(float4, digits = 0)` which we would write as `` `r inline_expr("round(float4, digits = 0)") ` ``. Really the major issue is when one wants to report a very small $p$ number.
+
+# Reporting statistical tests inline
+
+Access to statistical tests that can be performed using literate coding in a reproducible environment is one of the strengths of R Markdown. Once the test is run, accessing and manipulating the results can be a little tricky. Let's use the [Shapiro-Wilk](https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test) test to see if the distributions in `df` are normal. We'll start by looking at the normal distribution because the $p$ values are simpler to report.
+
+```{r plots}
+#| fig.caption = "Toy data sets for evaluating inline reporting of $p$ values.",
+#| echo = FALSE,
+#| preview = TRUE
+
+df %>% 
+  pivot_longer(cols = 1:3, names_to = "type", values_to = "values") %>% 
+  ggplot( aes(x=values, fill = type)) +
+  geom_density(alpha = .5) +
+  labs(
+    title = "Sample distributions: left skewed, normal, and right skewed"
+  )
+```
+
+```{r shapiro-tests}
+# create variables for each test
+# these are used to call the values inline
+sh_right <- shapiro.test(df$right)
+sh_normal <- shapiro.test(df$normal)
+sh_left <- shapiro.test(df$left)
+
+# call the variable to see it
+sh_normal
+```
+
+Great, R output the results, the low $p$ value means we won't reject the null hypothesis. However, raw R output isn't very a "elegant" presentation or efficient use of space for a narrative. It would be much nicer to report the values inline as part of the prose. Doing this requires knowing how to access the various parts of the variable assigned to the test, which in this case is `sh_normal`. Let's get a description of the variable that reveals where the test results are stored. This information is also shown in the "Environment" tab of RStudio, but we'll call it here using `str()`.
+
+```{r expose-components-of-test}
+str(sh_normal)
+```
+
+`str()`, the string function, exposes the internal structure of an R object, in this case displaying the names and values of the various portions of the test. Appended to the variable name, the extract function (`$`) is used to pull the name of the test, the test statistic which is $W$, and the associated $p$ value.
+
+```{r call-test-name-and-stat}
+sh_normal$method
+sh_normal$statistic
+sh_normal$p.value
+```
+
+This gives us everything we need to report our statistic:
+
+> The `r sh_normal$method` shows no significant difference from a random distribution ($W$= `r sh_normal$statistic` $p$= `r sh_normal$p.value`).
+
+Provided the `knitr` library is loaded, this is written out as (minus the "\*\*" Markdown characters which are turned on to make inline output bold):
+
+> The `` `r inline_expr("sh_normal$method")` `` shows no significant difference from a random distribution (\$W\$= `` `r inline_expr("sh_normal$statistic")` `` \$p\$= `` `r inline_expr("sh_normal$p.value")` ``).
+
+The same basic approach can be used for reporting other statistical tests. Let's turn now to the issue of reporting very small $p$ values.
+
+# Reporting $p$ values
+
+It is useful to know when a distribution is not normal or a test is rejected because it can change the course of analysis. For example, if a distribution is normal one might proceed with a parametric test but use a nonparametric test if the data to not appear normally distributed. When making tests, $p$ values are important and small values in particular are interesting because, they mean an extreme outcome is unlikely under the null hypothesis. The smaller $p$ the stronger the case that one can reject the null hypothesis. Therefore, it is important to properly report small $p$ values. This where the `scales` library is handy.
+
+The `scales` library is about "converting from data values to perceptual properties." It is built primarily for use with `ggplot2` but there are some general functions, including `pvalue()` which is specifically for reporting $p$ values. The related `label_pvalue()` performs a similar task but works on `ggplot2` legends.
+
+## Right skewed distribution
+
+-   When the distribution is right skewed, reporting $p$ as a number does not work well ($W$= `r sh_right$statistic` $p$= `r sh_right$p.value`).
+
+-   With p reported using `scales` it works very well ($W$= `r sh_right$statistic` $p$= `r pvalue(sh_right$p.value, accuracy = 0.01)`).
+
+    -   Inline code: $W$ = `` `r knitr::inline_expr("sh_right$statistic")` ``
+
+    -   Inline code: $p$ = `` `r knitr::inline_expr("pvalue(sh_right$p.value, accuracy = 0.01)")` ``. Note that here the expression is surrounded by `**` because inline code is set to format with bold in markdown.
+
+## A normal distribution
+
+-   When the distribution is normal, reporting $p$ as a number works fine because it is by definition a larger fraction ($W$= `r sh_normal$statistic` $p$= `r sh_normal$p.value`).
+
+## Left skewed distribution
+
+-   When the distribution is left skewed, reporting $p$ as a number does not work well ($W$= `r sh_left$statistic` $p$= `r sh_left$p.value`).
+
+-   With p reported using `scales` it works very well ($W$= `r sh_left$statistic` $p$= `r pvalue(sh_left$p.value, accuracy = 0.01)`).
+
+    -   Inline code: $W$ = `` `r knitr::inline_expr("sh_right$statistic")` ``
+
+    -   Inline code: $p$ = `` `r knitr::inline_expr("pvalue(sh_right$p.value, accuracy = 0.01)")` ``. Note that here the expression is surrounded by `**` because inline code is set to format with bold in markdown.
+
+# Helpful Links: {.unnumbered}
+
+::: float-image
+```{r out.width='250px', out.extra='style="float:right; padding:10px"', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/ht1oaYc.jpeg")
+```
+
+-   [Formatting the output of inline code in R Markdown documents to make it look natural (CC063) - YouTube](https://www.youtube.com/watch?v=a2MedFEQTeA)
+-   [Formatting p-values: A curated list of R functions -- Scripts & Statistics](https://scriptsandstatistics.wordpress.com/2019/09/22/formating-p-values-a-curated-list-of-r-functions/)
+-   [How to Show R Inline Code Blocks in R Markdown · R Views](https://rviews.rstudio.com/2017/12/04/how-to-show-r-inline-code-blocks-in-r-markdown/)
+-   [Generate A Verbatim Code Chunk or Inline R Expression in knitr Output - Yihui Xie \| 谢益辉](https://yihui.org/en/2017/11/knitr-verbatim-code-chunk/)
+:::
