@@ -3,17 +3,17 @@
     {
       "path": "about.html",
       "title": "About",
-      "description": "not that much, but a bit on this site...",
+      "description": "not all that much, but just a bit on this site...",
       "author": [],
-      "contents": "\r\nI am working with R, Rstudio, and R Markdown as tools for exploring, documenting, and communicating data. While I’ve written a couple of quantitative papers in the past, I generally relied on GUI based statistical tools like Excel, JMP, or the very nice PAST application. They were ok, but really felt lacking, particularly in terms of laying out plots or documenting work flows. Recently, after a brief sojourn with python and jupyter notebooks, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. While python is a great language, in many ways R and R Markdown seem better suited to my personal needs.\r\nSome time ago, I began shifting my writing from Microsoft Word to Markdown, using Zettlr or Obsidian and combining these with Zotero, the Better BibTex plugin, and Pandoc. Given a writing workflow that entails Markdown-Zotero and an interest in quantitative themes, R and R Markdown seemed like logical tools to explore. I looked at several of the R Markdown platforms like Rpubs as well as packages like bookdown and blogdown. After examining the field, the distill package seemed like a full fledged technical writing tool without some of the hassles that people reported using blogdown/go. So I figured I’d give distill a try. This website was borne out of that process.\r\nNathan Craig, Ph.D.\r\nCollege Assistant Professor\r\nDepartment of Anthropology\r\nNew Mexico State University\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-20T19:04:59-07:00"
+      "contents": "\r\n\r\nContents\r\nBio\r\nEducation\r\nAffiliation\r\n\r\nBio\r\nNathan Craig is an anthropologist and archaeologist interested in the study of power. Presently he is looking at incarceration and immigration.\r\n\r\n\r\n\r\nFigure 1: Photograph of Nathan Craig and Margaret Brown Vega speaking to Washington Blade reporter Michael Lavers. (Photo by Michael Lavers)\r\n\r\n\r\n\r\nEducation\r\nU.C. Santa Barbara | Ph.D. Anthropology\r\nU.C. Santa Barbara | MA Anthropology\r\nU.C. Santa Cruz | BA Anthropology\r\nAffiliation\r\nNathan Craig, Ph.D.\r\nCollege Assistant Professor\r\nDepartment of Anthropology\r\nNew Mexico State University\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-02-19T16:51:17-07:00"
     },
     {
       "path": "index.html",
       "title": "Nathan Craig",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-20T19:05:00-07:00"
+      "last_modified": "2022-02-17T17:02:09-07:00"
     }
   ],
   "collections": ["posts/posts.json"]
