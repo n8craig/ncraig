@@ -4,22 +4,19 @@ description: |
   not all that much, but just a bit on this site...
 ---
 
-# Bio
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(icons)
+```
 
-Nathan Craig is an anthropologist and archaeologist interested in the study of power. Presently he is looking at incarceration and immigration.
+I am an anthropologist and archaeologist interested in the study of power. I am currently looking at incarceration and immigration. My thinking is informed by such ideas as Foucault's biopower, Agamben's state of exception, and Mbembe's necropolitics. I also like to count things, and sometimes make maps.
 
-```{r echo=FALSE, fig.cap="Photograph of Nathan Craig and Margaret Brown Vega speaking to Washington Blade reporter Michael Lavers. (Photo by Michael Lavers)"}
+```{r echo=FALSE, fig.cap="Nathan Craig and Margaret Brown Vega showing Washington Blade reporter Michael Lavers a drawing made by a man in solitary confinement. (Photo by Michael Lavers)"}
 knitr::include_graphics("https://www.washingtonblade.com/content/files/2019/08/Nathan_Craig_and_Margaret_Brown_Vega_insert_c_Washington_Blade_by_Michael_K_Lavers-600x400.jpg")
 ```
 
-# Education
-
-U.C. Santa Barbara \| Ph.D. Anthropology\
-U.C. Santa Barbara \| MA Anthropology\
-U.C. Santa Cruz \| BA Anthropology
-
-# Current Affiliation
-
+Nathan Craig\
 College Assistant Professor\
 Department of Anthropology\
 New Mexico State University
+
+[`r icon_style(fontawesome("envelope"), scale = 2)`](mailto:nmc@nmsu.edu) [`r icon_style(academicons("academia"), scale = 2)`](https://nmsu.academia.edu/NathanCraig) [`r icon_style(academicons("google-scholar"), scale = 2)`](https://scholar.google.com/citations?user=C0SRYOQAAAAJ) [`r icon_style(academicons("zotero"), scale = 2)`](https://www.zotero.org/ncraig/) [`r icon_style(academicons("orcid"), scale = 2)`](https://orcid.org/0000-0003-2184-2082) [`r icon_style(academicons("hypothesis"), scale = 2)`](https://hypothes.is/users/ncraig) [`r icon_style(academicons("stackoverflow"), scale = 2)`](https://stackoverflow.com/users/13110995/ncraig) [`r icon_style(fontawesome("github"), scale = 2)`](https://github.com/n8craig) [`r icon_style(fontawesome("building"), scale = 2)`](https://anthropology.nmsu.edu/index.html)
