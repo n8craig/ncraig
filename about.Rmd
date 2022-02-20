@@ -1,14 +1,12 @@
 ---
 title: "About"
 description: |
-  not all that much, but just a bit on this site...
+  I am an anthropologist and archaeologist interested in the study of power. I am currently looking at incarceration and immigration. My thinking is informed by such ideas as Foucault's biopower, Agamben's state of exception, and Mbembe's necropolitics. I also like to count things, and sometimes make maps.
 ---
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(icons)
 ```
-
-I am an anthropologist and archaeologist interested in the study of power. I am currently looking at incarceration and immigration. My thinking is informed by such ideas as Foucault's biopower, Agamben's state of exception, and Mbembe's necropolitics. I also like to count things, and sometimes make maps.
 
 ```{r echo=FALSE, fig.cap="Nathan Craig and Margaret Brown Vega showing Washington Blade reporter Michael Lavers a drawing made by a man in solitary confinement. (Photo by Michael Lavers)"}
 knitr::include_graphics("https://www.washingtonblade.com/content/files/2019/08/Nathan_Craig_and_Margaret_Brown_Vega_insert_c_Washington_Blade_by_Michael_K_Lavers-600x400.jpg")
