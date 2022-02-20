@@ -17,4 +17,12 @@ College Assistant Professor\
 Department of Anthropology\
 New Mexico State University
 
-[`r icon_style(fontawesome("envelope"), scale = 2)`](mailto:nmc@nmsu.edu) [`r icon_style(academicons("academia"), scale = 2)`](https://nmsu.academia.edu/NathanCraig) [`r icon_style(academicons("google-scholar"), scale = 2)`](https://scholar.google.com/citations?user=C0SRYOQAAAAJ) [`r icon_style(academicons("zotero"), scale = 2)`](https://www.zotero.org/ncraig/) [`r icon_style(academicons("orcid"), scale = 2)`](https://orcid.org/0000-0003-2184-2082) [`r icon_style(academicons("hypothesis"), scale = 2)`](https://hypothes.is/users/ncraig) [`r icon_style(academicons("stackoverflow"), scale = 2)`](https://stackoverflow.com/users/13110995/ncraig) [`r icon_style(fontawesome("github"), scale = 2)`](https://github.com/n8craig) [`r icon_style(fontawesome("building"), scale = 2)`](https://anthropology.nmsu.edu/index.html)
+[`r icon_style(fontawesome("envelope"), scale = 2)`](mailto:nmc@nmsu.edu)
+[`r icon_style(academicons("academia"), scale = 2)`](https://nmsu.academia.edu/NathanCraig)
+[`r icon_style(academicons("google-scholar"), scale = 2)`](https://scholar.google.com/citations?user=C0SRYOQAAAAJ)
+[`r icon_style(academicons("zotero"), scale = 2)`](https://www.zotero.org/ncraig/)
+[`r icon_style(academicons("orcid"), scale = 2)`](https://orcid.org/0000-0003-2184-2082)
+[`r icon_style(academicons("hypothesis"), scale = 2)`](https://hypothes.is/users/ncraig)
+[`r icon_style(academicons("stackoverflow"), scale = 2)`](https://stackoverflow.com/users/13110995/ncraig)
+[`r icon_style(fontawesome("github"), scale = 2)`](https://github.com/n8craig)
+[`r icon_style(fontawesome("building"), scale = 2)`](https://anthropology.nmsu.edu/index.html)
