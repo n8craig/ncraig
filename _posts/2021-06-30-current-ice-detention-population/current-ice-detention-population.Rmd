@@ -95,7 +95,7 @@ p <- ggplot(df_summary, aes(x=date, y=total_detained))+
     x = "Date",
     y = "Total Detained"
   )
-  ggplotly(p)
+ggplotly(p)
 
 ```
 
