@@ -47,7 +47,7 @@ df <- read.csv("https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data
 
 ```{r wrangle-data}
 df <- df %>% 
-  mutate(date = mdy(date),
+  mutate(date = ymd(date),
          total_confirmed_covid_19_cases = 
            str_replace_all(total_confirmed_covid_19_cases, 
                            "[^0-9]", ""),
