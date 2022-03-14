@@ -9,7 +9,7 @@ date: 2022-03-13
 categories:
   - how-to
   - R Markdown
-preview: https://i.imgur.com/Oq0JAJd.png
+preview: https://i.imgur.com/Oq0JAJd.png?1
 output:
   distill::distill_article:
     self_contained: false
