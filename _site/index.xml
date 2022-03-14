@@ -7,7 +7,18 @@
     <description>Nathan Craig's personal site.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 19 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Lists and Inline Reporting</title>
+      <dc:creator>Nathan Craig</dc:creator>
+      <link>https://ncraig.netlify.app/posts/2022-03-13-lists-and-inline-reporting</link>
+      <description>Reporting values inline is one of the strong suits of R Markdown. Using lists can make storing variables more organized, and with the right functions lists can be generated automatically. This makes writing with inline values in R Markdown easier.</description>
+      <category>how-to</category>
+      <category>R Markdown</category>
+      <guid>https://ncraig.netlify.app/posts/2022-03-13-lists-and-inline-reporting</guid>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://i.imgur.com/PBYZDYM.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>Formatting Inline Code and Reporting $p$</title>
       <dc:creator>Nathan Craig</dc:creator>
