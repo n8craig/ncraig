@@ -2161,13 +2161,14 @@ not only for reporting values inline— but generally. Tristan’s approach
 to using lists can address some of both issues of writing thrifty code
 and organizing with lists simultaneously. Turns out, using lists is just
 good R style.</p>
-<blockquote>
-<p>If you find yourself attempting to cram data into variable names
+<aside>
+<p>“If you find yourself attempting to cram data into variable names
 (e.g. model_2018, model_2019, model_2020), consider using a list or data
-frame instead. — The <a
+frame instead.”</p>
+<p>— <em>The <a
 href="https://style.tidyverse.org/syntax.html#object-names">Tidyverse
-Style Guide</a></p>
-</blockquote>
+Style Guide</a></em></p>
+</aside>
 <h1 id="organizing-summary-variables-in-a-list">Organizing Summary
 Variables in a List</h1>
 <h2 id="manual-approach">Manual Approach</h2>
@@ -2201,6 +2202,16 @@ having variables like <code>weight_mean</code> and
 <code>weight_sd</code>, which is what I was doing. Now both values are
 listed under <code>weight</code>. This is an improvement, but it gets
 better.</p>
+<aside>
+<p>“Both [[ and $ select a single element of the list. The main
+difference is that <code>$</code> does not allow computed indices,
+whereas <code>[[</code> does. <code>x$name</code> is equivalent to
+<code>x[["name", exact = FALSE]]</code>. Also, the partial matching
+behavior of <code>[[</code> can be controlled using the exact
+argument.”</p>
+— <em>Base R <a
+href="https://rdrr.io/r/base/Extract.html">Documentation</a></em>
+</aside>
 <p><strong>Written</strong>:</p>
 <ul>
 <li>Mean =<code>`r format(weight$mean, digits = 2)`</code></li>
