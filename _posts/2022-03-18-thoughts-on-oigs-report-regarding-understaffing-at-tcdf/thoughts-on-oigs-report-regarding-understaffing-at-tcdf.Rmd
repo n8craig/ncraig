@@ -1,7 +1,7 @@
 ---
 title: "Thoughts on OIG's Report Regarding Understaffing at TCDF"
 description: |
-  DHS OIG found that chronic understaffing at TCDF resulted in poor sanitation. This post looks briefly at how much money was paid out to the facility in Ghost Beds during this time.
+  DHS OIG found that chronic understaffing at TCDF resulted in poor sanitation and security. This post looks briefly at how much money was paid out to the facility in Ghost Beds during this time and how understaffing is an ongoing issue in New Mexico's carceral facilities.
 author:
   - name: Nathan Craig
     url: https://ncraig.netlify.app/
