@@ -29,15 +29,15 @@ knitr::include_graphics("https://i.imgur.com/vcE2qDs.png")
 
 According to the most recent [data](https://www.ice.gov/doclib/detention/FY22_detentionStats03172022b.xlsx) from ICE, for fiscal year 2022 to date (10 months), there are on average 198 persons detained at TCDF. Of these, ICE reports 90% are "non criminal" and 95% are ranked as "no threat." In other words, 95% of the detention population is discretionary and could be released. The same data show that TCDF also currently has a 505 guaranteed bed minimum. Given the reported population level, the facility is 61% empty and there are 307 [Ghost Beds](https://ncraig.netlify.app/posts/2021-04-28-ice-detention-guaranteed-minimums/#ref-dhs2020). The most [current](https://www.dhs.gov/sites/default/files/publications/u.s._immigration_and_customs_enforcement.pdf) per diem rate information indicates that it is \$89.55 a day. We are 10 months into fiscal year 2022.
 
--   Daily Ghost Bed Cost: 307 beds x \$89.55 per day = \$27,492
--   Monthly Ghost Bed Cost: \$27,492 per day x 30 days = \$824,756
--   \$824,756 month x 10 months = \$8,247,555 (fytd)
+-   Daily Ghost Bed Cost: 307 beds x \$89.55 per day = **\$27,492**
+-   Monthly Ghost Bed Cost: \$27,492 per day x 30 days = **\$824,756**
+-   Fiscal year to date: \$824,756 month x 10 months = **\$8,247,555**
 
 So far this year, **over 8 million was spent on empty space at TCDF**. Now, on top of this, OIG reports that staffing levels are so low that sanitation and safety levels are dangerous. Though not mentioned by OIG, in 2019 staff assaulted persons detained at TCDF.
 
 # Inspections
 
-It bears noting that TCDF passed the two most recent regular facility [inspections](https://www.ice.gov/detain/facility-inspections) that were performed by the private contractors Nakamoto Group. The most recent of those was months before OIG arrived. During that inspection Nakamoto interviewed 25 detained persons and claimed none raised substantial concerns. This is a very different result than what OIG found months later. ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, ICE used the inspections to assert there was no issue. Elsewhere, I have referred to this as part of a "theater of performative compliance" [@craig2021].
+It bears noting that TCDF passed the two most recent regular facility [inspections](https://www.ice.gov/detain/facility-inspections) that were performed by the private contractors Nakamoto Group. The most recent of those was months before OIG arrived. During that inspection Nakamoto interviewed 25 detained persons and claimed none raised substantial concerns. This is a very different result than what OIG found months later. ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, ICE used the inspections to assert there was no issue. Elsewhere, I have referred to this as part of a "theater of performative compliance" on the part of ICE and its inspectors [@craig2021], and is an example of how reforms generally backfire.
 
 <aside>
 
