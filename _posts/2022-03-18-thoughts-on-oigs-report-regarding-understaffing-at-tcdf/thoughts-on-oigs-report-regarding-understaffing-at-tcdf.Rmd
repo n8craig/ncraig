@@ -11,7 +11,7 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+draft: false
 bibliography: references.bib
 ---
 
@@ -38,21 +38,20 @@ So far this year, **over 8 million was spent on empty space at TCDF**. Now, on t
 
 # Inspections
 
-It bears noting that TCDF passed the two most recent regular facility [inspections](https://www.ice.gov/detain/facility-inspections) that were performed by the private contractors Nakamoto Group. The most recent of those was months before OIG arrived. Nakamoto inspectors passed the facility with only a single deficient standard. The inspection cover letter notes that "the current staffing level is at fifty percent of the authorized correctional/security positions" and that "[s]taff is currently working mandatory overtime shifts" [@ero2021]. The inspection cover letter also notes problems with sanitation, food service, and water temperatures. The Lead Compliance Inspector recommended a rating of Does Not Meet Standards [@ero2021a, pg 5].
+In the 9 months before February 2022, when OIG made an announced inspection, there were three other groups of inspectors who visited the facility. Two groups were from DHS's Office of Detention Oversight (ODO) along with some Creative Corrections contractors. The third were private contractors, the Nakamoto Group.
 
-Based on my experience, it is exceedingly rare for facilities to fail an inspection. Working with students, we've tallied attributes for 315 inspections and of these 300 passed while 14 were rated either Does Not Pass or Deficient. That is a 96% pass rate, so it is significant that TCDF failed the July 2021 inspection.
+May 3-7, 2021, the Office of Detention Oversight (ODO) performed a Follow-up Compliance Inspection of TCDF and found it complied 6 of the 11 standards reviewed. There were 9 deficiencies among the 5 deficient standards. ODO recommended "ERO work with the facility to resolve any deficiencies that remain outstanding in accordance with contractual obligations" [@odo2021, 9].
 
-May 3-7, 2021, the Office of Detention Oversight inspected the facility
+July 27-29, 2021 the Nakamoto Group inspected TCDF. The inspection cover letter notes that "the current staffing level is at fifty percent of the authorized correctional/security positions" and that "[s]taff is currently working mandatory overtime shifts" [@ero2021]. The inspection cover letter also notes problems with sanitation, food service, and water temperatures. The Lead Compliance Inspector recommended a rating of Does Not Meet Standards [@ero2021a, pg 5]. Based on my experience, it is exceedingly rare for facilities to fail an inspection. Working with students, we've tallied attributes for 315 inspections and of these 300 passed while 14 were rated either Does Not Pass or Deficient. That is a 96% pass rate, so it is significant that TCDF failed the July 2021 inspection.
 
-This is a very different result than what OIG found months later.
+November 16-18, 2021 ODO performed a Compliance Inspection of TCDF and found it complied with 18 of the 26 standards reviewed. There were 21 deficiencies among the the 8 deficient standards. ODO recommended "ERO El Paso work with the facility to resolve any deficiencies that remain outstanding in accordance with contractual obligations" [@odo2021a, 14]. The final table in the report shows a Facility Rating of "Superior" for FY2022 (Figure \@ref(fig:odo-nov-2021-table)).
 
-ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, ICE used the inspections to assert there was no issue. Elsewhere, I have referred to this as part of a "theater of performative compliance" on the part of ICE and its inspectors [@craig2021], and is an example of how reforms generally backfire.
+```{r odo-nov-2021-table}
+#| fig.cap = "Table from [@odo2021a, 14] showing TCDF with a rating of Superior for FY2022."
+knitr::include_graphics("https://i.imgur.com/pVJUvrE.png")
+```
 
-<aside>
-
-For anyone who reads Nakamoto's inspections, it is clear that inspectors go out of their way to invalidate concerns raised by detained persons and overlook areas of known concern.
-
-</aside>
+What OIG found in their February, 2022 unannounced inspection was very different than what was reported by ODO just three months prior. ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, or accept that inspectors who regularly pass facilities did not pass TCDF, ICE refers to the inspections to assert there was no issue.
 
 OIG's report specifically mentioned observing speedy attempts to clean the facility as the inspectors were walking around.
 
