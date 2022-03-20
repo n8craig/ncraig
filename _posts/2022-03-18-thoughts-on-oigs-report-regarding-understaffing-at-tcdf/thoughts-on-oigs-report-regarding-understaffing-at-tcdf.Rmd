@@ -19,6 +19,8 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+Page last updated: `r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`
+
 The Department of Homeland Security (DHS) Office of Inspector General (OIG) recently released a [Management Alert](https://www.oig.dhs.gov/sites/default/files/assets/2022-03/OIG-22-31-Mar22-mgmtalert.pdf) regarding the Torrance County Detention Facility (TCDF) [@dhsoig2022], a CoreCivic managed, intergovernmental service agreement between ICE and Torrance County, NM. The alert calls for the immediate removal of all persons in ICE custody due to poor conditions that arose from chronic and acute staffing shortages. ICE did not agree with OIG's the assessment and disputes the finding. Before getting into the staffing issues and resulting inhumane conditions, I want to consider some of the costs that are involved.
 
 ```{r oig-fig1-2}
@@ -40,7 +42,7 @@ So far this year, **over 8 million was spent on empty space at TCDF**. Now, on t
 
 In the 9 months before February 2022, when OIG made an announced inspection, there were three other groups of inspectors who visited the facility. Two groups were from DHS's Office of Detention Oversight (ODO) along with some Creative Corrections contractors. The third were private contractors, the Nakamoto Group.
 
-May 3-7, 2021, the Office of Detention Oversight (ODO) performed a Follow-up Compliance Inspection of TCDF and found it complied 6 of the 11 standards reviewed. There were 9 deficiencies among the 5 deficient standards. ODO recommended "ERO work with the facility to resolve any deficiencies that remain outstanding in accordance with contractual obligations" [@odo2021, 9].
+May 3-7, 2021, ODO performed a Follow-up Compliance Inspection of TCDF and found it complied with 6 of the 11 standards reviewed. There were 9 deficiencies among the 5 deficient standards. ODO recommended "ERO work with the facility to resolve any deficiencies that remain outstanding in accordance with contractual obligations" [@odo2021, 9].
 
 July 27-29, 2021 the Nakamoto Group inspected TCDF. The inspection cover letter notes that "the current staffing level is at fifty percent of the authorized correctional/security positions" and that "[s]taff is currently working mandatory overtime shifts" [@ero2021]. The inspection cover letter also notes problems with sanitation, food service, and water temperatures. The Lead Compliance Inspector recommended a rating of Does Not Meet Standards [@ero2021a, pg 5]. Based on my experience, it is exceedingly rare for facilities to fail an inspection. Working with students, we've tallied attributes for 315 inspections and of these 300 passed while 14 were rated either Does Not Pass or Deficient. That is a 96% pass rate, so it is significant that TCDF failed the July 2021 inspection.
 
@@ -51,7 +53,7 @@ November 16-18, 2021 ODO performed a Compliance Inspection of TCDF and found it 
 knitr::include_graphics("https://i.imgur.com/pVJUvrE.png")
 ```
 
-What OIG found in their February, 2022 unannounced inspection was very different than what was reported by ODO just three months prior. ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, or accept that inspectors who regularly pass facilities did not pass TCDF, ICE refers to the inspections to assert there was no issue.
+What OIG found in their February, 2022 unannounced inspection was very different than what was reported by ODO just three months prior. ICE's rejection of OIG's claims specifically referenced the prior passed inspections. Rather than raise questions about how earlier inspectors could have missed these ongoing issues, or accept that inspectors who regularly pass facilities did not pass TCDF, ICE refers to the inspections to assert there was no issue or matters were resolved.
 
 OIG's report specifically mentioned observing speedy attempts to clean the facility as the inspectors were walking around.
 
@@ -67,7 +69,7 @@ As a strategy of rural development, the 1990's saw a sharp increase in the const
 
 Corrections Corporation of America (CCA), now CoreCivic, [owned](http://web.archive.org/web/20140427035109/https://www.cca.com/facilities/torrance-county-detention-facility#.U1x-uufgqUk) TCDF since 1990. From 1990-1997, the facility contained 286 incarceration beds. In 1997, CoreCivic [expanded](https://web.archive.org/web/20181020085410/http://townofestancia.com/index.php?page=about-us) the facility to 910 incarceration beds more than tripling the capacity. In 2017, the facility was closed briefly and reopened as an ICE detention facility.
 
-Like many other rural prisons, TCDF opened with the promise of good paying rural jobs but they don't play out well over the long term. In 2017, CoreCivic swiftly closed the facility because there were too many unpaid for empty beds which rendered the facility unprofitable [@dickson2017; @haywood2017; @maxwell2017]. There were too many empty beds. This illustrates how privatization incentivises incarceration. News reports at the time lamented the loss of jobs in the town of Estancia and Torrance County. This illustrates how rural prisons as a development strategy relies on high incarceration rates.
+Like many other rural prisons, TCDF opened with the promise of good paying rural jobs but they don't play out well over the long term. In 2017, CoreCivic swiftly closed the facility because there were too many unpaid for empty beds which rendered the facility unprofitable [@dickson2017; @haywood2017; @maxwell2017]. This illustrates how privatization incentivises incarceration. News reports at the time lamented the loss of jobs in the town of Estancia and Torrance County. This illustrates how rural prisons as a development strategy relies on high incarceration rates.
 
 <aside>"Unfortunately, a declining detainee population in general has forced us to make difficult decisions in order to maximize utilization of our resources."
 
@@ -84,7 +86,9 @@ In 2019, ICE initiated a contract to begin using the facility for detaining migr
 
 </aside>
 
-Meanwhile, internal ICE documents cited by OIG indicate that as early as 2020, one year after reopening, the facility was already unable to meet contractual staffing levels. CoreCivic couldn't get enough people to work as guards at TCDF. Apparently, this continued for two years and multiple passed inspections until finally OIG made an unannounced visit in February of 2022. It bears mention that in 2019, during the early frenzy of the COIVD-19 pandemic, for waging hunger strikes, CoreCivic staff trapped and brutally assaulted persons detained at TCDF with pepper spray [@lanard2020; @swetlitz2020]. Both CoreCivic and Torrance County are named as defendants in a law suit brought by 9 of the individuals who were assaulted. Amazingly, the assaults seem to have had no factor in OIG's recommendation to evacuate TCDF. Given the severity of the incident, they should have.
+Meanwhile, internal ICE documents cited by OIG indicate that as early as 2020, one year after reopening, the facility was already unable to meet contractual staffing levels. CoreCivic couldn't get enough people to work as guards at TCDF. Apparently, under staffing continued for two years.
+
+It bears mention that in 2019, during the early frenzy of the COIVD-19 pandemic, for waging hunger strikes, CoreCivic staff trapped and brutally assaulted persons detained at TCDF with pepper spray [@lanard2020; @swetlitz2020]. Both CoreCivic and Torrance County are named as defendants in a law suit brought by 9 of the individuals who were assaulted. Amazingly, the assaults seem to have had no factor in OIG's recommendation to evacuate TCDF. Given the severity of the incident, they should have.
 
 It is important to note that there is chronic understaffing at carceral facilities across New Mexico. The New Mexico Corrections Department (NMCD) previously fined both CoreCivic and the GeoGroup for not maintaining contracted staffing levels. Multiple private prison facilities were taken over by the state due to low staffing [@mckee2019; @krqestaff2021; @haywood2021; @haywood2021a]. Shortly after this, NMCD announced that there were insufficient staff to screen letters for contraband at public prisons and now inmates would not be able to receive physical letters as all personal correspondence will be scanned and the letters must be accessed electronically. The OIG's shocking new report about TCDF is another data point demonstrating that incarceration as development is failed public policy.
 
