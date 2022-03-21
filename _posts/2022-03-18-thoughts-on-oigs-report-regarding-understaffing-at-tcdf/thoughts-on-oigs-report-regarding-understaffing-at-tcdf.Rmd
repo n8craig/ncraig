@@ -73,15 +73,20 @@ Corrections Corporation of America (CCA), now CoreCivic, [owned](http://web.arch
 
 Like many other rural prisons, TCDF opened with the promise of good paying rural jobs but they don't play out well over the long term. In 2017, CoreCivic swiftly closed the facility because there were too many unpaid for empty beds which rendered the facility unprofitable [@dickson2017; @haywood2017; @maxwell2017]. This illustrates how privatization incentivises incarceration. News reports at the time lamented the loss of jobs in the town of Estancia and Torrance County. This illustrates how rural prisons as a development strategy relies on high incarceration rates.
 
-<aside>"Unfortunately, a declining detainee population in general has forced us to make difficult decisions in order to maximize utilization of our resources."
+<aside>
 
--- Jonathan Burns, CoreCivic Spokesman [@haywood2017]</aside>
+"Unfortunately, a declining detainee population in general has forced us to make difficult decisions in order to maximize utilization of our resources."
+
+-- Jonathan Burns, CoreCivic Spokesman [@haywood2017]
+
+</aside>
 
 In 2019, ICE initiated a contract to begin using the facility for detaining migrants. News reports suggested that the reopening brought a hum of new economic activity [@swetlitz2019]. Likely to mitigate the prior issues with low occupancy, the ICE contract has included guaranteed minimums since reopening. ICE would pay out even if the facility was empty, which it mostly has been for over a year. All available data indicate that tens of millions have now been paid on empty beds at this facility alone.
 
 <!--# Track decline in number of beds and relate to timeline laid out in OIG report -->
 
 <aside>
+
 "Now that it's comin' back, money's comin' again!"
 
 -- Bo Bardy, Estancia Resident [@swetlitz2019]
