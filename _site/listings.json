@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2022-12-08-moonlander-keyboard.html",
       "/posts/2022-10-21-invert-names/index.html",
       "/posts/2022-10-13-compound-fields/index.html",
       "/posts/2022-10-10-gdelt-visualizations/index.html",
@@ -19,7 +20,7 @@
       "/posts/2021-05-23-ice-detention-covid-19-maps/index.html",
       "/posts/2021-05-19-canvas-and-r/index.html",
       "/posts/2021-05-07-critical-race-theory/index.html",
-      "/posts/post1.html",
+      "/posts/2021-05-01-mayday.html",
       "/posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html",
       "/posts/2021-04-25-ice-adp/index.html",
       "/posts/2021-04-25-first-post/index.html"

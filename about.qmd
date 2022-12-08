@@ -26,9 +26,6 @@ about:
 
 I am an anthropologist interested in power, domination, and resistance. I spent a good portion of my life doing archaeology and ethnoarchaeology focusing on South America. Recently, I turned my attention to incarceration and immigration. Using computers and digital data is part of my practice as a scholar activist. A good bit of what I blog about on this site involves writing about using reproducible research methods (@fig-max-nathan).
 
-![Max and Nathan debug some code before retiring to play some blues.](https://i.imgur.com/4IhqZoA.jpg){#fig-max-nathan}
-
-
 
 # Education
 
@@ -37,3 +34,5 @@ Ph.D. Anthropology, University of California, Santa Barbara, 2005
 M.A. Anthropology, University of California, Santa Barbara, 1997
 
 BA, Anthropology, University of California, Santa Cruz 1994
+
+![Max and Nathan debug some code.](https://i.imgur.com/4IhqZoA.jpg){#fig-max-nathan}

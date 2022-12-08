@@ -1,17 +1,15 @@
 ---
 title: "NMSU Anthropology Seed Bank Donation"
-subtitle: "A selection of native and non-native warm season seeds grown in Las Cruces with some general notes."
+description: "A selection of native and non-native warm season seeds grown in Las Cruces with some general notes."
 author: "Nathan Craig"
 date: 2022-02-27
 ---
-
-# Warm Season Plants
 
 ## Native Plants
 
 ### Papaloquelite (*Porophyllum ruderale*)
 
-::: {.column-margin}
+::: column-margin
 ![Papaloquelite (*Porophyllum ruderale*)](https://i.imgur.com/3bdB8Kx.png)
 :::
 
@@ -21,11 +19,9 @@ Papalo is an annual that sprouts when the weather turns really warm, like in the
 
 When the weather turns warm, we clear a small area, mark a line with a stick or a finger, sprinkle papalo seed in the trough, gently cover, and water well for the next several days. Within probably 4-5 days, they will start to show up. Don't bury the seeds too deeply, and once they sprout they take less water.
 
-
-::: {.column-margin}
+::: column-margin
 ![Papaloquelite sprout](https://ncraig.netlify.app/posts/2021-04-25-first-post/images/popalo-sprout.jpg)
 :::
-
 
 The plant does well with very little irrigation but will grow vigorously if provided good soil and water. The foliage has a texture difficult to describe, it is waxy and soft. The plant surely gets its name from the unique leaves. We have observed papalo growing wild in the Catalina mountains in Tucson.
 
@@ -45,10 +41,9 @@ This pink bean is a vigorous and productive sprawling bush bean. It grows well i
 
 ### Devil's Claw (*Proboscidea parviflora)*
 
-::: {.column-margin}
+::: column-margin
 ![Devil's Claw (*Proboscidea parviflora*)](https://i.imgur.com/axfOCQo.png)
 :::
-
 
 This plant has edible fruit whose fibers are also used for basketry. The flavor is a wonderful bitter and is somewhat similar to okra. We cut devils claw into small pieces and saute them in olive oil with cumin seed. They can also be pickled. Devil's claw must be eaten young. The fruits become woody quickly. Once it is difficult to cut through the fruit, we find them unpleasant to eat. Our plants are incredibly productive every year. We always have fruits left over because they are hard to stay on top of. Dried, the pods are wonderful interesting decorative shapes.
 

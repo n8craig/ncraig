@@ -34,5 +34,5 @@ format:
 
 execute:
   freeze: auto
-editor: visual
+editor: source
 

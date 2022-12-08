@@ -1,0 +1,25 @@
+---
+title: "Moonlander Keyboard"
+description: "Some very brief notes on my evolving keyboard setup"
+date: 2022-12-08
+image: https://i.imgur.com/qEz7A92.png
+---
+
+::: {layout-ncol=2}
+After several decades of computer work, often in not-so ergonomic settings (@fig-salon), my hands and wrists are quite sensitive to carpel tunnel. Thus, I became quite interested in the ZSA [Moonlander](https://www.zsa.io/moonlander) keyboard. I was able to obtain one and have been working with it for probably a year now, and made some customizations like additional [legs](https://www.printables.com/en/model/66313-slender-moonlander-thumb-cluster-leg) to get a better tenting angle (@fig-keyboard-1). My keyboard layout has gone through several iterations, but I'm finally gravitating toward one that works well for my purposes. The keyboard currently features four primary layers: QWERTY keys, navigation keys to minimize mouse use, RStudio layer for common tasks, and a number pad.
+
+![Salon de computación in Ilave Peru, 1999.](https://i.imgur.com/klnEAde.png){#fig-salon}
+
+:::
+
+
+![Moonlander keyboard, using the second layer's mouse controls to capture the iamge. Note additional custom printed legs.](https://i.imgur.com/qEz7A92.png){#fig-keyboard-1}
+
+
+::: column-page-inset
+```{=html}
+<div style="padding-top: 60%; position: relative;">
+    <iframe src="https://configure.zsa.io/embed/moonlander/layouts/bdopQ/latest/0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%"></iframe>
+</div>
+```
+:::
