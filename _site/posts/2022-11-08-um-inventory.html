@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-12-08">
+<meta name="author" content="Nathan Craig">
+<meta name="dcterms.date" content="2022-11-22">
+<meta name="description" content="R and Quarto are used for a museum catalog interface.">
 
-<title>N.Craig - Moonlander Keyboard</title>
+<title>N.Craig - University Museum Inventory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,22 +127,33 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Moonlander Keyboard</h1>
+<h1 class="title">University Museum Inventory</h1>
 </div>
 
+<div>
+  <div class="description">
+    R and Quarto are used for a museum catalog interface.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nathan Craig </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 8, 2022</p>
+      <p class="date">November 22, 2022</p>
     </div>
   </div>
   
@@ -150,18 +163,22 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>After several decades of computer work, often in not-so ergonomic settings, my hands and wrists are pretty sensitive to carpel tunnel. Thus, I became quite intersted in the ZSA <a href="https://www.zsa.io/moonlander">Moonlander</a> keyboard. I was able to obtain one and have been working with it for probably a year now. My keyboard layout has gone through several iterations, but I’m finally gravitating toward one that works well for my purposes. The keyboard currently features four primary layers:</p>
-<ul>
-<li>QWERTY keys</li>
-<li>Navigation keys to minimize mouse use</li>
-<li>RStudio layer for common tasks</li>
-<li>Number pad</li>
-</ul>
-<div class="column-page-inset">
-<div style="padding-top: 60%; position: relative;">
-    <iframe src="https://configure.zsa.io/embed/moonlander/layouts/bdopQ/latest/0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%"></iframe>
+<p>Digital museum catalogs are generally stored in a database. The NMSU University Museum uses PastPerfect, which is an extremely common database for small museums. Most public interfaces for museum catalogs cost money, often through a software as service subscription model. Dissatisfied with this, I set out to create a workable museum catalog built on free and open source software.</p>
+<p>I reasoned that:</p>
+<ol type="1">
+<li>publishing a museum catalog on the web basically entails presenting structured data in the form of a table,</li>
+<li>R is one of the world’s premiere statistical languages, and</li>
+<li>R developers have gone to great lengths to develop systems for communicating statistical results generated in R (R Markdown) and other languages (Quarto)</li>
+</ol>
+<p>PastPerfect permits the export of object records as an Excel file. I imported this file, joined in object images, and served the information up using the <code>DT</code> library (<a href="#fig-inventory-interface">Figure&nbsp;1</a>). A working version of the site is located <a href="https://um-inventory.netlify.app/">here</a>.</p>
+<div id="fig-inventory-interface" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="https://um-inventory.netlify.app/"><img src="https://i.imgur.com/cmeJeHq.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: University Museum inventory interface built using <code>DT</code>.</figcaption><p></p>
+</figure>
 </div>
-</div>
+<p>At present the inventory consists of about 4500 records. The table is rendered in JavaScript so it is likely resource intensive on the browser. To reduce load times and strain on the browser, I generated image thumbnails and compressed all of the images. This helped tremendously with load times.</p>
+<p><code>DT</code> is a wrapper to the <a href="https://datatables.net/"><code>DataTables</code></a> JavaScript library. DataTables offers some very nice customizations and I used the <a href="https://datatables.net/extensions/searchbuilder/"><code>SearchBuilder</code></a> extension. It took a bit of fiddling to understand the Document Object Model (DOM) switches, but after some quality time with the documentation I was able to implement it. One of the key sections is to understand the <a href="https://datatables.net/reference/option/dom"><code>dom</code></a> documentation located under <code>Reference/Options</code> which took some digging to find.</p>
 
 
 

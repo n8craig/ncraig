@@ -1,6 +1,6 @@
 ---
 title: "Moonlander Keyboard"
-description: "Some very brief notes on my evolving keyboard setup"
+description: "Some very brief notes on my evolving keyboard setup."
 date: 2022-12-08
 image: https://i.imgur.com/qEz7A92.png
 ---
