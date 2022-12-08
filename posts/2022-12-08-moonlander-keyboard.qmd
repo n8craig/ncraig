@@ -6,7 +6,7 @@ image: https://i.imgur.com/qEz7A92.png
 ---
 
 ::: {layout-ncol=2}
-After several decades of computer work, often in not-so ergonomic settings (@fig-salon), my hands and wrists are quite sensitive to carpel tunnel. Thus, I became quite interested in the ZSA [Moonlander](https://www.zsa.io/moonlander) keyboard. I was able to obtain one and have been working with it for probably a year now, and made some customizations like additional [legs](https://www.printables.com/en/model/66313-slender-moonlander-thumb-cluster-leg) to get a better tenting angle (@fig-keyboard-1). My keyboard layout has gone through several iterations, but I'm finally gravitating toward one that works well for my purposes. The keyboard currently features four primary layers: QWERTY keys, navigation keys to minimize mouse use, RStudio layer for common tasks, and a number pad.
+After several decades of computer work, often in not-so ergonomic settings (@fig-salon), my hands and wrists are quite sensitive to carpel tunnel. Thus, I became very interested in the ZSA [Moonlander](https://www.zsa.io/moonlander) keyboard. I was able to obtain one and have been working with it for probably a year now, and made some customizations like additional [legs](https://www.printables.com/en/model/66313-slender-moonlander-thumb-cluster-leg) to get a better tenting angle (@fig-keyboard-1). My keyboard layout has gone through several iterations, but I'm finally gravitating toward one that works well for my purposes. The keyboard currently features four primary layers: QWERTY keys, navigation keys to minimize mouse use, RStudio layer for common tasks, and a number pad.
 
 ![Salon de computación in Ilave Peru, 1999.](https://i.imgur.com/klnEAde.png){#fig-salon}
 
