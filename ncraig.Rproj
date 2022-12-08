@@ -11,9 +11,3 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
-
-BuildType: Website
-
-MarkdownCanonical: No
-
-ZoteroLibraries: "My Library"

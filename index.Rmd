@@ -1,5 +1,0 @@
----
-title: "Nathan Craig"
-site: distill::distill_website
-listing: posts
----
