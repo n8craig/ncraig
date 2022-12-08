@@ -1,0 +1,16 @@
+---
+title: "May Day Post"
+date: 2022-05-01
+---
+
+A May Day post in honor of workers.
+
+![](https://i.imgur.com/hnH8iTe.png)
+
+Notice the "Free Tom Mooney" sign someone is holding up? So, who was Thomas Mooney?
+
+::: {layout-ncol="2"}
+[![The Mooney Case by Richard H. Frost](https://i.imgur.com/oioFeIJ.png)](https://archive.org/details/mooneycase00fros/mode/2up)
+
+[![*Frame-Up* by Curt Gentry](https://i.imgur.com/4L5HQUO.png)](https://archive.org/details/frameupincredibl00gent)
+:::

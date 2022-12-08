@@ -1,0 +1,16 @@
+{
+  "hash": "3340af198db0ef7f4999cc8bcac88e50",
+  "result": {
+    "markdown": "---\ntitle: \"May Day Post\"\ndate: 2022-05-01\n---\n\n\nA May Day post.\n\n![](https://i.imgur.com/hnH8iTe.png)\n\nWho was Thomas Mooney?\n\n\n``` {=html}\n<iframe src=\"https://archive.org/embed/mooneycase00fros\" width=\"650\" height=\"1200\" frameborder=\"0\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" allowfullscreen></iframe>\n```\n\n```{=html}\n<iframe src=\"https://archive.org/embed/frameupincredibl00gent\" width=\"700\" height=\"1200\" frameborder=\"0\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" allowfullscreen></iframe>\n```\n\n::: {.cell}\n\n:::\n",
+    "supporting": [
+      "2022-05-01-mayday_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
