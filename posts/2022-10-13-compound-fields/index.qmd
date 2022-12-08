@@ -1,0 +1,106 @@
+---
+title: "Dealing with compound fields"
+abstract: |
+ We have a table containing a compound field that is composed of multiple values separated by a delimeter. Here we are simulating data exported from PastPerfect museum catalog software. There are several such cases one might encounter: material, use, culture, etc.
+
+author: "Nathan Craig"
+date: 2022-10-13
+categories: 
+ - how-to
+ - wrangling
+format: 
+  html:
+    df-print: kable
+---
+
+Generally, it is not a good idea to put multiple values into a single table cell. This is not [tidy](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) and it is cumbersome to deal with fields so structured. However, given the constraints of some data entry systems, one may need to encode compound values to describe the observation. Suppose an individual is recording an object made of three materials but the data entry form only offers a single field (@fig-pp-input). We don't want to log just one value; we would rather capture all three materials. When confronted with such situations, people often enter some kind of delimited value like `apple/pear/orange` where `/` is the separator for three values. What follows is a way of dealing with this situation in R.
+
+![Past Perfect input screen with compound fields highlighted in red.](https://i.imgur.com/27byU9G.png){#fig-pp-input}
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r libraries}
+# Load libraries
+library(tidyverse)
+library(stringi)
+
+```
+
+```{r tbl-make-df}
+#| tbl-cap: Sample dataframe.
+
+# Construct data frame
+df <- data.frame(
+  id = 1:5,
+  material = c(
+    "stone",
+    "stone/bone/sinew",
+    "ceramic/paint",
+    "metal/stone/bone/sinew/paint",
+    NA
+  ),
+  location = "NM"
+)
+
+df
+```
+
+Now we have a data frame where material contains entries representing more than one value. With `stringi` R can parse that complex string into a list.
+
+```{r string-split}
+# Split the string into a list
+df$material <- str_split(df$material, "/")
+```
+
+It is possible to access a given list item with `unlist()`. This can be done for individual records, ranges of records, or the entire column.
+
+```{r subset-unlist}
+
+# Get the list item from the second record
+df[2,][,2]
+
+# Unpack the list associated with that record
+unlist(df[2,][,2])
+
+```
+
+```{r unlist-all}
+
+# Unpack the entire list column as a single list
+x <- unlist(df[,2])
+x
+```
+
+Let's turn the list of all values into its own data frame.
+```{r make-df-list}
+df_x <- tibble(x)
+```
+
+To see how many of each type of object we have, we can use `tidyverse` verbs to group by and summarize (@tbl-summarise).
+
+```{r tbl-summarise}
+#| tbl-cap: Counts by value extracted from a compound field.
+df_x %>% group_by(x) %>% 
+  summarize(n = n())
+```
+Let's search for a specific material and filter the table returning only records that meet the search criteria (@tbl-result).
+
+```{r tbl-result}
+#| tbl-cap: Primary table filtered based on presence of search string in compound field.
+
+# Test for the presence of a string
+# returns a TRUE/FALSE vector
+a <- stri_detect_regex(df$material, "stone")
+
+# Get the numerical value of the record when TRUE
+b <- which(a == TRUE)
+
+# Call the rows based on the index
+df[b,]
+```
+

@@ -1,0 +1,16 @@
+{
+  "hash": "04c79ba3da03a9e1f88d31bad3ce5f9f",
+  "result": {
+    "markdown": "---\ntitle: \"First post\"\ndescription: |\n  Welcome to my new site.\nauthor:\n  - name: Nathan Craig \n    url: https://ncraig.netlify.app/\n    affiliation: NMSU Anthropology\n    affiliation_url: https://anthropology.nmsu.edu/\ndate: 04-25-2021\noutput:\n  distill::distill_article:\n    self_contained: false\n    number_sections: true\n    \nformat:\n  html:\n    toc: false\nimage: \"images/popalo-sprout.jpg\"\nfrom: markdown+tex_math_single_backslash\n---\n\n\n# Introduction {#introduction}\n\nI am working with R, Rstudio, and R Markdown as tools for exploring, documenting, and communicating data. While I've written a [couple](https://www.zotero.org/ncraig/) of quantitative papers in the past, I generally relied on GUI based statistical tools like Excel, JMP, or the very nice [PAST](https://www.nhm.uio.no/english/research/infrastructure/past/) application. They were ok, but really felt lacking, particularly in terms of laying out plots or documenting work flows. Recently, after a brief sojourn with python and jupyter notebooks, I became interested in learning R as a platform for working with data, generating reproducible results, and communicating them effectively on the internet. While python is a great language, in many ways R and R Markdown seem better suited to my personal needs.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![A common GUI based research organization.](https://i.imgur.com/Z0Uaacs.png)\n:::\n:::\n\n\nSome time ago, I began shifting my writing from Microsoft Word to Markdown, using [Zettlr](https://www.zettlr.com/) or [Obsidian](https://obsidian.md/) and combining these with [Zotero](https://www.zotero.org/), the [Better BibTex](https://retorque.re/zotero-better-bibtex/) plugin, and [Pandoc](https://pandoc.org/). Given a writing workflow that entails Markdown-Zotero and an interest in quantitative themes, R and R Markdown seemed like logical tools to explore. I looked at several of the R Markdown platforms like [Rpubs](https://rpubs.com/ncraig) as well as packages like `bookdown` and `blogdown`. After examining the field, the [`distill`](https://rstudio.github.io/distill/) package seemed like a full fledged technical writing tool without some of the hassles that people reported using blogdown/go. So I figured I'd give `distill` a try. This website was borne out of that process.\n\nAn emerging sprout, just starting to grow (see @fig-popalo). Hopefully treatments will produce positive results (@fig-plant-growth).\n\n\n::: {.cell preview='true'}\n::: {.cell-output-display}\n![Popaloquelite (*Porophyllum ruderale*) sprout.](images/popalo-sprout.jpg){#fig-popalo}\n:::\n:::\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![Plant growth dataset, comparing yields (measured by dry weights) obtained under a control and two different treatment conditions. Data source Dobson (1983)](index_files/figure-html/fig-plant-growth-1.png){#fig-plant-growth width=672}\n:::\n:::\n\n\n# Reference\n\nDobson, A. J. (1983) *An Introduction to Statistical Modelling*. London: Chapman and Hall.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

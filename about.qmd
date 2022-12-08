@@ -1,0 +1,31 @@
+---
+title: "Nathan M Craig"
+about:
+  template: trestles
+  image: /images/nmc.jpg
+  image-shape: rounded
+  image-width: 12em
+  links: 
+    - icon: orcid
+      text: OrchID
+      href: https://orcid.org/0000-0003-2184-2082
+    - icon: academia
+      text: Academia
+      href: https://nmsu.academia.edu/NathanCraig
+    - icon: scholar
+      text: G Scholar
+      href: https://scholar.google.com/citations?user=C0SRYOQAAAAJ&hl=en
+    - icon: zotero
+      text: Zotero
+      href: https://www.zotero.org/ncraig/
+---
+
+I am an anthropologist interested in power, domination, and resistance. I spent a good portion of my life doing archaeology and ethnoarchaeology focusing on South America. Recently, I turned my attention to incarceration and immigration. Using computers and digital data is part of my practice as a scholar activist. A good bit of what I blog about on this site involves writing about using reproducible research methods.
+
+# Education
+
+Ph.D. Anthropology, University of California, Santa Barbara, 2005
+
+M.A. Anthropology, University of California, Santa Barbara, 1997
+
+BA, Anthropology, University of California, Santa Cruz 1994

@@ -1,0 +1,38 @@
+project:
+  type: website
+
+website:
+  title: "nmc"
+  navbar:
+    background: primary
+    left:
+      # - href: index.qmd
+      #   text: Home
+      - blog.qmd
+      - text: Projects
+        menu: 
+        - href: https://n8craig.github.io/inspections/
+          text: ICE Inspections
+        - href: /posts/2021-06-30-current-ice-detention-population/
+          text: Current ICE Detention
+        - href: https://n8craig.github.io/nmsu-grades/index.html
+          text: Canvas and R
+        - href: https://nmc.quarto.pub/um-environmental-data/
+          text: Museum Environmental Monitoring
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: lux
+    css: styles.css
+    link-external-newwindow: false
+    # link-external-filter: ^(?:http:|https:)\/\/nmc\.quarto\.pub\/custom
+    # link-external-icon: true
+    toc: true
+    mainfont: 'Sorts Mill Goudy'
+
+execute:
+  freeze: auto
+editor: visual
+

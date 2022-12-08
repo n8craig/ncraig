@@ -1,0 +1,16 @@
+{
+  "hash": "9535a8e01036688b2c95caa352a4e39b",
+  "result": {
+    "markdown": "---\ntitle: \"ICE Detention COVID-19 Maps\"\ndescription: |\n  Animated visualizations of COVID-19 infections in ICE detention over time.\nauthor:\n  - name: Nathan Craig\n    url: https://ncraig.netlify.app/\ndate: 05-23-2021\ncategories:\n  - immigration\noutput:\n  distill::distill_article:\n    self_contained: false\n    # pandoc_args: [\"--number-sections\"]\n    df_print: paged\n    toc: true\n    number_sections: false\nformat:\n  html:\n    toc: true\nimage: COVID-19-map.jpg\nfrom: markdown+tex_math_single_backslash\nbibliography: packages.bib\nlink-citations: yes\nrepository_url: https://github.com/n8craig/ncraig\ncreative_commons: CC BY-NC\n---\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\n# COVID-19 Cases in ICE Detention Over Time\n\nThe following maps and graph are generated with data scraped from the [ICE Guidance on COVID-19](https://www.ice.gov/coronavirus) website. The scraped data are maintained in a GitHub [repository](https://github.com/n8craig/ICE-COVID-19). COVID-19 data reported by ICE are linked with geocoded facility locations. COVID-19 data are assembled in \"long\" format, plotted with `ggplot` [@R-ggplot2], and animated with the `gganimate` [@R-gganimate] library.\n\n## Cumulative COVID-19 Map\n\nA map of cumulative COVID-19 cases by ICE detention facility over time.\n\n\n::: {.cell .column-margin}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.gif)\n:::\n:::\n\n\n## Cumulative COVID-19 Line Plot\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-5-1.gif)\n:::\n:::\n\n\n## Total Detained and Active Cases Line Plot Over Time\n\nThe following is a pair of line plots showing detained population and active COVID-19 cases in custody over time. Comparing the plots one can see that between July and January 2020 as the detained population decreased the number of active COVID-19 cases in custody declined. Likewise, one can see that in late March 2021 as the total detained population began to rise the number of active COVID-19 cases in custody also rose and that by April 2021 both the detained population and active COVID-19 cases in ICE detention are rising rapidly.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-6-1.png){width=672}\n:::\n:::\n\n\n## Active COVID-19 Map\n\nA map of active COVID-19 cases by ICE detention facility over time.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-7-1.gif)\n:::\n:::\n\n::: {.cell}\n\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

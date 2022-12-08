@@ -1,0 +1,7 @@
+- source: project
+  quarto-pub:
+    - id: fbe610aa-74f4-4336-9cb9-1686ff296e56
+      url: 'https://quartopub.com/sites/nmc/nmc'
+  netlify:
+    - id: 62f230c2-277b-486d-8b9e-9c07e1d09c33
+      url: 'https://dazzling-sable-8c9161.netlify.app'

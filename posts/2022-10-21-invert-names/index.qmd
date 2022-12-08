@@ -1,0 +1,44 @@
+---
+title: "Invert Names"
+
+description: |
+  A short note on switching inverted names like `last, first` to read `first last`.
+author: "Nathan Craig"
+date: 2022-10-21
+categories: 
+ - how-to
+ - wrangling
+editor: source
+format:
+  html:
+    df-print: kable
+---
+
+Occasionally, we get data frames where items are comma separated and reverse order. Perhaps the most common case is where first and last names are reversed and comma separated. Another, situation is when applying controlled vocabularies, which are often structured in this way (@fig-pp). Let's run through switching the terms and see the result (#tbl-result).
+
+![PastPerfect data entry screen showing assignment of Nomenclature 3.0 terms.](https://i.imgur.com/ga9kith.png){#fig-pp}
+
+
+```{r message=FALSE}
+# Load libraries
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+# Create data
+df <- data.frame (name_inverse  = c("Henry, John", 
+                      "Bunyan, Paul")
+                  )
+```
+
+```{r tbl-result}
+#| tbl-cap: Results showing the reversal of names. Note the extra columns can be removed with `select`.
+df <- df |> separate(name_inverse, c("last", "first"),
+               remove = FALSE) |> 
+  mutate(name = paste(first, last, sep = " "), 
+         .before = name_inverse)
+df
+```
+
+![Names fixed](https://i.imgur.com/T6GzuFM.png){#fig-names}

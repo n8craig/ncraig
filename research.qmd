@@ -1,0 +1,20 @@
+---
+title: Research
+toc: true
+---
+
+# Topic 1
+
+This is some important research stuff.
+
+# Topic 2
+
+This has two parts.
+
+## Sub part 1
+
+This is some important research
+
+## Sub part 2
+
+More important research.

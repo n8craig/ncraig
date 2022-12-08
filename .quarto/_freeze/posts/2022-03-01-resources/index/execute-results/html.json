@@ -1,0 +1,18 @@
+{
+  "hash": "0e208020f3526615351f4c43a765b878",
+  "result": {
+    "markdown": "---\ntitle: \"Sample Table of Resources\"\nauthor: \"Nathan Craig\"\ndate: \"2/19/2022\"\noutput: html_document\nfrom: markdown+tex_math_single_backslash\n---\n\n\nThis post illustrates the use of a sample table of resources that are listed on the page.\n\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<div id=\"htmlwidget-5840ebc47032e0917aa6\" class=\"reactable html-widget\" style=\"width:auto;height:auto;\"></div>\n<script type=\"application/json\" data-for=\"htmlwidget-5840ebc47032e0917aa6\">{\"x\":{\"tag\":{\"name\":\"Reactable\",\"attribs\":{\"data\":{\"Project\":[\"Canvas & R\",\"ICE Inspection Review\"],\"url\":[\"https://n8craig.github.io/nmsu-grades/index.html\",\"https://n8craig.github.io/inspections/index.html\"],\"Type\":[\"Web Site\",\"Web Site\"],\"Description\":[\"Thoughts  and notes on usnig R with Canvas\",\"An exploration of ICE facility inspection information\"]},\"columns\":[{\"accessor\":\"Project\",\"name\":\"Project\",\"type\":\"character\",\"cell\":[{\"name\":\"a\",\"attribs\":{\"href\":\"https://n8craig.github.io/nmsu-grades/index.html\"},\"children\":[\"Canvas & R\"]},{\"name\":\"a\",\"attribs\":{\"href\":\"https://n8craig.github.io/inspections/index.html\"},\"children\":[\"ICE Inspection Review\"]}],\"minWidth\":150},{\"accessor\":\"url\",\"name\":\"url\",\"type\":\"character\",\"show\":false},{\"accessor\":\"Type\",\"name\":\"Type\",\"type\":\"character\",\"minWidth\":115},{\"accessor\":\"Description\",\"name\":\"Description\",\"type\":\"character\",\"minWidth\":250}],\"searchable\":true,\"defaultPageSize\":2,\"paginationType\":\"numbers\",\"showPageInfo\":true,\"minRows\":1,\"dataKey\":\"68d3928be0326e5c8773c82aa346dba4\",\"key\":\"68d3928be0326e5c8773c82aa346dba4\"},\"children\":[]},\"class\":\"reactR_markup\"},\"evals\":[],\"jsHooks\":[]}</script>\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"..\\..\\site_libs/core-js-2.5.3/shim.min.js\"></script>\r\n<script src=\"..\\..\\site_libs/react-17.0.0/react.min.js\"></script>\r\n<script src=\"..\\..\\site_libs/react-17.0.0/react-dom.min.js\"></script>\r\n<script src=\"..\\..\\site_libs/reactwidget-1.0.0/react-tools.js\"></script>\r\n<script src=\"..\\..\\site_libs/htmlwidgets-1.5.4/htmlwidgets.js\"></script>\r\n<script src=\"..\\..\\site_libs/reactable-binding-0.2.3/reactable.js\"></script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

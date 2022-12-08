@@ -1,0 +1,203 @@
+---
+title: "ICE ADP"
+description: |
+  This post is an exploration of immigration detention average daily population over time. Particular attention is given to the period represented by the COVID-19 pandemic.
+author:
+  - name: Nathan Craig 
+    url: https://ncraig.netlify.app/
+    affiliation: NMSU Anthropology, AVID
+date: 04-26-2021
+categories:
+  - immigration
+# output:
+#   distill::distill_article:
+#     self_contained: false
+#     # pandoc_args: ["--number-sections"]
+#     # df_print: paged
+#     toc: true
+bibliography: references.bib
+image: https://i.imgur.com/DujNpJ9.png
+link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
+---
+
+# Introduction
+
+This document examines immigration detention average daily population (ADP) from the period 1979 to April 2021. This time frame spans the beginnings of the contemporary period of immigration detention in 1980 [@helton1984; @helton1986a], the official policy of prevention through deterrence \[\@u.sborderpatrol1994; @nevins2002; @dunn2009\], the rise of crimmigration [@stumpf2006a], the post-911 transformation of the Immigration and Naturalization Service (INS) from being under the Department of Justice (DOJ) to Immigration and Customs Enforcement (ICE) under the Department of Homeland Security (DHS) [@bush2002], and finally the COVID-19 pandemic [@hooks2020; @ghandehari2020]. Particular attention is paid to the rapid rise in detention during the first years of Trump administration followed by the largest ever decline in immigration detention which occurred during the final year of the Trump administration.
+
+# Brief History of the Current Immigration Detention System
+
+Immigration detention was invented in the United States at Ellis Island in 1891 \[@wilsher2011: 13\]. Many scholars have observed that this immigration station, as well as Angel Island which opened in 1910 [@barde2006; @lai1978; @daniels1997], were sites where racist and eugenical immigration policy played out [@dolmage2011]. For example, immigration law at the time prohibited the entry of Chinese persons, individuals with mental illness, or those who did not conform to heteronormative standards [@dolmage2011]. In 1954 Ellis Island closed as an immigration inspection station and with it practice of detaining arriving individuals was (for a time) disbanded [@theclos1955; @simon1998]. However, it is important to note that the detention of non-citizens (and in some cases citizens) for immigration purposes via interior enforcement increased markedly that same year \[@swing1954: 31, 36; @lytlehernández2006: 50-51\].
+
+## Caribbean Refugees and the Modern Detention System
+
+Today, the US has the largest immigration detention system of any country and much of it is managed by private prison contractors. How did this modern system come into being? In the summer of 1980, on the heels of signing the landmark [Refugee Act](https://www.archivesfoundation.org/documents/refugee-act-1980/), the Carter administration once again began detaining arriving individuals--in this case Cubans and Haitians arriving to Miami by boat [@helton1984; @helton1986; @lindskoog2018]. This initially ad hoc shift in policy ushered in the current period of immigration detention. Between May 20 and July 31, 1981, six months into the Reagan administration all Haitians arriving by boat to southern Florida without entry documents were detained at Camp Krome \[@helton1986: 133\], a repurposed cold war Nike missile base [@lipman2013].
+
+```{r krome-cover, echo=FALSE, fig.cap="Cover from Lindskoog (2018)"}
+knitr::include_graphics("images/detain_punish.jpg")
+```
+
+This blanket change in detention policy was instigated without formal rule making and the INS was sued over the matter in the Southern District of Florida. District Judge Spellman cited precedent regarding inherent powers in international relations but ruled that the policy was implemented in a way that violated the [Administrative Procedures Act](https://www.archives.gov/federal-register/laws/administrative-procedure) and that 1800 Haitians should be released \[@helton1986: 133\] but Judge Spellman denied the claim that the policy was discriminatory. In July of 1982, in the Federal Register, the INS and DOJ published the new interim rule effective immediately, suspending the normal 30 day publication requirement [@ins1982]. The INS argued that rule was exempt from normal procedures due to an "emergency situation which exists by virtue of a mass influx of illegal aliens" \[@ins1982, 30045\]. The final rule was implemented shortly following [@ins1982a], with little consideration of public comments that expressed substantive concerns over the new policy. Thus in 1981, contemporary immigration detention was hastily crafted under a "state of exception" [@agamben2005] and similar emergency exceptions have been cited throughout this institutions history. For example, both the Migrant Protection Protocols and Title 42 expulsions, discussed below, were introduced in the context of emergency situations.
+
+# Detention Over Time
+
+## Annual ADP FY1979-2021
+
+Though the federal government does not supply comprehensive reporting of immigration detention ADP over time, it is possible to piece this information together from several sources [@takei2016: Figure 1; @siskin2012: 13; @dhs2018] including the ICE [Detention Management](https://www.ice.gov/detain/detention-management) website (see Table \@ref(tab:adp-annual-table) and Figure \@ref(fig:adp-year)).
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(rmarkdown)
+library(readr)
+library(kableExtra)
+```
+
+```{r adp-annual-table}
+
+URL <- "https://raw.githubusercontent.com/n8craig/IDE-Detention-Year-End-Reports/main/data/Immigration_Detention_ADP_1979_2021_apr.csv"
+
+df_adp <- read_csv(URL, 
+    col_types = cols(FY = col_date(format = "%Y"), 
+        ADP = col_double()))
+
+kable(df_adp, caption = "ADP FY1979-April FY 2021 to date.") %>% 
+  scroll_box(width = "250px", height = "300px")
+```
+
+Plotting immigration detention ADP over time shows that since its inception, ADP generally increased up until the middle of the Trump administration, after the onset of the COVID-19. In fact, with the exception of G.W.H. Bush, from inauguration date to leaving office, every administration except for Trump appears to have experienced an increase in ADP (see Table \@ref(tab:administration-change-table)). The greatest increase in ADP came during the Clinton administration and as mentioned, the greatest decline in ADP was during the Trump administration. Some reasons for the decline in detention population during the Trump administration, namely MPP and Title 42 expulsions, will be discussed below. First, a few thoughts on the large increase during the Clinton administration.
+
+```{r administration-change-table}
+tribble(
+  ~President, ~`Total Change`, ~`Annual Change`,
+  "Reagan", 3812, 477,
+  "G.H.W. Bush", 0, 0,
+  "Clinton", 13644, 1706,
+  "W. Bush", 11669, 1459,
+  "Obama", 6008, 751,
+  "Trump", -22294, -5574
+) %>% kable(caption="Changes in ADP by Administration. Note it is difficult to calculate for G.H.W Bush because data are missing for 1993.")
+```
+
+During the Clinton administration, the policy of "prevention through deterrence" in 1994 \[\@u.sborderpatrol1994\] was officially established and the Illegal Immigration Reform and Immigrant Responsibility Act (IIRIRA) of 1996 was signed. In 1994, prevention through deterrence involved the initiation of the construction of the southern border wall as we know it, first in San Diego and later in El Paso. IIRIRA expanded the definition of aggregated felon for which immigration detention was mandatory and solidified the new blending of criminal and immigration law that has come to be known as crimmigration [@stumpf2006; @ackerman2014]. While there were no sharp peaks or valleys in ADP during the Clinton administration, by gradual process, Clinton's administration marks the largest growth per time in ADP of any administration since contemporary immigration detention was established.
+
+Despite an overall trend of increasing ADP over time, there are brief declines in ADP during the middle of the W. Bush and the latter part of the Obama administrations (see Figure \@ref(fig:adp-year)). Yet, notably, each these brief declines is followed by a sharp increase. Other events and policies surrounding these declines followed by sharp inclines warrant further consideration. Specifically, the period from FY2005-2007 and from FY2014-2016 are of particular interest. *However, if the trends following these past two declines, during the W. Bush and Obama administrations, hold true then one might hypothesize a sharp increase in ADP during the Biden administration or the succeeding administration*.
+
+The largest decline in immigration detention ADP modern history occurred in FY2021 during the Trump administration. Interestingly, this sharp decline follows on the largest spike in ADP, which started in FY2016 during the final year of the Obama administration and continued through the first three years of the Trump administration up to FY2019. Several factors likely played a significant role in the dramatic drop in ADP that occurred between FY2019-2020. On January 24, 2019 Secretary of Homeland Security [announced](https://www.dhs.gov/news/2019/01/24/migrant-protection-protocols) the Migrant Protection Protocols (MPP), more widely known as the "remain in Mexico policy." Looking at yearly summaries (see Figure \@ref(fig:adp-year)), this policy does not seem to have resulted in an immediate drop in ADP. However, it is possible that MPP had a contributing effect to lowering ADP (see Section \@ref(monthly-adp-summaries-2018-2021). The Biden administration ended MPP, however, for reasons described below the lifting of this policy has not had a major impact on individuals who were subjected to it (see following paragraph).
+
+By March, 2020 the COVID-19 pandemic was more widespread in the US. On March 13, 2020 ICE suspended visitation to immigration detention centers. On March 20, 2020 the Centers for Disease Control and Prevention (CDC) [issued an order](https://www.cdc.gov/coronavirus/2019-ncov/order-suspending-introduction-certain-persons.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fquarantine%2Forder-suspending-introduction-certain-persons.html) suspending the right to introduce certain persons into the US from countries were a quarantinable communicable disease exists. This rule is more generally known as the Title 42 expulsion. This rule, which prohibits entry on health grounds, likely had a significant role to play in lowering ADP. The Biden administration has largely continued with the Title 42 policy. Maintaining Title 42 restrictions in place has meant that despite the lifting of MPP, many migrants have been forced to remain in Mexico. They are thus not entering the US and being held in immigration detention. *One might hypothesize that a greater than normal portion of people held in immigration detention during FY2020 entered the system through interior enforcement rather than as arriving individuals*.
+
+```{r adp-year, fig.cap="ADP by Year 1979-April 2021"}
+#| column: body-outset
+
+
+administrations <- c("1981-01-20", "1989-01-20", "1993-01-20", "2001-01-20", "2009-01-20", "2017-01-20", "2021-01-20")
+
+fig <- ggplot(df_adp, aes(x= FY, y=ADP))+
+  geom_line()+
+    geom_point(size = 1)+
+  geom_vline(xintercept = as.numeric(as.Date(administrations)), color = "darkgrey", linetype = "dashed")+
+  geom_smooth(size = .5)+
+    labs(
+    title = "Immigration Detention ADP 1979-April 2021",
+    subtitle = "Showing administrations and smoothed trend line.",
+    caption = "Data sources: Takei, Tan, and Lin 2016, Figure 1; Siskin 2012, 13; DHS 2018; \nhttps://www.ice.gov/detain/detention-management"
+  )+
+  annotate("text", x = as.Date("1985-02-01"), y = 0, label = "Reagan", size = 3)+
+  annotate("text", x = as.Date("1991-04-01"), y = 0, label = "G.H.W. \nBush", size = 3)+
+  annotate("text", x = as.Date("1997-02-01"), y = 0, label = "Clinton", size = 3)+
+  annotate("text", x = as.Date("2005-02-01"), y = 0, label = "W. Bush", size = 3)+
+  annotate("text", x = as.Date("2013-02-01"), y = 0, label = "Obama", size = 3)+
+  annotate("text", x = as.Date("2019-02-01"), y = 0, label = "Trump", size = 3)
+
+fig_plot <- ggplotly(fig)
+fig_plot
+```
+
+## Monthly ADP Summaries 2018-2021
+
+Beginning in FY19, ICE started releasing ADP data at monthly timescales. This information provides more fine grained resolution to look at some of the dramatic changes in ADP that occurred during the Trump administration, specifically the impacts of MPP and Title 42 expulsions (see Figure \@ref(fig:adp-monthly-graph)).
+
+```{r adp-monthly-table}
+URL <- "https://raw.githubusercontent.com/n8craig/IDE-Detention-Year-End-Reports/main/data/ADP_monthly_Oct18_Apr21.csv"
+
+df_ADP_monthly <- read_csv(URL, 
+    col_types = cols(Date = col_date(format = "%Y-%m")))
+
+kbl(df_ADP_monthly, caption = "Monthly ADP Oct 2018-April 2021.") %>% 
+  scroll_box(width = "250px", height = "300px")
+```
+
+An examination of ICE's monthly ADP data shows that the number of people in detention continued to climb for six months following the announcement of MPP. In fact, ADP was falling two months prior to the announcement of MPP. August 2019 is the key inflection point when ADP begins to drop and continue falling steadily through the remainder of the Trump administration.
+
+While it might initially be tempting to suggest that MPP had little impact on ADP, it is possible that it took several months for the full effects of MPP on ADP to manifest. Given that during this same time period, the average length of stay (ALOS) in ICE detention was around 35 days that it may have taken several months for MPP's effects on ADP to manifest. *It would be useful to examine changes in ALOS over this time period*.
+
+Though ADP was dropping before the announcement of Title 42 expulsions, the change in ADP that same month is one of the largest drops in the monthly data. Following Title 42 expulsions, ADP continues to fall until after Biden is inaugurated. Notably, consistent with the overall trend, ICE detention ADP has risen every complete month since Biden's inauguration.
+
+```{r adp-monthly-graph, fig.cap="ADP by Month October 2018-April 2021"}
+# ICE Detention Population Over Time
+events <- c("2019-01-24","2020-03-20", "2021-01-20")
+
+
+ggplot(df_ADP_monthly, aes(x=Date, y=ADP))+
+  geom_line()+
+  geom_point(size = 1)+
+  geom_vline(xintercept = as.numeric(as.Date(events)),
+             color = "darkgrey", linetype = "dashed")+
+  geom_smooth(size = .5)+
+  labs(
+    title = "Monthly ICE Detention Population FY19-FY21 to April",
+    subtitle = "Smoothed trend line added",
+    caption = "Data source: https://www.ice.gov/detain/detention-management"
+  )+
+  annotate("text", x = as.Date("2019-01-24"), y = 30000, label = "MPP")+
+  annotate("text", x = as.Date("2020-03-20"), y = 25000, label = "Title 42")+
+  annotate("text", x = as.Date("2021-01-20"), y = 25000, label = "Biden\nInagurated")
+```
+
+## Daily Detention Numbers During COVID-19 Pandemic
+
+On March 27, 2020 ICE established the [Guidance on COVID-19](https://www.ice.gov/coronavirus) web page and indicated the site would be updated frequently. Shortly afterwards Craig began logging the data on a daily basis, occasionally relying on the Internet Archive's Wayback Machine's [regular scrapes](https://web.archive.org/web/*/https://www.ice.gov/coronavirus) of the page to pick up days that were missed.
+
+The [Guidance on COVID-19](https://www.ice.gov/coronavirus) web page began first with reporting the number of detained individuals who were COVID-19 positive. By April 25, 2020 the page began reporting the total number of individuals in ICE detention (see Table \@ref(tab:detention-daily-table) and Figure \@ref(fig:detention-daily-graph)).
+
+```{r detention-daily-table}
+URL <- "https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data/covid_summaries.csv"
+df_covid <- read_csv(URL, 
+    col_types = cols(Date = col_date(format = "%m/%d/%Y"), 
+        `Total Deaths` = col_double(), `Total COVID-19 Confirmed in Custody` = col_double()))
+
+df_covid %>% 
+  select(c(Date, `Total.Detained`)) %>%
+  drop_na() %>% 
+
+  kable(., caption = "Daily Detention April 25, 2020 - April 23, 2021.") %>% 
+  scroll_box(width = "250px", height = "300px")
+```
+
+Unfortunately, the time span of the data reported are very limited and don't permit tracking through changes resulting from Title 42 expulsions. However, one trend visible is that ADP was falling during the final months of the Trump administration and began to climb again at the outset of the Biden administration.
+
+On January 26, 2021 through an Executive Order, Biden ended the use of private prisons for Bureau of Prison (BOP) facilities. On the campaign trail, Biden pledged to end private immigration detention [@biden2020]. However, Biden has not taken any visible steps to end private immigration detention and the DHS is presently paying for a large number of "ghost beds" \[@selman2010: 114\] which may be a sign that the administration is considering placing large numbers of individuals in immigration detention in the future.
+
+```{r detention-daily-graph, fig.cap="Daily Detention Totals April 25, 2020-April 23, 2021"}
+# ICE Detention Population Over Time
+events <- c("2020-03-20", "2021-01-20")
+
+ggplot(df_covid, aes(x=Date, y=`Total.Detained`))+
+  geom_line()+
+  geom_point(size = 1)+
+  geom_vline(xintercept = as.numeric(as.Date(events)),
+             color = "darkgrey", linetype = "dashed")+
+  geom_smooth(size = .5)+
+  labs(
+    title = "ICE Detention Population Over Time Daily Numbers",
+    subtitle = "Smoothed trend line added",
+    caption = "Data source: https://www.ice.gov/coronavirus"
+  )+
+  annotate("text", x = as.Date("2020-03-20"), y = 23000, label = "Title 42")+
+  annotate("text", x = as.Date("2021-01-20"), y = 20000, label = "Biden\nInagurated")
+```

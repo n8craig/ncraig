@@ -1,0 +1,572 @@
+---
+title: "Critical Race Theory in the Media"
+description: |
+  This post explores coverage of critical race theory in texts and TV news over time. Evidence suggests there is a concerted effort on the part of select conservative media outlets to establish a moral panic regarding CRT, particularly as it is a component of educational curricula.
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 05-08-2021
+categories:
+  - race
+output:
+  distill::distill_article:
+    self_contained: false
+    # pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: true
+format:
+  html:
+    toc: true
+image: CRT_GDELT.jpg
+from: markdown+tex_math_single_backslash
+bibliography: references.bib
+link-citations: yes
+repository_url: https://github.com/n8craig/ncraig
+creative_commons: CC BY-NC
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(todor)
+```
+
+> The spectator must need no thoughts of his own: the product prescribes each reaction, not through any actual coherence-which collapses once exposed to thought-but through signals. Any logical connection presupposing mental capacity is scrupulously avoided. Developments are to emerge from the directly preceding situation, not from the idea of the whole.
+
+-- Theodore Adorno and Max Horkheimer [-@horkheimer2002, 109], "The Culture Industry: Enlightenment as Mass Deception" from *Dialectic of Enlightenment: Philosophical Fragments*.
+
+# Introduction {#introduction}
+
+Did 2020 mark a watershed moment in public discourse regarding Critical Race Theory (CRT)? If yes, then why and in what context? On May 7, 2021 Adam Harris [-@harris2021] [published](https://www.theatlantic.com/politics/archive/2021/05/gops-critical-race-theory-fixation-explained/618828/) an essay in *The Atlantic Monthly* entitled "The GOP's 'Critical Race Theory' Obsession." CRT was initially formulated in the 1970's by Harvard Law Professor Derrick Bell [-@bell2008], his students continued to develop his ideas, and versions of the theory are now applied in a diversity of fields outside of law including education [@delgado2017]. Harris's essay begins by looking at a series of controversial, and likely unconstitutional, new bills in states like New Hampshire, Arkansas, and Idaho that forbid the teaching of "divisive concepts" including Critical race theory (CRT). He suggests that the major uptick in coverage of CRT occurred following the release of the video showing Derek Chauvin slowly murdering George Floyd. Harris identified Christopher Rufo as the key reason that Fox news took interest in CRT, and observed that three weeks following Rufo's appearance on Fox Trump passed an executive order banning CRT among federal agencies and contractors. With regard to news coverage, from Harris's [-@harris2021] essay one can draw the following expectations:
+
+-   2020 was a watershed moment in public discourse regarding CRT,
+-   discussion of CRT increased markedly after footage of George Floyd's murder,
+-   current coverage of CRT is largely in conservative media outlets,
+-   and that coverage overwhelmingly negative.
+
+The day Harris's essay was published I set out to test these expectations using GDELT and Google Ngram data to explore large amounts of mass media coverage of CRT through distant reading. That very hastily written exploration confirmed expectations, allowed for specifying the change in coverage, and facilitated relating those changes to other relevant events.
+
+This essay now represents a major revision of my initial quickly written engagement with Harris's [-@harris2021] work. Since that time, several things occurred which prompted this major revision. First, I continued to deepen my understanding of GDELT data, and I realized that I was incorrectly discussing some of the data sets. That needed to be fixed. Second, following Harris, several others began to write about the increase in coverage of CRT. For example, on June 15 Power [-@power2021] [published](https://www.mediamatters.org/fox-news/fox-news-obsession-critical-race-theory-numbers) a piece with Media Matters discussing how Fox news mentioned CRT over 1,900 times in the past three and a half months. In November Ray and Gibbons [-@ray2021] [published](https://www.brookings.edu/blog/fixgov/2021/07/02/why-are-states-banning-critical-race-theory/) an essay with the Brookings Institute addressing the question of why states are banning CRT, and they provided an inventory of legislative efforts on this front. I also spent more time studying the history of law in the US seeking to understand some of the other legal theories Bell discussed. Lastly, I wanted to expand the scope of my initial analysis, and flesh out some theoretical ideas from anthropology and sociology that I think are relevant to this case study. Namely, I wanted to address discourse, imagined community, and moral panic.
+
+## Findings
+
+New findings include the fact that much of the uptick in negative coverage appears to have occurred after the inauguration of Biden and is focused on hyperbolic concerns regarding the teaching of CRT in schools. There was a small increase in coverage in during the protests following the murder of George Floyd, and coverage during this period is markedly negative. A larger spike in coverage occurred months later following the appearance of a guest on Fox news who made an explicit appeal to Trump to ban the teaching of divisive concepts, which included CRT. This request was fulfilled by Executive Order 13950. However, it was not until the searing in of Biden that CRT coverage grew in intensity. I argue that the bulk of the coverage represents an effort on the part of conservative media to establish and propagate a moral panic to create backlash against forms of CRT that are being promoted in classrooms.
+
+# Background
+
+<!-- TODO Change this section. -->
+
+```{=html}
+<!--
+
+## Mass Media, Bullshit, the Banality of Truth, Imagined Community, and Moral Panics
+
+THIS IS A SHORT SECTION COVERING THESE THEMES
+
+This also relates to questions about what is real. Arendt, banality of truth, and Karen Ho's critical issues. 
+
+-->
+```
+## Select Moments in Derrick Bell's Career Related to CRT
+
+Harris traces some of the contours of Bell's career describing Bell as the only Black professor of law on the faculty at Harvard and his eventual resignation of a post due to what he felt were discriminatory hiring practices. Harris writes, "[i]n 1980, Bell resigned his position at Harvard because of what he viewed as the institution's discriminatory hiring practices, especially its failure to hire an Asian American woman he'd recommended." In an obituary for Bell, Bernstein [-@bernstein2011], provides a slightly different scenario:
+
+> In 1980 he [Bell] left Harvard to become dean of the University of Oregon School of Law, but he resigned in 1985 when the school did not offer a position to an Asian-American woman. After returning to Harvard in 1986, he staged a five-day sit-in in his office to protest the school's failure to grant tenure to two professors whose work involved critical race theory.
+
+Much of CRT was laid out in Bell's [-@bell2008] 1973 *Race, Racism, and American Law*. I first encountered Bell's ideas reading Martha Escobar's [-@escobar2016] *Captivity Beyond Prisons.* I was drawn to her use of Bell's [-@bell1991] essay "Racial Realism." As an anthropologist focused on culture, I was struck by Bell's use of the theory of legal realism, which his essay introduced to me. Bell was raising concerns about the confirmation of Clarence Thomas to the Supreme Court. Painting with broad strokes one can say that, legal realism is generally the idea that law and especially its administration by judges are embedded in and influenced by social contexts, mores, and biases. I was stunned to learn that this was not orthodox legal thinking.
+
+> **Legal Formalism**: (1895) The theory that law is a set of rules and principles independent of other political and social institutions. **·** Legal formalism was espoused by such scholars as Christopher Columbus Langdell and Lon Fuller. Cf. LEGAL REALISM. [@blacks2009, 977]
+>
+> **Legal Positivism**: (1939) The theory that legal rules are valid only because they are enacted by an existing political authority or accepted as binding in a given society, not because they are grounded in morality or in natural law. **·** Legal positivism has been espoused by such scholars as H.L.A. Hart. See POSITIVE LAW. Cf. LOGICAL POSITIVISM. [@blacks2009, 978]
+>
+> **Legal Realism**: (1939) The theory that law is based, not on formal rules or principles, but instead on judicial decisions that should derive from social interests and public policy. **·** American legal realism which flourished in the early 20th century was espoused by such scholars as John Chipman Gray, Oliver Wendell Holmes, and Karl Llewellyn. Cf. LEGAL FORMALISM. [@blacks2009, 979]
+
+As someone who views culture as all encompassing [@stocking1966, and many others], imbued with discourses of power [@foucault1995; @foucault1978], and shaped by practice [@bourdieu2019], it is difficult to accept the argument that the law somehow sits neutrally outside other aspects of society. Given scholarship on the history of US immigration law [@ngai1999; @ngai2003], and how it was shaped by social forces and institutions like Prescott F. Hall and the Immigration Restriction League [@ramet2013; @jones2013] of the past or the current powerful anti-immigration network of late eco-eugenecist [John Tanton](https://www.splcenter.org/fighting-hate/extremist-files/individual/john-tanton), at this point it strikes me as willful ignorance to suggest that the law exists independent of political and social institutions. For example, organized and well funded interest group participation was highly visible in the Progressive Era [@tichenor2002; @tichenor2005]. Legal formalism would seem to deny the existence of iron triangles, subgovernments, or even "issue networks, which we know to exist.
+
+In his essay, Harris describes how Black students at Harvard began discussing Bell's ideas after his departure from that institution. Bell clearly influenced a cadre of students and inspired many, including a future president. Still, at the time of Bell's life, despite the significant influence of his ideas within the academy, it seems that CRT was not widely discussed outside of academic circles. This is unsurprising given that few scholarly theories, even those that are wildly influential within the academy, make it into broader public conversation. Still, CRT is presently (as I show below) in the center of public discourse.
+
+## CRT Enters Public Discourse
+
+Harris narrates a model of when and how CRT began to play a larger role in public conversations. Specifically, he suggests that CRT came to the forefront with Bill Clinton's nomination of U. Penn Law School professor Dr. Lani Guinier to head up the Justice Department's Civil Rights Division. Dubbed the "Quota Queen" by political opponents, Republicans began to launch an offensive against her nomination basing it part on her support for CRT. As Harris states:
+
+> The theory of CRT soon stood in for anything resembling an examination of America's history with race. Conservatives would boil it down further: Critical race theory taught Americans to hate America. Today, across the country, school curricula and workplace trainings include materials that defenders and opponents alike insist are inspired by critical race theory but that academic critical race theorists do not characterize as such.
+
+Having read some, though certainly not all of Bell's work, I find it a stretch that Bell preached hatred of the US. In fact, given that he worked for a time as a U.S. Attorney in the Department of Justice it seems curious to claim that Bell hated the US. Interestingly, he did not seem to have been treated well by the department. The DOJ at one point force Bell to choose between giving up his membership with the NAACP or leave the DOJ. Bell chose to leave the DOJ and retain his membership in the NAACP. Still, despite these and other unreasonable challenges Bell faced as a pioneering Black legal mind, it is hard to find hatred in his writing. It may seem pessimistic at times. "Racial equality is, in fact, not a realistic goal" he once wrote [@bell1991, 363] but his point was that "constantly aiming for a status that is unobtainable in a perilously racist America, black Americans face frustration and despair." Here the John Henryism effect comes to mind @james1987; @james1983; @james1992. Yet, argued this bleak situation is no reason to give up he argued because "[c]ontinued struggle can bring about unexpected benefits and gains that in themselves justify continued endeavor. The fight in itself has meaning and should give us hope for the future" [@bell1991, 387]. This line of argument strikes me as blunt, but not hateful.
+
+```{=html}
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FOXNEWSW_20210507_130000_Americas_Newsroom_With_Bill_Hemmer__Dana_Perino?start=6421&end=6456" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+```
+## Contemporary CRT
+
+As an influential academic idea, CRT continued to grow even after Bell's passing. Contemporary practicing proponents of CRT [@delgado2017, 8-11] assert that:
+
+-   racism is an ordinary (though obviously undesirable) condition of society and not an aberration;
+-   that white-over-color ascendancy exists and serves multiple purposes for the dominant group;
+-   races are social constructs, the products of social though and relations;
+-   dominant society racalizes minority groups in different ways at different times, often in relation to changing labor demands;
+-   each socially constructed racial group has its own origins and unfolding history;
+-   and because of these diverse origins whites may not understand the experiences or struggles of racalized minorities.
+
+Boiled down to these essential kernels, at least to this anthropologist it seems that CRT isn't radical white bashing or America thrashing, but a constellation of reasoned positions derived from established diverse social science perspectives. *If racism is an issue to resolve in society, how is one to address it with out candidly acknowledging its existence and assiduously defining its contours*?
+
+As with many academic theories (i.e. natural selection), in public discourse, nuance gets glossed to the point of abstraction beyond recognition. So it seems with characterizations of CRT as spiteful "America hating" racist propaganda which appears, at least from the clips above and another below, to be the perspective of *Fox*. Harris suggests that up until last year, *Fox* News gave only cursory attention to CRT with the first mention of the theory being in 2012 when Bell passed. At the time, *Fox* apparently ran footage of Obama lauding Bell's theories and embracing him physically (@fig-bell-obama). For outlets like *Fox*, and the budding *Breitbart News Network*, this was evidence of Obama's dangerous racial radicalism. As John Cook [-@cook2012] wrote at the time:
+
+<aside>
+
+The *New York Times* [obituary](https://www.nytimes.com/2011/10/06/us/derrick-bell-pioneering-harvard-law-professor-dies-at-80.html) [@bernstein2011], indicates Bell passed in October 2011.
+
+</aside>
+
+> Barack Obama, in 1990, gave a speech saying nice things about a bad man named Derrick Bell. He also hugged the bad man, Derrick Bell. [*Ipso facto reduction ad absurdum habeas corpus hocus pocus*]{.underline}, Barack Obama is a bad man as well. Airtight.
+
+Harris also noted that *Fox* host Sean Hannity mentioned CRT in 2014 when discussing George Zimmerman's trial for the murder of Trayvon Martin.
+
+```{r fig-bell-obama, echo=FALSE}
+#| label: fig-bell-obama
+#| fig-cap: "Barrack Obama and Derrick Bell"
+knitr::include_graphics("bell_obama.jpg")
+```
+
+## CRT and Executive Order 13950
+
+Harris argues that *Fox* hosts began discussing CRT more frequently in 2020, after footage surfaced of Derek Chauvin slowly murdering George Floyd, and anti-racist literature surged to the forefront of the national conversation. Harris identifies Christopher Rufo, who published a July 9, 2020 [essay](https://nypost.com/2020/07/09/when-diversity-training-is-all-about-feeding-racism/) opposing anti-racist training in Seattle schools, as being largely responsible for conservative media's current passion regarding CRT. From the perspective of MPT, Rufo plays the role of a moral entrepreneur.
+
+In early September of 2020, Rufo went on *Fox*'s Tucker Carlson show to talk about how CRT infiltrated all aspects of the government institutions, is being "weaponized against the American people," being "weaponzed against core traditional american values," and that this represents an "existential threat to the United Dates". Rufo then explicitly called on Trump to issue an Executive Order "abolishing Critical Race Theory from the Federal government". Evoking themes of Legal Formalism, Carlson replies arguing that "the underlying idea behind our entire justice system is that all of us are treated equally under the laws of the United States. Your race, your gender are irrelevant in the eyes of the law." Carlson continues expressing concern that CRT themes, which he characterizes as "lies" and antithetical to the values of equal protection, are being presented at DOJ diversity trainings. Rufo rejoinders that the administrative apparatus of the federal government has abandoned the notion of equal protection based on individual merits and is now assessing people based on group identity. "We need to be unified by our equality under the law or we won't be unified" Carlson ominously concludes.
+
+```{=html}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rBXRdWflV7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+Prior to 2020, the *Fox*-Trump feedback loop was already well documented [@gertz2018; @maza2018; @chang2017], and appears to have played a key role in the making of public policy regarding CRT---which further challenges Legal Formalism's assertion that the law is independent of other social institutions. On September 22, 2020, less than a month after Mr. Rufo made his plea to Trump on *Fox*, Trump signed an Executive Order (EO) 13950 entitled "[Combating Race and Sex Stereotyping](https://www.federalregister.gov/documents/2020/09/28/2020-21534/combating-race-and-sex-stereotyping)." The order explicitly included prohibitions on the teaching "divisive concepts" by federally funded agencies. Though not mentioned by name in the order, it is abundantly clear that CRT was among the "divisive concepts" the order sought to silence.
+
+On September 25, 2020 Rufo appeared on Lou Dobbs praising Trump for EO 13950 talking about how CRT was an insidious threat that had been around for years but was just coming to the surface. Dobbs congratulated Rufo on all the work he did to expose and oppose CRT saying "the tide is beginning to turn because of your extraordinary efforts, and again I want to commend you for doing so." Dobbs went on to express concern that CRT is an effort to "turn America upside down."
+
+Rufo is the moral entrepreneur who identifies a threatening folk devil lurking in our midst. As a private citizen, flexing his constituent power, FOX News played a role in broadcasting Rufos' message to the highest office of constituted power--President Trump, who in turn took decisive executive action. Following this, Rufo was covered again and explicitly congratulated for his successful moral entrepreneurship.
+
+```{=html}
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FBC_20200925_090000_Lou_Dobbs_Tonight?start=2580&end=2640" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+<a href="https://archive.org/details/FBC_20200925_090000_Lou_Dobbs_Tonight/start/2580/end/2640">Internet Archive</a>
+```
+Shortly after its signing, EO 13950 was challenged in courts. On his first day in office, Biden rescinded EO 13950 by issuing [EO 13985](https://www.federalregister.gov/documents/2021/01/25/2021-01753/advancing-racial-equity-and-support-for-underserved-communities-through-the-federal-government) "Advancing Racial Equity and Support for Underserved Communities Through the Federal Government." However, before that change, at my university (a Hispanic serving institution located on the US-Mexico border), on October 14, 2020 members of my department received a [pdf](https://github.com/n8craig/ncraig/raw/master/_posts/2021-05-07-critical-race-theory/20-1012%20UAC%20Overview%20of%20Executive%20Order%20on%20Race%20and%20Sex%20Stereotyping.pdf) from the Dean of the College regarding EO 13950. The file said the target of EO 13950 was "workforce/employee training" and applied to "federal contractors, and subcontractors, federal agencies, employers receiving federal grants, Armed Services/ROTC."
+
+The University's Office of Management and Budget indicated that divisive concepts could be discussed but only "in an objective manner and without endorsement," which the university suggested "appears to carve out academic instruction." Personally, were it not for the pernicious character of a campus gag order regarding "divisive concepts", which is antithetical to academic freedom, I would find the notion of objective discussion without endorsement quaint and bemusing. Objective discussion is not possible because objective truths exist independent of individual subjectivity; therefore, since any discussion is among human beings who have subjective perspectives those discussion aren't objective [c.f. @merleau-ponty1962]. Something like scientific objectivity is an ideal, a laudable one at that. Of coarse science as practiced by humans is still ultimately subjective in the strict sense. Anthropology, which many consider a science of culture, has a history of trying to achieve the position of neutrally observing the other. Yet, it remains inescapable that the observer is always situated in by their perspective and experience [@rosaldo1993].
+
+Still, apparently the carve out was only under the condition that discussion was done without endorsement. Given the plain reading of "without endorsement" it means one is not to say "given assembled evidence, this idea appears to have merits," "this theory holds explanatory power,"or even "the idea is compelling personally, what do you think?" At least to my knowledge, within my department, and certainly within my classes, EO 13950 went unheded, and if anything prompted the [Streisand effect](https://en.wikipedia.org/wiki/Streisand_effect) leading to discussions on the importance of intellectual freedoms.
+
+## Summary and Research Question
+
+My limited understanding of CRT revolves largely around two of Bell's arguments. The first is the "interest convergence thesis", that racial equality will only be accommodated when it converges with the interest of whites. For better or worse, self interest is a common assumption among an incredibly diverse range of social science theories [@sahlins2008]. The second is the "racial realist thesis" that law is impacted by society and social processes [@bell1991], which in the case of the United States entails prejudicial treatment of people of color. The assertion that law is part of and influenced by society is hardly radical. As someone who studies immigration detention and mass incarceration, which are wildly prejudicial against people of color [@alexander2012; @garcíahernández2019; @garcíahernández2009 @kurzban1993; @helton1986; @helton2002], my understanding of at least two components of Bell's project strike me as tenable arguments. Being interested in Harris's assertions about negative discussions of CRT--specifically the timing and nature of coverage in public discourse I attempted to pursue the question further.
+
+*Did 2020 represent a watershed moment ushering in significant negative coverage of CRT on Fox news?*
+
+# Methods {#method}
+
+To address changing coverage of CRT in public discourse, I adopted aspects of the "culturomics" @michel2011 approach which involves distant reading [@schulz2011; @moretti2013] of large quantities of text. This approach can be extended in principle to other kinds of mass media big data--like TV news [@leetaru2011]. I adhere to the position that print capital and other forms of mass media can be powerful tools for crafting an imagined community [@anderson2006] and that systematic programming for a specific purpose can, like advertising, shape public opinion [@wolfe2018; @ellul1973]. Thus, monitoring these broadcasts can reveal important insights regarding social movements, like CRT and reactions against it.
+
+## Data Sets
+
+The term "critical race theory" was searched in three data sets:
+
+-   **Google [Ngram Viewer](https://books.google.com/ngrams)**: American English 2019 corpus which consists of "Books predominantly in the English language that were published in the United States" between 1800-2019.
+-   **Global Database of Events, Language, and Tone ([GDELT](https://api.gdeltproject.org/api/v2/summary/summary?d=iatvai)) Internet Archive [TV News](https://archive.org/details/tv) data base**: This data set consists of closed caption transcripts of broadcasts from 2006 to the present sampled in 15 second intervals. The volume intensity of coverage is parsed by news network.
+-   **GDELT Global [Online News Coverage](https://api.gdeltproject.org/api/v2/summary/summary?d=web)**: This dataset set of online news text covers from 2017 to the present. This data set includes information the tone of news coverage.
+
+The Google Ngram Viewer is an outgrowth of Michel et al.'s [-@michel2011] "culturomics." To access these data, I used the `ngramr` [@R-ngramr] package to query the data set and graph the search results, then I annotated that graph with key dates identified by Harris.
+
+The GDELT TV News data sets, pioneered by Leetaru [-@leetaru2011] are characterized as culturomics 2.0 because they are audiovisual primarily and text, in the form of closed caption transcripts, is derived from this. The Google Ngram data set began as analog books and were scanned, the GDELT TV News begins as broadcast, text is applied to it, and this is the text that is searched.
+
+To access the TV News data, I exported a comma delimited file that was wrangled with the `tidyverse` package [@R-tidyverse] which was plotted and annotated with `ggplot2` [@R-ggplot2]. It is probably better to access the API directly, and I [wrote](https://ncraig.netlify.app/posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/) a bit about approaches to doing that.
+
+The GDELT Global Online News data set is similar to Google Ngram Viewer in that both are "text first" data rather than "text derived" data like TV News. The Global Online News data set updates regularly and it also estimates sentiment. I'm not sure the method of sentiment analysis applied, but I suspect it is probably dictionary based and does not account for valence shifts. It would be good to find out more about the sentiment estimators GDELT uses.
+
+## Searches
+
+In Google's Ngram Viewer, both the terms "critical race theory" and "culture wars" were searched. The latter was included because Harris's article mentions "culture wars" along with the term CRT. Culture wars is an term whose initial use predates the GDELT data sets so I did not include it when searching those data sets. Unfortunately, the Google Ngram corpus only extends up to 2019 and many of the events Harris discusses occur in 2020. Moreover, TV news and specifically *Fox* news is a key place where Harris argues CRT is discussed in negative terms. The term "culture wars" was not searched in the two GDELT data sets.
+
+# Results {#results}
+
+```{r load-libraries, include=FALSE}
+library(ngramr)
+library(ggplot2)
+library(ggthemes)
+library(readr)
+library(janitor)
+library(tidyverse)
+```
+
+## Google ngram Data Set {#google-ngram-data-set}
+
+An initial view of Google's Ngram Viewer database shows no mention of CRT prior to the 1980's (@fig-CRT-Ngram-all), a decade after the theory's formulation in 1973. Narrowing down the span of coverage shows an increase in the use of the term in the late 1980's, after leaving Harvard (to take a Deanship at University of Oregon) but before Clinton nominated Lani Guinier (@fig-CRT-Ngram-1970). @fig-CRT-Ngram-1970 indicates the early 1990's was a major inflection point of increasing use of the term in print media. Throughout the period from the late 1980's up to Derrick Bell's pasing in 2011, the term "Culture Wars" is used more frequently than CRT. However, within a few years of Bell's passing CRT surpassed "Culture Wars" in print sources. This is in part because the term "Culture Wars" began to wane in frequency after about 2009 while at the same time the frequency of CRT continued to climb steadily.
+
+```{r fig-CRT-Ngram-all}
+#| label: fig-CRT-Ngram-all
+#| fig.cap: "ngram showing frequency of the term \"Critical Race Theory\" as it appears in the 'English 2019' corpus."
+
+ng <- c("critical race theory", "culture wars")
+
+ggram(phrases = ng,
+      year_start = 1900,
+      year_end = 2020, 
+      corpus = "eng_2019",
+      ignore_case = TRUE, 
+      geom = "line",
+      google_theme = TRUE) + 
+      labs(y = NULL)+
+    labs(
+    title = "Frequency of the terms \"critical race theory\" \nand \"culture wars\" 1900-2019",
+    caption = "Data source: https://books.google.com/ngrams"
+    )
+```
+
+```{r fig-CRT-Ngram-1970}
+#| label: fig-CRT-Ngram-1970
+#| fig.cap: "ngram showing frequency of the term \"Critical Race Theory\" as it appears in the 'English 2019' corpus between 1970-2019"
+
+ggram(phrases = ng,
+      year_start = 1970,
+      year_end = 2020, 
+      corpus = "eng_2019",
+      ignore_case = TRUE, 
+      geom = "line",
+      google_theme = TRUE) + 
+      labs(y = NULL)+
+    labs(
+    title = "Frequency of the terms \"critical race theory\" and \"culture wars\" 1980-2019",
+    caption = "Data source: https://books.google.com/ngrams"
+    )+
+  geom_vline(xintercept=as.numeric(as.Date("1972-01-01")),
+             linetype = "dashed")+
+  annotate(geom="text",
+           x=as.Date("1975-06-05"),
+           y = 0.00000033,
+           label = "Bell Begins \nDeveloping CRT",
+           size =3)+
+  geom_vline(xintercept=as.numeric(as.Date("1980-01-01")),
+             linetype = "dashed")+
+  annotate(geom="text",
+           x=as.Date("1983-06-05"),
+           y = 0.00000023,
+           label = "Bell Resigns \nHarvard over \nHiring Practices",
+           size =3)+
+  geom_vline(xintercept=as.numeric(as.Date("1993-04-01")),
+             linetype = "dashed")+
+  annotate(geom="text",
+           x=as.Date("1997-05-05"),
+           y = 0.00000033,
+           label = "Clinton Nominates\nLani Guinier",
+           size =3)+
+  geom_vline(xintercept=as.numeric(as.Date("2011-09-05")),
+             linetype = "dashed")+
+  annotate(geom="text",
+           x=as.Date("2014-05-05"),
+           y = 0.00000008,
+           label = "Derrick Bell\nPasses",
+           size =3)
+
+```
+
+## GDELT Internet Archive TV News Data Set {#gdelt-internet-archive-tv-news-chyron-data-set}
+
+The GDELT Internet Archive TV News data set allows tracking of the term CRT from 2006 to the present across six TV networks. @fig-GDELT-TV-NEWS-all shows there is a slight increase in news coverage of the term not long after Bell's passing. Looking more closely at the months before and after Bell's passing (@fig-GDELT-TV-NEWS-Bell-passing) reveals three instances of *Fox* coverage, two before Bell passes and once after. CSPAN is the network that covered CRT immediately following Bell's passing.
+
+```{r GEDELT-TV-news-data}
+df_online_news <- read_csv("GDELT_TV_NEWS_critical_race_theory.csv", 
+    col_types = cols(`Date (Monthly +00:00: 06/05/2009 - 05/07/2021)` = col_date(format = "%m/%Y")))
+
+df_online_news <- df_online_news %>% 
+  rename(.,
+       date = `Date (Monthly +00:00: 06/05/2009 - 05/07/2021)`)
+```
+
+```{r fig-GDELT-TV-NEWS-all}
+#| label: fig-GDELT-TV-NEWS-all
+#| fig.cap: "GDELT Internet Archive TV News dataset showing coverage of \"Critical Race Theory\" 2006-Present"
+
+df_online_news %>% 
+  ggplot(., aes(x=date, y = Value))+
+  geom_line(aes(color = Series))+
+  ylab("% Airtime in 15 sec. Blocks")+
+  xlab("Date")+
+  labs(
+    title = "% Airtime Coverage of \"critical race theory\" in the GDELT \nInternet Archive TV News Database June 2006-Present",
+    subtitle = "Line color equals news network",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=iatvai"
+    )+
+  geom_vline(xintercept=as.numeric(as.Date("2011-09-05")),
+             linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2012-07-01"),
+           y = 0.2,
+           label = "Derrick Bell\nPasses",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-06-25")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2019-05-01"),
+           y = 0.2,
+           label = "George Floyd\nMurdered",
+           size =3)
+```
+
+The most notable spike in coverage was in the early months of 2012 and the majority of it occurred on CNN. This spike, which occurred on March 7, 2012 corresponds to Breitbart [releasing](https://www.breitbart.com/clips/2012/03/07/Obama%20Video%20Harvard/) the Obama video mentioned above. On May 8, Breitbart Editor-In-Chief "Joel Pollak clashed with CNN host Soledad O'Brien about the significance of the video" and CRT [@crugnale2012]. Pollak claimed the video was a "bombshell" because Bell's CRT "holds that the civil rights movement was a sham" and that the theory was racist. That same day the conservative *National Review* published an [article](https://www.nationalreview.com/corner/obama-critical-race-theory-and-harvard-law-school-david-french/) suggesting furor over the Obama-Bell video was not significant [@french2012]. Also on may 8, *The Atlantic* ran a [piece](https://www.theatlantic.com/politics/archive/2012/03/the-sci-fi-story-that-offends-oversensitive-white-conservatives/254232/) by conservative writer Conor Friedersdorf [-@friedersdorf2012] who said "the controversy over the video is a big nothing-burger," and concluded the essay asserting that "[t]o label someone as a racist for honesty conveying his dark view of *human* nature is the sort of politically correct, reductive stifling of speech that conservatives are supposed to stand against." While some actors in conservative media (*Brietbart* and *Fox*) were promoting outrage over the video, other conservative venues (*National Review*) and writers (Friedersdorf ) characterized it as basically a tempest in a teapot.
+
+```{r fig-GDELT-TV-NEWS-Bell-passing}
+#| label: fig-GDELT-TV-NEWS-Bell-passing
+#| fig.cap: "GDELT Internet Archive TV News dataset showing coverage of \"Critical Race Theory\" 2010-2013"
+
+
+df_online_news %>%
+  filter(date>"2010-01-01"&date<"2013-01-01") %>% 
+  ggplot(., aes(x=date, y = Value))+
+  geom_line(aes(color = Series))+
+  ylab("% Airtime in 15 sec. Blocks")+
+  xlab("Date")+
+  labs(
+    title = "Percent Airtime Coverage of \"critical race theory\" in the GDELT \nInternet Archive TV News Database June 2006-Present",
+    subtitle = "Line color equals news network",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=iatvai"
+    )+
+  geom_vline(xintercept=as.numeric(as.Date("2011-09-05")),
+             linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2011-06-01"),
+           y = 0.01,
+           label = "Derrick Bell\nPasses",
+           size =3)+
+  
+  geom_vline(xintercept=as.numeric(as.Date("2012-03-07")),
+             linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2012-06-01"),
+           y = 0.01,
+           label = "Breitbart\nPublishes\nObama/Bell\nVideo",
+           size =3)
+```
+
+Looking at the period of time from 2020 to the present, after the murder of George Floyd, there is a slight increase in coverage of CRT on *Fox* (@fig-GDELT-TV-NEWS-2020). However, it increases sharply with the appearance of C. Rufo on the network and then begins to decline. Interestingly, mentions of CRT continue to decline through the signing of Trump's EO 13950. It is not until January 2021 that coverage of CRT begins to sharply spike with nearly all of it being on *Fox*. By April 2021, other networks begin to pick up coverage of CRT but only following a massive spike on *Fox* that begins in January 2021. Notably, the period leading up to and following the swearing in of Biden is associated with a sharp increase in *Fox* coverage of CRT. *What is the tone of that coverage?* As the news clips in the Introduction show, *Fox*'s coverage often expresses concern with the teaching of CRT in schools. In fact, reviewing post 2020 coverage of CRT on Fox, this seems to be the overwhelming source of concern for the network.
+
+```{r fig-GDELT-TV-NEWS-2020}
+#| label: fig-GDELT-TV-NEWS-2020
+#| fig.cap: "GDELT Internet Archive TV News dataset showing coverage of \"Critical Race Theory\" 2019-Present"
+#| preview: TRUE
+
+df_online_news %>% 
+  filter(date > "2020-01-01") %>% 
+  ggplot(aes(x=date, y = Value))+
+  geom_line(aes(color = Series))+
+  ylab("% Airtime in 15 sec. Blocks")+
+  xlab("Date")+
+  labs(
+    title = "Percent Airtime Coverage of \"critical race theory\" in the GDELT \nInternet Archive TV News Database 2020-Present",
+    subtitle = "Line color equals news network",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=iatvai"
+    )+
+    geom_vline(xintercept=as.numeric(as.Date("2020-06-25")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-05-15"),
+           y = 0.1,
+           label = "George Floyd\nMurdered",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-01")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-08-10"),
+           y = 0.3,
+           label = "C. Rufo\non Fox",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-22")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-10-12"),
+           y = 0.2,
+           label = "Trump\nSigns \nEO",
+           size =3)+
+  
+    geom_vline(xintercept=as.numeric(as.Date("2021-01-20")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-12-25"),
+           y = 0.1,
+           label = "Biden\nSworn In",
+           size =3)
+
+```
+
+## GDELT Global Online News Coverage Data Set {#gdelt-world-news-coverage-data-set}
+
+The GDELT Global Online News Coverage data set provides information on the volume of online news coverage and estimates that coverage's tone. @fig-GDELT-WN-all shows generally low level coverage of CRT before the latter half of 2020. There are two small spikes of coverage, the first occurring in the early part of 2017 and the other in the latter half of 2019. The majority of coverage Volume Intensity in online news coverage occurs after June 2020, which represents the period after Floyd's murder and around the time of C. Rufo's appearance on Fox. On average, with a slight rise in the middle of 2018 and another in early 2020, the coverage is of a generally negative tone (@fig-GDELT-average-tone-all). It bears mention that nearly all search terms seems to have a negative tone. For example, even a search on "[money](https://api.gdeltproject.org/api/v2/summary/summary?d=web&t=summary&k=money&ts=full&fsc=US&svt=zoom&stc=yes&sta=list&c=1)" produces negative tone. In my experience, this is common in news data which seem to largely produce negative tone estimates regardless of the method or subject matter.
+
+```{r}
+# Read data
+df_online_news <- read_csv("GDELT_ONLINE_NEWS_critical_race_theory.csv", 
+    col_types = cols(Date = col_date(format = "%m/%d/%Y")))
+
+# Wrangle data
+df_online_news <- clean_names(df_online_news)
+df_online_news <- df_online_news %>% 
+  rename(.,
+       volume_intensity = series_2,
+       average_tone = value_5)
+```
+
+```{r fig-GDELT-WN-all}
+#| label: fig-GDELT-WN-all
+#| fig.cap: "GDELT Global Online News Coverage dataset showing Volume Intensity and Average Tone of coverage of \"Critical Race Theory\" 2017-Present"
+
+df_online_news %>% 
+  ggplot(aes(x=date, y=value_3))+
+  geom_line(aes(color=average_tone), size =1)+
+  scale_color_gradient2()+
+  labs(
+    title = "Volume Intensity of \"critical race theory\" in the GDELT \nGlobal Online News Coverage Database 2017-Present",
+        subtitle = "Line color equals Average Tone",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=web"
+    )+
+  labs(color = "Average Tone")+
+  ylab("Volume Intensity")+
+  xlab("Date")+
+  theme(legend.position = "none")
+```
+
+```{r fig-GDELT-average-tone-all}
+#| label: fig-GDELT-average-tone-all
+#| fig.cap: "GDELT Global Online News Coverage dataset showing Average Tone of coverage of \"Critical Race Theory\" 2017-Present"
+
+df_online_news %>% 
+  ggplot(aes(x=date, y=average_tone))+
+  geom_line(aes(color=average_tone), size = 1.5)+
+  geom_smooth(color = "black", size = .5)+
+  scale_color_gradient2()+
+  labs(
+    title = "Average Tone of \"critical race theory\" in the GDELT \nGlobal Online News Coverage Database 2017-Present",
+        subtitle = "Line color equals Average Tone",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=web"
+    )+
+  ylab("Average Tone")+
+  xlab("Date")+
+  theme(legend.position = "none")
+```
+
+Looking more closely at the period from July 2019 to the present, it is clear that coverage starts to spike around August, 2021 and is almost entirely negative (@fig-GDELT-WN-2020 and @fig-GDELT-average-tone-2019). George Floyd's murder does not seem to correspond with an uptick in Volume Intensity in CRT, but it corresponds precisely with the greatest negative Average Tone for CRT in the entire series. C. Rufo's appearance on *Fox* corresponds with a major peak in Volume Intensity but does not register a major anomaly in Average Tone, though Average Tone regarding CRT was already declining since the murder of George Floyd. There is no major spike in Volume Intensity corresponding with the signing of EO 13950, nor does the moment stand out in regards to Average Tone. There is a spike in Volume Intensity when Biden was sworn in, and there is a small negative Average Tone anomaly that precedes Biden's inauguration. Referring back to the previous section and @fig-GDELT-TV-NEWS-2020 it is clear that nearly all of the coverage of CRT since September 2020 is on *Fox*. Samples of key clips from *Fox* covering the theme of CRT, it seems consistently linked with both the *1619* project and the teaching of CRT in schools.
+
+```{r fig-GDELT-WN-2020}
+#| label: fig-GDELT-WN-2020
+#| fig.cap: "GDELT Global Online News Coverage dataset showing coverage of \"Critical Race Theory\" 2020-Present"
+
+df_online_news %>% 
+  filter(date>"2019-07-01") %>% 
+  ggplot(aes(x=date, y=volume_intensity))+
+  geom_line(aes(color=average_tone), size =1)+
+  scale_color_gradient2()+
+  labs(
+    title = "Volume Intensity of \"critical race theory\" in the GDELT \nGlobal Online News Coverage Database July 2019-Present",
+    subtitle = "Line color equals Average Tone",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=web"
+    )+
+  labs(color = "Average Tone")+
+  ylab("Volume Intensity")+
+  xlab("Date")+
+     geom_vline(xintercept=as.numeric(as.Date("2020-06-25")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-05-05"),
+           y = .02,
+           label = "George Floyd\nMurdered",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-01")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-08-06"),
+           y = .1,
+           label = "C. Rufo\non Fox",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-22")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-10-17"),
+           y = .1,
+           label = "Trump\nSigns \nEO",
+           size =3)+
+  
+    geom_vline(xintercept=as.numeric(as.Date("2021-01-20")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-12-20"),
+           y = .13,
+           label = "Biden\nSworn In",
+           size =3)
+```
+
+```{r fig-GDELT-average-tone-2019}
+#| label: fig-GDELT-average-tone-2019
+#| fig.cap: "GDELT Global Online News Coverage dataset showing Average Tone of coverage of \"Critical Race Theory\" 2019-Present"
+
+df_online_news %>% 
+  filter(date>"2019-07-01") %>% 
+  ggplot(aes(x=date, y=average_tone))+
+  geom_line(aes(color=average_tone), size =1.5)+
+  geom_smooth(color = "black", size = .5)+
+  scale_color_gradient2()+
+  labs(
+    title = "Volume Intensity of \"critical race theory\" in the GDELT \nGlobal Online News Coverage Database July2019-Present",
+    subtitle = "Line color equals Average Tone",
+    caption = "Data source: https://api.gdeltproject.org/api/v2/summary/summary?d=web"
+    )+
+  ylab("Average Tone")+
+  xlab("Date")+
+  theme(legend.position = "none")+
+    geom_vline(xintercept=as.numeric(as.Date("2020-06-25")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-05-12"),
+           y = -9,
+           label = "George Floyd\nMurdered",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-01")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-08-08"),
+           y = 1,
+           label = "C. Rufo\non Fox",
+           size =3)+
+    geom_vline(xintercept=as.numeric(as.Date("2020-09-22")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-10-13"),
+           y = 4,
+           label = "Trump\nSigns \nEO",
+           size =3)+
+  
+    geom_vline(xintercept=as.numeric(as.Date("2021-01-20")),
+               linetype = "dashed")+
+    annotate(geom="text",
+           x=as.Date("2020-12-23"),
+           y = 2,
+           label = "Biden\nSworn In",
+           size =3)
+```
+
+```{=html}
+<iframe width="640" height="480" frameborder="0" allowfullscreen src="https://archive.org/embed/FOXNEWSW_20210503_230000_FOX_News_Primetime?start=1380&end=1440" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+```
+# Discussion {#discussion}
+
+Harris proposed that while *Fox* had given negative coverage to CRT in the past, its current fixation is a recent effort to rekindle the Culture Wars, began to increase after the murder of George Floyd, and was specifically prompted by C. Rufo's appearance on *Fox* (who is on the left in the clip above). Google's Ngram Viewer indicates that mentions of CRT didn't begin until the early 1990's (@fig-CRT-Ngram-1970), that mentions of CRT have grown steadily and eventually in 2010 surpassed "Culture Wars" in terms of frequency of use. GDELT's Internet Archive TV News data set shows a staggering increase in coverage of CRT after the Murder of George Floyd (@fig-GDELT-TV-NEWS-all) and it appears very tightly timed with C. Rufo's September 2020 appearance on *Fox* (@fig-GDELT-TV-NEWS-2020). It seems that coverage of C. Rufo prompted Trump to sign EO 13950 attempting to control the teaching of "divisive concepts" with federal funds. Materials I received at my institution named CRT at the top of the list of "divisive concepts." While Rufo's plea on *Fox* may have prompted Trump to take action, and serves as another example of the *Fox*-Trump feedback loop, coverage of CRT continued to wane through this period. It was not until the months leading up to Biden's swearing in that *Fox* began covering CRT again and with more volume than ever recorded. The GDELT Global Online News Coverage data set shows that coverage is overwhelmingly negative (@fig-GDELT-WN-all) through @fig-GDELT-average-tone-2019). Significantly, the moment of greatest negative Average Tone regarding CRT, occurred exactly when George Floyd was murdered, though Volume Intensity of CRT does not pick up until C. Rufo's appearance on *Fox*. Sampling of individual clips, like those presented throughout this essay, show that *Fox*'s negative coverage emphasizes the teaching of CRT in schools. The most recent coverage appears to be simulated by proposals from within the Biden administration to address social inequality.
+
+While the data reviewed here may suggest slight variations on the scenario presented by Harris, his propositions are largely corroborated by a "culturomic" @michel2011 distant reading [@schulz2011; @moretti2013] of large quantities of printed and online text as well as TV news transcripts. This approach allowed for a tighter temporal focus, a clear sense of the amplitude of change, and afforded some qualitative spot checking of the actual coverage. The question remains, why do some conservative media outlets seem to have this "obsession" with negative portrayals of CRT?
+
+Stanley Cohen's [-@cohen2011; -@cohen2011a] "Moral Panic" theory (MPT) is another highly influential academic idea whose name made it into general public discourse though it never achieved the extent of coverage of CRT. However, both MPT and CRT are frequently over simplified into unfaithfully unrecognizable abstractions. Cohen's MPT is about collective over reactions to what are perceived as threatening "folk devils", essentially scapegoats, that are believed to pose a far greater danger to society than they actuality do. Within MPT there are debates as to where in social panics originate. Are they spontaneous and come from the populous (bottom up); are they crafted by elites (top down); or do they come from moral entrepreneurs and coalitions somewhere in between (middle out)? There are compelling arguments for all three models of process, they aren't mutually exclusive, and instead represent diverging fruitful extensions of Cohen's initial ideas. Regardless of the source of the panic, media plays a key and critical role in propagating and sustaining the outrage and over reaction in each of the proposed sources of moral panics [@goode2009; @moralpa2013]. Since print capital and mass media are central to forging the imagined community [@anderson2006], the notion that mass media plays a key role in the propagation of moral panics comes as little surprise.
+
+While there are many variations on MPT, few address moral panics that arise out of ideas alone--most are about classes of "dangerous" people--Cohen's folk devils. *Fox*'s coverage seems to link CRT with Black Lives Matter, which can be construed as a potential folk devil in the sense of Cohen's theory. However, the folk devils of moral panics are not generally intellectual theories--but I see no reason they couldn't be.
+
+# Conclusion {#conclusion}
+
+CRT, which from my admittedly incomplete reading, seems perfectly well reasoned based on both historical fact and widely accepted assertions about individual and group behavior-- strikes me not as a dangerous idea but a penetrating intellectual analysis worth consideration. As human constructs, all theories are imperfect and thus they need to be challenged and defended on civil terms; this dialectic process strengthen theory. Yet, tilting at theoretical windmills won't advance intellectual understanding, it just leads to confusion.
+
+Perhaps some school applications of CRT are misguided and in need of calibration, I can't yet say. However, given the misrepresentation of other theories in educational settings that is not beyond the imaginable. While I have not reviewed individual school curricula in question, which may deviate from the core of CRT, *Fox*'s coverage and Mr. Rufo's characterizations seem more like fictional straw-men than faithful renditions.
+
+*Fox*'s presentation of CRT, which is a soundly argued legal theory, as espousing white self loathing and hatred of the nation, is at the most generous I can muster--misguided over reaction. Even conservative writers have expressed concern over exaggerated treatments of CRT by the likes of *Breitbart* and *Fox*. At worse, the high volume of hyperbolically negative treatment of CRT by *Fox* suggests a calculated effort to create a moral panic by casting those who embrace anti-racist theory as dangerous folk devils who threaten the very fabric of society. The general expense of media coverage, the recent explosion of that coverage, its generally narrow sources, coupled with the explicit effort to organize and exercise political power to oppose CRT, point towards efforts to conjure a media base middle out moral panic, essentially systematic propagandizing, designed to sway public opinion. Intriguingly the panic seems largely directed at a theory, but is likely painted on those who espouse the ideas of CRT. Rather than name the problem of racism, define it, and work on the issue, some--it would seem, are unsatisfied merely ignoring the problem's existence--but seek to actively assert that addressing issue head on with clear eyes is itself a dangerous and divisive act. In many ways, *Fox*'s pearl clutching and moral panic over fabricated forms of CRT is actually well predicted by the theory itself.
+
+```{r ref-packages}
+knitr::write_bib(file = "packages.bib")
+```

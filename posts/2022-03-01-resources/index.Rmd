@@ -1,0 +1,45 @@
+---
+title: "Sample Table of Resources"
+author: "Nathan Craig"
+date: "2/19/2022"
+output: html_document
+from: markdown+tex_math_single_backslash
+---
+
+This post illustrates the use of a sample table of resources that are listed on the page.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(reactable)
+```
+
+```{r}
+data_in <- tibble::tribble(
+  ~Project, ~url, ~Type, ~Description,
+  "Canvas & R", "https://n8craig.github.io/nmsu-grades/index.html", "Web Site", "Thoughts  and notes on usnig R with Canvas",
+  "ICE Inspection Review", "https://n8craig.github.io/inspections/index.html", "Web Site", "An exploration of ICE facility inspection information"
+) 
+
+```
+
+```{r}
+data_in %>%
+  reactable(
+    searchable = TRUE,
+    pagination = FALSE,
+    columns = list(
+      Project = colDef(
+        minWidth = 150,
+        cell = function(value, index) {
+          url_in <- data_in$url[index]
+          htmltools::a(href = url_in, value)
+        }
+      ),
+      url = colDef(show = FALSE),
+      Type = colDef(minWidth = 115),
+      Description = colDef(minWidth = 250)
+    ),
+    theme = reactableTheme()
+  )
+```

@@ -1,0 +1,231 @@
+---
+title: "Cumulative and Current COVID-19 in ICE Detention Over Time"
+description: |
+  Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.
+author:
+  - name: Nathan Craig
+    url: https://ncraig.netlify.app/
+date: 2021-07-26
+categories:
+  - immigration
+output:
+  distill::distill_article:
+    self_contained: false
+    # pandoc_args: ["--number-sections"]
+    df_print: paged
+    toc: true
+    number_sections: false
+format:
+  html:
+    toc: true
+from: markdown+tex_math_single_backslash
+toc: true
+link-citations: yes
+repository_url: https://github.com/n8craig/
+image: https://i.imgur.com/HGKryAK.png
+creative_commons: CC BY-NC
+draft: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message=FALSE,
+                      warning=FALSE)
+```
+
+Page last updated: *`r format(Sys.time(), "%A %B %d, %Y at %I:%M:%S %p")`*
+
+```{r load-libraries, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readr)
+library(janitor)
+library(stringi)
+library(lubridate)
+library(kableExtra)
+library(ggplot2)
+library(gghighlight)
+library(patchwork)
+```
+
+```{r read-data}
+df <- read.csv("https://raw.githubusercontent.com/n8craig/ICE-COVID-19/main/data/covid_by_facility.csv") %>% 
+  clean_names()
+
+```
+
+```{r wrangle-data}
+df <- df %>% 
+  mutate(date = ymd(date),
+         total_confirmed_covid_19_cases = 
+           str_replace_all(total_confirmed_covid_19_cases, 
+                           "[^0-9]", ""),
+         total_confirmed_covid_19_cases =
+           as.numeric(total_confirmed_covid_19_cases),
+         
+         confirmed_cases_currently_under_isolation_or_monitoring = 
+           str_replace_all(confirmed_cases_currently_under_isolation_or_monitoring,
+                           "[^0-9]", ""),
+         confirmed_cases_currently_under_isolation_or_monitoring = as.numeric(confirmed_cases_currently_under_isolation_or_monitoring),
+         
+         detainee_deaths = as.numeric(detainee_deaths)
+         
+         ) %>% 
+  # Converting the date to as.Date was necessary as the cells were
+  # blank and thus not NA.
+  drop_na(date)
+```
+
+```{r clean-facility-names}
+df <- df %>% 
+  mutate(
+    custody_aor_facility = stri_enc_toutf8(custody_aor_facility),
+    
+    # need to remove wierd characters before string trim
+    # this is also helping get rid of some characters in 
+    # the Folkston entries
+    custody_aor_facility =  str_replace_all(
+      custody_aor_facility,
+      pattern = "[^A-Za-z0-9 (),;._-]",
+      replacement = " "),
+# Test ------
+    # some entries have whitespace
+    # needed to remove wierd characters before this worked
+    custody_aor_facility = str_trim(custody_aor_facility),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Folkston ICE Processing Center",
+              "Folkston ICE Processing Center (Main)"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Glades County Detentio8n Center",
+              "Glades County Detention Center"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Karnes County Residential Center",
+              "Karnes County Family Residential Center"),
+    
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Monroe County Detention",
+              "Monroe County Detention - Dorm"),
+
+    custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "South CEntral Regional Jail",
+              "South Central Regional Jail"),
+    
+      custody_aor_facility =
+      replace(custody_aor_facility,
+              custody_aor_facility == "Sure Stay - Phoeniz (House of Joy)",
+              "Sure Stay - Phoenix (House of Joy)")
+    )
+```
+
+# Top Plot {.unnumbered}
+
+The top plot highlights those facilities with \> 850 cumulative cases and facilities that experienced \>200 active COVID-19 cases in one day. While La Palma has the highest number of active cases, it did not have the largest maximum active cases. Adams which experienced a significant spike in active cases is not among those with more than 850 cumulative cases, meaning it is out of the top five, though is remains among the facilities with the highest number of cumulative cases. Similarly, Alexandria Staging Facility experienced a very large spike in active cases early on, it is not among the facilities with the highest number of cumulative cases.
+
+::: panel-tabset
+
+## Active
+
+```{r covid-active}
+df %>%
+  filter(custody_aor_facility != "at local hospital") %>%
+  ggplot(aes(x=date, y = confirmed_cases_currently_under_isolation_or_monitoring, color = custody_aor_facility))+
+   geom_line()+
+   gghighlight(max(confirmed_cases_currently_under_isolation_or_monitoring,
+                   na.rm=TRUE)>200,
+               label_params = list(size = 2,
+                                   hjust = .7),
+               # hjust = 1
+               )+
+
+  labs(title = "Active COVID-19",
+       subtitle = "Highlighting Facilities w a max\nActive COVID-19 cases >200")+
+  xlab("Date")+
+  ylab("Active COVID 19")
+```
+
+
+## Cumulative
+
+```{r covid-cumulative}
+
+df %>%
+  filter(custody_aor_facility != "at local hospital") %>%
+  ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
+   geom_line()+
+   gghighlight(max(total_confirmed_covid_19_cases)> 850,
+               label_params = list(size = 2,
+                                   hjust = .7),
+               )+
+
+  labs(title = "Cumulative COVID-19",
+       subtitle = "Highlighting Facilities w >850\nCumulative COVID-19 cases")+
+  xlab("Date")+
+  ylab("Cumulative COVID 19")
+
+
+
+
+# cumulative_top + active_top
+```
+
+:::
+
+
+
+
+
+```{=html}
+<!--# {.unnumbered}
+
+# Facet Plot {.unnumbered}
+
+Facilities are listed in alphabetical order. The figure is best viewed on a desktop computer with the window maximized. It can be interesting look at facilities with large cumulative numbers and examine trends in the current side of the plot. Facilities to look for include: La Palma, Eloy, Karnes Family Residential, and Port Isabel. Each of these have large cumulative numbers, but there are differing patterns in how infections occurred and were counted over time. -->
+```
+
+```{r cumulative-facet, cache=TRUE, message=FALSE, warning=FALSE}
+
+cumulative_facet <- df %>%
+  filter(custody_aor_facility != "at local hospital") %>%
+  ggplot(aes(x=date, y = total_confirmed_covid_19_cases, color = custody_aor_facility))+
+  geom_line(group = 1)+
+  gghighlight()+
+   theme(
+    strip.text = element_text(size = 8),
+    axis.text= element_text(size = 8)
+    )+
+  labs(title = "Cumulative COVID-19")+
+  xlab("Date")+
+  ylab("Cumulative COVID 19")+
+  facet_wrap(~ custody_aor_facility, ncol = 2)
+
+```
+
+```{r current-facet, cache=TRUE, message=FALSE, warning=FALSE}
+
+current_facet <- df %>%
+  filter(custody_aor_facility != "at local hospital") %>%
+  ggplot(aes(x=date, y = confirmed_cases_currently_under_isolation_or_monitoring, color = custody_aor_facility))+
+  geom_line(group = 1)+
+  gghighlight()+
+   theme(
+    strip.text = element_text(size = 8),
+    axis.text= element_text(size = 8)
+    )+
+  labs(title = "Current COVID-19")+
+  xlab("Date")+
+  ylab("Current Active COVID-19")+
+  facet_wrap(~ custody_aor_facility, ncol = 2)
+```
+
+```{r combined-facet-plot, cache=TRUE, fig.cap="Combined cumulative and current COVID-19 in ICE detention over time.", fig.width=25, fig.height=150}
+#| column: page
+
+# cumulative_facet + current_facet
+```

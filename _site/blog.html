@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>nmc - Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">nmc</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./blog.html" aria-current="page">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="https://n8craig.github.io/inspections/">
+ <span class="dropdown-text">ICE Inspections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posts/2021-06-30-current-ice-detention-population/">
+ <span class="dropdown-text">Current ICE Detention</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://n8craig.github.io/nmsu-grades/index.html">
+ <span class="dropdown-text">Canvas and R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://nmc.quarto.pub/um-environmental-data/">
+ <span class="dropdown-text">Museum Environmental Monitoring</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(19)</span></div><div class="category" data-category="GDELT">GDELT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R Markdown">R Markdown <span class="quarto-category-count">(2)</span></div><div class="category" data-category="how-to">how-to <span class="quarto-category-count">(8)</span></div><div class="category" data-category="immigration">immigration <span class="quarto-category-count">(7)</span></div><div class="category" data-category="race">race <span class="quarto-category-count">(1)</span></div><div class="category" data-category="wrangling">wrangling <span class="quarto-category-count">(3)</span></div></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Blog</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="how-to,wrangling" data-listing-date-sort="1666332000000" data-listing-file-modified-sort="1666380272005" data-listing-reading-time-sort="0.9">
+<div class="thumbnail">
+<p><a href="./posts/2022-10-21-invert-names/index.html"> <img src="https://i.imgur.com/ga9kith.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-10-21-invert-names/index.html">
+<h3 class="no-anchor listing-title">
+Invert Names
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('wrangling'); return false;">
+wrangling
+</div>
+</div>
+<a href="./posts/2022-10-21-invert-names/index.html">
+<div class="listing-description">
+<p>A short note on switching inverted names like <code>last, first</code> to read <code>first last</code>.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-10-21-invert-names/index.html">
+<div class="listing-date">
+Oct 21, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="how-to,wrangling" data-listing-date-sort="1665640800000" data-listing-file-modified-sort="1665678738544" data-listing-reading-time-sort="1.955">
+<div class="thumbnail">
+<p><a href="./posts/2022-10-13-compound-fields/index.html"> <img src="https://i.imgur.com/27byU9G.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-10-13-compound-fields/index.html">
+<h3 class="no-anchor listing-title">
+Dealing with compound fields
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('wrangling'); return false;">
+wrangling
+</div>
+</div>
+<a href="./posts/2022-10-13-compound-fields/index.html">
+<div class="listing-description">
+<p>We have a table containing a compound field that is composed of multiple values separated by a delimeter. Here we are simulating data exported from PastPerfect museum catalog software. There are several such cases one might encounter: material, use, culture, etc.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-10-13-compound-fields/index.html">
+<div class="listing-date">
+Oct 13, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="how-to,GDELT,wrangling" data-listing-date-sort="1665381600000" data-listing-file-modified-sort="1666379715066" data-listing-reading-time-sort="9.755">
+<div class="thumbnail">
+<p><a href="./posts/2022-10-10-gdelt-visualizations/index.html"> <img src="https://i.imgur.com/9Zaiq3f.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-10-10-gdelt-visualizations/index.html">
+<h3 class="no-anchor listing-title">
+Reading and Visualizing GDELT Data
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('GDELT'); return false;">
+GDELT
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('wrangling'); return false;">
+wrangling
+</div>
+</div>
+<a href="./posts/2022-10-10-gdelt-visualizations/index.html">
+<div class="listing-description">
+<p>A quick look at how to incorporate GEDELT visualizations or create ones using <code>xts</code> and <code>dygraphs</code>.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-10-10-gdelt-visualizations/index.html">
+<div class="listing-date">
+Oct 10, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="immigration" data-listing-date-sort="1647583200000" data-listing-file-modified-sort="1651271159000" data-listing-reading-time-sort="8.88">
+<div class="thumbnail">
+<p><a href="./posts/2022-03-18-thoughts-on-oigs-report-regarding-understaffing-at-tcdf/index.html"> <img src="https://i.imgur.com/w4i1T3k.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-03-18-thoughts-on-oigs-report-regarding-understaffing-at-tcdf/index.html">
+<h3 class="no-anchor listing-title">
+Thoughts on OIG’s Report Regarding Understaffing at TCDF
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2022-03-18-thoughts-on-oigs-report-regarding-understaffing-at-tcdf/index.html">
+<div class="listing-description">
+<p>DHS OIG found that chronic understaffing at TCDF resulted in poor sanitation and security. This post looks briefly at how much money was paid out to the facility in Ghost Beds during this time and how understaffing is an ongoing issue in New Mexico’s carceral facilities.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-03-18-thoughts-on-oigs-report-regarding-understaffing-at-tcdf/index.html">
+<div class="listing-date">
+Mar 18, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="how-to,R Markdown" data-listing-date-sort="1647154800000" data-listing-file-modified-sort="1651343567000" data-listing-reading-time-sort="8.12">
+<div class="thumbnail">
+<p><a href="./posts/2022-03-13-lists-and-inline-reporting/index.html"> <img src="https://i.imgur.com/VoO5qMO.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-03-13-lists-and-inline-reporting/index.html">
+<h3 class="no-anchor listing-title">
+Lists and Inline Reporting
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('R Markdown'); return false;">
+R Markdown
+</div>
+</div>
+<a href="./posts/2022-03-13-lists-and-inline-reporting/index.html">
+<div class="listing-description">
+<p>Reporting values inline is one of the strong suits of R Markdown. Using lists can make storing variables more organized, and with the right functions lists can be generated automatically. This makes writing with inline values in R Markdown easier.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-03-13-lists-and-inline-reporting/index.html">
+<div class="listing-date">
+Mar 13, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1645254000000" data-listing-file-modified-sort="1650474238000" data-listing-reading-time-sort="0.955">
+<div class="thumbnail">
+<a href="./posts/2022-03-01-resources/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./posts/2022-03-01-resources/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-03-01-resources/index.html">
+<h3 class="no-anchor listing-title">
+Sample Table of Resources
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+This post illustrates the use of a sample table of resources that are listed on the page.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-03-01-resources/index.html">
+<div class="listing-date">
+Feb 19, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="R Markdown,how-to" data-listing-date-sort="1642575600000" data-listing-file-modified-sort="1651343658000" data-listing-reading-time-sort="10.575">
+<div class="thumbnail">
+<p><a href="./posts/2022-01-21-formatting-inline-code-and-reporting-p/index.html"> <img src="https://i.imgur.com/SCaOigk.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-01-21-formatting-inline-code-and-reporting-p/index.html">
+<h3 class="no-anchor listing-title">
+Formatting Inline Code and Reporting <span class="math inline">\(p\)</span>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R Markdown'); return false;">
+R Markdown
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+</div>
+<a href="./posts/2022-01-21-formatting-inline-code-and-reporting-p/index.html">
+<div class="listing-description">
+<p>This how-to explores some issues with formatting text called by R Markdown’s ability to include inline code. Topics covered include conditional formatting of numbers by means of <code>knitr</code> hooks as well as strategies for reporting really small <span class="math inline">\(p\)</span> values</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-01-21-formatting-inline-code-and-reporting-p/index.html">
+<div class="listing-date">
+Jan 19, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="how-to" data-listing-date-sort="1641193200000" data-listing-file-modified-sort="1651187384000" data-listing-reading-time-sort="14.3">
+<div class="thumbnail">
+<p><a href="./posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/index.html"> <img src="https://i.imgur.com/lWPVIti.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/index.html">
+<h3 class="no-anchor listing-title">
+GUI roundup for editing, plotting, and annotating
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+</div>
+<a href="./posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/index.html">
+<div class="listing-description">
+<p>A brief review of some graphical user interfaces (GUI’s) for working with data in RStudio.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2022-01-03-gui-roundup-for-editing-plotting-and-annotating/index.html">
+<div class="listing-date">
+Jan 3, 2022
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="how-to" data-listing-date-sort="1639033200000" data-listing-file-modified-sort="1665429285000" data-listing-reading-time-sort="24.735">
+<div class="thumbnail">
+<p><a href="./posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/index.html"> <img src="https://i.imgur.com/Ac0LYfZ.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/index.html">
+<h3 class="no-anchor listing-title">
+GDELT Summary Explorer API Calls in R
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+</div>
+<a href="./posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/index.html">
+<div class="listing-description">
+<p>This post looks at submitting API calls to the Global Database of Events, Language, and Tone (GDELT) database within R. The focus is on the Summary Explorer and TV News dataset. After reviewing several methods, I conclude that the Explorer GUI is the best method to construct the request URL. From this an export URL can be constructed from the GUI and a little bit of manual editing to change the format of the request from JSON to CSV.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-12-09-gdelt-summary-explorer-api-calls-in-r/index.html">
+<div class="listing-date">
+Dec 9, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="immigration" data-listing-date-sort="1627279200000" data-listing-file-modified-sort="1651352410000" data-listing-reading-time-sort="6.665">
+<div class="thumbnail">
+<p><a href="./posts/2021-07-26-cumulative-current-ice-covid-19/index.html"> <img src="https://i.imgur.com/HGKryAK.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-07-26-cumulative-current-ice-covid-19/index.html">
+<h3 class="no-anchor listing-title">
+Cumulative and Current COVID-19 in ICE Detention Over Time
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-07-26-cumulative-current-ice-covid-19/index.html">
+<div class="listing-description">
+<p>Top plots and facet plot showing cumulative and current COVID-19 infections by ICE Detention Facility.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-07-26-cumulative-current-ice-covid-19/index.html">
+<div class="listing-date">
+Jul 26, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="immigration" data-listing-date-sort="1625032800000" data-listing-file-modified-sort="1652559222000" data-listing-reading-time-sort="4.485">
+<div class="thumbnail">
+<p><a href="./posts/2021-06-30-current-ice-detention-population/index.html"> <img src="https://i.imgur.com/pxcG4Ws.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-06-30-current-ice-detention-population/index.html">
+<h3 class="no-anchor listing-title">
+Current ICE Detention Population
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-06-30-current-ice-detention-population/index.html">
+<div class="listing-description">
+<p>Daily updated information on ICE detention population and COVID-19 levels.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-06-30-current-ice-detention-population/index.html">
+<div class="listing-date">
+Jun 30, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="immigration" data-listing-date-sort="1622008800000" data-listing-file-modified-sort="1666379906258" data-listing-reading-time-sort="4.795">
+<div class="thumbnail">
+<a href="./posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/index.html">
+<h3 class="no-anchor listing-title">
+OCPC Monthly Detained Population Dec 2016-Aug 2020
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/index.html">
+<div class="listing-description">
+<p>This post contains some information on monthly detained population as gleaned from EMMA filings.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-05-26-ocpc-monthly-detained-population-dec-2016-aug-2020/index.html">
+<div class="listing-date">
+May 26, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="immigration" data-listing-date-sort="1621749600000" data-listing-file-modified-sort="1651178008000" data-listing-reading-time-sort="5.315">
+<div class="thumbnail">
+<p><a href="./posts/2021-05-23-ice-detention-covid-19-maps/index.html"> <img src="./posts/2021-05-23-ice-detention-covid-19-maps/COVID-19-map.jpg" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-05-23-ice-detention-covid-19-maps/index.html">
+<h3 class="no-anchor listing-title">
+ICE Detention COVID-19 Maps
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-05-23-ice-detention-covid-19-maps/index.html">
+<div class="listing-description">
+<p>Animated visualizations of COVID-19 infections in ICE detention over time.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-05-23-ice-detention-covid-19-maps/index.html">
+<div class="listing-date">
+May 23, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="how-to" data-listing-date-sort="1621317600000" data-listing-file-modified-sort="1651178067000" data-listing-reading-time-sort="4.665">
+<div class="thumbnail">
+<p><a href="./posts/2021-05-19-canvas-and-r/index.html"> <img src="./posts/2021-05-19-canvas-and-r/Canvas-and-R.jpg" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-05-19-canvas-and-r/index.html">
+<h3 class="no-anchor listing-title">
+Canvas LMS and R
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('how-to'); return false;">
+how-to
+</div>
+</div>
+<a href="./posts/2021-05-19-canvas-and-r/index.html">
+<div class="listing-description">
+<p>Summary of methods to use R for creating exams in Canvas, uploading those exams, as well as retrieval and analysis of grade books from single and multiple classes.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-05-19-canvas-and-r/index.html">
+<div class="listing-date">
+May 18, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="race" data-listing-date-sort="1620453600000" data-listing-file-modified-sort="1652561986000" data-listing-reading-time-sort="41.675">
+<div class="thumbnail">
+<p><a href="./posts/2021-05-07-critical-race-theory/index.html"> <img src="./posts/2021-05-07-critical-race-theory/CRT_GDELT.jpg" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-05-07-critical-race-theory/index.html">
+<h3 class="no-anchor listing-title">
+Critical Race Theory in the Media
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('race'); return false;">
+race
+</div>
+</div>
+<a href="./posts/2021-05-07-critical-race-theory/index.html">
+<div class="listing-description">
+<p>This post explores coverage of critical race theory in texts and TV news over time. Evidence suggests there is a concerted effort on the part of select conservative media outlets to establish a moral panic regarding CRT, particularly as it is a component of educational curricula.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-05-07-critical-race-theory/index.html">
+<div class="listing-date">
+May 8, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-listing-date-sort="1619848800000" data-listing-file-modified-sort="1650673999000" data-listing-reading-time-sort="0.09">
+<div class="thumbnail">
+<p><a href="./posts/post1.html"> <img src="https://i.imgur.com/SM876XM.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/post1.html">
+<h3 class="no-anchor listing-title">
+May Day Post
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+A May Day post.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/post1.html">
+<div class="listing-date">
+May 1, 2021
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="immigration" data-listing-date-sort="1619589600000" data-listing-file-modified-sort="1670456297318" data-listing-reading-time-sort="26.27">
+<div class="thumbnail">
+<a href="./posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html"></a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html">
+<h3 class="no-anchor listing-title">
+ICE Detention Guaranteed Minimums &amp; Ghost Beds as of April 2021
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html">
+<div class="listing-description">
+<p>An exploration of detention facility contract guaranteed minimums, where are they and what is the expected cost.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-04-28-ice-detention-guaranteed-minimums/ice-detention-guaranteed-minimums.html">
+<div class="listing-date">
+Apr 28, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="17" data-categories="immigration" data-listing-date-sort="1619416800000" data-listing-file-modified-sort="1651265755000" data-listing-reading-time-sort="11.885">
+<div class="thumbnail">
+<p><a href="./posts/2021-04-25-ice-adp/index.html"> <img src="https://i.imgur.com/DujNpJ9.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-04-25-ice-adp/index.html">
+<h3 class="no-anchor listing-title">
+ICE ADP
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('immigration'); return false;">
+immigration
+</div>
+</div>
+<a href="./posts/2021-04-25-ice-adp/index.html">
+<div class="listing-description">
+<p>This post is an exploration of immigration detention average daily population over time. Particular attention is given to the period represented by the COVID-19 pandemic.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-04-25-ice-adp/index.html">
+<div class="listing-date">
+Apr 26, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-listing-date-sort="1619330400000" data-listing-file-modified-sort="1650673281000" data-listing-reading-time-sort="1.52">
+<div class="thumbnail">
+<p><a href="./posts/2021-04-25-first-post/index.html"> <img src="./posts/2021-04-25-first-post/images/popalo-sprout.jpg" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/2021-04-25-first-post/index.html">
+<h3 class="no-anchor listing-title">
+First post
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Welcome to my new site.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/2021-04-25-first-post/index.html">
+<div class="listing-date">
+Apr 25, 2021
+</div>
+<div class="listing-author">
+Nathan Craig
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

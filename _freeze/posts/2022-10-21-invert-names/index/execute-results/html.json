@@ -1,0 +1,14 @@
+{
+  "hash": "9598e66e51464aef61f3f274a6422a64",
+  "result": {
+    "markdown": "---\ntitle: \"Invert Names\"\n\ndescription: |\n  A short note on switching inverted names like `last, first` to read `first last`.\nauthor: \"Nathan Craig\"\ndate: 2022-10-21\ncategories: \n - how-to\n - wrangling\neditor: source\nformat:\n  html:\n    df-print: kable\n---\n\n\nOccasionally, we get data frames where items are comma separated and reverse order. Perhaps the most common case is where first and last names are reversed and comma separated. Another, situation is when applying controlled vocabularies, which are often structured in this way (@fig-pp). Let's run through switching the terms and see the result (#tbl-result).\n\n![PastPerfect data entry screen showing assignment of Nomenclature 3.0 terms.](https://i.imgur.com/ga9kith.png){#fig-pp}\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load libraries\nlibrary(dplyr)\nlibrary(tidyr)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Create data\ndf <- data.frame (name_inverse  = c(\"Henry, John\", \n                      \"Bunyan, Paul\")\n                  )\n```\n:::\n\n::: {#tbl-result .cell tbl-cap='Results showing the reversal of names. Note the extra columns can be removed with `select`.'}\n\n```{.r .cell-code}\ndf <- df |> separate(name_inverse, c(\"last\", \"first\"),\n               remove = FALSE) |> \n  mutate(name = paste(first, last, sep = \" \"), \n         .before = name_inverse)\ndf\n```\n\n::: {.cell-output-display}\n<div class=\"kable-table\">\n\n|name        |name_inverse |last   |first |\n|:-----------|:------------|:------|:-----|\n|John Henry  |Henry, John  |Henry  |John  |\n|Paul Bunyan |Bunyan, Paul |Bunyan |Paul  |\n\n</div>\n:::\n:::\n\n\n![Names fixed](https://i.imgur.com/T6GzuFM.png){#fig-names}\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

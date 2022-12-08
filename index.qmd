@@ -1,0 +1,9 @@
+---
+title: "Welcome"
+---
+
+I'm Nathan Craig, and this site is a place to post and gather a bit of my writing. The blog contains a few [how-to's](/blog.html#category=how-to) including a couple on [R Markdown](/blog.html#category=R%20Markdown) along with notes on [immigration](/blog.html#category=immigration) focusing on detention.
+
+::: column-screen
+![](images/ca_poppy.JPG){fig-align="center"}
+:::
