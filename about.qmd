@@ -6,21 +6,26 @@ about:
   image-shape: rounded
   image-width: 12em
   links: 
-    - icon: {{< ai orchid >}} 
-      text: OrchID
+    - text: "{{< ai orcid size=xl >}}"
       href: https://orcid.org/0000-0003-2184-2082
-    - icon: academia
-      text: Academia
+    - text: "{{< ai academia size=xl >}}"
       href: https://nmsu.academia.edu/NathanCraig
-    - icon: scholar
-      text: G Scholar
+    - text: "{{< ai google-scholar size=xl >}}"
       href: https://scholar.google.com/citations?user=C0SRYOQAAAAJ&hl=en
-    - icon: zotero
-      text: Zotero
+    - text: "{{< ai zotero size=xl >}}"
       href: https://www.zotero.org/ncraig/
+    - text: "{{< ai archive size=xl >}}"
+      href: https://archive.org/details/@nathancraig
+    - icon: github
+      href: https://github.com/n8craig
+    - text: "{{< ai stackoverflow size=xl >}}"
+      href: https://stackoverflow.com/users/13110995/ncraig
+    - icon: mastodon
+      href: https://scholar.social/@ncraig
 ---
 
-I am an anthropologist interested in power, domination, and resistance. I spent a good portion of my life doing archaeology and ethnoarchaeology focusing on South America. Recently, I turned my attention to incarceration and immigration. Using computers and digital data is part of my practice as a scholar activist. A good bit of what I blog about on this site involves writing about using reproducible research methods.
+I am an anthropologist interested in power, domination, and resistance. I spent a good portion of my life doing archaeology and ethnoarchaeology focusing on South America. Recently, I turned my attention to incarceration and immigration. Using computers and digital data is part of my practice as a scholar activist. A good bit of what I blog about on this site involves writing about using reproducible research methods (@fig-max-nathan).
+
 
 # Education
 
@@ -29,3 +34,5 @@ Ph.D. Anthropology, University of California, Santa Barbara, 2005
 M.A. Anthropology, University of California, Santa Barbara, 1997
 
 BA, Anthropology, University of California, Santa Cruz 1994
+
+![Max and Nathan debug some code.](https://i.imgur.com/4IhqZoA.jpg){#fig-max-nathan}

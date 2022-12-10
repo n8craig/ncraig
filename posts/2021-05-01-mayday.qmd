@@ -1,6 +1,6 @@
 ---
 title: "May Day Post"
-date: "5/1/2021"
+date: 2021-05-01
 ---
 
 A May Day post.

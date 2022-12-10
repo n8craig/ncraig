@@ -1,0 +1,22 @@
+---
+title: "University Museum Inventory"
+description: "R and Quarto are used for a museum catalog interface."
+date: 2022-11-22
+author: Nathan Craig
+---
+
+Digital museum catalogs are generally stored in a database. The NMSU University Museum uses PastPerfect, which is an extremely common database for small museums. Most public interfaces for museum catalogs cost money, often through a software as service subscription model. Dissatisfied with this, I set out to create a workable museum catalog built on free and open source software.
+
+I reasoned that:
+
+1.  publishing a museum catalog on the web basically entails presenting structured data in the form of a table,
+2.  R is one of the world's premiere statistical languages, and
+3.  R developers have gone to great lengths to develop systems for communicating statistical results generated in R (R Markdown) and other languages (Quarto)
+
+PastPerfect permits the export of object records as an Excel file. I imported this file, joined in object images, and served the information up using the `DT` library (@fig-inventory-interface). A working version of the site is located [here](https://um-inventory.netlify.app/).
+
+[![University Museum inventory interface built using `DT`.](https://i.imgur.com/cmeJeHq.png){#fig-inventory-interface}](https://um-inventory.netlify.app/)
+
+At present the inventory consists of about 4500 records. The table is rendered in JavaScript so it is likely resource intensive on the browser. To reduce load times and strain on the browser, I generated image thumbnails and compressed all of the images. This helped tremendously with load times.
+
+`DT` is a wrapper to the [`DataTables`](https://datatables.net/) JavaScript library. DataTables offers some very nice customizations and I used the [`SearchBuilder`](https://datatables.net/extensions/searchbuilder/) extension. It took a bit of fiddling to understand the Document Object Model (DOM) switches, but after some quality time with the documentation I was able to implement it. One of the key sections is to understand the [`dom`](https://datatables.net/reference/option/dom) documentation located under `Reference/Options` which took some digging to find.
