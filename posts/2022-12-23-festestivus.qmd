@@ -1,0 +1,9 @@
+---
+title: "A test festivus post"
+author: Nathan Craig
+date: 2022-12-23
+---
+
+This is a test festivus post that I'm making in a text editor and publishing with quarto.
+
+![](https://i.imgur.com/YOHP6ZI.png)
